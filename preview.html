@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <title>معاينة التقرير</title>
+
+    <style>
+      body {
+        font-family: "Tajawal", sans-serif;
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-100 py-10">
+ 
+    <div
+      class="max-w-4xl mx-auto bg-white shadow-xl border rounded-2xl overflow-hidden"
+      id="template"
+    >
+ 
+      <div
+        class="bg-gradient-to-l from-green-900 to-cyan-500 text-white p-6 flex justify-between items-center"
+      >
+        <div>
+          <p class="text-sm" id="edu"></p>
+          <p class="text-sm">بالمنطقة</p>
+          <p class="font-bold mt-1">مدرسة</p>
+        </div>
+
+        <img src="/img/qr.png" class="w-20 h-20 bg-white p-1 rounded shadow" />
+      </div>
+
+    
+      <div
+        class="bg-cyan-700 text-white text-center py-3 text-xl font-bold"
+        id="programTitle"
+      ></div>
+
+ 
+      <div class="p-6 grid grid-cols-2 gap-4 text-gray-700 text-sm">
+        <div>
+          <p class="font-bold text-green-800 mb-1">المنفذون:</p>
+          <div class="border rounded-md p-2" id="executor"></div>
+        </div>
+
+        <div>
+          <p class="font-bold text-green-800 mb-1">المشاركون:</p>
+          <div class="border rounded-md p-2" id="participants"></div>
+        </div>
+
+        <div>
+          <p class="font-bold text-green-800 mb-1">مكان التنفيذ:</p>
+          <div class="border rounded-md p-2" id="place"></div>
+        </div>
+
+        <div>
+          <p class="font-bold text-green-800 mb-1">مدة التنفيذ:</p>
+          <div class="border rounded-md p-2" id="duration"></div>
+        </div>
+
+        <div>
+          <p class="font-bold text-green-800 mb-1">تاريخ التنفيذ:</p>
+          <div class="border rounded-md p-2" id="date"></div>
+        </div>
+
+        <div>
+          <p class="font-bold text-green-800 mb-1">المجال:</p>
+          <div class="border rounded-md p-2" id="field"></div>
+        </div>
+
+        <div class="col-span-2">
+          <p class="font-bold text-green-800 mb-1">المستفيدون / العدد:</p>
+          <div class="border rounded-md p-2" id="beneficiaries"></div>
+        </div>
+
+        <div class="col-span-2">
+          <p class="font-bold text-green-800 mb-1">الأهداف:</p>
+          <div class="border rounded-md p-3 leading-7" id="goals"></div>
+        </div>
+
+        <div class="col-span-2">
+          <p class="font-bold text-green-800 mb-1">خطوات التنفيذ / الوصف:</p>
+          <div class="border rounded-md p-3 leading-7" id="steps"></div>
+        </div>
+
+       
+        <div class="col-span-2 text-center mt-4">
+          <p class="text-green-800 font-bold text-lg mb-3">الشواهد:</p>
+
+          <div class="flex justify-center gap-6">
+            <img
+              id="cert1Preview"
+              class="w-80 h-48 object-contain bg-white p-2 rounded shadow"
+            />
+            <img
+              id="cert2Preview"
+              class="w-80 h-48 object-contain bg-white p-2 rounded shadow"
+            />
+          </div>
+        </div>
+      </div>
+
+    
+      <div class="bg-[#003b49] text-white text-center py-3 text-sm">
+        موقع نماذج تعليمية - www.edu-forms.com
+      </div>
+    </div>
+
+
+    <div class="flex justify-center mt-8 gap-4">
+      <button
+        onclick="downloadImage()"
+        class="bg-blue-600 text-white px-6 py-3 rounded-lg"
+      >
+        تحميل صورة
+      </button>
+
+      <button
+        onclick="downloadPDF()"
+        class="bg-red-600 text-white px-6 py-3 rounded-lg"
+      >
+        تحميل PDF
+      </button>
+    </div>
+
+    <script>
+      const data = JSON.parse(localStorage.getItem("templateData"));
+
+      document.getElementById("edu").textContent = data.edu;
+      document.getElementById("programTitle").textContent = data.program;
+      document.getElementById("executor").textContent = data.executor;
+      document.getElementById("participants").textContent = data.participants;
+      document.getElementById("place").textContent = data.place;
+      document.getElementById("duration").textContent = data.duration;
+      document.getElementById("date").textContent = data.date;
+      document.getElementById("field").textContent = data.field;
+      document.getElementById("beneficiaries").textContent = data.beneficiaries;
+      document.getElementById("goals").textContent = data.goals.replace(
+        /\n/g,
+        "<br>"
+      );
+      document.getElementById("steps").textContent = data.steps.replace(
+        /\n/g,
+        "<br>"
+      );
+
+   
+      function loadImage(inputName, imgId) {
+        const file = document.querySelector(`input[name='${inputName}']`);
+        if (!file) return;
+        const stored = data[inputName];
+        if (stored && typeof stored === "string") {
+          document.getElementById(imgId).src = stored;
+        }
+      }
+
+
+      Object.keys(data).forEach((key) => {
+        if (key.includes("cert")) {
+          document
+            .getElementById(key + "Preview")
+            ?.setAttribute("src", data[key]);
+        }
+      });
+
+
+      function downloadImage() {
+        html2canvas(document.getElementById("template")).then((canvas) => {
+          const link = document.createElement("a");
+          link.download = "report.png";
+          link.href = canvas.toDataURL();
+          link.click();
+        });
+      }
+
+
+      function downloadPDF() {
+        html2canvas(document.getElementById("template")).then((canvas) => {
+          const imgData = canvas.toDataURL("image/jpeg");
+          const pdf = new jspdf.jsPDF("p", "mm", "a4");
+          pdf.addImage(imgData, "JPEG", 10, 10, 190, 270);
+          pdf.save("report.pdf");
+        });
+      }
+    </script>
+  </body>
+</html>
