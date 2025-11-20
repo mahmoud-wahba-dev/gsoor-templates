@@ -1,152 +1,225 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-  <meta charset="utf-8" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <title>نموذج شواهد تقييم الأداء</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <style>
-    body { font-family: "Helvetica", "Tajawal", sans-serif; }
-    label { font-weight: 600; color: #136f3c; }
-    .error { color: #d00000; font-size: 14px; margin-top: 4px; display: none; }
-  </style>
-</head>
-<body class="bg-gray-100 py-10">
-  <div class="max-w-4xl mx-auto bg-white shadow-xl border rounded-2xl p-8">
-    <h2 class="text-3xl font-bold text-green-700 text-center mb-8">نموذج شواهد تقييم الأداء</h2>
+  <head>
+    <meta charset="utf-8" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>نموذج شواهد تقييم الأداء</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      body {
+        font-family: "Helvetica", "Tajawal", sans-serif;
+      }
+      label {
+        font-weight: 600;
+        color: #136f3c;
+      }
+      .error {
+        color: #d00000;
+        font-size: 14px;
+        margin-top: 4px;
+        display: none;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 py-10">
+    <div class="max-w-4xl mx-auto bg-white shadow-xl border rounded-2xl p-8">
+      <h2 class="text-3xl font-bold text-green-700 text-center mb-8">
+        نموذج شواهد تقييم الأداء
+      </h2>
 
-    <!-- Selected template preview (shows when coming from gallery) -->
-    <div id="selectedTemplatePreview" class="mb-6 text-center" style="display:none;">
-      <p class="text-sm text-gray-600 mb-2">القالب المختار:</p>
-      <img id="selectedTemplateImg" src="" class="mx-auto w-48 h-36 object-contain bg-white p-2 rounded shadow" />
+      <!-- Selected template preview (shows when coming from gallery) -->
+      <div
+        id="selectedTemplatePreview"
+        class="mb-6 text-center"
+        style="display: none"
+      >
+        <p class="text-sm text-gray-600 mb-2">القالب المختار:</p>
+        <img
+          id="selectedTemplateImg"
+          src=""
+          class="mx-auto w-48 h-36 object-contain bg-white p-2 rounded shadow"
+        />
+      </div>
+
+      <form id="card2FormPage" class="grid grid-cols-2 gap-6">
+        <div>
+          <label>اسم المتعلم/ة:</label>
+          <input name="studentName" class="w-full border p-3 rounded-md" />
+          <div class="error">هذا الحقل مطلوب</div>
+        </div>
+
+        <div>
+          <label>المرحلة الدراسية:</label>
+          <select name="stage" class="w-full border p-3 rounded-md">
+            <option value="">-- اختر --</option>
+            <option>الابتدائية</option>
+            <option>المتوسطة</option>
+            <option>الثانوية</option>
+          </select>
+          <div class="error">هذا الحقل مطلوب</div>
+        </div>
+
+        <div>
+          <label>المادة:</label>
+          <input name="subject" class="w-full border p-3 rounded-md" />
+          <div class="error">هذا الحقل مطلوب</div>
+        </div>
+
+        <div>
+          <label>التقييم (من 100):</label>
+          <input
+            type="number"
+            name="score"
+            min="0"
+            max="100"
+            class="w-full border p-3 rounded-md"
+          />
+          <div class="error">أدخل قيمة صالحة (0-100)</div>
+        </div>
+
+        <div class="col-span-2">
+          <label>الملاحظات:</label>
+          <textarea
+            name="notes"
+            rows="4"
+            class="w-full border p-3 rounded-md"
+          ></textarea>
+        </div>
+
+        <div class="col-span-2">
+          <label>اختر نموذج الشهادة:</label>
+          <select name="templateImage" class="w-full border p-3 rounded-md">
+            <option
+              value="assets/imgs/card2/advanced-cybersecurity-initiative.webp"
+            >
+              Advanced Cybersecurity
+            </option>
+            <option
+              value="assets/imgs/card2/cyber-security-initiative-report.webp"
+            >
+              Cyber Security Initiative
+            </option>
+            <option
+              value="assets/imgs/card2/international-tolerance-day-report.webp"
+            >
+              International Tolerance Day
+            </option>
+            <option
+              value="assets/imgs/card2/national-tree-planting-initiative.webp"
+            >
+              National Tree Planting
+            </option>
+            <option value="assets/imgs/card2/parents-communication-report.webp">
+              Parents Communication
+            </option>
+          </select>
+        </div>
+
+        <div class="col-span-2">
+          <label>رفع صورة الشهادة (اختياري):</label>
+          <input
+            type="file"
+            name="certificateFile"
+            accept="image/*"
+            class="w-full border p-3 rounded-md bg-gray-50"
+          />
+        </div>
+      </form>
+
+      <div class="flex gap-4 mt-8">
+        <button
+          onclick="preview2()"
+          class="bg-green-600 text-white px-8 py-3 rounded-xl text-lg font-bold flex-1"
+        >
+          معاينة
+        </button>
+        <button
+          onclick="goBack()"
+          class="bg-gray-600 text-white px-8 py-3 rounded-xl text-lg font-bold flex-1"
+        >
+          رجوع
+        </button>
+      </div>
     </div>
 
-    <form id="card2FormPage" class="grid grid-cols-2 gap-6">
-      <div>
-        <label>اسم المتعلم/ة:</label>
-        <input name="studentName" class="w-full border p-3 rounded-md" />
-        <div class="error">هذا الحقل مطلوب</div>
-      </div>
+    <script>
+      function goBack() {
+        window.history.back();
+      }
 
-      <div>
-        <label>المرحلة الدراسية:</label>
-        <select name="stage" class="w-full border p-3 rounded-md">
-          <option value="">-- اختر --</option>
-          <option>الابتدائية</option>
-          <option>المتوسطة</option>
-          <option>الثانوية</option>
-        </select>
-        <div class="error">هذا الحقل مطلوب</div>
-      </div>
-
-      <div>
-        <label>المادة:</label>
-        <input name="subject" class="w-full border p-3 rounded-md" />
-        <div class="error">هذا الحقل مطلوب</div>
-      </div>
-
-      <div>
-        <label>التقييم (من 100):</label>
-        <input type="number" name="score" min="0" max="100" class="w-full border p-3 rounded-md" />
-        <div class="error">أدخل قيمة صالحة (0-100)</div>
-      </div>
-
-      <div class="col-span-2">
-        <label>الملاحظات:</label>
-        <textarea name="notes" rows="4" class="w-full border p-3 rounded-md"></textarea>
-      </div>
-
-      <div class="col-span-2">
-        <label>اختر نموذج الشهادة:</label>
-        <select name="templateImage" class="w-full border p-3 rounded-md">
-          <option value="public/imgs/card2/advanced-cybersecurity-initiative.webp">Advanced Cybersecurity</option>
-          <option value="public/imgs/card2/cyber-security-initiative-report.webp">Cyber Security Initiative</option>
-          <option value="public/imgs/card2/international-tolerance-day-report.webp">International Tolerance Day</option>
-          <option value="public/imgs/card2/national-tree-planting-initiative.webp">National Tree Planting</option>
-          <option value="public/imgs/card2/parents-communication-report.webp">Parents Communication</option>
-        </select>
-      </div>
-
-      <div class="col-span-2">
-        <label>رفع صورة الشهادة (اختياري):</label>
-        <input type="file" name="certificateFile" accept="image/*" class="w-full border p-3 rounded-md bg-gray-50" />
-      </div>
-    </form>
-
-    <div class="flex gap-4 mt-8">
-      <button onclick="preview2()" class="bg-green-600 text-white px-8 py-3 rounded-xl text-lg font-bold flex-1">معاينة</button>
-      <button onclick="goBack()" class="bg-gray-600 text-white px-8 py-3 rounded-xl text-lg font-bold flex-1">رجوع</button>
-    </div>
-  </div>
-
-  <script>
-    function goBack(){ window.history.back(); }
-
-    // If page opened with ?template=... preselect that image and show preview
-    (function preselectFromQuery(){
-      const params = new URLSearchParams(window.location.search);
-      const tpl = params.get('template');
-      if (!tpl) return;
-      const decoded = decodeURIComponent(tpl);
-      // set select value (add option if needed)
-      const sel = document.querySelector('select[name="templateImage"]');
-      if (sel) {
-        let opt = Array.from(sel.options).find(o => o.value === decoded);
-        if (!opt) {
-          opt = document.createElement('option');
-          opt.value = decoded;
-          opt.text = 'القالب المختار';
-          sel.appendChild(opt);
+      // If page opened with ?template=... preselect that image and show preview
+      (function preselectFromQuery() {
+        const params = new URLSearchParams(window.location.search);
+        const tpl = params.get("template");
+        if (!tpl) return;
+        const decoded = decodeURIComponent(tpl);
+        // set select value (add option if needed)
+        const sel = document.querySelector('select[name="templateImage"]');
+        if (sel) {
+          let opt = Array.from(sel.options).find((o) => o.value === decoded);
+          if (!opt) {
+            opt = document.createElement("option");
+            opt.value = decoded;
+            opt.text = "القالب المختار";
+            sel.appendChild(opt);
+          }
+          sel.value = decoded;
         }
-        sel.value = decoded;
-      }
-      // show preview image
-      const preview = document.getElementById('selectedTemplatePreview');
-      const img = document.getElementById('selectedTemplateImg');
-      if (preview && img) {
-        img.src = decoded;
-        preview.style.display = 'block';
-        // scroll to form so user sees it
-        setTimeout(() => {
-          const form = document.getElementById('card2FormPage');
-          if (form) form.scrollIntoView({behavior:'smooth', block:'center'});
-        }, 120);
-      }
-    })();
-
-    function fileToBase64(file) {
-      return new Promise(resolve => {
-        const r = new FileReader();
-        r.onload = () => resolve(r.result);
-        r.readAsDataURL(file);
-      });
-    }
-
-    async function preview2(){
-      const form = document.getElementById('card2FormPage');
-      const fields = form.querySelectorAll('input, textarea, select');
-      let valid = true;
-      fields.forEach(f => {
-        const err = f.nextElementSibling;
-        if (f.name === 'certificateFile') return;
-        if ((f.tagName === 'INPUT' || f.tagName === 'TEXTAREA' || f.tagName === 'SELECT') && f.required && !f.value.trim()){
-          err && (err.style.display = 'block'); valid = false;
-        } else if (err) err.style.display = 'none';
-      });
-      if (!valid) return;
-
-      const data = {};
-      const fd = new FormData(form);
-      for (const [k,v] of fd.entries()){
-        if (k==='certificateFile' && v && v.size) {
-          data[k] = await fileToBase64(v);
-        } else {
-          data[k] = v;
+        // show preview image
+        const preview = document.getElementById("selectedTemplatePreview");
+        const img = document.getElementById("selectedTemplateImg");
+        if (preview && img) {
+          img.src = decoded;
+          preview.style.display = "block";
+          // scroll to form so user sees it
+          setTimeout(() => {
+            const form = document.getElementById("card2FormPage");
+            if (form)
+              form.scrollIntoView({ behavior: "smooth", block: "center" });
+          }, 120);
         }
+      })();
+
+      function fileToBase64(file) {
+        return new Promise((resolve) => {
+          const r = new FileReader();
+          r.onload = () => resolve(r.result);
+          r.readAsDataURL(file);
+        });
       }
-      localStorage.setItem('templateData2', JSON.stringify(data));
-      window.location.href = 'preview2.html';
-    }
-  </script>
-</body>
+
+      async function preview2() {
+        const form = document.getElementById("card2FormPage");
+        const fields = form.querySelectorAll("input, textarea, select");
+        let valid = true;
+        fields.forEach((f) => {
+          const err = f.nextElementSibling;
+          if (f.name === "certificateFile") return;
+          if (
+            (f.tagName === "INPUT" ||
+              f.tagName === "TEXTAREA" ||
+              f.tagName === "SELECT") &&
+            f.required &&
+            !f.value.trim()
+          ) {
+            err && (err.style.display = "block");
+            valid = false;
+          } else if (err) err.style.display = "none";
+        });
+        if (!valid) return;
+
+        const data = {};
+        const fd = new FormData(form);
+        for (const [k, v] of fd.entries()) {
+          if (k === "certificateFile" && v && v.size) {
+            data[k] = await fileToBase64(v);
+          } else {
+            data[k] = v;
+          }
+        }
+        localStorage.setItem("templateData2", JSON.stringify(data));
+        window.location.href = "preview2.html";
+      }
+    </script>
+  </body>
 </html>
