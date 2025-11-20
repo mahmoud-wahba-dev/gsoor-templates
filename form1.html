@@ -1,213 +1,213 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-  <meta charset="UTF-8" />
-  <script src="https://cdn.tailwindcss.com"></script>
-  <title>نموذج إدخال البيانات</title>
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>نموذج إدخال البيانات</title>
 
-  <style>
-    body {
-      font-family: "Helvetica", "Tajawal", sans-serif;
-    }
-    label {
-      font-weight: 600;
-      color: #136f3c;
-    }
-    .error {
-      color: #d00000;
-      font-size: 14px;
-      margin-top: 4px;
-      display: none;
-    }
-  </style>
-</head>
+    <style>
+      body {
+        font-family: "Helvetica", "Tajawal", sans-serif;
+      }
+      label {
+        font-weight: 600;
+        color: #3d7eb9;
+      }
+      .error {
+        color: #d00000;
+        font-size: 14px;
+        margin-top: 4px;
+        display: none;
+      }
+    </style>
+  </head>
 
-<body class="bg-gray-100 py-10">
-  <div class="max-w-4xl mx-auto bg-white shadow-xl border rounded-2xl p-8">
-    <h2 class="text-3xl font-bold text-green-700 text-center mb-10">
-      أدخل بيانات التقرير
-    </h2>
+  <body class="bg-gray-100 py-10">
+    <div class="max-w-4xl mx-auto bg-white shadow-xl border rounded-2xl p-8">
+      <h2 class="text-3xl font-bold text-[#3d7eb9] text-center mb-10">
+        أدخل بيانات التقرير
+      </h2>
 
-    <form id="reportForm" class="grid grid-cols-2 gap-6">
-      <div class="col-span-2">
-        <label>إدارة التعليم:</label>
-        <input name="edu" class="w-full border p-3 rounded-md" />
-        <div class="error">هذا الحقل مطلوب</div>
+      <form id="reportForm" class="grid grid-cols-2 gap-6">
+        <div class="col-span-2">
+          <label>إدارة التعليم:</label>
+          <input name="edu" class="w-full border p-3 rounded-md" />
+          <div class="error">هذا الحقل مطلوب</div>
+        </div>
+
+        <div class="col-span-2">
+          <label>اسم البرنامج / المبادرة:</label>
+          <input name="program" class="w-full border p-3 rounded-md" />
+          <div class="error">هذا الحقل مطلوب</div>
+        </div>
+
+        <div>
+          <label>المنفذون:</label>
+          <input name="executor" class="w-full border p-3 rounded-md" />
+          <div class="error">هذا الحقل مطلوب</div>
+        </div>
+
+        <div>
+          <label>المشاركون:</label>
+          <input name="participants" class="w-full border p-3 rounded-md" />
+          <div class="error">هذا الحقل مطلوب</div>
+        </div>
+
+        <div>
+          <label>مدة التنفيذ (بالأيام):</label>
+          <input
+            type="number"
+            name="duration"
+            class="w-full border p-3 rounded-md"
+            min="1"
+            placeholder="مثال: 1"
+          />
+          <div class="error">أدخل رقم صحيح للمدة</div>
+        </div>
+
+        <div>
+          <label>مكان التنفيذ:</label>
+          <input name="place" class="w-full border p-3 rounded-md" />
+          <div class="error">هذا الحقل مطلوب</div>
+        </div>
+
+        <div>
+          <label>تاريخ التنفيذ:</label>
+          <input type="date" name="date" class="w-full border p-3 rounded-md" />
+          <div class="error">اختر تاريخ التنفيذ</div>
+        </div>
+
+        <div>
+          <label>المجال:</label>
+          <input name="field" class="w-full border p-3 rounded-md" />
+          <div class="error">هذا الحقل مطلوب</div>
+        </div>
+
+        <div class="col-span-2">
+          <label>المستفيدون / العدد:</label>
+          <input name="beneficiaries" class="w-full border p-3 rounded-md" />
+          <div class="error">هذا الحقل مطلوب</div>
+        </div>
+
+        <div class="col-span-2">
+          <label>الأهداف:</label>
+          <textarea
+            name="goals"
+            rows="4"
+            class="w-full border p-3 rounded-md"
+          ></textarea>
+          <div class="error">هذا الحقل مطلوب</div>
+        </div>
+
+        <div class="col-span-2">
+          <label>خطوات التنفيذ / الوصف:</label>
+          <textarea
+            name="steps"
+            rows="4"
+            class="w-full border p-3 rounded-md"
+          ></textarea>
+          <div class="error">هذا الحقل مطلوب</div>
+        </div>
+
+        <div class="col-span-2">
+          <label>صورة الشاهد الأول:</label>
+          <input
+            type="file"
+            name="cert1"
+            accept="image/*"
+            class="w-full border p-3 rounded-md bg-gray-50"
+          />
+          <div class="error">يجب رفع صورة الشاهد الأول</div>
+        </div>
+
+        <div class="col-span-2">
+          <label>صورة الشاهد الثاني:</label>
+          <input
+            type="file"
+            name="cert2"
+            accept="image/*"
+            class="w-full border p-3 rounded-md bg-gray-50"
+          />
+          <div class="error">يجب رفع صورة الشاهد الثاني</div>
+        </div>
+      </form>
+
+      <div class="flex gap-4 mt-10">
+        <button
+          onclick="preview()"
+          class="bg-[#3d7eb9] text-white px-10 py-4 rounded-xl text-xl font-bold hover:bg-[#15445a] transition flex-1"
+        >
+          معاينة النموذج
+        </button>
+        <button
+          onclick="goBack()"
+          class="bg-gray-600 text-white px-10 py-4 rounded-xl text-xl font-bold hover:bg-gray-700 transition flex-1"
+        >
+          رجوع
+        </button>
       </div>
-
-      <div class="col-span-2">
-        <label>اسم البرنامج / المبادرة:</label>
-        <input name="program" class="w-full border p-3 rounded-md" />
-        <div class="error">هذا الحقل مطلوب</div>
-      </div>
-
-      <div>
-        <label>المنفذون:</label>
-        <input name="executor" class="w-full border p-3 rounded-md" />
-        <div class="error">هذا الحقل مطلوب</div>
-      </div>
-
-      <div>
-        <label>المشاركون:</label>
-        <input name="participants" class="w-full border p-3 rounded-md" />
-        <div class="error">هذا الحقل مطلوب</div>
-      </div>
-
-      <div>
-        <label>مدة التنفيذ (بالأيام):</label>
-        <input
-          type="number"
-          name="duration"
-          class="w-full border p-3 rounded-md"
-          min="1"
-          placeholder="مثال: 1"
-        />
-        <div class="error">أدخل رقم صحيح للمدة</div>
-      </div>
-
-      <div>
-        <label>مكان التنفيذ:</label>
-        <input name="place" class="w-full border p-3 rounded-md" />
-        <div class="error">هذا الحقل مطلوب</div>
-      </div>
-
-      <div>
-        <label>تاريخ التنفيذ:</label>
-        <input type="date" name="date" class="w-full border p-3 rounded-md" />
-        <div class="error">اختر تاريخ التنفيذ</div>
-      </div>
-
-      <div>
-        <label>المجال:</label>
-        <input name="field" class="w-full border p-3 rounded-md" />
-        <div class="error">هذا الحقل مطلوب</div>
-      </div>
-
-      <div class="col-span-2">
-        <label>المستفيدون / العدد:</label>
-        <input name="beneficiaries" class="w-full border p-3 rounded-md" />
-        <div class="error">هذا الحقل مطلوب</div>
-      </div>
-
-      <div class="col-span-2">
-        <label>الأهداف:</label>
-        <textarea
-          name="goals"
-          rows="4"
-          class="w-full border p-3 rounded-md"
-        ></textarea>
-        <div class="error">هذا الحقل مطلوب</div>
-      </div>
-
-      <div class="col-span-2">
-        <label>خطوات التنفيذ / الوصف:</label>
-        <textarea
-          name="steps"
-          rows="4"
-          class="w-full border p-3 rounded-md"
-        ></textarea>
-        <div class="error">هذا الحقل مطلوب</div>
-      </div>
-
-      <div class="col-span-2">
-        <label>صورة الشاهد الأول:</label>
-        <input
-          type="file"
-          name="cert1"
-          accept="image/*"
-          class="w-full border p-3 rounded-md bg-gray-50"
-        />
-        <div class="error">يجب رفع صورة الشاهد الأول</div>
-      </div>
-
-      <div class="col-span-2">
-        <label>صورة الشاهد الثاني:</label>
-        <input
-          type="file"
-          name="cert2"
-          accept="image/*"
-          class="w-full border p-3 rounded-md bg-gray-50"
-        />
-        <div class="error">يجب رفع صورة الشاهد الثاني</div>
-      </div>
-    </form>
-
-    <div class="flex gap-4 mt-10">
-      <button
-        onclick="preview()"
-        class="bg-green-600 text-white px-10 py-4 rounded-xl text-xl font-bold hover:bg-green-700 transition flex-1"
-      >
-        معاينة النموذج
-      </button>
-      <button
-        onclick="goBack()"
-        class="bg-gray-600 text-white px-10 py-4 rounded-xl text-xl font-bold hover:bg-gray-700 transition flex-1"
-      >
-        رجوع
-      </button>
     </div>
-  </div>
 
-  <script>
-    function goBack() {
-      window.history.back();
-    }
+    <script>
+      function goBack() {
+        window.history.back();
+      }
 
-    async function preview() {
-      const form = document.querySelector("#reportForm");
-      const fields = form.querySelectorAll("input, textarea");
-      let valid = true;
+      async function preview() {
+        const form = document.querySelector("#reportForm");
+        const fields = form.querySelectorAll("input, textarea");
+        let valid = true;
 
-      fields.forEach((field) => {
-        const error = field.nextElementSibling;
+        fields.forEach((field) => {
+          const error = field.nextElementSibling;
 
-        if (field.type === "file") {
-          if (!field.files.length) {
-            error.style.display = "block";
-            valid = false;
-          } else error.style.display = "none";
-        } else if (field.type === "number") {
-          if (!field.value.trim() || field.value <= 0) {
-            error.style.display = "block";
-            valid = false;
-          } else error.style.display = "none";
-        } else if (field.type === "date") {
-          if (!field.value) {
-            error.style.display = "block";
-            valid = false;
-          } else error.style.display = "none";
-        } else {
-          if (!field.value.trim()) {
-            error.style.display = "block";
-            valid = false;
-          } else error.style.display = "none";
-        }
-      });
-
-      if (!valid) return;
-
-      const data = {};
-      const formData = new FormData(form);
-
-      function fileToBase64(file) {
-        return new Promise((resolve) => {
-          const reader = new FileReader();
-          reader.onload = () => resolve(reader.result);
-          reader.readAsDataURL(file);
+          if (field.type === "file") {
+            if (!field.files.length) {
+              error.style.display = "block";
+              valid = false;
+            } else error.style.display = "none";
+          } else if (field.type === "number") {
+            if (!field.value.trim() || field.value <= 0) {
+              error.style.display = "block";
+              valid = false;
+            } else error.style.display = "none";
+          } else if (field.type === "date") {
+            if (!field.value) {
+              error.style.display = "block";
+              valid = false;
+            } else error.style.display = "none";
+          } else {
+            if (!field.value.trim()) {
+              error.style.display = "block";
+              valid = false;
+            } else error.style.display = "none";
+          }
         });
-      }
 
-      for (let [key, value] of formData.entries()) {
-        if (key === "cert1" || key === "cert2") {
-          data[key] = await fileToBase64(value);
-        } else {
-          data[key] = value;
+        if (!valid) return;
+
+        const data = {};
+        const formData = new FormData(form);
+
+        function fileToBase64(file) {
+          return new Promise((resolve) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(reader.result);
+            reader.readAsDataURL(file);
+          });
         }
-      }
 
-      localStorage.setItem("templateData", JSON.stringify(data));
-      window.location.href = "preview1.html";
-    }
-  </script>
-</body>
+        for (let [key, value] of formData.entries()) {
+          if (key === "cert1" || key === "cert2") {
+            data[key] = await fileToBase64(value);
+          } else {
+            data[key] = value;
+          }
+        }
+
+        localStorage.setItem("templateData", JSON.stringify(data));
+        window.location.href = "preview1.html";
+      }
+    </script>
+  </body>
 </html>
