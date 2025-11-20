@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>معرض شواهد تقييم الأداء</title>
+  <style> body{font-family: 'Helvetica','Tajawal',sans-serif;}</style>
+</head>
+<body class="bg-gray-100 py-10">
+  <div class="max-w-6xl mx-auto p-6">
+    <h1 class="text-3xl font-bold text-center mb-6">معرض شواهد تقييم الأداء</h1>
+    <p class="text-center text-sm text-gray-600 mb-6">اضغطي على أي صورة للذهاب إلى صفحة النموذج مع تعبئة الصورة المختارة</p>
+
+    <div id="gallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+  </div>
+
+  <script>
+    const images = [
+      'public/imgs/card2/advanced-cybersecurity-initiative.webp',
+      'public/imgs/card2/cyber-security-initiative-report.webp',
+      'public/imgs/card2/international-tolerance-day-report.webp',
+      'public/imgs/card2/national-tree-planting-initiative.webp',
+      'public/imgs/card2/parents-communication-report.webp',
+      'public/imgs/card2/parents-students-meeting-report.webp',
+      'public/imgs/card2/stuttering-awareness-initiative.webp',
+      'public/imgs/card2/technical-program-usage-liveworksheets-report.webp',
+      'public/imgs/card2/technical-program-usage-padlet-report.webp',
+      'public/imgs/card2/technical-program-usage-telegram-report.webp',
+      'public/imgs/card2/white-stick-day-initiative.webp',
+      'public/imgs/card2/world-diabetes-day-report.webp'
+    ];
+
+    const container = document.getElementById('gallery');
+    images.forEach(src => {
+      const wrap = document.createElement('div');
+      wrap.className = 'border rounded overflow-hidden cursor-pointer hover:shadow-lg transition';
+      const img = document.createElement('img');
+      img.src = src; img.alt = ''; img.className = 'w-full h-56 object-cover';
+      wrap.appendChild(img);
+      wrap.addEventListener('click', () => {
+        // go to form2 and pass template path
+        const url = 'form2.html?template=' + encodeURIComponent(src);
+        window.location.href = url;
+      });
+      container.appendChild(wrap);
+    });
+  </script>
+</body>
+</html>

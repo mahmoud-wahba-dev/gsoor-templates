@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>معاينة شهادة التقييم</title>
+  <style> body { font-family: 'Helvetica','Tajawal',sans-serif; } </style>
+</head>
+<body class="bg-gray-100 py-10">
+  <div class="max-w-4xl mx-auto bg-white rounded-2xl shadow p-6" id="template">
+    <div class="bg-gradient-to-l from-green-900 to-cyan-500 text-white p-6 flex justify-between items-center">
+      <div>
+        <p class="text-sm">إدارة التعليم</p>
+        <p class="text-sm">بالمنطقة</p>
+        <p class="font-bold mt-1">مدرسة</p>
+      </div>
+      <img id="templateImageTop" src="" class="w-28 h-28 bg-white p-1 rounded shadow object-contain" />
+    </div>
+
+    <div class="bg-cyan-700 text-white text-center py-3 text-xl font-bold mt-2" id="titleArea">شهادة تقييم أداء</div>
+
+    <div class="p-6 grid grid-cols-2 gap-4 text-gray-700 text-sm">
+      <div>
+        <p class="font-bold text-green-800 mb-1">اسم المتعلم/ة:</p>
+        <div class="border rounded-md p-2" id="studentName"></div>
+      </div>
+
+      <div>
+        <p class="font-bold text-green-800 mb-1">المرحلة:</p>
+        <div class="border rounded-md p-2" id="stage"></div>
+      </div>
+
+      <div>
+        <p class="font-bold text-green-800 mb-1">المادة:</p>
+        <div class="border rounded-md p-2" id="subject"></div>
+      </div>
+
+      <div>
+        <p class="font-bold text-green-800 mb-1">التقييم:</p>
+        <div class="border rounded-md p-2" id="score"></div>
+      </div>
+
+      <div class="col-span-2">
+        <p class="font-bold text-green-800 mb-1">الملاحظات:</p>
+        <div class="border rounded-md p-3 leading-7" id="notes"></div>
+      </div>
+
+      <div class="col-span-2 text-center mt-4">
+        <p class="text-green-800 font-bold text-lg mb-3">الشهادة المرفوعة:</p>
+        <div id="certPreviewWrap" class="flex justify-center">
+          <img id="certPreview" class="w-96 h-60 object-contain bg-white p-2 rounded shadow" />
+        </div>
+      </div>
+    </div>
+
+    <div class="bg-[#003b49] text-white text-center py-3 text-sm mt-4">موقع نماذج تعليمية - www.edu-forms.com</div>
+  </div>
+
+  <div class="flex justify-center gap-4 mt-6">
+    <button onclick="downloadImage()" class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold">تحميل صورة</button>
+    <button onclick="downloadPDF()" class="bg-red-600 text-white px-6 py-3 rounded-lg font-bold">تحميل PDF</button>
+    <button onclick="goBack()" class="bg-gray-600 text-white px-6 py-3 rounded-lg font-bold">رجوع</button>
+  </div>
+
+  <script>
+    const data = JSON.parse(localStorage.getItem('templateData2'));
+    if (!data) { window.location.href = 'form2.html'; }
+
+    document.getElementById('studentName').textContent = data.studentName || '';
+    document.getElementById('stage').textContent = data.stage || '';
+    document.getElementById('subject').textContent = data.subject || '';
+    document.getElementById('score').textContent = data.score || '';
+    document.getElementById('notes').innerHTML = (data.notes || '').replace(/\n/g,'<br>');
+
+    // template image (path) or fallback
+    if (data.templateImage) document.getElementById('templateImageTop').src = data.templateImage;
+    if (data.certificateFile) document.getElementById('certPreview').src = data.certificateFile;
+
+    function goBack(){ window.history.back(); }
+
+    function downloadImage(){
+      html2canvas(document.getElementById('template'), {backgroundColor:'#ffffff', scale:2}).then(canvas => {
+        const link = document.createElement('a'); link.download = 'card2-report.png'; link.href = canvas.toDataURL(); link.click();
+      });
+    }
+
+    function downloadPDF(){
+      html2canvas(document.getElementById('template'), {backgroundColor:'#ffffff', scale:2}).then(canvas => {
+        const imgData = canvas.toDataURL('image/jpeg');
+        const pdf = new jspdf.jsPDF('p','mm','a4');
+        const imgWidth = 210; const imgHeight = (canvas.height * imgWidth)/canvas.width;
+        pdf.addImage(imgData,'JPEG',0,0,imgWidth,imgHeight);
+        pdf.save('card2-report.pdf');
+      });
+    }
+  </script>
+</body>
+</html>

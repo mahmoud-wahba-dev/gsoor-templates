@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>إنشاء نموذج توثيق</title>
+
+    <!-- Responsive Viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+      @font-face {
+        font-family: "Helvetica";
+        src: url("./public/fonts/HelveticaNeueLTArabic-75Bold.ttf")
+          format("truetype");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+
+      body {
+        font-family: "Helvetica", "Tajawal", sans-serif;
+        background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        min-height: 100vh;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Helvetica", "Tajawal", sans-serif;
+        font-weight: 700;
+      }
+
+      .nav-pill {
+        background: #fff;
+        box-shadow: 0 6px 20px rgba(2, 6, 23, 0.06);
+        border-radius: 28px;
+      }
+
+      .footer-ink {
+        background: #f8fafb;
+      }
+
+      .social-icon {
+        width: 26px;
+        height: 26px;
+        fill: currentColor;
+      }
+
+      .mobile-nav-abs {
+        position: absolute;
+        inset-inline-start: 0;
+        right: 0;
+        left: 0;
+        margin-top: 0.6rem;
+        z-index: 40;
+      }
+
+      /* CARDS STYLING */
+      .cards-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        padding: 2rem;
+        max-width: 1400px;
+        margin: 3rem auto;
+      }
+
+      .card {
+        background: white;
+        border-radius: 16px;
+        border: 1px solid #e5e7eb;
+        padding: 2rem;
+        text-align: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+        border-color: #0ba7d1;
+      }
+
+      .card-icon {
+        width: 80px;
+        height: 80px;
+        background: linear-gradient(135deg, #e0f7ff 0%, #d0f0ff 100%);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.5rem;
+        color: #0ba7d1;
+        margin-bottom: 1.5rem;
+        box-shadow: 0 4px 15px rgba(11, 167, 209, 0.15);
+      }
+
+      .card-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 1rem;
+        line-height: 1.4;
+      }
+
+      .card-description {
+        color: #6b7280;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+      }
+
+      .card-btn {
+        background: linear-gradient(135deg, #0ba7d1 0%, #00a8e1 100%);
+        color: white;
+        border: none;
+        padding: 0.75rem 1.5rem;
+        border-radius: 12px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: all 0.3s ease;
+        width: 100%;
+      }
+
+      .card-btn:hover {
+        transform: scale(1.02);
+        box-shadow: 0 8px 20px rgba(11, 167, 209, 0.3);
+      }
+
+      .card-btn:active {
+        transform: scale(0.98);
+      }
+
+      @media (max-width: 768px) {
+        .nav-pill {
+          padding-left: 0.75rem;
+          padding-right: 0.75rem;
+        }
+
+        .cards-grid {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+          padding: 1rem;
+        }
+
+        .card {
+          padding: 1.5rem;
+        }
+      }
+    </style>
+
+    <!-- Font Awesome CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="pt-24">
+    <!-- NAVBAR -->
+    <header class="fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
+      <div class="max-w-6xl mx-auto relative">
+        <div class="nav-pill px-3 py-2 flex items-center justify-between gap-3">
+          <!-- LOGO -->
+          <div class="flex items-center gap-4 ml-2">
+            <a href="#" class="shrink-0">
+              <img
+                src="./public/imgs/gsoor_logo.jpg"
+                alt="logo"
+                class="h-9 w-auto object-contain md:h-10"
+              />
+            </a>
+          </div>
+
+          <!-- NAV LINKS (desktop) -->
+          <nav class="hidden md:flex items-center gap-8 text-sm text-gray-700">
+            <a href="#" class="hover:text-cyan-600 transition">الشهادات</a>
+            <a href="#" class="hover:text-cyan-600 transition"
+              >الملفات الإدارية</a
+            >
+            <a href="#" class="hover:text-cyan-600 transition">البطاقات</a>
+          </nav>
+
+          <!-- UTILITY ICONS -->
+          <div class="flex items-center gap-2">
+            <div
+              class="hidden sm:flex items-center bg-gray-50 rounded-full px-2 py-1 gap-2 border border-gray-100"
+            >
+              <button
+                id="themeToggle"
+                class="text-gray-600"
+                title="تبديل الوضع"
+              >
+                <i class="fa-solid fa-moon text-gray-600 text-base"></i>
+              </button>
+
+              <button class="text-gray-600 relative" title="العربة">
+                <i class="fa-solid fa-bag-shopping text-gray-600 text-base"></i>
+                <span
+                  id="cartBadge"
+                  class="absolute -top-1 -left-2 bg-cyan-600 text-white text-xs rounded-full px-1"
+                  >0</span
+                >
+              </button>
+
+              <button id="profileBtn" class="text-gray-600" title="الحساب">
+                <i class="fa-regular fa-user text-gray-600 text-base"></i>
+              </button>
+            </div>
+
+            <!-- MOBILE MENU BUTTON -->
+            <button
+              id="menuBtn"
+              class="md:hidden text-gray-600 p-2"
+              aria-expanded="false"
+            >
+              <i class="fa-solid fa-bars text-lg"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- MOBILE NAV -->
+        <div
+          id="mobileNav"
+          class="hidden mobile-nav-abs mt-2 bg-white rounded-2xl shadow-md p-3 mx-4"
+        >
+          <div class="flex flex-col gap-2 text-right">
+            <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition"
+              >الشهادات</a
+            >
+            <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition"
+              >الملفات الإدارية</a
+            >
+            <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition"
+              >البطاقات</a
+            >
+            <div
+              class="pt-2 border-t border-gray-100 mt-2 flex justify-between items-center"
+            >
+              <div class="flex items-center gap-3">
+                <button id="mobileThemeToggle" class="text-gray-600">
+                  <i class="fa-solid fa-moon"></i>
+                </button>
+                <button class="text-gray-600 relative">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                  <span
+                    id="mobileCartBadge"
+                    class="absolute -top-2 -left-2 bg-cyan-600 text-white text-xs rounded-full px-1"
+                    >0</span
+                  >
+                </button>
+              </div>
+              <a href="#" class="text-sm text-cyan-600 font-semibold"
+                >تسجيل دخول</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4">
+      <!-- ======== CARDS GRID SECTION ======== -->
+      <div class="text-center mb-8">
+        <h2 class="text-3xl font-bold text-gray-800 mb-2">
+          🎨 أقسام النماذج والتصاميم
+        </h2>
+        <p class="text-gray-600 text-lg">اختر التصميم المناسب لك وابدأ الآن</p>
+      </div>
+
+      <div class="cards-grid">
+        <!-- CARD 1 -->
+        <!-- CARD 1 -->
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-clipboard-list"></i></div>
+          <h3 class="card-title">نماذج وتقارير توثيق</h3>
+          <p class="card-description">
+            مجموعة شاملة من النماذج والتقارير الجاهزة لتوثيق فعالية أو برنامج أو
+            تطبيق درس تعليمي
+          </p>
+          <a
+            href="form1.html"
+            class="card-btn"
+            style="
+              text-decoration: none;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <i class="fas fa-arrow-left ml-2"></i> ابدأ الآن
+          </a>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-trophy"></i></div>
+          <h3 class="card-title">شواهد تقييم الأداء جاهزة</h3>
+          <p class="card-description">
+            تقارير ونماذج جاهزة تم تعبئتها مسبقاً فقط إرفع صور الشواهد الخاصة
+            فيك
+          </p>
+          <a
+            href="gallery2.html"
+            class="card-btn"
+            style="
+              text-decoration: none;
+              display: flex;
+              align-items: center;
+              justify-content: center;
+            "
+            ><i class="fas fa-arrow-left ml-2"></i> ابدأ الآن</a
+          >
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-file-alt"></i></div>
+          <h3 class="card-title">نماذج وتقارير عامة</h3>
+          <p class="card-description">
+            نماذج وتقارير مجانية وجاهزة تقبل إضافة شعار المؤسسة التعليمية أو
+            الشعار الخاص بك
+          </p>
+          <button class="card-btn" onclick="openModal('modal3')">
+            <i class="fas fa-arrow-left ml-2"></i> ابدأ الآن
+          </button>
+        </div>
+
+        <!-- CARD 4 -->
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-chart-bar"></i></div>
+          <h3 class="card-title">أدوات تحليل النتائج</h3>
+          <p class="card-description">
+            أدوات تحليل النتائج لجميع المراحل الدراسية وجميع أنواع الاختبارات
+          </p>
+          <button class="card-btn" onclick="openModal('modal4')">
+            <i class="fas fa-arrow-left ml-2"></i> ابدأ الآن
+          </button>
+        </div>
+
+        <!-- CARD 5 -->
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-calendar-alt"></i></div>
+          <h3 class="card-title">الخطة الأسبوعية</h3>
+          <p class="card-description">
+            قم بإنشاء خطتك الأسبوعية لمادة واحدة أو جميع مواد الجدول بطريقة سهلة
+            ومميزة
+          </p>
+          <button class="card-btn" onclick="openModal('modal5')">
+            <i class="fas fa-arrow-left ml-2"></i> ابدأ الآن
+          </button>
+        </div>
+
+        <!-- CARD 6 -->
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-check-circle"></i></div>
+          <h3 class="card-title">تقرير إنجاز المعلم اليومي والأسبوعي</h3>
+          <p class="card-description">
+            قم بإنشاء تقارير الإنجاز اليومية والأسبوعي بطريقة سهلة ومميزة
+          </p>
+          <button class="card-btn" onclick="openModal('modal6')">
+            <i class="fas fa-arrow-left ml-2"></i> ابدأ الآن
+          </button>
+        </div>
+
+        <!-- CARD 7 -->
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-id-card"></i></div>
+          <h3 class="card-title">سيرة ذاتية</h3>
+          <p class="card-description">
+            مجموعة تصاميم مميزة للسيرة الذاتية جاهزة للطباعة سيرة ذاتية بنظام
+            ATS عربي وإنجليزي
+          </p>
+          <button class="card-btn" onclick="openModal('modal7')">
+            <i class="fas fa-arrow-left ml-2"></i> ابدأ الآن
+          </button>
+        </div>
+
+        <!-- CARD 8 -->
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-certificate"></i></div>
+          <h3 class="card-title">شهادات متنوعة</h3>
+          <p class="card-description">
+            شهادات تخرج، شهادات حضور دورة، شهادات متنوعة
+          </p>
+          <button class="card-btn" onclick="openModal('modal8')">
+            <i class="fas fa-arrow-left ml-2"></i> ابدأ الآن
+          </button>
+        </div>
+
+        <!-- CARD 9 -->
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-award"></i></div>
+          <h3 class="card-title">شهادات شكر وتقدير</h3>
+          <p class="card-description">
+            إنشاء وتخصيص شهادات الشكر والتقدير مع إمكانية تحرير وإضافة جميع
+            البيانات الخاصة بك
+          </p>
+          <button class="card-btn" onclick="openModal('modal9')">
+            <i class="fas fa-arrow-left ml-2"></i> ابدأ الآن
+          </button>
+        </div>
+
+        <!-- CARD 10 -->
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-gift"></i></div>
+          <h3 class="card-title">بطاقات تهنئة الأعياد</h3>
+          <p class="card-description">
+            بطاقات تهنئة، بطاقات تهنئة برمضان، بطاقات تهنئة بالعيد، وأكثر
+          </p>
+          <button class="card-btn" onclick="openModal('modal10')">
+            <i class="fas fa-arrow-left ml-2"></i> ابدأ الآن
+          </button>
+        </div>
+
+        <!-- CARD 11 -->
+        <div class="card">
+          <div class="card-icon"><i class="far fa-heart"></i></div>
+          <h3 class="card-title">بطاقات دعوة زواج</h3>
+          <p class="card-description">
+            بطاقات دعوة زواج جاهزة للتعديل. كروت دعوة زواج أو حفلات بسهولة
+          </p>
+          <button class="card-btn" onclick="openModal('modal11')">
+            <i class="fas fa-arrow-left ml-2"></i> ابدأ الآن
+          </button>
+        </div>
+
+        <!-- CARD 12 -->
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-image"></i></div>
+          <h3 class="card-title">لوحات وبيـنرات</h3>
+          <p class="card-description">
+            لوحات وملصقات إرشادية مجانية وظاهرة للبيئة التعليمية والامتحانات
+          </p>
+          <button class="card-btn" onclick="openModal('modal12')">
+            <i class="fas fa-arrow-left ml-2"></i> ابدأ الآن
+          </button>
+        </div>
+
+        <!-- CARD 13 -->
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-users"></i></div>
+          <h3 class="card-title">شواهد أداء الواجبات الوظيفية</h3>
+          <p class="card-description">
+            جميع مايخص عنصر شواهد أداء الواجبات الوظيفية
+          </p>
+          <button class="card-btn" onclick="openModal('modal13')">
+            <i class="fas fa-arrow-left ml-2"></i> ابدأ الآن
+          </button>
+        </div>
+
+        <!-- CARD 14 -->
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-handshake"></i></div>
+          <h3 class="card-title">شواهد التفاعل مع المجتمع المهني</h3>
+          <p class="card-description">
+            جميع مايخص عنصر التفاعل مع المجتمع المهني
+          </p>
+          <button class="card-btn" onclick="openModal('modal14')">
+            <i class="fas fa-arrow-left ml-2"></i> ابدأ الآن
+          </button>
+        </div>
+
+        <!-- CARD 15 -->
+        <div class="card">
+          <div class="card-icon"><i class="far fa-calendar"></i></div>
+          <h3 class="card-title">التقويم الدراسية وتوزيع الأسابيع</h3>
+          <p class="card-description">
+            التقويمات الدراسية وتوزيع أسابيع ومهام العام الدراسي
+          </p>
+          <button class="card-btn" onclick="openModal('modal15')">
+            <i class="fas fa-arrow-left ml-2"></i> ابدأ الآن
+          </button>
+        </div>
+
+        <!-- CARD 16 -->
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-poll"></i></div>
+          <h3 class="card-title">استبيانات أنماط التعلم</h3>
+          <p class="card-description">
+            استبيانات تعليمية مجانية وجاهزة لتحديد أنماط التعلم وتقييم الطلاب
+          </p>
+          <button class="card-btn" onclick="openModal('modal16')">
+            <i class="fas fa-arrow-left ml-2"></i> ابدأ الآن
+          </button>
+        </div>
+
+        <!-- CARD 17 -->
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-heartbeat"></i></div>
+          <h3 class="card-title">خطط علاجية وإثرائية</h3>
+          <p class="card-description">
+            خطط علاجية وإثرائية مجانية وظاهرة لمساعدة الطلاب على التحسن والتميز
+          </p>
+          <button class="card-btn" onclick="openModal('modal17')">
+            <i class="fas fa-arrow-left ml-2"></i> ابدأ الآن
+          </button>
+        </div>
+
+        <!-- CARD 18 -->
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-comments"></i></div>
+          <h3 class="card-title">تقارير التواصل مع أولياء الأمور</h3>
+          <p class="card-description">
+            نماذج وتقارير مجانية وظاهرة لتوثيق التواصل مع أولياء الأمور
+          </p>
+          <button class="card-btn" onclick="openModal('modal18')">
+            <i class="fas fa-arrow-left ml-2"></i> ابدأ الآن
+          </button>
+        </div>
+
+        <!-- CARD 19 -->
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-ring"></i></div>
+          <h3 class="card-title">تهنئة عقد قران</h3>
+          <p class="card-description">
+            تهنئة عقد قران، تصميم عقد قران، كلمات وعبارات وصور عقد قران
+          </p>
+          <button class="card-btn" onclick="openModal('modal19')">
+            <i class="fas fa-arrow-left ml-2"></i> ابدأ الآن
+          </button>
+        </div>
+
+        <!-- CARD 20 -->
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-baby"></i></div>
+          <h3 class="card-title">بشارة مواليد</h3>
+          <p class="card-description">
+            بشارة مواليد، بطاقات تهنئة بمواليد، تصميم بشارة مواليد احترافية
+          </p>
+          <button class="card-btn" onclick="openModal('modal20')">
+            <i class="fas fa-arrow-left ml-2"></i> ابدأ الآن
+          </button>
+        </div>
+
+        <!-- CARD 21 -->
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-share-alt"></i></div>
+          <h3 class="card-title">حالات وستوريات (تهنئة - دعوة)</h3>
+          <p class="card-description">
+            صور وتصاميم مجانية للنشر على وسائل التواصل للمناسبات المختلفة
+          </p>
+          <button class="card-btn" onclick="openModal('modal21')">
+            <i class="fas fa-arrow-left ml-2"></i> ابدأ الآن
+          </button>
+        </div>
+
+        <!-- CARD 22 -->
+        <div class="card">
+          <div class="card-icon"><i class="fas fa-tools"></i></div>
+          <h3 class="card-title">أدوات</h3>
+          <p class="card-description">
+            مجموعة من الأدوات المجانية والجاهزة للمعلمين والطلاب وأولياء الأمور
+          </p>
+          <button class="card-btn" onclick="openModal('modal22')">
+            <i class="fas fa-arrow-left ml-2"></i> ابدأ الآن
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="mt-12 footer-ink border-t border-gray-100">
+      <div
+        class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+      >
+        <!-- RIGHT COLUMN -->
+        <div class="text-right md:flex-1">
+          <img
+            src="./public/imgs/gsoor_logo.jpg"
+            alt="logo"
+            class="h-10 mx-auto md:mx-0"
+          />
+          <div
+            class="flex justify-center md:justify-end gap-4 mt-3 text-gray-600"
+          >
+            <i class="fa-brands fa-youtube social-icon text-lg"></i>
+            <i class="fa-brands fa-tiktok social-icon text-lg"></i>
+            <i class="fa-brands fa-instagram social-icon text-lg"></i>
+          </div>
+        </div>
+
+        <!-- CENTER COLUMN -->
+        <div class="text-center md:flex-1">
+          <h3 class="font-bold mb-2">تواصل معنا</h3>
+          <div class="flex items-center justify-center gap-4 text-gray-600">
+            <div class="flex items-center gap-2">
+              <i class="fa-regular fa-envelope text-sm"></i>
+              <span>البريد</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-mobile-screen-button text-sm"></i>
+              <span>واتس</span>
+            </div>
+          </div>
+          <div class="mt-3 text-sm text-gray-500">موقّع لدى منصة الأعمال</div>
+        </div>
+
+        <!-- LEFT COLUMN -->
+        <div class="text-left md:flex-1">
+          <div class="text-sm text-gray-500">
+            © 2025 متجر جسور الرقمي | جميع الحقوق محفوظة
+          </div>
+          <div
+            class="mt-3 flex gap-2 items-center justify-center md:justify-start"
+          >
+            <span class="sr-only">Visa</span>
+            <i class="fa-brands fa-cc-visa text-gray-600 text-lg"></i>
+            <span class="sr-only">Mada</span>
+            <i class="fa-solid fa-credit-card text-gray-600 text-lg"></i>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- MODALS (1-22) -->
+    <div
+      id="modal1"
+      style="display: none"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+    >
+      <div class="bg-white rounded-xl p-8 max-w-md w-full">
+        <h3 class="text-2xl font-bold mb-4">نماذج وتقارير توثيق</h3>
+        <p class="text-gray-600 mb-6">جاري تحضير النموذج...</p>
+        <button onclick="closeModal('modal1')" class="card-btn">إغلاق</button>
+      </div>
+    </div>
+
+    <div
+      id="modal2"
+      style="display: none"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+    >
+      <div
+        class="bg-white rounded-xl w-full max-w-2xl max-h-[90vh] overflow-y-auto"
+      >
+        <!-- Close Button -->
+        <button
+          onclick="closeModal('modal2')"
+          class="fixed top-5 right-5 bg-red-600 text-white px-4 py-2 rounded-lg z-50"
+        >
+          ✕ إغلاق
+        </button>
+
+        <div class="p-8">
+          <!-- معرض الصور -->
+          <h3 class="text-2xl font-bold mb-6 text-center text-green-700">
+            شواهد تقييم الأداء جاهزة
+          </h3>
+
+          <div class="mb-8">
+            <div
+              id="card2Gallery"
+              class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-6"
+            ></div>
+            <p class="text-sm text-gray-600 text-center">
+              اضغط على أي صورة لعرضها بحجم أكبر
+            </p>
+          </div>
+
+          <!-- الفاصل -->
+          <hr class="my-6" />
+
+          <!-- الفورم -->
+          <h4 class="text-xl font-bold mb-4 text-green-700">
+            إدخال بيانات التقييم
+          </h4>
+
+          <form id="card2Form" class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block font-semibold text-gray-700 mb-2"
+                >اسم المتعلم/ة:</label
+              >
+              <input
+                type="text"
+                name="studentName"
+                class="w-full border p-2 rounded-md"
+                required
+              />
+            </div>
+
+            <div>
+              <label class="block font-semibold text-gray-700 mb-2"
+                >المرحلة الدراسية:</label
+              >
+              <select
+                name="stage"
+                class="w-full border p-2 rounded-md"
+                required
+              >
+                <option>-- اختر --</option>
+                <option>الابتدائية</option>
+                <option>المتوسطة</option>
+                <option>الثانوية</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block font-semibold text-gray-700 mb-2"
+                >المادة:</label
+              >
+              <input
+                type="text"
+                name="subject"
+                class="w-full border p-2 rounded-md"
+                required
+              />
+            </div>
+
+            <div>
+              <label class="block font-semibold text-gray-700 mb-2"
+                >التقييم (من 100):</label
+              >
+              <input
+                type="number"
+                name="score"
+                min="0"
+                max="100"
+                class="w-full border p-2 rounded-md"
+                required
+              />
+            </div>
+
+            <div class="col-span-2">
+              <label class="block font-semibold text-gray-700 mb-2"
+                >الملاحظات:</label
+              >
+              <textarea
+                name="notes"
+                rows="4"
+                class="w-full border p-2 rounded-md"
+              ></textarea>
+            </div>
+
+            <div class="col-span-2">
+              <label class="block font-semibold text-gray-700 mb-2"
+                >رفع الشهادة:</label
+              >
+              <input
+                type="file"
+                name="certificate"
+                accept="image/*"
+                class="w-full border p-2 rounded-md"
+              />
+            </div>
+
+            <div class="col-span-2 flex gap-3 pt-4">
+              <button
+                type="button"
+                onclick="submitCard2Form()"
+                class="flex-1 bg-green-600 text-white py-2 rounded-lg font-bold hover:bg-green-700"
+              >
+                ✓ حفظ البيانات
+              </button>
+              <button
+                type="button"
+                onclick="closeModal('modal2')"
+                class="flex-1 bg-gray-600 text-white py-2 rounded-lg font-bold hover:bg-gray-700"
+              >
+                إلغاء
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div
+      id="modal3"
+      style="display: none"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+    >
+      <div class="bg-white rounded-xl p-8 max-w-md w-full">
+        <h3 class="text-2xl font-bold mb-4">نماذج وتقارير عامة</h3>
+        <p class="text-gray-600 mb-6">جاري تحضير النموذج...</p>
+        <button onclick="closeModal('modal3')" class="card-btn">إغلاق</button>
+      </div>
+    </div>
+
+    <div
+      id="modal4"
+      style="display: none"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+    >
+      <div class="bg-white rounded-xl p-8 max-w-md w-full">
+        <h3 class="text-2xl font-bold mb-4">أدوات تحليل النتائج</h3>
+        <p class="text-gray-600 mb-6">جاري تحضير النموذج...</p>
+        <button onclick="closeModal('modal4')" class="card-btn">إغلاق</button>
+      </div>
+    </div>
+
+    <div
+      id="modal5"
+      style="display: none"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+    >
+      <div class="bg-white rounded-xl p-8 max-w-md w-full">
+        <h3 class="text-2xl font-bold mb-4">الخطة الأسبوعية</h3>
+        <p class="text-gray-600 mb-6">جاري تحضير النموذج...</p>
+        <button onclick="closeModal('modal5')" class="card-btn">إغلاق</button>
+      </div>
+    </div>
+
+    <div
+      id="modal6"
+      style="display: none"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+    >
+      <div class="bg-white rounded-xl p-8 max-w-md w-full">
+        <h3 class="text-2xl font-bold mb-4">تقرير الإنجاز</h3>
+        <p class="text-gray-600 mb-6">جاري تحضير النموذج...</p>
+        <button onclick="closeModal('modal6')" class="card-btn">إغلاق</button>
+      </div>
+    </div>
+
+    <div
+      id="modal7"
+      style="display: none"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+    >
+      <div class="bg-white rounded-xl p-8 max-w-md w-full">
+        <h3 class="text-2xl font-bold mb-4">سيرة ذاتية</h3>
+        <p class="text-gray-600 mb-6">جاري تحضير النموذج...</p>
+        <button onclick="closeModal('modal7')" class="card-btn">إغلاق</button>
+      </div>
+    </div>
+
+    <div
+      id="modal8"
+      style="display: none"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+    >
+      <div class="bg-white rounded-xl p-8 max-w-md w-full">
+        <h3 class="text-2xl font-bold mb-4">شهادات متنوعة</h3>
+        <p class="text-gray-600 mb-6">جاري تحضير النموذج...</p>
+        <button onclick="closeModal('modal8')" class="card-btn">إغلاق</button>
+      </div>
+    </div>
+
+    <div
+      id="modal9"
+      style="display: none"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+    >
+      <div class="bg-white rounded-xl p-8 max-w-md w-full">
+        <h3 class="text-2xl font-bold mb-4">شهادات شكر وتقدير</h3>
+        <p class="text-gray-600 mb-6">جاري تحضير النموذج...</p>
+        <button onclick="closeModal('modal9')" class="card-btn">إغلاق</button>
+      </div>
+    </div>
+
+    <div
+      id="modal10"
+      style="display: none"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+    >
+      <div class="bg-white rounded-xl p-8 max-w-md w-full">
+        <h3 class="text-2xl font-bold mb-4">بطاقات تهنئة الأعياد</h3>
+        <p class="text-gray-600 mb-6">جاري تحضير النموذج...</p>
+        <button onclick="closeModal('modal10')" class="card-btn">إغلاق</button>
+      </div>
+    </div>
+
+    <div
+      id="modal11"
+      style="display: none"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+    >
+      <div class="bg-white rounded-xl p-8 max-w-md w-full">
+        <h3 class="text-2xl font-bold mb-4">بطاقات دعوة زواج</h3>
+        <p class="text-gray-600 mb-6">جاري تحضير النموذج...</p>
+        <button onclick="closeModal('modal11')" class="card-btn">إغلاق</button>
+      </div>
+    </div>
+
+    <div
+      id="modal12"
+      style="display: none"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+    >
+      <div class="bg-white rounded-xl p-8 max-w-md w-full">
+        <h3 class="text-2xl font-bold mb-4">لوحات وبيـنرات</h3>
+        <p class="text-gray-600 mb-6">جاري تحضير النموذج...</p>
+        <button onclick="closeModal('modal12')" class="card-btn">إغلاق</button>
+      </div>
+    </div>
+
+    <div
+      id="modal13"
+      style="display: none"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+    >
+      <div class="bg-white rounded-xl p-8 max-w-md w-full">
+        <h3 class="text-2xl font-bold mb-4">شواهد أداء الواجبات الوظيفية</h3>
+        <p class="text-gray-600 mb-6">جاري تحضير النموذج...</p>
+        <button onclick="closeModal('modal13')" class="card-btn">إغلاق</button>
+      </div>
+    </div>
+
+    <div
+      id="modal14"
+      style="display: none"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+    >
+      <div class="bg-white rounded-xl p-8 max-w-md w-full">
+        <h3 class="text-2xl font-bold mb-4">شواهد التفاعل مع المجتمع المهني</h3>
+        <p class="text-gray-600 mb-6">جاري تحضير النموذج...</p>
+        <button onclick="closeModal('modal14')" class="card-btn">إغلاق</button>
+      </div>
+    </div>
+
+    <div
+      id="modal15"
+      style="display: none"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+    >
+      <div class="bg-white rounded-xl p-8 max-w-md w-full">
+        <h3 class="text-2xl font-bold mb-4">
+          التقويم الدراسية وتوزيع الأسابيع
+        </h3>
+        <p class="text-gray-600 mb-6">جاري تحضير النموذج...</p>
+        <button onclick="closeModal('modal15')" class="card-btn">إغلاق</button>
+      </div>
+    </div>
+
+    <div
+      id="modal16"
+      style="display: none"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+    >
+      <div class="bg-white rounded-xl p-8 max-w-md w-full">
+        <h3 class="text-2xl font-bold mb-4">استبيانات أنماط التعلم</h3>
+        <p class="text-gray-600 mb-6">جاري تحضير النموذج...</p>
+        <button onclick="closeModal('modal16')" class="card-btn">إغلاق</button>
+      </div>
+    </div>
+
+    <div
+      id="modal17"
+      style="display: none"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+    >
+      <div class="bg-white rounded-xl p-8 max-w-md w-full">
+        <h3 class="text-2xl font-bold mb-4">خطط علاجية وإثرائية</h3>
+        <p class="text-gray-600 mb-6">جاري تحضير النموذج...</p>
+        <button onclick="closeModal('modal17')" class="card-btn">إغلاق</button>
+      </div>
+    </div>
+
+    <div
+      id="modal18"
+      style="display: none"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+    >
+      <div class="bg-white rounded-xl p-8 max-w-md w-full">
+        <h3 class="text-2xl font-bold mb-4">تقارير التواصل مع أولياء الأمور</h3>
+        <p class="text-gray-600 mb-6">جاري تحضير النموذج...</p>
+        <button onclick="closeModal('modal18')" class="card-btn">إغلاق</button>
+      </div>
+    </div>
+
+    <div
+      id="modal19"
+      style="display: none"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+    >
+      <div class="bg-white rounded-xl p-8 max-w-md w-full">
+        <h3 class="text-2xl font-bold mb-4">تهنئة عقد قران</h3>
+        <p class="text-gray-600 mb-6">جاري تحضير النموذج...</p>
+        <button onclick="closeModal('modal19')" class="card-btn">إغلاق</button>
+      </div>
+    </div>
+
+    <div
+      id="modal20"
+      style="display: none"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+    >
+      <div class="bg-white rounded-xl p-8 max-w-md w-full">
+        <h3 class="text-2xl font-bold mb-4">بشارة مواليد</h3>
+        <p class="text-gray-600 mb-6">جاري تحضير النموذج...</p>
+        <button onclick="closeModal('modal20')" class="card-btn">إغلاق</button>
+      </div>
+    </div>
+
+    <div
+      id="modal21"
+      style="display: none"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+    >
+      <div class="bg-white rounded-xl p-8 max-w-md w-full">
+        <h3 class="text-2xl font-bold mb-4">حالات وستوريات</h3>
+        <p class="text-gray-600 mb-6">جاري تحضير النموذج...</p>
+        <button onclick="closeModal('modal21')" class="card-btn">إغلاق</button>
+      </div>
+    </div>
+
+    <div
+      id="modal22"
+      style="display: none"
+      class="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+    >
+      <div class="bg-white rounded-xl p-8 max-w-md w-full">
+        <h3 class="text-2xl font-bold mb-4">أدوات</h3>
+        <p class="text-gray-600 mb-6">جاري تحضير النموذج...</p>
+        <button onclick="closeModal('modal22')" class="card-btn">إغلاق</button>
+      </div>
+    </div>
+
+    <!-- Image Viewer Modal (global) -->
+    <div
+      id="imageViewerModal"
+      style="display: none"
+      class="fixed inset-0 bg-black/80 flex items-center justify-center z-[100] p-4"
+    >
+      <button
+        onclick="closeImageViewer()"
+        class="absolute top-5 right-5 bg-red-600 text-white px-4 py-2 rounded-lg"
+      >
+        ✕ إغلاق
+      </button>
+      <img
+        id="viewerImage"
+        src=""
+        class="max-w-4xl max-h-[90vh] object-contain"
+      />
+    </div>
+
+    <script>
+      function goToForm() {
+        window.location.href = "form.html";
+      }
+
+      function openModal(id) {
+        document.getElementById(id).style.display = "flex";
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal(id) {
+        document.getElementById(id).style.display = "none";
+        document.body.style.overflow = "auto";
+      }
+
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileNav = document.getElementById("mobileNav");
+      const mobileThemeToggle = document.getElementById("mobileThemeToggle");
+      const cartBadge = document.getElementById("cartBadge");
+      const mobileCartBadge = document.getElementById("mobileCartBadge");
+
+      let cartCount = 0;
+      setInterval(() => {
+        cartCount = (cartCount + 1) % 10;
+        cartBadge && (cartBadge.textContent = cartCount);
+        mobileCartBadge && (mobileCartBadge.textContent = cartCount);
+      }, 7000);
+
+      menuBtn &&
+        menuBtn.addEventListener("click", (e) => {
+          const expanded = menuBtn.getAttribute("aria-expanded") === "true";
+          menuBtn.setAttribute("aria-expanded", String(!expanded));
+          mobileNav.classList.toggle("hidden");
+        });
+
+      document.addEventListener("click", (e) => {
+        if (!mobileNav || mobileNav.classList.contains("hidden")) return;
+        const path = e.composedPath?.() || e.path || [];
+        if (!path.includes(mobileNav) && !path.includes(menuBtn)) {
+          mobileNav.classList.add("hidden");
+          menuBtn && menuBtn.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 768) {
+          mobileNav.classList.add("hidden");
+          menuBtn && menuBtn.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      document.getElementById("themeToggle")?.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+      });
+      mobileThemeToggle?.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+      });
+
+      // Close modals on outside click
+      window.addEventListener("click", (e) => {
+        if (e.target.id.startsWith("modal")) {
+          e.target.style.display = "none";
+          document.body.style.overflow = "auto";
+        }
+      });
+
+      // Image Viewer functions
+      function openImageViewer(imageSrc) {
+        const viewer = document.getElementById("imageViewerModal");
+        const img = document.getElementById("viewerImage");
+        img.src = imageSrc;
+        viewer.style.display = "flex";
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeImageViewer() {
+        const viewer = document.getElementById("imageViewerModal");
+        viewer.style.display = "none";
+        document.getElementById("viewerImage").src = "";
+        document.body.style.overflow = "auto";
+      }
+
+      // Submit Card2 Form
+      function submitCard2Form() {
+        const form = document.getElementById("card2Form");
+        const formData = new FormData(form);
+        const data = {};
+        for (const [k, v] of formData.entries()) {
+          if (v instanceof File) continue; // handle file separately
+          data[k] = v;
+        }
+
+        const certFile = form.querySelector('input[name="certificate"]')
+          .files[0];
+        if (certFile) {
+          const reader = new FileReader();
+          reader.onload = () => {
+            data.certificate = reader.result;
+            localStorage.setItem("card2Data", JSON.stringify(data));
+            alert("✓ تم حفظ البيانات بنجاح!");
+            closeModal("modal2");
+            form.reset();
+          };
+          reader.readAsDataURL(certFile);
+        } else {
+          localStorage.setItem("card2Data", JSON.stringify(data));
+          alert("✓ تم حفظ البيانات بنجاح!");
+          closeModal("modal2");
+          form.reset();
+        }
+      }
+
+      // Close image viewer on outside click
+      window.addEventListener("click", (e) => {
+        if (e.target && e.target.id === "imageViewerModal") {
+          closeImageViewer();
+        }
+      });
+
+      // Card2 gallery - list of images in public/imgs/card2
+      const card2Images = [
+        "public/imgs/card2/advanced-cybersecurity-initiative.webp",
+        "public/imgs/card2/cyber-security-initiative-report.webp",
+        "public/imgs/card2/international-tolerance-day-report.webp",
+        "public/imgs/card2/national-tree-planting-initiative.webp",
+        "public/imgs/card2/parents-communication-report.webp",
+        "public/imgs/card2/parents-students-meeting-report.webp",
+        "public/imgs/card2/stuttering-awareness-initiative.webp",
+        "public/imgs/card2/technical-program-usage-liveworksheets-report.webp",
+        "public/imgs/card2/technical-program-usage-padlet-report.webp",
+        "public/imgs/card2/technical-program-usage-telegram-report.webp",
+        "public/imgs/card2/white-stick-day-initiative.webp",
+        "public/imgs/card2/world-diabetes-day-report.webp",
+      ];
+
+      function renderCard2Gallery() {
+        const container = document.getElementById("card2Gallery");
+        if (!container) return;
+        container.innerHTML = "";
+        card2Images.forEach((src) => {
+          const wrap = document.createElement("div");
+          wrap.className =
+            "border rounded-lg overflow-hidden cursor-pointer hover:shadow-lg transition";
+          const img = document.createElement("img");
+          img.src = src;
+          img.className = "w-full h-56 md:h-64 object-cover";
+          img.alt = "";
+          wrap.appendChild(img);
+          wrap.addEventListener("click", () => openImageViewer(src));
+          container.appendChild(wrap);
+        });
+      }
+
+      // render gallery on load
+      renderCard2Gallery();
+    </script>
+  </body>
+</html>
