@@ -1,0 +1,1252 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <title>خطة إثرائية - جاهز للتحميل والطباعة</title>
+    <style>
+      /* Modal Styles */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 1000;
+        overflow-y: auto;
+        padding: 20px;
+      }
+      .modal-overlay.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .modal-content {
+        background: white;
+        border-radius: 16px;
+        max-width: 90%;
+        width: 100%;
+        max-width: 1200px;
+        position: relative;
+        margin: auto;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        border-bottom: 1px solid #e5e7eb;
+      }
+      .modal-body {
+        padding: 20px;
+        max-height: calc(100vh - 200px);
+        overflow-y: auto;
+      }
+      .modal-close {
+        background: none;
+        border: none;
+        font-size: 28px;
+        cursor: pointer;
+        color: #6b7280;
+        padding: 0;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.2s;
+      }
+      .modal-close:hover {
+        background-color: #f3f4f6;
+        color: #111827;
+      }
+      .preview-template {
+        background: white;
+        padding: 40px;
+        border: 2px solid #e5e7eb;
+        border-radius: 12px;
+      }
+      .error-message {
+        color: #dc2626;
+        font-size: 14px;
+        margin-top: 4px;
+        display: none;
+      }
+      .error-message.show {
+        display: block;
+      }
+      .field-error {
+        border-color: #dc2626 !important;
+        border-width: 2px !important;
+      }
+      .field-error:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+      }
+      /* Custom checkbox color */
+      input[type="checkbox"] {
+        accent-color: #3d7eb9;
+      }
+      input[type="checkbox"]:checked {
+        background-color: #3d7eb9 !important;
+        border-color: #3d7eb9 !important;
+      }
+      input[type="checkbox"]:focus {
+        --tw-ring-color: #3d7eb9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="max-w-6xl mx-auto">
+      <div
+        class="max-w-4xl mx-auto border-4 rounded-2xl shadow-xl overflow-hidden mb-8 p-4"
+        id="template"
+      >
+        <div class="bg-white rounded-xl p-6">
+          <div
+            class="w-[300px] h-[300px] flex mx-auto rounded-full overflow-hidden items-center justify-center shadow-md mb-8"
+          >
+            <img
+              src="./assets/imgs/card11/multi-enrichment-plan.webp"
+              alt="img-title"
+              class="w-full h-full object-cover rounded-full"
+            />
+          </div>
+          <h1 class="text-4xl text-center">خطة إثرائية جماعية لأكثر من طالب</h1>
+          <p class="text-gray-700 my-4 text-center text-xl">
+            إنشاء وتخصيص خطة إثرائية جماعية لأكثر من طالب مع إمكانية تحرير
+            وإضافة جميع البيانات الخاصة بك، بطريقة سهلة واحترافية توفر عليه
+            الوقت والجهد ويتم حفظ الملف النهائي بتنسيق صورة أو ملف pdf لسهولة
+            الطباعة بجودة عالية وإعادة الاستخدام في تقارير ونماذج أخرى.
+          </p>
+
+          <!-- نموذج الاستمارة -->
+          <div class="mt-8 bg-white border border-gray-300 rounded-lg p-6">
+            <!-- القسم العلوي: إدارة التعليم -->
+            <div class="mb-6">
+              <div class="grid grid-cols-2 gap-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    الإدارة , المنطقة, المكتب :
+                  </label>
+                  <textarea
+                    id="eduInfo"
+                    class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    rows="3"
+                  >
+الإدارة العامة للتعليم
+بالمنطقة الشمالية
+مكتب التعليم</textarea
+                  >
+                  <div id="eduInfoError" class="error-message">
+                    هذا الحقل مطلوب
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    معلومات إضافية يسار بالترويسة (غير إلزامي):
+                  </label>
+                  <textarea
+                    id="additionalInfo"
+                    class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    rows="3"
+                  >
+ الفصل الدراسي الأول</textarea
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                (عنوان الخطة - واسم المادة):
+              </label>
+              <input
+                type="text"
+                id="planTitle"
+                class="w-full border border-gray-300 rounded-md p-3 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value="(خطة إثرائية - اسم المادة)"
+              />
+            </div>
+
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                أسماء الطلاب (كل اسم بسطر)
+              </label>
+              <textarea
+                id="studentsNames"
+                class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+                rows="5"
+              >
+الطالب الأول
+الطالب الثاني
+الطالب الثالث</textarea
+              >
+              <p class="text-sm text-gray-600 mt-2">اكتب كل اسم في سطر منفصل</p>
+              <div id="studentsNamesError" class="error-message">
+                هذا الحقل مطلوب
+              </div>
+            </div>
+
+            <!-- الصف/الفصل ووقت/فترة المتابعة -->
+            <div class="grid grid-cols-2 gap-4 mb-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  الصف/الفصل:
+                </label>
+                <input
+                  type="text"
+                  id="gradeClass"
+                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  value="أول متوسط / أ"
+                />
+                <div id="gradeClassError" class="error-message">
+                  هذا الحقل مطلوب
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  وقت / فترة المتابعة:
+                </label>
+                <input
+                  type="text"
+                  id="reviewDate"
+                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  value="١٤٤٦/١٢/١٢هـ"
+                />
+                <div id="reviewDateError" class="error-message">
+                  هذا الحقل مطلوب
+                </div>
+              </div>
+            </div>
+
+            <!-- خط فاصل -->
+            <hr class="border-gray-300 my-6" />
+
+            <!-- قسم طرق وأساليب التحفيز -->
+            <div class="mb-6">
+              <h3 class="text-lg font-semibold text-gray-800 mb-4">
+                طرق وأساليب التحفيز:
+              </h3>
+              <div class="grid grid-cols-2 gap-4 mb-4">
+                <!-- العمود الأيمن -->
+                <div class="space-y-2">
+                  <label class="flex items-center gap-2 text-gray-700">
+                    <input
+                      type="checkbox"
+                      id="motivation1"
+                      class="w-4 h-4 border-gray-300 rounded focus:ring-2"
+                    />
+                    <span>أوراق عمل إضافية</span>
+                  </label>
+                  <label class="flex items-center gap-2 text-gray-700">
+                    <input
+                      type="checkbox"
+                      id="motivation2"
+                      class="w-4 h-4 border-gray-300 rounded focus:ring-2"
+                    />
+                    <span>تدريس الأقران</span>
+                  </label>
+                </div>
+                <!-- العمود الأيسر -->
+                <div class="space-y-2">
+                  <label class="flex items-center gap-2 text-gray-700">
+                    <input
+                      type="checkbox"
+                      id="motivation3"
+                      class="w-4 h-4 border-gray-300 rounded focus:ring-2"
+                    />
+                    <span>إسناد دور للطالب/ـة في إعانة المعلم/ـة</span>
+                  </label>
+                  <label class="flex items-center gap-2 text-gray-700">
+                    <input
+                      type="checkbox"
+                      id="motivation4"
+                      class="w-4 h-4 border-gray-300 rounded focus:ring-2"
+                    />
+                    <span>إشراك الطالب/ـة في مسابقات علمية</span>
+                  </label>
+                </div>
+              </div>
+              <!-- حقل طرق تحفيز إضافية -->
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  طرق تحفيز إضافية:
+                </label>
+                <textarea
+                  id="motivationAdditional"
+                  class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  rows="3"
+                  placeholder="طرق تحفيز اضافية"
+                ></textarea>
+                <p class="text-sm text-gray-600 mt-2">
+                  طرق تحفيز إضافية غير الموجودة بالخيارات
+                </p>
+              </div>
+            </div>
+
+            <!-- خط فاصل -->
+            <hr class="border-gray-300 my-6" />
+
+            <!-- قسم المكافآت والإجراءات التشجيعية -->
+            <div class="mb-6">
+              <h3 class="text-lg font-semibold text-gray-800 mb-4">
+                المكافآت والإجراءات التشجيعية:
+              </h3>
+              <div class="grid grid-cols-2 gap-4 mb-4">
+                <!-- العمود الأيمن -->
+                <div class="space-y-2">
+                  <label class="flex items-center gap-2 text-gray-700">
+                    <input
+                      type="checkbox"
+                      id="reward1"
+                      class="w-4 h-4 border-gray-300 rounded focus:ring-2"
+                    />
+                    <span>التكريم في الفصل</span>
+                  </label>
+                  <label class="flex items-center gap-2 text-gray-700">
+                    <input
+                      type="checkbox"
+                      id="reward2"
+                      class="w-4 h-4 border-gray-300 rounded focus:ring-2"
+                    />
+                    <span>التكريم في الطابور</span>
+                  </label>
+                  <label class="flex items-center gap-2 text-gray-700">
+                    <input
+                      type="checkbox"
+                      id="reward3"
+                      class="w-4 h-4 border-gray-300 rounded focus:ring-2"
+                    />
+                    <span>الثناء والتشجيع المعنوي</span>
+                  </label>
+                </div>
+                <!-- العمود الأيسر -->
+                <div class="space-y-2">
+                  <label class="flex items-center gap-2 text-gray-700">
+                    <input
+                      type="checkbox"
+                      id="reward4"
+                      class="w-4 h-4 border-gray-300 rounded focus:ring-2"
+                    />
+                    <span>وضع اسم الطالب/ـة في لوحة الشرف</span>
+                  </label>
+                  <label class="flex items-center gap-2 text-gray-700">
+                    <input
+                      type="checkbox"
+                      id="reward5"
+                      class="w-4 h-4 border-gray-300 rounded focus:ring-2"
+                    />
+                    <span>التكريم في الحفل الختامي ومجلس التعليم</span>
+                  </label>
+                </div>
+              </div>
+              <!-- حقل مكافآت وإجراءات إضافية -->
+              <div class="mb-4">
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  مكافآت وإجراءات إضافية:
+                </label>
+                <textarea
+                  id="rewardAdditional"
+                  class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  rows="3"
+                  placeholder="مكافآت وإجراءات إضافية"
+                ></textarea>
+                <p class="text-sm text-gray-600 mt-2">
+                  مكافآت وإجراءات إضافية غير الموجودة بالخيارات
+                </p>
+              </div>
+            </div>
+
+            <!-- خط فاصل -->
+            <hr class="border-gray-300 my-6" />
+
+            <!-- قسم جوانب التميز لدى الطالب/ـة -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                جوانب التميز لدى الطالب/ـة:
+              </label>
+              <textarea
+                id="excellenceAspects"
+                class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+                rows="5"
+              >
+١. المشاركة الفعالة داخل الفصل.
+
+٢. المبادرة ومساعدة الأقران بالفصل.
+
+٣. التحضير للدروس الجديدة.</textarea
+              >
+              <p class="text-sm text-gray-600 mt-2">
+                اكتب جوانب التميز، كل نقطة في سطر منفصل
+              </p>
+            </div>
+
+            <!-- خط فاصل -->
+            <hr class="border-gray-300 my-6" />
+
+            <!-- قسم الملاحظات -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                الملاحظات:
+              </label>
+              <textarea
+                id="notes"
+                class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+                rows="8"
+              ></textarea>
+            </div>
+
+            <!-- خط فاصل -->
+            <hr class="border-gray-300 my-6" />
+
+            <!-- قسم التوقيعات -->
+            <div class="mb-6">
+              <div class="grid grid-cols-3 gap-4">
+                <!-- توقيع يمين -->
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    توقيع يمين:
+                  </label>
+                  <textarea
+                    id="signatureRight"
+                    class="w-full border border-gray-300 rounded-md p-2 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    rows="3"
+                  ></textarea>
+                </div>
+                <!-- توقيع وسط -->
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    توقيع وسط:
+                  </label>
+                  <textarea
+                    id="signatureMiddle"
+                    class="w-full border border-gray-300 rounded-md p-2 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    rows="3"
+                  >
+اسم المعلم / الاسم
+                </textarea
+                  >
+                </div>
+                <!-- توقيع يسار -->
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    توقيع يسار:
+                  </label>
+                  <textarea
+                    id="signatureLeft"
+                    class="w-full border border-gray-300 rounded-md p-2 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    rows="3"
+                  ></textarea>
+                </div>
+              </div>
+            </div>
+
+            <!-- خط فاصل -->
+            <hr class="border-gray-300 my-6" />
+
+            <!-- قسم تخصيص التصميم -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-4">
+                تخصيص التصميم:
+              </label>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  شعار الجهة:
+                </label>
+                <div class="flex justify-start">
+                  <div
+                    class="flex items-center p-4 border border-gray-300 rounded-md bg-white"
+                  >
+                    <div class="text-left">
+                      <img
+                        src="./assets/imgs/شعار وزارة التعليم السعودي/saudi-ministry-of-education.png"
+                        alt=""
+                        class="w-24 h-24 object-contain"
+                      />
+                      <p class="text-green-600 font-semibold text-lg mt-2">
+                        وزارة التعليم
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- خط فاصل -->
+            <hr class="border-gray-300 my-6" />
+
+            <!-- قسم إضافة شواهد -->
+            <div class="mb-6">
+              <label
+                class="block text-sm font-medium text-gray-700 mb-2 text-right"
+              >
+                إضافة شواهد (صور):
+              </label>
+              <div class="relative">
+                <input
+                  type="file"
+                  id="evidenceFiles"
+                  multiple
+                  accept="image/*"
+                  class="hidden"
+                />
+                <div
+                  class="flex items-center border border-gray-300 rounded-md bg-gray-50"
+                >
+                  <label
+                    for="evidenceFiles"
+                    class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-r-md cursor-pointer text-sm font-medium text-gray-700 transition-colors"
+                  >
+                    Choose Files
+                  </label>
+                  <span
+                    class="flex-1 px-3 py-2 text-gray-500 text-sm text-left"
+                  >
+                    No file chosen
+                  </span>
+                </div>
+              </div>
+              <p class="text-sm text-gray-600 mt-2 text-right">
+                أقصى حد للشواهد 10 شواهد
+              </p>
+            </div>
+
+            <!-- زر المعاينة -->
+            <div class="mt-8">
+              <button
+                onclick="previewTemplate()"
+                class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition-colors"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                  />
+                </svg>
+                <span>معاينة</span>
+              </button>
+            </div>
+
+            <!-- أكثر الروابط استخداماً -->
+            <div
+              class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6 mb-8 mt-8"
+            >
+              <h2 class="text-lg font-bold text-gray-800 mb-4">
+                أكثر الروابط استخداماً
+              </h2>
+              <div class="grid grid-cols-2 gap-4">
+                <!-- الصف الأول -->
+                <button
+                  class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
+                >
+                  أفضل نموذج لتوثيق برنامج أو نشاط (المطور)
+                </button>
+                <button
+                  class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
+                >
+                  تقرير جاهز لليوم العالمي للفيزياء الطبية
+                </button>
+                <!-- الصف الثاني -->
+                <button
+                  class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
+                >
+                  نموذج تنفيذ استراتيجية مختصرة
+                </button>
+                <button
+                  class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
+                >
+                  خطط علاجية وإثرائية
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="max-w-4xl mx-auto bg-white rounded-xl p-6 mb-8 border shadow-lg"
+    >
+      <div class="space-y-4">
+        <div class="pb-4">
+          <div class="flex justify-between flex-col items-center">
+            <span class="text-2xl text-gray-700 font-medium"
+              >عدد الخدمات المنفذة:</span
+            >
+            <span class="text-2xl font-medium text-gray-800">2186208</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="max-w-4xl mx-auto bg-white rounded-xl p-6 mb-8 border shadow-lg"
+    >
+      <div class="space-y-4">
+        <div class="pb-4">
+          <div class="flex justify-between flex-col items-center">
+            <span class="text-gray-700 font-medium text-2xl"
+              >عدد سجلات شواهد تقيم الأداء المنفذة:</span
+            >
+            <span class="text-2xl font-medium text-gray-800">6321</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="mt-12 border-t border-gray-300 pt-6 pb-8">
+      <div class="max-w-6xl mx-auto">
+        <div
+          class="flex flex-wrap justify-center items-center gap-4 text-gray-700 text-sm mb-4"
+        >
+          <a href="#" class="hover:text-green-600 transition">من نحن</a>
+          <span class="text-gray-400">|</span>
+          <a href="#" class="hover:text-green-600 transition">سياسة الخصوصية</a>
+          <span class="text-gray-400">|</span>
+          <a href="#" class="hover:text-green-600 transition"
+            >اتفاقية الاستخدام</a
+          >
+          <span class="text-gray-400">|</span>
+          <a
+            href="#"
+            class="hover:text-green-600 transition flex items-center gap-1"
+          >
+            تويتر
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-4 h-4"
+            >
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+              />
+            </svg>
+          </a>
+          <span class="text-gray-400">|</span>
+          <a
+            href="#"
+            class="hover:text-green-600 transition flex items-center gap-1"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-4 h-4"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            اتصل بنا
+          </a>
+        </div>
+        <div class="text-center text-gray-600 text-sm">
+          edu-forms.com, Inc 2025 ©
+        </div>
+      </div>
+    </footer>
+
+    <!-- Modal Popup للمعاينة -->
+    <div id="previewModal" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="text-2xl font-bold text-gray-800">معاينة خطة إثرائية</h2>
+          <button class="modal-close" onclick="closePreviewModal()">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="previewTemplateContent" class="preview-template">
+            <!-- سيتم ملء المحتوى ديناميكياً -->
+          </div>
+          <div class="flex justify-center gap-4 mt-6">
+            <button
+              onclick="downloadImageFromModal()"
+              class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition flex items-center gap-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
+                />
+              </svg>
+              تحميل كصورة
+            </button>
+            <button
+              onclick="downloadPDFFromModal()"
+              class="bg-red-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-red-700 transition flex items-center gap-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
+                />
+              </svg>
+              تحميل PDF
+            </button>
+            <button
+              onclick="closePreviewModal()"
+              class="bg-gray-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-gray-700 transition"
+            >
+              إغلاق
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // دالة للتحقق من صحة البيانات
+      function validateForm() {
+        let isValid = true;
+
+        // إزالة جميع رسائل الخطأ السابقة
+        document.querySelectorAll(".field-error").forEach((field) => {
+          field.classList.remove("field-error");
+        });
+        document.querySelectorAll(".error-message").forEach((error) => {
+          error.classList.remove("show");
+        });
+
+        // التحقق من إدارة التعليم
+        const eduInfo = document.getElementById("eduInfo").value.trim();
+        if (!eduInfo) {
+          showError("eduInfo", "eduInfoError");
+          isValid = false;
+        }
+
+        // التحقق من أسماء الطلاب
+        const studentsNames = document
+          .getElementById("studentsNames")
+          .value.trim();
+        if (!studentsNames) {
+          showError("studentsNames", "studentsNamesError");
+          isValid = false;
+        }
+
+        // التحقق من الصف/الفصل
+        const gradeClass = document.getElementById("gradeClass").value.trim();
+        if (!gradeClass) {
+          showError("gradeClass", "gradeClassError");
+          isValid = false;
+        }
+
+        // التحقق من وقت/فترة المتابعة
+        const reviewDate = document.getElementById("reviewDate").value.trim();
+        if (!reviewDate) {
+          showError("reviewDate", "reviewDateError");
+          isValid = false;
+        }
+
+        return isValid;
+      }
+
+      // دالة لإظهار رسالة الخطأ
+      function showError(fieldId, errorId) {
+        const field = document.getElementById(fieldId);
+        const error = document.getElementById(errorId);
+        if (field) {
+          field.classList.add("field-error");
+        }
+        if (error) {
+          error.classList.add("show");
+        }
+      }
+
+      // إزالة رسالة الخطأ عند الكتابة
+      function setupFieldValidation() {
+        const textFields = [
+          "eduInfo",
+          "additionalInfo",
+          "planTitle",
+          "studentsNames",
+          "gradeClass",
+          "reviewDate",
+          "motivationAdditional",
+          "rewardAdditional",
+          "excellenceAspects",
+          "notes",
+          "signatureRight",
+          "signatureMiddle",
+          "signatureLeft",
+        ];
+
+        // معالجة حقول النص
+        textFields.forEach((fieldId) => {
+          const field = document.getElementById(fieldId);
+          if (field) {
+            field.addEventListener("input", function () {
+              this.classList.remove("field-error");
+              const errorId = fieldId + "Error";
+              const error = document.getElementById(errorId);
+              if (error) {
+                error.classList.remove("show");
+              }
+            });
+          }
+        });
+      }
+
+      // دالة المعاينة
+      function previewTemplate() {
+        // التحقق من صحة البيانات أولاً
+        if (!validateForm()) {
+          // التمرير إلى أول حقل به خطأ
+          const firstError = document.querySelector(".field-error");
+          if (firstError) {
+            firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+          return;
+        }
+
+        // إذا كانت البيانات صحيحة، توليد محتوى المعاينة وفتح الـ modal
+        generatePreviewContent();
+        openPreviewModal();
+      }
+
+      // دالة لجمع الخيارات المحددة
+      function getSelectedCheckboxes(prefix, count) {
+        const selected = [];
+        for (let i = 1; i <= count; i++) {
+          const checkbox = document.getElementById(prefix + i);
+          if (checkbox && checkbox.checked) {
+            const label = checkbox.nextElementSibling?.textContent || "";
+            selected.push(label);
+          }
+        }
+        return selected;
+      }
+
+      // توليد محتوى المعاينة
+      function generatePreviewContent() {
+        const eduInfoText = document.getElementById("eduInfo").value.trim();
+        const eduInfoLines = eduInfoText
+          .split("\n")
+          .filter((line) => line.trim());
+        const eduInfo = eduInfoLines[0] || "الإدارة العامة للتعليم";
+        const region = eduInfoLines[1] || "بالمنطقة الشمالية";
+        const officeName = eduInfoLines[2] || "مكتب التعليم";
+        const additionalInfo =
+          document.getElementById("additionalInfo")?.value.trim() || "";
+        const planTitle =
+          document.getElementById("planTitle")?.value.trim() ||
+          "خطة إثرائية (اسم المادة)";
+        const studentsNames = document
+          .getElementById("studentsNames")
+          .value.trim();
+        const gradeClass = document.getElementById("gradeClass").value.trim();
+        const reviewDate = document.getElementById("reviewDate").value.trim();
+
+        // جمع طرق وأساليب التحفيز
+        const motivationSelected = getSelectedCheckboxes("motivation", 4);
+        const motivationAdditional =
+          document.getElementById("motivationAdditional")?.value.trim() || "";
+
+        // جمع المكافآت والإجراءات التشجيعية
+        const rewardSelected = getSelectedCheckboxes("reward", 5);
+        const rewardAdditional =
+          document.getElementById("rewardAdditional")?.value.trim() || "";
+
+        // جوانب التميز
+        const excellenceAspects =
+          document.getElementById("excellenceAspects")?.value.trim() || "";
+
+        const notes = document.getElementById("notes")?.value.trim() || "";
+        const signatureRight =
+          document.getElementById("signatureRight")?.value.trim() || "";
+        const signatureMiddle =
+          document.getElementById("signatureMiddle")?.value.trim() || "";
+        const signatureLeft =
+          document.getElementById("signatureLeft")?.value.trim() || "";
+
+        const previewContainer = document.getElementById(
+          "previewTemplateContent"
+        );
+
+        // إنشاء HTML للمعاينة
+        const html = `
+          <div class="max-w-4xl mx-auto">
+            <div class="bg-white rounded-xl p-6">
+              <div
+                class="w-[300px] h-[300px] flex mx-auto rounded-full overflow-hidden items-center justify-center shadow-md mb-8"
+              >
+                <img
+                  src="./assets/imgs/card11/multi-enrichment-plan.webp"
+                  alt="img-title"
+                  class="w-full h-full object-cover rounded-full"
+                />
+              </div>
+              <h1 class="text-4xl text-center mb-4">
+                خطة إثرائية جماعية لأكثر من طالب
+              </h1>
+              <p class="text-gray-700 my-4 text-center text-xl">
+                إنشاء وتخصيص خطة إثرائية جماعية لأكثر من طالب مع إمكانية تحرير وإضافة
+                جميع البيانات الخاصة بك، بطريقة سهلة واحترافية توفر عليه الوقت
+                والجهد ويتم حفظ الملف النهائي بتنسيق صورة أو ملف pdf لسهولة الطباعة
+                بجودة عالية وإعادة الاستخدام في تقارير ونماذج أخرى.
+              </p>
+              
+              <div class="mt-8 bg-white border border-gray-300 rounded-lg p-6">
+                <!-- القسم العلوي: إدارة التعليم -->
+                <div class="mb-6">
+                  <div class="grid grid-cols-2 gap-4">
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700 mb-2">
+                        الإدارة , المنطقة, المكتب :
+                      </label>
+                      <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600">
+                        <p>${eduInfo}</p>
+                        <p>${region}</p>
+                        <p class="font-bold">${officeName}</p>
+                      </div>
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700 mb-2">
+                        معلومات إضافية يسار بالترويسة (غير إلزامي):
+                      </label>
+                      <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600">
+                        ${additionalInfo || ""}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-6">
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    عنوان الخطة واسم المادة:
+                  </label>
+                  <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600">
+                    ${planTitle}
+                  </div>
+                </div>
+
+                <!-- أسماء الطلاب -->
+                <div class="mb-6">
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    أسماء الطلاب:
+                  </label>
+                  <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600 whitespace-pre-line">
+                    ${studentsNames}
+                  </div>
+                </div>
+
+                <!-- الصف/الفصل ووقت/فترة المتابعة -->
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                      الصف/الفصل:
+                    </label>
+                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
+                      ${gradeClass}
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                      وقت / فترة المتابعة:
+                    </label>
+                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
+                      ${reviewDate}
+                    </div>
+                  </div>
+                </div>
+
+                <!-- خط فاصل -->
+                <hr class="border-gray-300 my-6" />
+
+                <!-- قسم طرق وأساليب التحفيز -->
+                <div class="mb-6">
+                  <h3 class="text-lg font-semibold text-gray-800 mb-3">طرق وأساليب التحفيز:</h3>
+                  ${
+                    motivationSelected.length > 0
+                      ? `
+                    <div class="mb-3">
+                      <ul class="list-disc list-inside text-gray-700 space-y-1">
+                        ${motivationSelected
+                          .map((item) => `<li>${item}</li>`)
+                          .join("")}
+                      </ul>
+                    </div>
+                  `
+                      : ""
+                  }
+                  ${
+                    motivationAdditional &&
+                    motivationAdditional !== "طرق تحفيز اضافية"
+                      ? `
+                    <div class="mb-3">
+                      <p class="text-gray-700"><strong>طرق تحفيز إضافية:</strong></p>
+                      <p class="text-gray-600 whitespace-pre-line">${motivationAdditional}</p>
+                    </div>
+                  `
+                      : ""
+                  }
+                </div>
+
+                <!-- خط فاصل -->
+                <hr class="border-gray-300 my-6" />
+
+                <!-- قسم المكافآت والإجراءات التشجيعية -->
+                <div class="mb-6">
+                  <h3 class="text-lg font-semibold text-gray-800 mb-3">المكافآت والإجراءات التشجيعية:</h3>
+                  ${
+                    rewardSelected.length > 0
+                      ? `
+                    <div class="mb-3">
+                      <ul class="list-disc list-inside text-gray-700 space-y-1">
+                        ${rewardSelected
+                          .map((item) => `<li>${item}</li>`)
+                          .join("")}
+                      </ul>
+                    </div>
+                  `
+                      : ""
+                  }
+                  ${
+                    rewardAdditional &&
+                    rewardAdditional !== "مكافآت وإجراءات إضافية"
+                      ? `
+                    <div class="mb-3">
+                      <p class="text-gray-700"><strong>مكافآت وإجراءات إضافية:</strong></p>
+                      <p class="text-gray-600 whitespace-pre-line">${rewardAdditional}</p>
+                    </div>
+                  `
+                      : ""
+                  }
+                </div>
+
+                <!-- خط فاصل -->
+                <hr class="border-gray-300 my-6" />
+
+                <!-- قسم جوانب التميز -->
+                <div class="mb-6">
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    جوانب التميز لدى الطالب/ـة:
+                  </label>
+                  <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600 whitespace-pre-line min-h-[100px]">
+                    ${excellenceAspects || ""}
+                  </div>
+                </div>
+
+                <!-- خط فاصل -->
+                <hr class="border-gray-300 my-6" />
+
+                <!-- قسم الملاحظات -->
+                <div class="mb-6">
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    الملاحظات:
+                  </label>
+                  <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600 whitespace-pre-line min-h-[100px]">
+                    ${notes || ""}
+                  </div>
+                </div>
+
+                <!-- خط فاصل -->
+                <hr class="border-gray-300 my-6" />
+
+                <!-- قسم التوقيعات -->
+                <div class="mb-6">
+                  <div class="grid grid-cols-3 gap-4">
+                    <!-- توقيع يمين -->
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700 mb-2">
+                        توقيع يمين:
+                      </label>
+                      <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600 whitespace-pre-line min-h-[60px]">
+                        ${signatureRight || ""}
+                      </div>
+                    </div>
+                    <!-- توقيع وسط -->
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700 mb-2">
+                        توقيع وسط:
+                      </label>
+                      <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600 whitespace-pre-line min-h-[60px]">
+                        ${signatureMiddle || ""}
+                      </div>
+                    </div>
+                    <!-- توقيع يسار -->
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700 mb-2">
+                        توقيع يسار:
+                      </label>
+                      <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600 whitespace-pre-line min-h-[60px]">
+                        ${signatureLeft || ""}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- خط فاصل -->
+                <hr class="border-gray-300 my-6" />
+
+                <!-- قسم تخصيص التصميم -->
+                <div class="mb-6">
+                  <label class="block text-sm font-medium text-gray-700 mb-4">
+                    تخصيص التصميم:
+                  </label>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                      شعار الجهة:
+                    </label>
+                    <div class="flex justify-start">
+                      <div class="flex items-center p-4 border border-gray-300 rounded-md bg-white">
+                        <div class="text-left">
+                          <img
+                            src="./assets/imgs/شعار وزارة التعليم السعودي/saudi-ministry-of-education.png"
+                            alt=""
+                            class="w-24 h-24 object-contain"
+                          />
+                          <p class="text-green-600 font-semibold text-lg mt-2">
+                            وزارة التعليم
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+
+        previewContainer.innerHTML = html;
+      }
+
+      // فتح الـ modal
+      function openPreviewModal() {
+        const modal = document.getElementById("previewModal");
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      // إغلاق الـ modal
+      function closePreviewModal() {
+        const modal = document.getElementById("previewModal");
+        modal.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+
+      // إغلاق الـ modal عند الضغط خارج المحتوى
+      document
+        .getElementById("previewModal")
+        ?.addEventListener("click", function (e) {
+          if (e.target === this) {
+            closePreviewModal();
+          }
+        });
+
+      // إغلاق الـ modal عند الضغط على ESC
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closePreviewModal();
+        }
+      });
+
+      // تحميل الصورة من الـ modal
+      function downloadImageFromModal() {
+        const previewContent = document.getElementById(
+          "previewTemplateContent"
+        );
+        html2canvas(previewContent, {
+          backgroundColor: "#ffffff",
+          scale: 2,
+        }).then((canvas) => {
+          const link = document.createElement("a");
+          link.download = "enrichment-plan-preview.png";
+          link.href = canvas.toDataURL();
+          link.click();
+        });
+      }
+
+      // تحميل PDF من الـ modal
+      function downloadPDFFromModal() {
+        const previewContent = document.getElementById(
+          "previewTemplateContent"
+        );
+        html2canvas(previewContent, {
+          backgroundColor: "#ffffff",
+          scale: 2,
+        }).then((canvas) => {
+          const imgData = canvas.toDataURL("image/jpeg");
+          const pdf = new jspdf.jsPDF("p", "mm", "a4");
+          const imgWidth = 210;
+          const imgHeight = (canvas.height * imgWidth) / canvas.width;
+          pdf.addImage(imgData, "JPEG", 0, 0, imgWidth, imgHeight);
+          pdf.save("enrichment-plan-preview.pdf");
+        });
+      }
+
+      // تطبيق عند تحميل الصفحة
+      document.addEventListener("DOMContentLoaded", function () {
+        // إعداد الـ validation
+        setupFieldValidation();
+
+        // إدارة رفع الملفات
+        const fileInput = document.getElementById("evidenceFiles");
+        const fileLabel = fileInput?.nextElementSibling?.querySelector("span");
+
+        if (fileInput && fileLabel) {
+          fileInput.addEventListener("change", function () {
+            const files = this.files;
+            if (files.length > 10) {
+              alert("الحد الأقصى للشواهد هو 10 ملفات");
+              this.value = "";
+              fileLabel.textContent = "No file chosen";
+              return;
+            }
+
+            if (files.length > 0) {
+              const fileNames = Array.from(files)
+                .map((file) => file.name)
+                .join(", ");
+              fileLabel.textContent =
+                files.length === 1
+                  ? files[0].name
+                  : `${files.length} ملفات محددة: ${fileNames}`;
+            } else {
+              fileLabel.textContent = "No file chosen";
+            }
+          });
+        }
+      });
+    </script>
+  </body>
+</html>
