@@ -2,43 +2,104 @@
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+    <title>الخطة الأسبوعية - الفصل الدراسي الأول</title>
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <title>نماذج وتقارير عامة - مجانية وجاهزة للطباعة | نماذج تعليمية</title>
-  </head>
-  <style>
-    .card-btn {
-      background: linear-gradient(135deg, #0ba7d1 0%, #00a8e1 100%);
-      color: white;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      border-radius: 12px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
-      width: 100%;
-    }
+    <style>
+      @font-face {
+        font-family: "Helvetica";
+        src: url("../assets/fonts/HelveticaNeueLTArabic-75Bold.ttf")
+          format("truetype");
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
 
-    .card-btn:hover {
-      transform: scale(1.02);
-      box-shadow: 0 8px 20px rgba(11, 167, 209, 0.3);
-    }
+      body {
+        font-family: "Helvetica", "Tajawal", sans-serif;
+        min-height: 100vh;
+        padding: 20px;
+      }
 
-    .card-btn:active {
-      transform: scale(0.98);
-    }
-        /* Navbar Styles */
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        font-family: "Helvetica", "Tajawal", sans-serif;
+        font-weight: 700;
+      }
+
+      .week-card {
+        background: white;
+        border-radius: 12px;
+        padding: 24px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      .week-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .btn-primary {
+        background-color: #3d7eb3;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.2s;
+        width: 100%;
+        margin-bottom: 12px;
+      }
+
+      .btn-secondary {
+        background-color: white;
+        color: #3d7eb3;
+        padding: 12px 24px;
+        border-radius: 8px;
+        border: 2px solid #3d7eb3;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.2s;
+        width: 100%;
+        margin: 12px 0;
+      }
+
+      .btn-secondary:hover {
+        background-color: #3d7eb3;
+        color: white;
+      }
+
+      .date-text {
+        color: #6b7280;
+        font-size: 14px;
+        margin-top: 8px;
+        text-align: center;
+      }
+
+      .week-title {
+        font-size: 20px;
+        font-weight: 700;
+        color: #111827;
+        margin-bottom: 20px;
+        text-align: center;
+        background-color: #f6f6f6;
+        border: 1px solid #d1d5db;
+        width: calc(100% + 48px);
+        padding: 12px;
+        margin-left: -24px;
+        margin-right: -24px;
+        margin-top: -24px;
+        border-top-left-radius: 12px;
+        border-top-right-radius: 12px;
+        box-sizing: border-box;
+      }
+          /* Navbar Styles */
       .navbar {
         background-color: #f3f4f6;
         padding: 12px 0;
@@ -46,10 +107,8 @@
         top: 0;
         z-index: 100;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        width: 100vw;
-        margin-left: calc(-50vw + 50%);
-        margin-right: calc(-50vw + 50%);
-        position: relative;
+        width: 100%;
+        margin: 0;
       }
       .navbar-container {
         width: 100%;
@@ -176,7 +235,8 @@
       }
 
     </style>
-  <body class="mx-20">
+  </head>
+  <body>
     <!-- Navbar -->
     <nav class="navbar">
       <div class="navbar-container">
@@ -189,7 +249,7 @@
           <li class="navbar-item">
             <a href="#" class="navbar-link">
               <div class="w-[100px]">
-                <img src="./assets/imgs/edu-forms-logo.svg" alt="" />
+                <img src="../assets/imgs/edu-forms-logo.svg" alt="" />
               </div>
             </a>
           </li>
@@ -452,29 +512,233 @@
       </div>
     </nav>
 
-    <div class="flex items-center justify-center flex-col mt-10">
-      <h1 class="text-6xl font-700">نماذج وتقارير عامة</h1>
-      <p class="my-5 text-xl text-[#444]">
-        نماذج وتقارير مجانية وجاهزة تقبل إضافة شعار المؤسسة التعليمية أو الشعار
-        الخاص بك
+    <div class="max-w-7xl mx-auto">
+      <div
+        class="w-40 h-40 sm:w-52 sm:h-52 md:w-64 md:h-64 lg:w-72 lg:h-72 flex mx-auto rounded-full overflow-hidden items-center justify-center shadow-md mb-6 sm:mb-8"
+      >
+        <img
+          src="../assets/imgs/card5/weekly-plans-multi (1).webp"
+          alt="img-title"
+          class="w-full h-full object-cover"
+        />
+      </div>
+
+      <h1 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-center">
+        خطة أسبوعية لأكثر من مادة
+      </h1>
+
+      <p
+        class="text-gray-700 my-4 sm:my-6 md:my-8 text-center text-base sm:text-lg md:text-xl"
+      >
+        إنشاء الخطة الأسبوعية لأكثر من مادة أو للجدول كامل حسب بيانات النموذج
+        بالأسفل، الخانات الأولى من النموذج تمت تعبئتها تلقائيا حسب اختيارك
       </p>
+      <!-- العنوان الرئيسي -->
+      <h1
+        class="text-4xl md:text-3xl text-center mb-4 text-gray-900 bg-[#f6f6f6] p-4 rounded-xl"
+      >
+        الفصل الدراسي الأول (18 أسبوع)
+      </h1>
+
+      <!-- العنوان الفرعي -->
+      <h2 class="text-2xl md:text-3xl text-center mb-12 text-gray-700">
+        اختر أسبوع لإنشاء خطة
+      </h2>
+
+      <!-- شبكة البطاقات -->
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+      >
+        <!-- الأسبوع الأول -->
+        <div class="week-card">
+          <h3 class="week-title">الأسبوع الأول</h3>
+          <button class="btn-primary">إنشاء الخطة</button>
+          <p class="date-text">من 1447/03/01هـ إلى 1447/03/05هـ</p>
+          <button class="btn-secondary">إنشاء الخطة (الغربية)</button>
+          <p class="date-text">من 1447/03/08هـ إلى 1447/03/12هـ</p>
+        </div>
+
+        <!-- الأسبوع الثاني -->
+        <div class="week-card">
+          <h3 class="week-title">الأسبوع الثاني</h3>
+          <button class="btn-primary">إنشاء الخطة</button>
+          <p class="date-text">من 1447/03/08هـ إلى 1447/03/12هـ</p>
+          <button class="btn-secondary">إنشاء الخطة (الغربية)</button>
+          <p class="date-text">من 1447/03/15هـ إلى 1447/03/19هـ</p>
+        </div>
+
+        <!-- الأسبوع الثالث -->
+        <div class="week-card">
+          <h3 class="week-title">الأسبوع الثالث</h3>
+          <button class="btn-primary">إنشاء الخطة</button>
+          <p class="date-text">من 1447/03/15هـ إلى 1447/03/19هـ</p>
+          <button class="btn-secondary">إنشاء الخطة (الغربية)</button>
+          <p class="date-text">من 1447/03/22هـ إلى 1447/03/26هـ</p>
+        </div>
+
+        <!-- الأسبوع الرابع -->
+        <div class="week-card">
+          <h3 class="week-title">الأسبوع الرابع</h3>
+          <button class="btn-primary">إنشاء الخطة</button>
+          <p class="date-text">من 1447/03/22هـ إلى 1447/03/26هـ</p>
+          <button class="btn-secondary">إنشاء الخطة (الغربية)</button>
+          <p class="date-text">من 1447/03/29هـ إلى 1447/04/03هـ</p>
+        </div>
+
+        <!-- الأسبوع الخامس -->
+        <div class="week-card">
+          <h3 class="week-title">الأسبوع الخامس</h3>
+          <button class="btn-primary">إنشاء الخطة</button>
+          <p class="date-text">من 1447/03/29هـ إلى 1447/04/03هـ</p>
+          <button class="btn-secondary">إنشاء الخطة (الغربية)</button>
+          <p class="date-text">من 1447/04/06هـ إلى 1447/04/10هـ</p>
+        </div>
+
+        <!-- الأسبوع السادس -->
+        <div class="week-card">
+          <h3 class="week-title">الأسبوع السادس</h3>
+          <button class="btn-primary">إنشاء الخطة</button>
+          <p class="date-text">من 1447/04/06هـ إلى 1447/04/10هـ</p>
+          <button class="btn-secondary">إنشاء الخطة (الغربية)</button>
+          <p class="date-text">من 1447/04/13هـ إلى 1447/04/17هـ</p>
+        </div>
+
+        <!-- الأسبوع السابع -->
+        <div class="week-card">
+          <h3 class="week-title">الأسبوع السابع</h3>
+          <button class="btn-primary">إنشاء الخطة</button>
+          <p class="date-text">من 1447/04/13هـ إلى 1447/04/17هـ</p>
+          <button class="btn-secondary">إنشاء الخطة (الغربية)</button>
+          <p class="date-text">من 1447/04/20هـ إلى 1447/04/24هـ</p>
+        </div>
+
+        <!-- الأسبوع الثامن -->
+        <div class="week-card">
+          <h3 class="week-title">الأسبوع الثامن</h3>
+          <button class="btn-primary">إنشاء الخطة</button>
+          <p class="date-text">من 1447/04/20هـ إلى 1447/04/24هـ</p>
+          <button class="btn-secondary">إنشاء الخطة (الغربية)</button>
+          <p class="date-text">من 1447/04/27هـ إلى 1447/05/01هـ</p>
+        </div>
+
+        <!-- الأسبوع التاسع -->
+        <div class="week-card">
+          <h3 class="week-title">الأسبوع التاسع</h3>
+          <button class="btn-primary">إنشاء الخطة</button>
+          <p class="date-text">من 1447/04/27هـ إلى 1447/05/01هـ</p>
+          <button class="btn-secondary">إنشاء الخطة (الغربية)</button>
+          <p class="date-text">من 1447/05/04هـ إلى 1447/05/08هـ</p>
+        </div>
+
+        <!-- الأسبوع العاشر -->
+        <div class="week-card">
+          <h3 class="week-title">الأسبوع العاشر</h3>
+          <button class="btn-primary">إنشاء الخطة</button>
+          <p class="date-text">من 1447/05/04هـ إلى 1447/05/08هـ</p>
+          <button class="btn-secondary">إنشاء الخطة (الغربية)</button>
+          <p class="date-text">من 1447/05/11هـ إلى 1447/05/15هـ</p>
+        </div>
+
+        <!-- الأسبوع الحادي عشر -->
+        <div class="week-card">
+          <h3 class="week-title">الأسبوع الحادي عشر</h3>
+          <button class="btn-primary">إنشاء الخطة</button>
+          <p class="date-text">من 1447/05/11هـ إلى 1447/05/15هـ</p>
+          <button class="btn-secondary">إنشاء الخطة (الغربية)</button>
+          <p class="date-text">من 1447/05/18هـ إلى 1447/05/22هـ</p>
+        </div>
+
+        <!-- الأسبوع الثاني عشر -->
+        <div class="week-card">
+          <h3 class="week-title">الأسبوع الثاني عشر</h3>
+          <button class="btn-primary">إنشاء الخطة</button>
+          <p class="date-text">من 1447/05/18هـ إلى 1447/05/22هـ</p>
+          <button class="btn-secondary">إنشاء الخطة (الغربية)</button>
+          <p class="date-text">من 1447/05/25هـ إلى 1447/05/29هـ</p>
+        </div>
+
+        <!-- الأسبوع الثالث عشر -->
+        <div class="week-card">
+          <h3 class="week-title">الأسبوع الثالث عشر</h3>
+          <button class="btn-primary">إنشاء الخطة</button>
+          <p class="date-text">من 1447/05/25هـ إلى 1447/05/29هـ</p>
+          <button class="btn-secondary">إنشاء الخطة (الغربية)</button>
+          <p class="date-text">من 1447/06/09هـ إلى 1447/06/13هـ</p>
+        </div>
+
+        <!-- الأسبوع الرابع عشر -->
+        <div class="week-card">
+          <h3 class="week-title">الأسبوع الرابع عشر</h3>
+          <button class="btn-primary">إنشاء الخطة</button>
+          <p class="date-text">من 1447/06/09هـ إلى 1447/06/13هـ</p>
+          <button class="btn-secondary">إنشاء الخطة (الغربية)</button>
+          <p class="date-text">من 1447/06/16هـ إلى 1447/06/20هـ</p>
+        </div>
+
+        <!-- الأسبوع الخامس عشر -->
+        <div class="week-card">
+          <h3 class="week-title">الأسبوع الخامس عشر</h3>
+          <button class="btn-primary">إنشاء الخطة</button>
+          <p class="date-text">من 1447/06/16هـ إلى 1447/06/20هـ</p>
+          <button class="btn-secondary">إنشاء الخطة (الغربية)</button>
+          <p class="date-text">من 1447/06/23هـ إلى 1447/06/27هـ</p>
+        </div>
+
+        <!-- الأسبوع السادس عشر -->
+        <div class="week-card">
+          <h3 class="week-title">الأسبوع السادس عشر</h3>
+          <button class="btn-primary">إنشاء الخطة</button>
+          <p class="date-text">من 1447/06/23هـ إلى 1447/06/27هـ</p>
+          <button class="btn-secondary">إنشاء الخطة (الغربية)</button>
+          <p class="date-text">من 1447/07/01هـ إلى 1447/07/05هـ</p>
+        </div>
+
+        <!-- الأسبوع السابع عشر -->
+        <div class="week-card">
+          <h3 class="week-title">الأسبوع السابع عشر</h3>
+          <button class="btn-primary">إنشاء الخطة</button>
+          <p class="date-text">من 1447/07/01هـ إلى 1447/07/05هـ</p>
+          <button class="btn-secondary">إنشاء الخطة (الغربية)</button>
+          <p class="date-text">من 1447/07/08هـ إلى 1447/07/12هـ</p>
+        </div>
+
+        <!-- الأسبوع الثامن عشر -->
+        <div class="week-card">
+          <h3 class="week-title">الأسبوع الثامن عشر</h3>
+          <button class="btn-primary">إنشاء الخطة</button>
+          <p class="date-text">من 1447/07/08هـ إلى 1447/07/12هـ</p>
+          <button class="btn-secondary">إنشاء الخطة (الغربية)</button>
+          <p class="date-text">من 1447/07/15هـ إلى 1447/07/19هـ</p>
+        </div>
+      </div>
     </div>
-    <div class="w-80 border-2 px-2 py-4 rounded-md">
-      <img src="./assets//imgs/card3/global-strategic.webp" alt="preview" />
-      <p class="text-center text-3xl text-[#444] my-4">
-        إنشاء نموذج نتفيذ استراتيجية مختصر [بالشعار المناسب لك]
-      </p>
-      <a href="preview3.html" class="card-btn flex items-center justify-center"
-        ><i class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
-      </a>
+    <div
+      class="max-w-4xl mx-auto bg-white rounded-xl p-6 mb-8 border shadow-lg mt-8"
+    >
+      <div class="space-y-4">
+        <div class="pb-4">
+          <div class="flex justify-between flex-col items-center">
+            <span class="text-2xl text-gray-700 font-medium"
+              >عدد الخدمات المنفذة:</span
+            >
+            <span class="text-2xl font-medium text-gray-800">2184519</span>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="text-center border my-4 p-4 text-xl">
-      <p>عدد الخدمات المنفذة:</p>
-      <p>2185375</p>
-    </div>
-    <div class="text-center border my-4 p-4 text-xl">
-      <p>عدد سجلات شواهد تقييم الأداء المنفذة:</p>
-      <p>6321</p>
+    <div
+      class="max-w-4xl mx-auto bg-white rounded-xl p-6 mb-8 border shadow-lg"
+    >
+      <div class="space-y-4">
+        <div class="pb-4">
+          <div class="flex justify-between flex-col items-center">
+            <span class="text-gray-700 font-medium text-2xl"
+              >عدد سجلات شواهد تقيم الأداء المنفذة</span
+            >
+            <span class="text-2xl font-medium text-gray-800">6321</span>
+          </div>
+        </div>
+      </div>
     </div>
     <footer class="mt-12 border-t border-gray-300 pt-6 pb-8">
       <div class="max-w-6xl mx-auto">

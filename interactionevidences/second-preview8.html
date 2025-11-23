@@ -6,10 +6,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-    <title>
-      التقويم الدراسي ف 1 عام 1447ه - وتوزيع الأسابيع والمهام جاهز للتحميل
-      والطباعة
-    </title>
+    <title>تقرير جلسات مجتمعات التعلم المهنية - جاهز للتحميل والطباعة</title>
     <style>
       /* Modal Styles */
       .modal-overlay {
@@ -226,7 +223,7 @@
           <li class="navbar-item">
             <a href="#" class="navbar-link">
               <div class="w-[100px]">
-                <img src="./assets/imgs/edu-forms-logo.svg" alt="" />
+                <img src="../assets/imgs/edu-forms-logo.svg" alt="" />
               </div>
             </a>
           </li>
@@ -499,91 +496,281 @@
             class="w-[300px] h-[300px] flex mx-auto rounded-full overflow-hidden items-center justify-center shadow-md mb-8"
           >
             <img
-              src="./assets/imgs/card7/calendar-edu-1447-2.webp"
+              src="../assets/imgs/card8/session-report.webp"
               alt="img-title"
               class="w-full h-full object-cover rounded-full"
             />
           </div>
           <h1 class="text-4xl text-center">
-            التقويم الدراسي ف 2 عام 1447هـ 1448هـ
+            تقرير جلسات مجتمعات التعلم المهنية
           </h1>
           <p class="text-gray-700 my-4 text-center text-xl">
-            تقويم دراسي وتوزيع المهام للفصل الدراسي الثاني عام 1447هـ 2025 2026
+            نموذج لإنشاء تقرير جلسات مجتمعات التعلم المهنية من جوالك مباشرة
           </p>
 
-          <!-- موضوع التقويم -->
-          <div class="mt-8 mb-4">
-            <label class="block text-lg font-medium text-gray-800 mb-2">
-              موضوع التقويم - مثال: مهام مادة .....
-            </label>
-            <textarea
-              id="calendarTopic"
-              class="w-full border border-gray-300 rounded-lg p-4 text-lg resize-none focus:outline-none focus:ring-2 focus:ring-green-500"
-              rows="4"
-            >
-توزيع مهام
-مادة [اسم المادة]
-            </textarea>
-          </div>
+          <!-- نموذج الاستمارة -->
+          <div class="mt-8 bg-white border border-gray-300 rounded-lg p-6">
+            <!-- القسم العلوي: إدارة التعليم -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                إدارة التعليم، اسم المدرسة
+              </label>
+              <textarea
+                id="eduInfo"
+                class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+                rows="3"
+              >
+الإدارة العامة للتعليم
+بالمنطقة
+مدرسة</textarea
+              >
+            </div>
 
-          <!-- زر المعاينة -->
-          <div class="mb-8">
-            <button
-              onclick="previewTemplate()"
-              class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition-colors"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                />
-              </svg>
-              <span>معاينة</span>
-            </button>
-          </div>
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                موضوع الجلسة:
+              </label>
+              <input
+                type="text"
+                id="sessionTopic"
+                class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value="موضوع الجلسة"
+              />
+            </div>
 
-          <!-- أكثر الروابط استخداماً -->
-          <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6 mb-8">
-            <h2 class="text-lg font-bold text-gray-800 mb-4">
-              أكثر الروابط استخداماً
-            </h2>
-            <div class="grid grid-cols-2 gap-4">
-              <!-- الصف الأول -->
-              <button
-                class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
+            <div class="grid grid-cols-3 gap-4 mb-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  رقم الجلسة:
+                </label>
+                <input
+                  type="text"
+                  id="sessionNumber"
+                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  value="الجلسة الأولى"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  أوعية وأدوات التطوير المهني *:
+                </label>
+                <input
+                  type="text"
+                  id="devTools"
+                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  value="التدريب المصغر"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  اليوم والتاريخ:
+                </label>
+                <input
+                  type="text"
+                  id="dayDate"
+                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  value="الأحد - ١٤٤٧/١٢/١٢هـ"
+                />
+              </div>
+            </div>
+            <div class="mb-6">
+              <p class="text-sm text-gray-500">
+                * التدريب المصغر / تدريب الأقران / البحث الإجرائي / الورش
+                التربوية / اللقاءات والاجتماعات .. أخرى
+              </p>
+            </div>
+
+            <div class="grid grid-cols-3 gap-4 mb-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  مكان التنفيذ:
+                </label>
+                <input
+                  type="text"
+                  id="location"
+                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  value="صالة الاجتماعات بالمدرسة"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  الفئة المستهدفة:
+                </label>
+                <input
+                  type="text"
+                  id="targetAudience"
+                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  value="معلمو تخصص الرياضيات"
+                />
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  موعد الجلسة القادمة:
+                </label>
+                <input
+                  type="text"
+                  id="nextSession"
+                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  value="يحدد لا حقاً"
+                />
+              </div>
+            </div>
+
+            <!-- أهداف الجلسة -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                أهداف الجلسة:
+              </label>
+              <textarea
+                id="objectives"
+                class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+                rows="9"
               >
-                أفضل نموذج لتوثيق برنامج أو نشاط (المطور)
-              </button>
-              <button
-                class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
+١. الهدف الأول.
+
+٢. الهدف الثاني.
+
+٣. الهدف الثالث.
+
+٤. الهدف الرابع.
+
+٥. الهدف الخامس.</textarea
               >
-                تقرير جاهز لليوم العالمي للفيزياء الطبية
-              </button>
-              <!-- الصف الثاني -->
-              <button
-                class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
+            </div>
+
+            <!-- نتائج الجلسة -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                نتائج الجلسة:
+              </label>
+              <textarea
+                id="outcomes"
+                class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+                rows="9"
               >
-                نموذج تنفيذ استراتيجية مختصرة
-              </button>
-              <button
-                class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
+١. النتيجة الأولى.
+
+٢. النتيجة الثانية.
+
+٣. النتيجة الثالثة.
+
+٤. النتيجة الرابعة.
+
+٥. النتيجة الخامسة.</textarea
               >
-                خطط علاجية وإثرائية
+            </div>
+
+            <!-- أسماء الحضور -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                أسماء الحضور
+              </label>
+              <textarea
+                id="attendees"
+                class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+                rows="7"
+              >
+المعلم الأول
+
+المعلم الثاني
+
+المعلم الثالث
+
+المعلم الرابع</textarea
+              >
+            </div>
+
+            <!-- التوقيعات -->
+            <div class="grid grid-cols-2 gap-4 mb-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  التوقيع الأول:
+                </label>
+                <textarea
+                  id="directorSignature"
+                  class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  rows="3"
+                >
+مدير المدرسة
+اسم المدير</textarea
+                >
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  التوقيع الثاني:
+                </label>
+                <textarea
+                  id="teacherSignature"
+                  class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  rows="3"
+                >
+المعلم المنفذ
+اسم المعلم</textarea
+                >
+              </div>
+            </div>
+
+            <!-- زر المعاينة -->
+            <div class="mt-8">
+              <button
+                onclick="previewTemplate()"
+                class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition-colors"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                  />
+                </svg>
+                <span>معاينة</span>
               </button>
+            </div>
+
+            <!-- أكثر الروابط استخداماً -->
+            <div
+              class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6 mb-8 mt-8"
+            >
+              <h2 class="text-lg font-bold text-gray-800 mb-4">
+                أكثر الروابط استخداماً
+              </h2>
+              <div class="grid grid-cols-2 gap-4">
+                <!-- الصف الأول -->
+                <button
+                  class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
+                >
+                  أفضل نموذج لتوثيق برنامج أو نشاط (المطور)
+                </button>
+                <button
+                  class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
+                >
+                  تقرير جاهز لليوم العالمي للفيزياء الطبية
+                </button>
+                <!-- الصف الثاني -->
+                <button
+                  class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
+                >
+                  نموذج تنفيذ استراتيجية مختصرة
+                </button>
+                <button
+                  class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
+                >
+                  خطط علاجية وإثرائية
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -598,7 +785,7 @@
             <span class="text-2xl text-gray-700 font-medium"
               >عدد الخدمات المنفذة:</span
             >
-            <span class="text-2xl font-medium text-gray-800">2186090</span>
+            <span class="text-2xl font-medium text-gray-800">2186208</span>
           </div>
         </div>
       </div>
@@ -610,7 +797,7 @@
         <div class="pb-4">
           <div class="flex justify-between flex-col items-center">
             <span class="text-gray-700 font-medium text-2xl"
-              >عدد سجلات شواهد تقيم الأداء المنفذة</span
+              >عدد سجلات شواهد تقيم الأداء المنفذة:</span
             >
             <span class="text-2xl font-medium text-gray-800">6321</span>
           </div>
@@ -649,10 +836,27 @@
             </svg>
           </a>
           <span class="text-gray-400">|</span>
-          <a href="#" class="hover:text-green-600 transition">اتصل بنا</a>
+          <a
+            href="#"
+            class="hover:text-green-600 transition flex items-center gap-1"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-4 h-4"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z"
+                clip-rule="evenodd"
+              />
+            </svg>
+            اتصل بنا
+          </a>
         </div>
         <div class="text-center text-gray-600 text-sm">
-          Gsoor.com, Inc 2025 ©
+          edu-forms.com, Inc 2025 ©
         </div>
       </div>
     </footer>
@@ -662,7 +866,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h2 class="text-2xl font-bold text-gray-800">
-            معاينة التقويم الدراسي
+            معاينة تقرير جلسات مجتمعات التعلم المهنية
           </h2>
           <button class="modal-close" onclick="closePreviewModal()">
             &times;
@@ -734,15 +938,6 @@
 
       // دالة المعاينة
       function previewTemplate() {
-        const calendarTopic = document.getElementById("calendarTopic").value;
-
-        // التحقق من أن الموضوع غير فارغ
-        if (!calendarTopic.trim()) {
-          alert("يرجى إدخال موضوع التقويم");
-          document.getElementById("calendarTopic").focus();
-          return;
-        }
-
         // توليد محتوى المعاينة
         generatePreviewContent();
         // فتح الـ modal
@@ -751,7 +946,45 @@
 
       // توليد محتوى المعاينة
       function generatePreviewContent() {
-        const calendarTopic = document.getElementById("calendarTopic").value;
+        const eduInfoText =
+          document.getElementById("eduInfo").value ||
+          "الإدارة العامة للتعليم\nبالمنطقة\nمدرسة";
+        const eduInfoLines = eduInfoText.split("\n");
+        const eduInfo = eduInfoLines[0] || "الإدارة العامة للتعليم";
+        const region = eduInfoLines[1] || "بالمنطقة";
+        const schoolName = eduInfoLines[2] || "مدرسة";
+        const sessionTopic =
+          document.getElementById("sessionTopic").value || "موضوع الجلسة";
+        const sessionNumber =
+          document.getElementById("sessionNumber").value || "الجلسة الأولى";
+        const dayDate =
+          document.getElementById("dayDate").value || "الأحد - ١٤٤٧/١٢/١٢هـ";
+        const devTools =
+          document.getElementById("devTools").value || "التدريب المصغر";
+        const location =
+          document.getElementById("location").value ||
+          "صالة الاجتماعات بالمدرسة";
+        const targetAudience =
+          document.getElementById("targetAudience").value ||
+          "معلمو تخصص الرياضيات";
+        const nextSession =
+          document.getElementById("nextSession").value || "يحدد لا حقاً";
+        const objectives =
+          document.getElementById("objectives").value ||
+          "١. الهدف الأول.\n\n٢. الهدف الثاني.\n\n٣. الهدف الثالث.\n\n٤. الهدف الرابع.\n\n٥. الهدف الخامس.";
+        const outcomes =
+          document.getElementById("outcomes").value ||
+          "١. النتيجة الأولى.\n\n٢. النتيجة الثانية.\n\n٣. النتيجة الثالثة.\n\n٤. النتيجة الرابعة.\n\n٥. النتيجة الخامسة.";
+        const attendees =
+          document.getElementById("attendees").value ||
+          "المعلم الأول\n\nالمعلم الثاني\n\nالمعلم الثالث\n\nالمعلم الرابع";
+        const directorSignature =
+          document.getElementById("directorSignature").value ||
+          "مدير المدرسة\nاسم المدير";
+        const teacherSignature =
+          document.getElementById("teacherSignature").value ||
+          "المعلم المنفذ\nاسم المعلم";
+
         const previewContainer = document.getElementById(
           "previewTemplateContent"
         );
@@ -764,18 +997,145 @@
                 class="w-[300px] h-[300px] flex mx-auto rounded-full overflow-hidden items-center justify-center shadow-md mb-8"
               >
                 <img
-                  src="./assets/imgs/card7/calendar-edu-1447-1.webp"
+                  src="../assets/imgs/card5/weekly-plans (1).webp"
                   alt="img-title"
                   class="w-full h-full object-cover rounded-full"
                 />
               </div>
-              <h1 class="text-4xl text-center mb-4">التقويم الدراسي ف 2 عام 1447هـ 1448هـ</h1>
+              <h1 class="text-4xl text-center mb-4">تقرير جلسات مجتمعات التعلم المهنية</h1>
               <p class="text-gray-700 my-4 text-center text-xl">
-                تقويم دراسي وتوزيع المهام للفصل الدراسي الثاني عام 1447هـ 2025 2026
+                نموذج لإنشاء تقرير جلسات مجتمعات التعلم المهنية من جوالك مباشرة
               </p>
-              <div class="mt-8 mb-4">
-                <div class="bg-gray-50 border border-gray-300 rounded-lg p-4 text-lg whitespace-pre-line">
-                  ${calendarTopic}
+              
+              <div class="mt-8 bg-white border border-gray-300 rounded-lg p-6">
+                <!-- القسم العلوي: إدارة التعليم -->
+                <div class="mb-6">
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    إدارة التعليم، اسم المدرسة
+                  </label>
+                  <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600">
+                    <p>${eduInfo}</p>
+                    <p>${region}</p>
+                    <p class="font-bold">${schoolName}</p>
+                  </div>
+                </div>
+
+                <div class="mb-6">
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    موضوع الجلسة:
+                  </label>
+                  <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
+                    ${sessionTopic}
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-3 gap-4 mb-6">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                      رقم الجلسة:
+                    </label>
+                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
+                      ${sessionNumber}
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                      أوعية وأدوات التطوير المهني *:
+                    </label>
+                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
+                      ${devTools}
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                      اليوم والتاريخ:
+                    </label>
+                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
+                      ${dayDate}
+                    </div>
+                  </div>
+                </div>
+                <div class="mb-6">
+                  <p class="text-sm text-gray-500">
+                    * التدريب المصغر / تدريب الأقران / البحث الإجرائي / الورش التربوية / اللقاءات والاجتماعات .. أخرى
+                  </p>
+                </div>
+
+                <div class="grid grid-cols-3 gap-4 mb-6">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                      مكان التنفيذ:
+                    </label>
+                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
+                      ${location}
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                      الفئة المستهدفة:
+                    </label>
+                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
+                      ${targetAudience}
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                      موعد الجلسة القادمة:
+                    </label>
+                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
+                      ${nextSession}
+                    </div>
+                  </div>
+                </div>
+
+                <!-- أهداف الجلسة -->
+                <div class="mb-6">
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    أهداف الجلسة:
+                  </label>
+                  <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600 whitespace-pre-line min-h-[120px]">
+                    ${objectives}
+                  </div>
+                </div>
+
+                <!-- نتائج الجلسة -->
+                <div class="mb-6">
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    نتائج الجلسة:
+                  </label>
+                  <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600 whitespace-pre-line min-h-[120px]">
+                    ${outcomes}
+                  </div>
+                </div>
+
+                <!-- أسماء الحضور -->
+                <div class="mb-6">
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    أسماء الحضور
+                  </label>
+                  <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600 whitespace-pre-line min-h-[100px]">
+                    ${attendees}
+                  </div>
+                </div>
+
+                <!-- التوقيعات -->
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                      التوقيع الأول:
+                    </label>
+                    <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600 whitespace-pre-line min-h-[60px]">
+                      ${directorSignature}
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                      التوقيع الثاني:
+                    </label>
+                    <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600 whitespace-pre-line min-h-[60px]">
+                      ${teacherSignature}
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -825,7 +1185,7 @@
           scale: 2,
         }).then((canvas) => {
           const link = document.createElement("a");
-          link.download = "calendar-preview.png";
+          link.download = "plc-session-report-preview.png";
           link.href = canvas.toDataURL();
           link.click();
         });
@@ -845,7 +1205,7 @@
           const imgWidth = 210;
           const imgHeight = (canvas.height * imgWidth) / canvas.width;
           pdf.addImage(imgData, "JPEG", 0, 0, imgWidth, imgHeight);
-          pdf.save("calendar-preview.pdf");
+          pdf.save("plc-session-report-preview.pdf");
         });
       }
     </script>

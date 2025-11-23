@@ -7,8 +7,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
     <title>
-      التقويم الدراسي ف 1 عام 1447ه - وتوزيع الأسابيع والمهام جاهز للتحميل
-      والطباعة
+      استمارة وتقرير تبادل الزيارات بين المعلمين - جاهز للتحميل والطباعة
     </title>
     <style>
       /* Modal Styles */
@@ -226,7 +225,7 @@
           <li class="navbar-item">
             <a href="#" class="navbar-link">
               <div class="w-[100px]">
-                <img src="./assets/imgs/edu-forms-logo.svg" alt="" />
+                <img src="../assets/imgs/edu-forms-logo.svg" alt="" />
               </div>
             </a>
           </li>
@@ -499,92 +498,222 @@
             class="w-[300px] h-[300px] flex mx-auto rounded-full overflow-hidden items-center justify-center shadow-md mb-8"
           >
             <img
-              src="./assets/imgs/card7/calendar-edu-1447-2.webp"
+              src="../assets/imgs/card5/weekly-plans (1).webp"
               alt="img-title"
               class="w-full h-full object-cover rounded-full"
             />
           </div>
           <h1 class="text-4xl text-center">
-            التقويم الدراسي للمنطقة الغربية ف 2 عام 1447هـ 1448هـ
+            استمارة وتقرير تبادل الزيارات بين المعلمين
           </h1>
           <p class="text-gray-700 my-4 text-center text-xl">
-            تقويم دراسي وتوزيع المهام للمنطقة الغربية (مكة - المدينة - جدة -
-            الطائف) للفصل الدراسي الثاني عام 1447هـ 1448هـ 2025 2026
+            نموذج لإنشاء استمارة وتقرير تبادل الزيارات بين المعلمين من جوالك مباشرة
           </p>
 
-          <!-- موضوع التقويم -->
-          <div class="mt-8 mb-4">
-            <label class="block text-lg font-medium text-gray-800 mb-2">
-              موضوع التقويم - مثال: مهام مادة .....
-            </label>
-            <textarea
-              id="calendarTopic"
-              class="w-full border border-gray-300 rounded-lg p-4 text-lg resize-none focus:outline-none focus:ring-2 focus:ring-green-500"
-              rows="4"
-            >
-توزيع مهام
-مادة [اسم المادة]
-            </textarea>
-          </div>
+          <!-- نموذج الاستمارة -->
+          <div class="mt-8 bg-white border border-gray-300 rounded-lg p-6">
+            <!-- القسم العلوي: إدارة التعليم -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                إدارة التعليم، اسم المدرسة
+              </label>
+              <textarea
+                id="eduInfo"
+                class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                rows="3"
+              >الإدارة العامة للتعليم
+بالمنطقة
+مدرسة</textarea>
+            </div>
 
-          <!-- زر المعاينة -->
-          <div class="mb-8">
-            <button
-              onclick="previewTemplate()"
-              class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition-colors"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                />
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                />
-              </svg>
-              <span>معاينة</span>
-            </button>
-          </div>
+            <!-- قسم أسماء المعلمين الزائرين -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                اسماء المعلمين الزائرين
+              </label>
+              <textarea
+                id="visitingTeachers"
+                class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
+                rows="5"
+              >اسم المعلم الأول
+اسم المعلم الثاني
+اسم المعلم الثالث</textarea>
+            </div>
 
-          <!-- أكثر الروابط استخداماً -->
-          <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6 mb-8">
-            <h2 class="text-lg font-bold text-gray-800 mb-4">
-              أكثر الروابط استخداماً
-            </h2>
-            <div class="grid grid-cols-2 gap-4">
-              <!-- الصف الأول -->
+            <!-- الأعمدة الثلاثة -->
+            <div class="grid grid-cols-3 gap-4">
+              <!-- العمود الأيمن -->
+              <div class="space-y-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    اسم المعلم/ة المَزُورَة:
+                  </label>
+                  <input
+                    type="text"
+                    id="visitedTeacher"
+                    class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    value="اسم المعلم"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    الصف / الفصل:
+                  </label>
+                  <input
+                    type="text"
+                    id="gradeClass"
+                    class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    value="الصف"
+                  />
+                </div>
+              </div>
+
+              <!-- العمود الأوسط -->
+              <div class="space-y-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    المادة:
+                  </label>
+                  <input
+                    type="text"
+                    id="subject"
+                    class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    value="مادة"
+                  />
+                </div>
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    الفصل الدراسي:
+                  </label>
+                  <input
+                    type="text"
+                    id="semester"
+                    class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    value="الأول"
+                  />
+                </div>
+              </div>
+
+              <!-- العمود الأيسر -->
+              <div class="space-y-4">
+                <div>
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    اليوم والتاريخ:
+                  </label>
+                  <input
+                    type="text"
+                    id="dayDate"
+                    class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    value="الأحد - ١٤٤٧/١٢/١٢هـ"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- الوحدة وعنوان الدرس - full width -->
+            <div class="mt-6 mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                الوحدة وعنوان الدرس:
+              </label>
+              <input
+                type="text"
+                id="unitLesson"
+                class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value="عنوان الدرس"
+              />
+            </div>
+
+            <!-- قسم أهداف الزيارة -->
+            <div class="mt-6 mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                أهداف الزيارة:
+              </label>
+              <div class="bg-white border border-gray-300 rounded-md p-4 text-gray-600">
+                <ol class="list-decimal list-inside space-y-2">
+                  <li>تبادل الخبرات التربوية بين المعلمين.</li>
+                  <li>الاطلاع على أساليب واستراتيجيات التدريس المختلفة.</li>
+                  <li>تحسين الأداء التدريسي من خلال الاستفادة من الممارسات الناجحة.</li>
+                  <li>تعزيز التعاون والتواصل بين المعلمين في بيئة العمل.</li>
+                  <li>متابعة طرق تفاعل الطلاب مع الدروس واستراتيجيات التقييم.</li>
+                </ol>
+              </div>
+            </div>
+
+            <!-- قسم اسم المدير/ة -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                اسم المدير/ة:
+              </label>
+              <div class="bg-white border border-gray-300 rounded-md p-3 text-gray-600">
+                <p class="mb-2">مدير المدرسة</p>
+                <input
+                  type="text"
+                  id="directorName"
+                  class="w-full bg-transparent border-none p-0 text-gray-600 focus:outline-none"
+                  value="اسم المدير"
+                />
+              </div>
+            </div>
+
+            <!-- زر المعاينة -->
+            <div class="mt-8">
               <button
-                class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
+                onclick="previewTemplate()"
+                class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition-colors"
               >
-                أفضل نموذج لتوثيق برنامج أو نشاط (المطور)
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                  />
+                </svg>
+                <span>معاينة</span>
               </button>
-              <button
-                class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
-              >
-                تقرير جاهز لليوم العالمي للفيزياء الطبية
-              </button>
-              <!-- الصف الثاني -->
-              <button
-                class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
-              >
-                نموذج تنفيذ استراتيجية مختصرة
-              </button>
-              <button
-                class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
-              >
-                خطط علاجية وإثرائية
-              </button>
+            </div>
+
+            <!-- أكثر الروابط استخداماً -->
+            <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6 mb-8 mt-8">
+              <h2 class="text-lg font-bold text-gray-800 mb-4">
+                أكثر الروابط استخداماً
+              </h2>
+              <div class="grid grid-cols-2 gap-4">
+                <!-- الصف الأول -->
+                <button
+                  class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
+                >
+                  أفضل نموذج لتوثيق برنامج أو نشاط (المطور)
+                </button>
+                <button
+                  class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
+                >
+                  تقرير جاهز لليوم العالمي للفيزياء الطبية
+                </button>
+                <!-- الصف الثاني -->
+                <button
+                  class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
+                >
+                  نموذج تنفيذ استراتيجية مختصرة
+                </button>
+                <button
+                  class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
+                >
+                  خطط علاجية وإثرائية
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -599,7 +728,7 @@
             <span class="text-2xl text-gray-700 font-medium"
               >عدد الخدمات المنفذة:</span
             >
-            <span class="text-2xl font-medium text-gray-800">2186140</span>
+            <span class="text-2xl font-medium text-gray-800">2186068</span>
           </div>
         </div>
       </div>
@@ -663,7 +792,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h2 class="text-2xl font-bold text-gray-800">
-            معاينة التقويم الدراسي
+            معاينة استمارة تبادل الزيارات
           </h2>
           <button class="modal-close" onclick="closePreviewModal()">
             &times;
@@ -735,15 +864,6 @@
 
       // دالة المعاينة
       function previewTemplate() {
-        const calendarTopic = document.getElementById("calendarTopic").value;
-
-        // التحقق من أن الموضوع غير فارغ
-        if (!calendarTopic.trim()) {
-          alert("يرجى إدخال موضوع التقويم");
-          document.getElementById("calendarTopic").focus();
-          return;
-        }
-
         // توليد محتوى المعاينة
         generatePreviewContent();
         // فتح الـ modal
@@ -752,7 +872,20 @@
 
       // توليد محتوى المعاينة
       function generatePreviewContent() {
-        const calendarTopic = document.getElementById("calendarTopic").value;
+        const eduInfoText = document.getElementById("eduInfo").value || "الإدارة العامة للتعليم\nبالمنطقة\nمدرسة";
+        const eduInfoLines = eduInfoText.split('\n');
+        const eduInfo = eduInfoLines[0] || "الإدارة العامة للتعليم";
+        const region = eduInfoLines[1] || "بالمنطقة";
+        const schoolName = eduInfoLines[2] || "مدرسة";
+        const visitingTeachers = document.getElementById("visitingTeachers").value || "اسم المعلم الأول\nاسم المعلم الثاني\nاسم المعلم الثالث";
+        const visitedTeacher = document.getElementById("visitedTeacher").value || "اسم المعلم";
+        const gradeClass = document.getElementById("gradeClass").value || "الصف";
+        const unitLesson = document.getElementById("unitLesson").value || "عنوان الدرس";
+        const subject = document.getElementById("subject").value || "مادة";
+        const semester = document.getElementById("semester").value || "الأول";
+        const dayDate = document.getElementById("dayDate").value || "الأحد - ١٤٤٧/١٢/١٢هـ";
+        const directorName = document.getElementById("directorName").value || "اسم المدير";
+
         const previewContainer = document.getElementById(
           "previewTemplateContent"
         );
@@ -765,18 +898,129 @@
                 class="w-[300px] h-[300px] flex mx-auto rounded-full overflow-hidden items-center justify-center shadow-md mb-8"
               >
                 <img
-                  src="./assets/imgs/card7/calendar-edu-1447-1.webp"
+                  src="../assets/imgs/card5/weekly-plans (1).webp"
                   alt="img-title"
                   class="w-full h-full object-cover rounded-full"
                 />
               </div>
-              <h1 class="text-4xl text-center mb-4">التقويم الدراسي للمنطقة الغربية ف 2 عام 1447هـ 1448هـ</h1>
+              <h1 class="text-4xl text-center mb-4">استمارة وتقرير تبادل الزيارات بين المعلمين</h1>
               <p class="text-gray-700 my-4 text-center text-xl">
-                تقويم دراسي وتوزيع المهام للمنطقة الغربية (مكة - المدينة - جدة - الطائف) للفصل الدراسي الثاني عام 1447هـ 1448هـ 2025 2026
+                نموذج لإنشاء استمارة وتقرير تبادل الزيارات بين المعلمين من جوالك مباشرة
               </p>
-              <div class="mt-8 mb-4">
-                <div class="bg-gray-50 border border-gray-300 rounded-lg p-4 text-lg whitespace-pre-line">
-                  ${calendarTopic}
+              
+              <div class="mt-8 bg-white border border-gray-300 rounded-lg p-6">
+                <!-- القسم العلوي: إدارة التعليم -->
+                <div class="mb-6">
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    إدارة التعليم، اسم المدرسة
+                  </label>
+                  <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600">
+                    <p>${eduInfo}</p>
+                    <p>${region}</p>
+                    <p class="font-bold">${schoolName}</p>
+                  </div>
+                </div>
+
+                <!-- قسم أسماء المعلمين الزائرين -->
+                <div class="mb-6">
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    اسماء المعلمين الزائرين
+                  </label>
+                  <div class="w-full border border-gray-300 rounded-md p-3 text-gray-600 whitespace-pre-line min-h-[120px]">
+                    ${visitingTeachers}
+                  </div>
+                </div>
+
+                <!-- الأعمدة الثلاثة -->
+                <div class="grid grid-cols-3 gap-4">
+                  <!-- العمود الأيمن -->
+                  <div class="space-y-4">
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700 mb-2">
+                        اسم المعلم/ة المَزُورَة:
+                      </label>
+                      <div class="w-full border border-gray-300 rounded-md p-2 text-gray-600 bg-gray-50">
+                        ${visitedTeacher}
+                      </div>
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700 mb-2">
+                        الصف / الفصل:
+                      </label>
+                      <div class="w-full border border-gray-300 rounded-md p-2 text-gray-600 bg-gray-50">
+                        ${gradeClass}
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- العمود الأوسط -->
+                  <div class="space-y-4">
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700 mb-2">
+                        المادة:
+                      </label>
+                      <div class="w-full border border-gray-300 rounded-md p-2 text-gray-600 bg-gray-50">
+                        ${subject}
+                      </div>
+                    </div>
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700 mb-2">
+                        الفصل الدراسي:
+                      </label>
+                      <div class="w-full border border-gray-300 rounded-md p-2 text-gray-600 bg-gray-50">
+                        ${semester}
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- العمود الأيسر -->
+                  <div class="space-y-4">
+                    <div>
+                      <label class="block text-sm font-medium text-gray-700 mb-2">
+                        اليوم والتاريخ:
+                      </label>
+                      <div class="w-full border border-gray-300 rounded-md p-2 text-gray-600 bg-gray-50">
+                        ${dayDate}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- الوحدة وعنوان الدرس - full width -->
+                <div class="mt-6 mb-6">
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    الوحدة وعنوان الدرس:
+                  </label>
+                  <div class="w-full border border-gray-300 rounded-md p-2 text-gray-600 bg-gray-50">
+                    ${unitLesson}
+                  </div>
+                </div>
+
+                <!-- قسم أهداف الزيارة -->
+                <div class="mt-6 mb-6">
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    أهداف الزيارة:
+                  </label>
+                  <div class="bg-white border border-gray-300 rounded-md p-4 text-gray-600">
+                    <ol class="list-decimal list-inside space-y-2">
+                      <li>تبادل الخبرات التربوية بين المعلمين.</li>
+                      <li>الاطلاع على أساليب واستراتيجيات التدريس المختلفة.</li>
+                      <li>تحسين الأداء التدريسي من خلال الاستفادة من الممارسات الناجحة.</li>
+                      <li>تعزيز التعاون والتواصل بين المعلمين في بيئة العمل.</li>
+                      <li>متابعة طرق تفاعل الطلاب مع الدروس واستراتيجيات التقييم.</li>
+                    </ol>
+                  </div>
+                </div>
+
+                <!-- قسم اسم المدير/ة -->
+                <div class="mb-6">
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    اسم المدير/ة:
+                  </label>
+                  <div class="bg-white border border-gray-300 rounded-md p-3 text-gray-600">
+                    <p class="mb-2">مدير المدرسة</p>
+                    <p>${directorName}</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -826,7 +1070,7 @@
           scale: 2,
         }).then((canvas) => {
           const link = document.createElement("a");
-          link.download = "calendar-preview.png";
+          link.download = "visit-report-preview.png";
           link.href = canvas.toDataURL();
           link.click();
         });
@@ -846,7 +1090,7 @@
           const imgWidth = 210;
           const imgHeight = (canvas.height * imgWidth) / canvas.width;
           pdf.addImage(imgData, "JPEG", 0, 0, imgWidth, imgHeight);
-          pdf.save("calendar-preview.pdf");
+          pdf.save("visit-report-preview.pdf");
         });
       }
     </script>
