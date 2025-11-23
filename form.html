@@ -2,6 +2,7 @@
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://cdn.tailwindcss.com"></script>
     <title>نموذج إدخال البيانات</title>
 
@@ -25,10 +26,420 @@
         margin-top: 4px;
         display: none;
       }
+          /* Navbar Styles */
+      .navbar {
+        background-color: #f3f4f6;
+        padding: 12px 0;
+        border-bottom: 1px solid #e5e7eb;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        width: 100%;
+        margin: 0;
+      }
+      .navbar-container {
+        width: 100%;
+        margin: 0;
+        padding: 0 16px;
+      }
+      .navbar-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 8px;
+      }
+      .navbar-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #374151;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .navbar-icon {
+        width: 20px;
+        height: 20px;
+        color: #3b82f6;
+        flex-shrink: 0;
+      }
+      .navbar-menu {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 12px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .navbar-item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .navbar-link {
+        color: #374151;
+        text-decoration: none;
+        font-size: 18px;
+        padding: 4px 6px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        transition: color 0.2s;
+        white-space: nowrap;
+      }
+      .navbar-link:hover {
+        color: #111827;
+      }
+      .dropdown-icon {
+        width: 10px;
+        height: 10px;
+        color: #374151;
+        margin-right: 4px;
+      }
+      .navbar-separator {
+        color: #9ca3af;
+        margin: 0 4px;
+      }
+      /* Mobile Menu Toggle */
+      .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: #374151;
+        cursor: pointer;
+        padding: 8px;
+      }
+      .mobile-menu {
+        display: none;
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px 0;
+        border-top: 1px solid #e5e7eb;
+        margin-top: 8px;
+      }
+      .mobile-menu.active {
+        display: flex;
+      }
+      /* Responsive Styles */
+      @media (max-width: 1200px) {
+        .navbar-menu {
+          gap: 6px 12px;
+        }
+        .navbar-link {
+          font-size: 13px;
+          padding: 5px 6px;
+        }
+      }
+      @media (max-width: 768px) {
+        .navbar-container {
+          padding: 0 12px;
+        }
+        .mobile-menu-toggle {
+          display: block;
+        }
+        .navbar-menu {
+          display: none;
+        }
+        .navbar-menu.mobile-active {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+          padding: 12px 0;
+        }
+        .navbar-item {
+          width: 100%;
+        }
+        .navbar-link {
+          width: 100%;
+          padding: 10px 8px;
+        }
+        .navbar-separator {
+          display: none;
+        }
+      }
+
     </style>
   </head>
 
   <body class="bg-gray-100 py-10">
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <div class="navbar-header">
+          <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            ☰
+          </button>
+        </div>
+        <ul class="navbar-menu" id="navbarMenu">
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              <div class="w-[100px]">
+                <img src="./assets/imgs/edu-forms-logo.svg" alt="" />
+              </div>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              نماذج وتقارير توثيق
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              شواهد تقييم الأداء جاهزة
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              أدوات تحليل النتائج
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              الخطة الأسبوعية
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              تقرير إنجاز المعلم اليومي والأسبوعي
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              التقاويم الدراسية وتوزيع الأسابيع
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              شواهد التفاعل مع المجتمع المهني
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              شواهد أداء الواجبات الوظيفية
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              تقارير التواصل مع أولياء الأمور
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              خطط علاجية وإثرائية
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              استبيانات أنماط التعلم
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              شهادات شكر وتقدير
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              شهادات متنوعة
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              لوحات وبنرات
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              أدوات
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
     <div class="max-w-4xl mx-auto bg-white shadow-xl border rounded-2xl p-8">
       <h2
         class="text-3xl font-bold text-[var(--secondary-color)] text-center mb-10"
@@ -36,7 +447,7 @@
         أدخل بيانات التقرير
       </h2>
 
-      <form id="reportForm" class="grid grid-cols-2 gap-6">
+      <form id="reportForm" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div class="col-span-2">
           <label>إدارة التعليم:</label>
           <input name="edu" class="w-full border p-3 rounded-md" />
@@ -149,6 +560,13 @@
     </div>
 
     <script>
+      // دالة تبديل القائمة على الموبايل
+      function toggleMobileMenu() {
+        const menu = document.getElementById("navbarMenu");
+        menu.classList.toggle("mobile-active");
+      }
+
+
       async function preview() {
         const form = document.querySelector("#reportForm");
         const fields = form.querySelectorAll("input, textarea");

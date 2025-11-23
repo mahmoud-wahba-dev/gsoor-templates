@@ -202,11 +202,13 @@
         top: 0;
         z-index: 100;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        width: 100%;
+        margin: 0;
       }
       .navbar-container {
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 0 20px;
+        width: 100%;
+        margin: 0;
+        padding: 0 16px;
       }
       .navbar-header {
         display: flex;
@@ -300,7 +302,7 @@
       }
       @media (max-width: 768px) {
         .navbar-container {
-          padding: 0 16px;
+          padding: 0 12px;
         }
         .mobile-menu-toggle {
           display: block;
@@ -341,18 +343,9 @@
         <ul class="navbar-menu" id="navbarMenu">
           <li class="navbar-item">
             <a href="#" class="navbar-link">
-              <svg
-                class="navbar-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4z"
-                />
-                <path d="M8 2v4a2 2 0 002 2h4" />
-              </svg>
-              نماذج تعليمية
+              <div class="w-[100px]">
+                <img src="./assets/imgs/edu-forms-logo.svg" alt="" />
+              </div>
             </a>
           </li>
           <span class="navbar-separator">-</span>

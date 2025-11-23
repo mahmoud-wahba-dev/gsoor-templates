@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+    <title>
+      إنشاء وتخصيص شهادة شكر وتقدير للطلاب والمعلمين شهادة شكر وتقدير - اليوم العالمي للطفل - جاهز للتحميل
+      والطباعة
+    </title>
+    <style>
+      /* Modal Styles */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 1000;
+        overflow-y: auto;
+        padding: 20px;
+      }
+      .modal-overlay.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .modal-content {
+        background: white;
+        border-radius: 16px;
+        max-width: 90%;
+        width: 100%;
+        max-width: 1200px;
+        position: relative;
+        margin: auto;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        border-bottom: 1px solid #e5e7eb;
+      }
+      .modal-body {
+        padding: 20px;
+        max-height: calc(100vh - 200px);
+        overflow-y: auto;
+      }
+      .modal-close {
+        background: none;
+        border: none;
+        font-size: 28px;
+        cursor: pointer;
+        color: #6b7280;
+        padding: 0;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.2s;
+      }
+      .modal-close:hover {
+        background-color: #f3f4f6;
+        color: #111827;
+      }
+      .preview-template {
+        background: white;
+        padding: 40px;
+        border: 2px solid #e5e7eb;
+        border-radius: 12px;
+      }
+      .error-message {
+        color: #dc2626;
+        font-size: 14px;
+        margin-top: 4px;
+        display: none;
+      }
+      .error-message.show {
+        display: block;
+      }
+      .field-error {
+        border-color: #dc2626 !important;
+        border-width: 2px !important;
+      }
+      .field-error:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+      }
+          /* Navbar Styles */
+      .navbar {
+        background-color: #f3f4f6;
+        padding: 12px 0;
+        border-bottom: 1px solid #e5e7eb;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        width: 100%;
+        margin: 0;
+      }
+      .navbar-container {
+        width: 100%;
+        margin: 0;
+        padding: 0 16px;
+      }
+      .navbar-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 8px;
+      }
+      .navbar-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #374151;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .navbar-icon {
+        width: 20px;
+        height: 20px;
+        color: #3b82f6;
+        flex-shrink: 0;
+      }
+      .navbar-menu {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 8px 12px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .navbar-item {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+      .navbar-link {
+        color: #374151;
+        text-decoration: none;
+        font-size: 18px;
+        padding: 4px 6px;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        transition: color 0.2s;
+        white-space: nowrap;
+      }
+      .navbar-link:hover {
+        color: #111827;
+      }
+      .dropdown-icon {
+        width: 10px;
+        height: 10px;
+        color: #374151;
+        margin-right: 4px;
+      }
+      .navbar-separator {
+        color: #9ca3af;
+        margin: 0 4px;
+      }
+      /* Mobile Menu Toggle */
+      .mobile-menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        font-size: 24px;
+        color: #374151;
+        cursor: pointer;
+        padding: 8px;
+      }
+      .mobile-menu {
+        display: none;
+        flex-direction: column;
+        gap: 8px;
+        padding: 12px 0;
+        border-top: 1px solid #e5e7eb;
+        margin-top: 8px;
+      }
+      .mobile-menu.active {
+        display: flex;
+      }
+      /* Responsive Styles */
+      @media (max-width: 1200px) {
+        .navbar-menu {
+          gap: 6px 12px;
+        }
+        .navbar-link {
+          font-size: 13px;
+          padding: 5px 6px;
+        }
+      }
+      @media (max-width: 768px) {
+        .navbar-container {
+          padding: 0 12px;
+        }
+        .mobile-menu-toggle {
+          display: block;
+        }
+        .navbar-menu {
+          display: none;
+        }
+        .navbar-menu.mobile-active {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 8px;
+          padding: 12px 0;
+        }
+        .navbar-item {
+          width: 100%;
+        }
+        .navbar-link {
+          width: 100%;
+          padding: 10px 8px;
+        }
+        .navbar-separator {
+          display: none;
+        }
+      }
+
+    </style>
+  </head>
+  <body>
+    <!-- Navbar -->
+    <nav class="navbar">
+      <div class="navbar-container">
+        <div class="navbar-header">
+          <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+            ☰
+          </button>
+        </div>
+        <ul class="navbar-menu" id="navbarMenu">
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              <div class="w-[100px]">
+                <img src="./assets/imgs/edu-forms-logo.svg" alt="" />
+              </div>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              نماذج وتقارير توثيق
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              شواهد تقييم الأداء جاهزة
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              أدوات تحليل النتائج
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              الخطة الأسبوعية
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              تقرير إنجاز المعلم اليومي والأسبوعي
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              التقاويم الدراسية وتوزيع الأسابيع
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              شواهد التفاعل مع المجتمع المهني
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              شواهد أداء الواجبات الوظيفية
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              تقارير التواصل مع أولياء الأمور
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              خطط علاجية وإثرائية
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              استبيانات أنماط التعلم
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              شهادات شكر وتقدير
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              شهادات متنوعة
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              لوحات وبنرات
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+          <span class="navbar-separator">-</span>
+          <li class="navbar-item">
+            <a href="#" class="navbar-link">
+              أدوات
+              <svg
+                class="dropdown-icon"
+                fill="currentColor"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="max-w-6xl mx-auto">
+      <div
+        class="max-w-4xl mx-auto border-4 rounded-2xl shadow-xl overflow-hidden mb-8 p-4"
+        id="template"
+      >
+        <div class="bg-white rounded-xl p-6">
+          <div
+            class="w-[300px] h-[300px] flex mx-auto rounded-full overflow-hidden items-center justify-center shadow-md mb-8"
+          >
+            <img
+              src="./assets/imgs/card13/appreciation-certificate-world-children-day.webp"
+              alt="img-title"
+              class="w-full h-full object-cover rounded-full"
+            />
+          </div>
+          <h1 class="text-3xl text-center">
+            إنشاء شهادات شكر وتقدير للطلاب والمعلمين شهادة شكر وتقدير - اليوم العالمي للطفل
+          </h1>
+          <p class="text-gray-700 my-4 text-center text-xl">
+            إنشاء وتخصيص شهادة شكر وتقدير للطلاب والمعلمين شهادة شكر وتقدير - اليوم العالمي للطفل مع إمكانية
+            تحرير وإضافة جميع البيانات الخاصة بك، بطريقة سهلة واحترافية توفر
+            عليه الوقت والجهد ويتم حفظ الملف النهائي بتنسيق صورة أو ملف pdf
+            لسهولة الطباعة بجودة عالية وإعادة الاستخدام في تقارير ونماذج أخرى.
+          </p>
+
+          <!-- نموذج الاستمارة -->
+          <div class="mt-8 bg-white border border-gray-300 rounded-lg p-6">
+            <div class="space-y-6">
+              <!-- اسم المدرسة -->
+              <div>
+                <label class="block text-gray-700 font-medium mb-2">
+                  اسم المدرسة
+                </label>
+                <input
+                  type="text"
+                  id="schoolName"
+                  value="يسر إدارة متوسطة أسامة بن زيد"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+
+              <!-- جملة التقدير أو الثناء -->
+              <div>
+                <label class="block text-gray-700 font-medium mb-2">
+                  جملة التقدير أو الثناء
+                </label>
+                <input
+                  type="text"
+                  id="appreciationPhrase"
+                  value="أن تتقدم بالشكر والتقدير"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+
+              <!-- اسم الطالب/ـة -->
+              <div>
+                <label class="block text-gray-700 font-medium mb-2">
+                  اسم الطالب/ـة
+                </label>
+                <input
+                  type="text"
+                  id="studentName"
+                  value="للطالب محمد بن فيصل السلطان"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                />
+              </div>
+
+              <!-- نص الشهادة -->
+              <div>
+                <label class="block text-gray-700 font-medium mb-2">
+                  نص الشهادة
+                </label>
+                <textarea
+                  id="certificateText"
+                  rows="4"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                >وذلك لتميزه وتفوقه الدراسي وحسن أخلاقه وسلوكه، في الصف الأول متوسط الفصل الثاني لعام ١٤٤٦هـ</textarea>
+              </div>
+
+              <!-- وظيفة واسم التوقيع الأول -->
+              <div>
+                <label class="block text-gray-700 font-medium mb-2">
+                  وظيفة واسم التوقيع الأول
+                </label>
+                <textarea
+                  id="firstSignature"
+                  rows="4"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                >المرشد الطلابي
+محمد بن خالد</textarea>
+              </div>
+
+              <!-- وظيفة واسم التوقيع الثاني -->
+              <div>
+                <label class="block text-gray-700 font-medium mb-2">
+                  وظيفة واسم التوقيع الثاني
+                </label>
+                <textarea
+                  id="secondSignature"
+                  rows="4"
+                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none"
+                >مدير المدرسة
+فيصل بن سلطان</textarea>
+              </div>
+            </div>
+          </div>
+
+          <!-- زر المعاينة -->
+          <div class="mb-8">
+            <button
+              onclick="previewTemplate()"
+              class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition-colors"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="h-5 w-5"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                />
+              </svg>
+              <span>معاينة</span>
+            </button>
+          </div>
+
+          <!-- أكثر الروابط استخداماً -->
+          <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6 mb-8">
+            <h2 class="text-lg font-bold text-gray-800 mb-4">
+              أكثر الروابط استخداماً
+            </h2>
+            <div class="grid grid-cols-2 gap-4">
+              <!-- الصف الأول -->
+              <button
+                class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
+              >
+                أفضل نموذج لتوثيق برنامج أو نشاط (المطور)
+              </button>
+              <button
+                class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
+              >
+                تقرير جاهز لليوم العالمي للفيزياء الطبية
+              </button>
+              <!-- الصف الثاني -->
+              <button
+                class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
+              >
+                نموذج تنفيذ استراتيجية مختصرة
+              </button>
+              <button
+                class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
+              >
+                خطط علاجية وإثرائية
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="max-w-4xl mx-auto bg-white rounded-xl p-6 mb-8 border shadow-lg"
+    >
+      <div class="space-y-4">
+        <div class="pb-4">
+          <div class="flex justify-between flex-col items-center">
+            <span class="text-2xl text-gray-700 font-medium"
+              >عدد الخدمات المنفذة:</span
+            >
+            <span class="text-2xl font-medium text-gray-800">2186090</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="max-w-4xl mx-auto bg-white rounded-xl p-6 mb-8 border shadow-lg"
+    >
+      <div class="space-y-4">
+        <div class="pb-4">
+          <div class="flex justify-between flex-col items-center">
+            <span class="text-gray-700 font-medium text-2xl"
+              >عدد سجلات شواهد تقيم الأداء المنفذة</span
+            >
+            <span class="text-2xl font-medium text-gray-800">6321</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="mt-12 border-t border-gray-300 pt-6 pb-8">
+      <div class="max-w-6xl mx-auto">
+        <div
+          class="flex flex-wrap justify-center items-center gap-4 text-gray-700 text-sm mb-4"
+        >
+          <a href="#" class="hover:text-green-600 transition">من نحن</a>
+          <span class="text-gray-400">|</span>
+          <a href="#" class="hover:text-green-600 transition">سياسة الخصوصية</a>
+          <span class="text-gray-400">|</span>
+          <a href="#" class="hover:text-green-600 transition"
+            >اتفاقية الاستخدام</a
+          >
+          <span class="text-gray-400">|</span>
+          <a
+            href="#"
+            class="hover:text-green-600 transition flex items-center gap-1"
+          >
+            تويتر
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-4 h-4"
+            >
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+              />
+            </svg>
+          </a>
+          <span class="text-gray-400">|</span>
+          <a href="#" class="hover:text-green-600 transition">اتصل بنا</a>
+        </div>
+        <div class="text-center text-gray-600 text-sm">
+          Gsoor.com, Inc 2025 ©
+        </div>
+      </div>
+    </footer>
+
+    <!-- Modal Popup للمعاينة -->
+    <div id="previewModal" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="text-2xl font-bold text-gray-800">
+            معاينة شهادة الشكر والتقدير
+          </h2>
+          <button class="modal-close" onclick="closePreviewModal()">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="previewTemplateContent" class="preview-template">
+            <!-- سيتم ملء المحتوى ديناميكياً -->
+          </div>
+          <div class="flex justify-center gap-4 mt-6">
+            <button
+              onclick="downloadImageFromModal()"
+              class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition flex items-center gap-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
+                />
+              </svg>
+              تحميل كصورة
+            </button>
+            <button
+              onclick="downloadPDFFromModal()"
+              class="bg-red-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-red-700 transition flex items-center gap-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
+                />
+              </svg>
+              تحميل PDF
+            </button>
+            <button
+              onclick="closePreviewModal()"
+              class="bg-gray-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-gray-700 transition"
+            >
+              إغلاق
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // دالة تبديل القائمة على الموبايل
+      function toggleMobileMenu() {
+        const menu = document.getElementById("navbarMenu");
+        menu.classList.toggle("mobile-active");
+      }
+
+
+      // دالة المعاينة
+      function previewTemplate() {
+        // توليد محتوى المعاينة
+        generatePreviewContent();
+        // فتح الـ modal
+        openPreviewModal();
+      }
+
+      // توليد محتوى المعاينة
+      function generatePreviewContent() {
+        const previewContainer = document.getElementById(
+          "previewTemplateContent"
+        );
+
+        // قراءة القيم من الحقول
+        const schoolName = document.getElementById("schoolName")?.value || "";
+        const appreciationPhrase = document.getElementById("appreciationPhrase")?.value || "";
+        const studentName = document.getElementById("studentName")?.value || "";
+        const certificateText = document.getElementById("certificateText")?.value || "";
+        const firstSignature = document.getElementById("firstSignature")?.value || "";
+        const secondSignature = document.getElementById("secondSignature")?.value || "";
+
+        // إنشاء HTML للمعاينة
+        const html = `
+          <div class="max-w-4xl mx-auto">
+            <div class="bg-white rounded-xl p-6">
+              <div
+                class="w-[300px] h-[300px] flex mx-auto rounded-full overflow-hidden items-center justify-center shadow-md mb-8"
+              >
+                <img
+                  src="./assets/imgs/card13/appreciation-certificate-world-children-day.webp"
+                  alt="img-title"
+                  class="w-full h-full object-cover rounded-full"
+                />
+              </div>
+              <h1 class="text-3xl text-center mb-4">إنشاء شهادات شكر وتقدير للطلاب والمعلمين شهادة شكر وتقدير - اليوم العالمي للطفل</h1>
+              
+              <div class="mt-8 space-y-6 text-right">
+                ${schoolName ? `<div class="text-2xl font-bold text-gray-800 mb-4">${schoolName}</div>` : ''}
+                
+                ${appreciationPhrase ? `<div class="text-xl text-gray-700 mb-6">${appreciationPhrase}</div>` : ''}
+                
+                ${studentName ? `<div class="text-xl text-gray-700 mb-6">${studentName}</div>` : ''}
+                
+                ${certificateText ? `<div class="text-lg text-gray-700 mb-8 leading-relaxed whitespace-pre-line">${certificateText}</div>` : ''}
+                
+                <div class="flex justify-between items-end mt-12">
+                  ${firstSignature ? `<div class="text-center">
+                    <div class="text-base text-gray-700 whitespace-pre-line mb-2">${firstSignature}</div>
+                  </div>` : ''}
+                  
+                  ${secondSignature ? `<div class="text-center">
+                    <div class="text-base text-gray-700 whitespace-pre-line mb-2">${secondSignature}</div>
+                  </div>` : ''}
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+
+        previewContainer.innerHTML = html;
+      }
+
+      // فتح الـ modal
+      function openPreviewModal() {
+        const modal = document.getElementById("previewModal");
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      // إغلاق الـ modal
+      function closePreviewModal() {
+        const modal = document.getElementById("previewModal");
+        modal.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+
+      // إغلاق الـ modal عند الضغط خارج المحتوى
+      document
+        .getElementById("previewModal")
+        ?.addEventListener("click", function (e) {
+          if (e.target === this) {
+            closePreviewModal();
+          }
+        });
+
+      // إغلاق الـ modal عند الضغط على ESC
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closePreviewModal();
+        }
+      });
+
+      // تحميل الصورة من الـ modal
+      function downloadImageFromModal() {
+        const previewContent = document.getElementById(
+          "previewTemplateContent"
+        );
+        html2canvas(previewContent, {
+          backgroundColor: "#ffffff",
+          scale: 2,
+        }).then((canvas) => {
+          const link = document.createElement("a");
+          link.download = "certificate-preview.png";
+          link.href = canvas.toDataURL();
+          link.click();
+        });
+      }
+
+      // تحميل PDF من الـ modal
+      function downloadPDFFromModal() {
+        const previewContent = document.getElementById(
+          "previewTemplateContent"
+        );
+        html2canvas(previewContent, {
+          backgroundColor: "#ffffff",
+          scale: 2,
+        }).then((canvas) => {
+          const imgData = canvas.toDataURL("image/jpeg");
+          const pdf = new jspdf.jsPDF("p", "mm", "a4");
+          const imgWidth = 210;
+          const imgHeight = (canvas.height * imgWidth) / canvas.width;
+          pdf.addImage(imgData, "JPEG", 0, 0, imgWidth, imgHeight);
+          pdf.save("certificate-preview.pdf");
+        });
+      }
+    </script>
+  </body>
+</html>
+
