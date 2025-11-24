@@ -256,7 +256,7 @@
           <li class="navbar-item">
             <a href="#" class="navbar-link">
               <div class="w-[100px]">
-                <img src="./assets/imgs/edu-forms-logo.svg" alt="" />
+                <img src="../assets/imgs/edu-forms-logo.svg" alt="" />
               </div>
             </a>
           </li>
@@ -529,15 +529,16 @@
             class="w-full max-w-[300px] h-[200px] sm:h-[250px] md:h-[300px] flex mx-auto rounded-full overflow-hidden items-center justify-center shadow-md mb-8"
           >
             <img
-              src="./assets/imgs/card12/questionnaire-vark-children.webp"
+              src="../assets/imgs/card12/questionnaire-vark-roster.webp"
               alt="img-title"
               class="w-full h-full object-cover rounded-full"
             />
           </div>
-          <h1 class="text-2xl sm:text-3xl md:text-4xl text-center">استبيان أنماط التعلم للأطفال</h1>
+          <h1 class="text-2xl sm:text-3xl md:text-4xl text-center">
+            كشف التصنيف ونسبة الطلاب حسب نمط التعلم
+          </h1>
           <p class="text-gray-700 my-4 text-center text-base sm:text-lg md:text-xl">
-            استبيان VARK مخصص للأطفال لتحديد نمط التعلم المفضل (بصري، سمعي،
-            قرائي، حركي)، أولياء الأمور يقومون بتعبئة الاستبيان
+            كشف لتحليل نتائح تصنيف الطلاب وحساب النسب حسب أنماط التعلم المختلفة
           </p>
 
           <!-- نموذج الاستمارة -->
@@ -737,7 +738,7 @@
             <span class="text-lg sm:text-xl md:text-2xl text-gray-700 font-medium"
               >عدد الخدمات المنفذة:</span
             >
-            <span class="text-lg sm:text-xl md:text-2xl font-medium text-gray-800">2188405</span>
+            <span class="text-lg sm:text-xl md:text-2xl font-medium text-gray-800">2188650</span>
           </div>
         </div>
       </div>
@@ -817,7 +818,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h2 class="text-lg sm:text-xl md:text-2xl font-bold text-gray-800">
-            معاينة استبيان أنماط التعلم للأطفال
+            معاينة كشف التصنيف ونسبة الطلاب حسب نمط التعلم
           </h2>
           <button class="modal-close" onclick="closePreviewModal()">
             &times;
@@ -1047,17 +1048,16 @@
                 class="w-full max-w-[300px] h-[200px] sm:h-[250px] md:h-[300px] flex mx-auto rounded-full overflow-hidden items-center justify-center shadow-md mb-8"
               >
                 <img
-                  src="./assets/imgs/card12/questionnaire-vark-children.webp"
+                  src="../assets/imgs/card12/questionnaire-vark-roster.webp"
                   alt="img-title"
                   class="w-full h-full object-cover rounded-full"
                 />
               </div>
               <h1 class="text-2xl sm:text-3xl md:text-4xl text-center mb-4">
-                استبيان أنماط التعلم للأطفال
+                كشف التصنيف ونسبة الطلاب حسب نمط التعلم
               </h1>
               <p class="text-gray-700 my-4 text-center text-base sm:text-lg md:text-xl">
-                استبيان VARK مخصص للأطفال لتحديد نمط التعلم المفضل (بصري، سمعي،
-                قرائي، حركي)، أولياء الأمور يقومون بتعبئة الاستبيان
+                كشف لتحليل نتائح تصنيف الطلاب وحساب النسب حسب أنماط التعلم المختلفة
               </p>
               
               <div class="mt-8 bg-white border border-gray-300 rounded-lg p-6">
@@ -1180,7 +1180,7 @@
           scale: 2,
         }).then((canvas) => {
           const link = document.createElement("a");
-          link.download = "questionnaire-vark-children.png";
+          link.download = "questionnaire-vark-roster.png";
           link.href = canvas.toDataURL();
           link.click();
         });
@@ -1200,7 +1200,7 @@
           const imgWidth = 210;
           const imgHeight = (canvas.height * imgWidth) / canvas.width;
           pdf.addImage(imgData, "JPEG", 0, 0, imgWidth, imgHeight);
-          pdf.save("questionnaire-vark-children.pdf");
+          pdf.save("questionnaire-vark-roster.pdf");
         });
       }
 

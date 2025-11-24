@@ -6,7 +6,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-    <title>خطة إثرائية - جاهز للتحميل والطباعة</title>
+    <title>سجل تواصل مع الطلاب - جاهز للتحميل والطباعة</title>
     <style>
       /* Modal Styles */
       .modal-overlay {
@@ -89,17 +89,6 @@
       .field-error:focus {
         outline: none;
         box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
-      }
-      /* Custom checkbox color */
-      input[type="checkbox"] {
-        accent-color: #3d7eb9;
-      }
-      input[type="checkbox"]:checked {
-        background-color: #3d7eb9 !important;
-        border-color: #3d7eb9 !important;
-      }
-      input[type="checkbox"]:focus {
-        --tw-ring-color: #3d7eb9;
       }
           /* Navbar Styles */
       .navbar {
@@ -251,7 +240,7 @@
           <li class="navbar-item">
             <a href="#" class="navbar-link">
               <div class="w-[100px]">
-                <img src="./assets/imgs/edu-forms-logo.svg" alt="" />
+                <img src="../assets/imgs/edu-forms-logo.svg" alt="" />
               </div>
             </a>
           </li>
@@ -524,88 +513,68 @@
             class="w-[300px] h-[300px] flex mx-auto rounded-full overflow-hidden items-center justify-center shadow-md mb-8"
           >
             <img
-              src="./assets/imgs/card11/multi-enrichment-plan.webp"
+              src="../assets/imgs/card10/communication-parent-report.webp"
               alt="img-title"
               class="w-full h-full object-cover rounded-full"
             />
           </div>
-          <h1 class="text-4xl text-center">خطة إثرائية جماعية لأكثر من طالب</h1>
+          <h1 class="text-4xl text-center">
+            تقرير لتوثيق التواصل مع أولياء الأمور
+          </h1>
           <p class="text-gray-700 my-4 text-center text-xl">
-            إنشاء وتخصيص خطة إثرائية جماعية لأكثر من طالب مع إمكانية تحرير
-            وإضافة جميع البيانات الخاصة بك، بطريقة سهلة واحترافية توفر عليه
-            الوقت والجهد ويتم حفظ الملف النهائي بتنسيق صورة أو ملف pdf لسهولة
-            الطباعة بجودة عالية وإعادة الاستخدام في تقارير ونماذج أخرى.
+            نموذج لإنشاء تقرير لتوثيق التواصل مع أولياء الأمور من جوالك مباشرة
           </p>
 
           <!-- نموذج الاستمارة -->
           <div class="mt-8 bg-white border border-gray-300 rounded-lg p-6">
             <!-- القسم العلوي: إدارة التعليم -->
             <div class="mb-6">
-              <div class="grid grid-cols-2 gap-4">
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-2">
-                    الإدارة , المنطقة, المكتب :
-                  </label>
-                  <textarea
-                    id="eduInfo"
-                    class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    rows="3"
-                  >
-الإدارة العامة للتعليم
-بالمنطقة الشمالية
-مكتب التعليم</textarea
-                  >
-                  <div id="eduInfoError" class="error-message">
-                    هذا الحقل مطلوب
-                  </div>
-                </div>
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-2">
-                    معلومات إضافية يسار بالترويسة (غير إلزامي):
-                  </label>
-                  <textarea
-                    id="additionalInfo"
-                    class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    rows="3"
-                  >
- الفصل الدراسي الأول</textarea
-                  >
-                </div>
-              </div>
-            </div>
-            <div class="mb-6">
               <label class="block text-sm font-medium text-gray-700 mb-2">
-                (عنوان الخطة - واسم المادة):
-              </label>
-              <input
-                type="text"
-                id="planTitle"
-                class="w-full border border-gray-300 rounded-md p-3 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                value="(خطة إثرائية - اسم المادة)"
-              />
-            </div>
-
-            <div class="mb-6">
-              <label class="block text-sm font-medium text-gray-700 mb-2">
-                أسماء الطلاب (كل اسم بسطر)
+                إدارة التعليم، اسم المدرسة
               </label>
               <textarea
-                id="studentsNames"
+                id="eduInfo"
                 class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
-                rows="5"
+                rows="3"
               >
-الطالب الأول
-الطالب الثاني
-الطالب الثالث</textarea
+الإدارة العامة للتعليم
+بالمنطقة
+مدرسة</textarea
               >
-              <p class="text-sm text-gray-600 mt-2">اكتب كل اسم في سطر منفصل</p>
-              <div id="studentsNamesError" class="error-message">
-                هذا الحقل مطلوب
-              </div>
+              <div id="eduInfoError" class="error-message">هذا الحقل مطلوب</div>
             </div>
 
-            <!-- الصف/الفصل ووقت/فترة المتابعة -->
-            <div class="grid grid-cols-2 gap-4 mb-6">
+            <!-- التصميم الجديد من الصورة -->
+            <!-- الصف الأول: اسم الطالب، تاريخ التواصل، الصف/الفصل -->
+            <div class="grid grid-cols-3 gap-4 mb-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  اسم الطالب/ة:
+                </label>
+                <input
+                  type="text"
+                  id="studentName"
+                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  value="اسم الطالب"
+                />
+                <div id="studentNameError" class="error-message">
+                  هذا الحقل مطلوب
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  تاريخ التواصل:
+                </label>
+                <input
+                  type="text"
+                  id="communicationDate"
+                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  value="الأحد ١٤٤٦/١٢/١٢هـ"
+                />
+                <div id="communicationDateError" class="error-message">
+                  هذا الحقل مطلوب
+                </div>
+              </div>
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">
                   الصف/الفصل:
@@ -614,318 +583,184 @@
                   type="text"
                   id="gradeClass"
                   class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  value="أول متوسط / أ"
+                  value="أول متوسط / ٢"
                 />
                 <div id="gradeClassError" class="error-message">
                   هذا الحقل مطلوب
                 </div>
               </div>
+            </div>
+
+            <!-- الصف الثاني: الفصل الدراسي الأول، ملاحظة، سبب التواصل -->
+            <div class="grid grid-cols-3 gap-4 mb-6">
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">
-                  وقت / فترة المتابعة:
+                  الفصل الدراسي الأول:
                 </label>
                 <input
                   type="text"
-                  id="reviewDate"
+                  id="semester"
                   class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  value="١٤٤٦/١٢/١٢هـ"
+                  value="الفصل الدراسي الأول"
                 />
-                <div id="reviewDateError" class="error-message">
+                <div id="semesterError" class="error-message">
+                  هذا الحقل مطلوب
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  ملاحظة:
+                </label>
+                <input
+                  type="text"
+                  id="note"
+                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  value="لا يوجد"
+                />
+                <div id="noteError" class="error-message">هذا الحقل مطلوب</div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  سبب التواصل:
+                </label>
+                <select
+                  id="communicationReason"
+                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  <option value="">-- اختر هنا --</option>
+                  <option value="تكريم">تكريم</option>
+                  <option value="غياب">غياب</option>
+                  <option value="تأخر">تأخر</option>
+                  <option value="الأداء الدراسي">الأداء الدراسي</option>
+                  <option value="سلوك">سلوك</option>
+                  <option value="أخرى">أخرى</option>
+                </select>
+                <div id="communicationReasonError" class="error-message">
                   هذا الحقل مطلوب
                 </div>
               </div>
             </div>
 
-            <!-- خط فاصل -->
-            <hr class="border-gray-300 my-6" />
-
-            <!-- قسم طرق وأساليب التحفيز -->
-            <div class="mb-6">
-              <h3 class="text-lg font-semibold text-gray-800 mb-4">
-                طرق وأساليب التحفيز:
-              </h3>
-              <div class="grid grid-cols-2 gap-4 mb-4">
-                <!-- العمود الأيمن -->
-                <div class="space-y-2">
-                  <label class="flex items-center gap-2 text-gray-700">
-                    <input
-                      type="checkbox"
-                      id="motivation1"
-                      class="w-4 h-4 border-gray-300 rounded focus:ring-2"
-                    />
-                    <span>أوراق عمل إضافية</span>
-                  </label>
-                  <label class="flex items-center gap-2 text-gray-700">
-                    <input
-                      type="checkbox"
-                      id="motivation2"
-                      class="w-4 h-4 border-gray-300 rounded focus:ring-2"
-                    />
-                    <span>تدريس الأقران</span>
-                  </label>
-                </div>
-                <!-- العمود الأيسر -->
-                <div class="space-y-2">
-                  <label class="flex items-center gap-2 text-gray-700">
-                    <input
-                      type="checkbox"
-                      id="motivation3"
-                      class="w-4 h-4 border-gray-300 rounded focus:ring-2"
-                    />
-                    <span>إسناد دور للطالب/ـة في إعانة المعلم/ـة</span>
-                  </label>
-                  <label class="flex items-center gap-2 text-gray-700">
-                    <input
-                      type="checkbox"
-                      id="motivation4"
-                      class="w-4 h-4 border-gray-300 rounded focus:ring-2"
-                    />
-                    <span>إشراك الطالب/ـة في مسابقات علمية</span>
-                  </label>
-                </div>
-              </div>
-              <!-- حقل طرق تحفيز إضافية -->
-              <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700 mb-2">
-                  طرق تحفيز إضافية:
-                </label>
-                <textarea
-                  id="motivationAdditional"
-                  class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  rows="3"
-                  placeholder="طرق تحفيز اضافية"
-                ></textarea>
-                <p class="text-sm text-gray-600 mt-2">
-                  طرق تحفيز إضافية غير الموجودة بالخيارات
-                </p>
-              </div>
-            </div>
-
-            <!-- خط فاصل -->
-            <hr class="border-gray-300 my-6" />
-
-            <!-- قسم المكافآت والإجراءات التشجيعية -->
-            <div class="mb-6">
-              <h3 class="text-lg font-semibold text-gray-800 mb-4">
-                المكافآت والإجراءات التشجيعية:
-              </h3>
-              <div class="grid grid-cols-2 gap-4 mb-4">
-                <!-- العمود الأيمن -->
-                <div class="space-y-2">
-                  <label class="flex items-center gap-2 text-gray-700">
-                    <input
-                      type="checkbox"
-                      id="reward1"
-                      class="w-4 h-4 border-gray-300 rounded focus:ring-2"
-                    />
-                    <span>التكريم في الفصل</span>
-                  </label>
-                  <label class="flex items-center gap-2 text-gray-700">
-                    <input
-                      type="checkbox"
-                      id="reward2"
-                      class="w-4 h-4 border-gray-300 rounded focus:ring-2"
-                    />
-                    <span>التكريم في الطابور</span>
-                  </label>
-                  <label class="flex items-center gap-2 text-gray-700">
-                    <input
-                      type="checkbox"
-                      id="reward3"
-                      class="w-4 h-4 border-gray-300 rounded focus:ring-2"
-                    />
-                    <span>الثناء والتشجيع المعنوي</span>
-                  </label>
-                </div>
-                <!-- العمود الأيسر -->
-                <div class="space-y-2">
-                  <label class="flex items-center gap-2 text-gray-700">
-                    <input
-                      type="checkbox"
-                      id="reward4"
-                      class="w-4 h-4 border-gray-300 rounded focus:ring-2"
-                    />
-                    <span>وضع اسم الطالب/ـة في لوحة الشرف</span>
-                  </label>
-                  <label class="flex items-center gap-2 text-gray-700">
-                    <input
-                      type="checkbox"
-                      id="reward5"
-                      class="w-4 h-4 border-gray-300 rounded focus:ring-2"
-                    />
-                    <span>التكريم في الحفل الختامي ومجلس التعليم</span>
-                  </label>
-                </div>
-              </div>
-              <!-- حقل مكافآت وإجراءات إضافية -->
-              <div class="mb-4">
-                <label class="block text-sm font-medium text-gray-700 mb-2">
-                  مكافآت وإجراءات إضافية:
-                </label>
-                <textarea
-                  id="rewardAdditional"
-                  class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  rows="3"
-                  placeholder="مكافآت وإجراءات إضافية"
-                ></textarea>
-                <p class="text-sm text-gray-600 mt-2">
-                  مكافآت وإجراءات إضافية غير الموجودة بالخيارات
-                </p>
-              </div>
-            </div>
-
-            <!-- خط فاصل -->
-            <hr class="border-gray-300 my-6" />
-
-            <!-- قسم جوانب التميز لدى الطالب/ـة -->
-            <div class="mb-6">
-              <label class="block text-sm font-medium text-gray-700 mb-2">
-                جوانب التميز لدى الطالب/ـة:
-              </label>
-              <textarea
-                id="excellenceAspects"
-                class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
-                rows="5"
-              >
-١. المشاركة الفعالة داخل الفصل.
-
-٢. المبادرة ومساعدة الأقران بالفصل.
-
-٣. التحضير للدروس الجديدة.</textarea
-              >
-              <p class="text-sm text-gray-600 mt-2">
-                اكتب جوانب التميز، كل نقطة في سطر منفصل
-              </p>
-            </div>
-
-            <!-- خط فاصل -->
-            <hr class="border-gray-300 my-6" />
-
-            <!-- قسم الملاحظات -->
-            <div class="mb-6">
-              <label class="block text-sm font-medium text-gray-700 mb-2">
-                الملاحظات:
-              </label>
-              <textarea
-                id="notes"
-                class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
-                rows="8"
-              ></textarea>
-            </div>
-
-            <!-- خط فاصل -->
-            <hr class="border-gray-300 my-6" />
-
-            <!-- قسم التوقيعات -->
-            <div class="mb-6">
-              <div class="grid grid-cols-3 gap-4">
-                <!-- توقيع يمين -->
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-2">
-                    توقيع يمين:
-                  </label>
-                  <textarea
-                    id="signatureRight"
-                    class="w-full border border-gray-300 rounded-md p-2 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    rows="3"
-                  ></textarea>
-                </div>
-                <!-- توقيع وسط -->
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-2">
-                    توقيع وسط:
-                  </label>
-                  <textarea
-                    id="signatureMiddle"
-                    class="w-full border border-gray-300 rounded-md p-2 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    rows="3"
-                  >
-اسم المعلم / الاسم
-                </textarea
-                  >
-                </div>
-                <!-- توقيع يسار -->
-                <div>
-                  <label class="block text-sm font-medium text-gray-700 mb-2">
-                    توقيع يسار:
-                  </label>
-                  <textarea
-                    id="signatureLeft"
-                    class="w-full border border-gray-300 rounded-md p-2 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    rows="3"
-                  ></textarea>
-                </div>
-              </div>
-            </div>
-
-            <!-- خط فاصل -->
-            <hr class="border-gray-300 my-6" />
-
-            <!-- قسم تخصيص التصميم -->
-            <div class="mb-6">
-              <label class="block text-sm font-medium text-gray-700 mb-4">
-                تخصيص التصميم:
-              </label>
+            <!-- الصف الثالث: طريقة التواصل، من قام بالتواصل -->
+            <div class="grid grid-cols-2 gap-4 mb-6">
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">
-                  شعار الجهة:
+                  طريقة التواصل:
                 </label>
-                <div class="flex justify-start">
-                  <div
-                    class="flex items-center p-4 border border-gray-300 rounded-md bg-white"
-                  >
-                    <div class="text-left">
-                      <img
-                        src="./assets/imgs/شعار وزارة التعليم السعودي/saudi-ministry-of-education.png"
-                        alt=""
-                        class="w-24 h-24 object-contain"
-                      />
-                      <p class="text-green-600 font-semibold text-lg mt-2">
-                        وزارة التعليم
-                      </p>
-                    </div>
-                  </div>
+                <select
+                  id="communicationMethod"
+                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  <option value="">-- اختر هنا --</option>
+                  <option value="مكالمة هاتفية">مكالمة هاتفية</option>
+                  <option value="المنصة">المنصة</option>
+                  <option value="رسالة واتساب">رسالة واتساب</option>
+                  <option value="حضوري">حضوري</option>
+                  <option value="إشعار ورقي">إشعار ورقي</option>
+                  <option value="أخرى">أخرى</option>
+                </select>
+                <div id="communicationMethodError" class="error-message">
+                  هذا الحقل مطلوب
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  من قام بالتواصل:
+                </label>
+                <select
+                  id="whoCommunicated"
+                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  <option value="">-- اختر هنا --</option>
+                  <option value="الموجه الطلابي">الموجه الطلابي</option>
+                  <option value="الوكيل الطلابي">الوكيل الطلابي</option>
+                  <option value="قائد المدرسة">قائد المدرسة</option>
+                  <option value="وكيل المدرسة">وكيل المدرسة</option>
+                  <option value="المعلم">المعلم</option>
+                  <option value="اخر">اخر</option>
+                </select>
+                <div id="whoCommunicatedError" class="error-message">
+                  هذا الحقل مطلوب
                 </div>
               </div>
             </div>
 
-            <!-- خط فاصل -->
-            <hr class="border-gray-300 my-6" />
-
-            <!-- قسم إضافة شواهد -->
+            <!-- الصف الرابع: الهدف من التواصل -->
             <div class="mb-6">
-              <label
-                class="block text-sm font-medium text-gray-700 mb-2 text-right"
-              >
-                إضافة شواهد (صور):
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                الهدف من التواصل:
               </label>
-              <div class="relative">
+              <input
+                type="text"
+                id="communicationObjective"
+                class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value="بحث وإيجاد طريقة لتحسين الأداء الدراسي للطالب"
+              />
+              <div id="communicationObjectiveError" class="error-message">
+                هذا الحقل مطلوب
+              </div>
+            </div>
+
+            <!-- قسم اسم المعلم -->
+            <div class="mb-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                اسم المعلم:
+              </label>
+              <textarea
+                id="teacherInfo"
+                class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+                rows="4"
+              >
+المعلم
+اسم المعلم</textarea
+              >
+              <div id="teacherInfoError" class="error-message">
+                هذا الحقل مطلوب
+              </div>
+            </div>
+
+            <!-- قسم اسم آخر (مدير المدرسة) -->
+            <div class="mb-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                اسم آخر:
+              </label>
+              <textarea
+                id="otherInfo"
+                class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+                rows="4"
+              >
+مدير المدرسة
+اسم المدير</textarea
+              >
+              <div id="otherInfoError" class="error-message">
+                هذا الحقل مطلوب
+              </div>
+            </div>
+
+            <!-- رفع الملفات والباركود -->
+            <div class="grid grid-cols-2 gap-4 mb-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  صورة الشاهد الأول:
+                </label>
                 <input
                   type="file"
-                  id="evidenceFiles"
-                  multiple
+                  id="firstWitnessPhoto"
+                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
                   accept="image/*"
-                  class="hidden"
                 />
-                <div
-                  class="flex items-center border border-gray-300 rounded-md bg-gray-50"
-                >
-                  <label
-                    for="evidenceFiles"
-                    class="px-4 py-2 bg-gray-200 hover:bg-gray-300 rounded-r-md cursor-pointer text-sm font-medium text-gray-700 transition-colors"
-                  >
-                    Choose Files
-                  </label>
-                  <span
-                    class="flex-1 px-3 py-2 text-gray-500 text-sm text-left"
-                  >
-                    No file chosen
-                  </span>
-                </div>
               </div>
-              <p class="text-sm text-gray-600 mt-2 text-right">
-                أقصى حد للشواهد 10 شواهد
-              </p>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  صورة الشاهد الثاني:
+                </label>
+                <input
+                  type="file"
+                  id="secondWitnessPhoto"
+                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  accept="image/*"
+                />
+              </div>
             </div>
 
             <!-- زر المعاينة -->
@@ -1083,7 +918,9 @@
     <div id="previewModal" class="modal-overlay">
       <div class="modal-content">
         <div class="modal-header">
-          <h2 class="text-2xl font-bold text-gray-800">معاينة خطة إثرائية</h2>
+          <h2 class="text-2xl font-bold text-gray-800">
+            معاينة تقرير لتوثيق التواصل مع أولياء الأمور
+          </h2>
           <button class="modal-close" onclick="closePreviewModal()">
             &times;
           </button>
@@ -1171,12 +1008,19 @@
           isValid = false;
         }
 
-        // التحقق من أسماء الطلاب
-        const studentsNames = document
-          .getElementById("studentsNames")
+        // التحقق من اسم الطالب
+        const studentName = document.getElementById("studentName").value.trim();
+        if (!studentName) {
+          showError("studentName", "studentNameError");
+          isValid = false;
+        }
+
+        // التحقق من تاريخ التواصل
+        const communicationDate = document
+          .getElementById("communicationDate")
           .value.trim();
-        if (!studentsNames) {
-          showError("studentsNames", "studentsNamesError");
+        if (!communicationDate) {
+          showError("communicationDate", "communicationDateError");
           isValid = false;
         }
 
@@ -1187,10 +1031,67 @@
           isValid = false;
         }
 
-        // التحقق من وقت/فترة المتابعة
-        const reviewDate = document.getElementById("reviewDate").value.trim();
-        if (!reviewDate) {
-          showError("reviewDate", "reviewDateError");
+        // التحقق من الفصل الدراسي
+        const semester = document.getElementById("semester").value.trim();
+        if (!semester) {
+          showError("semester", "semesterError");
+          isValid = false;
+        }
+
+        // التحقق من طريقة التواصل
+        const communicationMethod = document
+          .getElementById("communicationMethod")
+          .value.trim();
+        if (!communicationMethod) {
+          showError("communicationMethod", "communicationMethodError");
+          isValid = false;
+        }
+
+        // التحقق من من قام بالتواصل
+        const whoCommunicated = document
+          .getElementById("whoCommunicated")
+          .value.trim();
+        if (!whoCommunicated) {
+          showError("whoCommunicated", "whoCommunicatedError");
+          isValid = false;
+        }
+
+        // التحقق من الملاحظة
+        const note = document.getElementById("note").value.trim();
+        if (!note) {
+          showError("note", "noteError");
+          isValid = false;
+        }
+
+        // التحقق من سبب التواصل
+        const communicationReason = document
+          .getElementById("communicationReason")
+          .value.trim();
+        if (!communicationReason) {
+          showError("communicationReason", "communicationReasonError");
+          isValid = false;
+        }
+
+        // التحقق من الهدف من التواصل
+        const communicationObjective = document
+          .getElementById("communicationObjective")
+          .value.trim();
+        if (!communicationObjective) {
+          showError("communicationObjective", "communicationObjectiveError");
+          isValid = false;
+        }
+
+        // التحقق من اسم المعلم
+        const teacherInfo = document.getElementById("teacherInfo").value.trim();
+        if (!teacherInfo) {
+          showError("teacherInfo", "teacherInfoError");
+          isValid = false;
+        }
+
+        // التحقق من اسم آخر
+        const otherInfo = document.getElementById("otherInfo").value.trim();
+        if (!otherInfo) {
+          showError("otherInfo", "otherInfoError");
           isValid = false;
         }
 
@@ -1213,18 +1114,14 @@
       function setupFieldValidation() {
         const textFields = [
           "eduInfo",
-          "additionalInfo",
-          "planTitle",
-          "studentsNames",
+          "studentName",
+          "communicationDate",
           "gradeClass",
-          "reviewDate",
-          "motivationAdditional",
-          "rewardAdditional",
-          "excellenceAspects",
-          "notes",
-          "signatureRight",
-          "signatureMiddle",
-          "signatureLeft",
+          "semester",
+          "note",
+          "communicationObjective",
+          "teacherInfo",
+          "otherInfo",
         ];
 
         // معالجة حقول النص
@@ -1232,6 +1129,27 @@
           const field = document.getElementById(fieldId);
           if (field) {
             field.addEventListener("input", function () {
+              this.classList.remove("field-error");
+              const errorId = fieldId + "Error";
+              const error = document.getElementById(errorId);
+              if (error) {
+                error.classList.remove("show");
+              }
+            });
+          }
+        });
+
+        // معالجة القوائم المنسدلة
+        const selectFields = [
+          "communicationMethod",
+          "whoCommunicated",
+          "communicationReason",
+        ];
+
+        selectFields.forEach((fieldId) => {
+          const field = document.getElementById(fieldId);
+          if (field) {
+            field.addEventListener("change", function () {
               this.classList.remove("field-error");
               const errorId = fieldId + "Error";
               const error = document.getElementById(errorId);
@@ -1260,60 +1178,39 @@
         openPreviewModal();
       }
 
-      // دالة لجمع الخيارات المحددة
-      function getSelectedCheckboxes(prefix, count) {
-        const selected = [];
-        for (let i = 1; i <= count; i++) {
-          const checkbox = document.getElementById(prefix + i);
-          if (checkbox && checkbox.checked) {
-            const label = checkbox.nextElementSibling?.textContent || "";
-            selected.push(label);
-          }
-        }
-        return selected;
-      }
-
       // توليد محتوى المعاينة
       function generatePreviewContent() {
-        const eduInfoText = document.getElementById("eduInfo").value.trim();
-        const eduInfoLines = eduInfoText
-          .split("\n")
-          .filter((line) => line.trim());
+        const eduInfoText =
+          document.getElementById("eduInfo").value ||
+          "الإدارة العامة للتعليم\nبالمنطقة\nمدرسة";
+        const eduInfoLines = eduInfoText.split("\n");
         const eduInfo = eduInfoLines[0] || "الإدارة العامة للتعليم";
-        const region = eduInfoLines[1] || "بالمنطقة الشمالية";
-        const officeName = eduInfoLines[2] || "مكتب التعليم";
-        const additionalInfo =
-          document.getElementById("additionalInfo")?.value.trim() || "";
-        const planTitle =
-          document.getElementById("planTitle")?.value.trim() ||
-          "خطة إثرائية (اسم المادة)";
-        const studentsNames = document
-          .getElementById("studentsNames")
-          .value.trim();
-        const gradeClass = document.getElementById("gradeClass").value.trim();
-        const reviewDate = document.getElementById("reviewDate").value.trim();
-
-        // جمع طرق وأساليب التحفيز
-        const motivationSelected = getSelectedCheckboxes("motivation", 4);
-        const motivationAdditional =
-          document.getElementById("motivationAdditional")?.value.trim() || "";
-
-        // جمع المكافآت والإجراءات التشجيعية
-        const rewardSelected = getSelectedCheckboxes("reward", 5);
-        const rewardAdditional =
-          document.getElementById("rewardAdditional")?.value.trim() || "";
-
-        // جوانب التميز
-        const excellenceAspects =
-          document.getElementById("excellenceAspects")?.value.trim() || "";
-
-        const notes = document.getElementById("notes")?.value.trim() || "";
-        const signatureRight =
-          document.getElementById("signatureRight")?.value.trim() || "";
-        const signatureMiddle =
-          document.getElementById("signatureMiddle")?.value.trim() || "";
-        const signatureLeft =
-          document.getElementById("signatureLeft")?.value.trim() || "";
+        const region = eduInfoLines[1] || "بالمنطقة";
+        const schoolName = eduInfoLines[2] || "مدرسة";
+        const studentName =
+          document.getElementById("studentName").value || "اسم الطالب";
+        const communicationDate =
+          document.getElementById("communicationDate").value ||
+          "الأحد ١٤٤٦/١٢/١٢هـ";
+        const gradeClass =
+          document.getElementById("gradeClass").value || "أول متوسط / ٢";
+        const semester =
+          document.getElementById("semester").value || "الفصل الدراسي الأول";
+        const communicationMethod =
+          document.getElementById("communicationMethod").value || "";
+        const whoCommunicated =
+          document.getElementById("whoCommunicated").value || "";
+        const note = document.getElementById("note").value || "لا يوجد";
+        const communicationReason =
+          document.getElementById("communicationReason").value || "";
+        const communicationObjective =
+          document.getElementById("communicationObjective").value ||
+          "بحث وإيجاد طريقة لتحسين الأداء الدراسي للطالب";
+        const teacherInfo =
+          document.getElementById("teacherInfo").value || "المعلم\nاسم المعلم";
+        const otherInfo =
+          document.getElementById("otherInfo").value ||
+          "مدير المدرسة\nاسم المدير";
 
         const previewContainer = document.getElementById(
           "previewTemplateContent"
@@ -1327,66 +1224,49 @@
                 class="w-[300px] h-[300px] flex mx-auto rounded-full overflow-hidden items-center justify-center shadow-md mb-8"
               >
                 <img
-                  src="./assets/imgs/card11/multi-enrichment-plan.webp"
+                  src="../assets/imgs/card9/sub-period.webp"
                   alt="img-title"
                   class="w-full h-full object-cover rounded-full"
                 />
               </div>
               <h1 class="text-4xl text-center mb-4">
-                خطة إثرائية جماعية لأكثر من طالب
+                تقرير لتوثيق التواصل مع أولياء الأمور
               </h1>
               <p class="text-gray-700 my-4 text-center text-xl">
-                إنشاء وتخصيص خطة إثرائية جماعية لأكثر من طالب مع إمكانية تحرير وإضافة
-                جميع البيانات الخاصة بك، بطريقة سهلة واحترافية توفر عليه الوقت
-                والجهد ويتم حفظ الملف النهائي بتنسيق صورة أو ملف pdf لسهولة الطباعة
-                بجودة عالية وإعادة الاستخدام في تقارير ونماذج أخرى.
+                نموذج لإنشاء تقرير لتوثيق التواصل مع أولياء الأمور من جوالك مباشرة
               </p>
               
               <div class="mt-8 bg-white border border-gray-300 rounded-lg p-6">
                 <!-- القسم العلوي: إدارة التعليم -->
                 <div class="mb-6">
-                  <div class="grid grid-cols-2 gap-4">
-                    <div>
-                      <label class="block text-sm font-medium text-gray-700 mb-2">
-                        الإدارة , المنطقة, المكتب :
-                      </label>
-                      <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600">
-                        <p>${eduInfo}</p>
-                        <p>${region}</p>
-                        <p class="font-bold">${officeName}</p>
-                      </div>
-                    </div>
-                    <div>
-                      <label class="block text-sm font-medium text-gray-700 mb-2">
-                        معلومات إضافية يسار بالترويسة (غير إلزامي):
-                      </label>
-                      <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600">
-                        ${additionalInfo || ""}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="mb-6">
                   <label class="block text-sm font-medium text-gray-700 mb-2">
-                    عنوان الخطة واسم المادة:
+                    إدارة التعليم، اسم المدرسة
                   </label>
                   <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600">
-                    ${planTitle}
+                    <p>${eduInfo}</p>
+                    <p>${region}</p>
+                    <p class="font-bold">${schoolName}</p>
                   </div>
                 </div>
 
-                <!-- أسماء الطلاب -->
-                <div class="mb-6">
-                  <label class="block text-sm font-medium text-gray-700 mb-2">
-                    أسماء الطلاب:
-                  </label>
-                  <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600 whitespace-pre-line">
-                    ${studentsNames}
+                <!-- الصف الأول: اسم الطالب، تاريخ التواصل، الصف/الفصل -->
+                <div class="grid grid-cols-3 gap-4 mb-6">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                      اسم الطالب/ة:
+                    </label>
+                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
+                      ${studentName}
+                    </div>
                   </div>
-                </div>
-
-                <!-- الصف/الفصل ووقت/فترة المتابعة -->
-                <div class="grid grid-cols-2 gap-4 mb-6">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                      تاريخ التواصل:
+                    </label>
+                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
+                      ${communicationDate}
+                    </div>
+                  </div>
                   <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">
                       الصف/الفصل:
@@ -1395,168 +1275,83 @@
                       ${gradeClass}
                     </div>
                   </div>
+                </div>
+
+                <!-- الصف الثاني: الفصل الدراسي الأول، ملاحظة، سبب التواصل -->
+                <div class="grid grid-cols-3 gap-4 mb-6">
                   <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">
-                      وقت / فترة المتابعة:
+                      الفصل الدراسي الأول:
                     </label>
                     <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
-                      ${reviewDate}
+                      ${semester}
                     </div>
                   </div>
-                </div>
-
-                <!-- خط فاصل -->
-                <hr class="border-gray-300 my-6" />
-
-                <!-- قسم طرق وأساليب التحفيز -->
-                <div class="mb-6">
-                  <h3 class="text-lg font-semibold text-gray-800 mb-3">طرق وأساليب التحفيز:</h3>
-                  ${
-                    motivationSelected.length > 0
-                      ? `
-                    <div class="mb-3">
-                      <ul class="list-disc list-inside text-gray-700 space-y-1">
-                        ${motivationSelected
-                          .map((item) => `<li>${item}</li>`)
-                          .join("")}
-                      </ul>
-                    </div>
-                  `
-                      : ""
-                  }
-                  ${
-                    motivationAdditional &&
-                    motivationAdditional !== "طرق تحفيز اضافية"
-                      ? `
-                    <div class="mb-3">
-                      <p class="text-gray-700"><strong>طرق تحفيز إضافية:</strong></p>
-                      <p class="text-gray-600 whitespace-pre-line">${motivationAdditional}</p>
-                    </div>
-                  `
-                      : ""
-                  }
-                </div>
-
-                <!-- خط فاصل -->
-                <hr class="border-gray-300 my-6" />
-
-                <!-- قسم المكافآت والإجراءات التشجيعية -->
-                <div class="mb-6">
-                  <h3 class="text-lg font-semibold text-gray-800 mb-3">المكافآت والإجراءات التشجيعية:</h3>
-                  ${
-                    rewardSelected.length > 0
-                      ? `
-                    <div class="mb-3">
-                      <ul class="list-disc list-inside text-gray-700 space-y-1">
-                        ${rewardSelected
-                          .map((item) => `<li>${item}</li>`)
-                          .join("")}
-                      </ul>
-                    </div>
-                  `
-                      : ""
-                  }
-                  ${
-                    rewardAdditional &&
-                    rewardAdditional !== "مكافآت وإجراءات إضافية"
-                      ? `
-                    <div class="mb-3">
-                      <p class="text-gray-700"><strong>مكافآت وإجراءات إضافية:</strong></p>
-                      <p class="text-gray-600 whitespace-pre-line">${rewardAdditional}</p>
-                    </div>
-                  `
-                      : ""
-                  }
-                </div>
-
-                <!-- خط فاصل -->
-                <hr class="border-gray-300 my-6" />
-
-                <!-- قسم جوانب التميز -->
-                <div class="mb-6">
-                  <label class="block text-sm font-medium text-gray-700 mb-2">
-                    جوانب التميز لدى الطالب/ـة:
-                  </label>
-                  <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600 whitespace-pre-line min-h-[100px]">
-                    ${excellenceAspects || ""}
-                  </div>
-                </div>
-
-                <!-- خط فاصل -->
-                <hr class="border-gray-300 my-6" />
-
-                <!-- قسم الملاحظات -->
-                <div class="mb-6">
-                  <label class="block text-sm font-medium text-gray-700 mb-2">
-                    الملاحظات:
-                  </label>
-                  <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600 whitespace-pre-line min-h-[100px]">
-                    ${notes || ""}
-                  </div>
-                </div>
-
-                <!-- خط فاصل -->
-                <hr class="border-gray-300 my-6" />
-
-                <!-- قسم التوقيعات -->
-                <div class="mb-6">
-                  <div class="grid grid-cols-3 gap-4">
-                    <!-- توقيع يمين -->
-                    <div>
-                      <label class="block text-sm font-medium text-gray-700 mb-2">
-                        توقيع يمين:
-                      </label>
-                      <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600 whitespace-pre-line min-h-[60px]">
-                        ${signatureRight || ""}
-                      </div>
-                    </div>
-                    <!-- توقيع وسط -->
-                    <div>
-                      <label class="block text-sm font-medium text-gray-700 mb-2">
-                        توقيع وسط:
-                      </label>
-                      <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600 whitespace-pre-line min-h-[60px]">
-                        ${signatureMiddle || ""}
-                      </div>
-                    </div>
-                    <!-- توقيع يسار -->
-                    <div>
-                      <label class="block text-sm font-medium text-gray-700 mb-2">
-                        توقيع يسار:
-                      </label>
-                      <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600 whitespace-pre-line min-h-[60px]">
-                        ${signatureLeft || ""}
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!-- خط فاصل -->
-                <hr class="border-gray-300 my-6" />
-
-                <!-- قسم تخصيص التصميم -->
-                <div class="mb-6">
-                  <label class="block text-sm font-medium text-gray-700 mb-4">
-                    تخصيص التصميم:
-                  </label>
                   <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">
-                      شعار الجهة:
+                      ملاحظة:
                     </label>
-                    <div class="flex justify-start">
-                      <div class="flex items-center p-4 border border-gray-300 rounded-md bg-white">
-                        <div class="text-left">
-                          <img
-                            src="./assets/imgs/شعار وزارة التعليم السعودي/saudi-ministry-of-education.png"
-                            alt=""
-                            class="w-24 h-24 object-contain"
-                          />
-                          <p class="text-green-600 font-semibold text-lg mt-2">
-                            وزارة التعليم
-                          </p>
-                        </div>
-                      </div>
+                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
+                      ${note}
                     </div>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                      سبب التواصل:
+                    </label>
+                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
+                      ${communicationReason || "-- اختر هنا --"}
+                    </div>
+                  </div>
+                </div>
+
+                <!-- الصف الثالث: طريقة التواصل، من قام بالتواصل -->
+                <div class="grid grid-cols-2 gap-4 mb-6">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                      طريقة التواصل:
+                    </label>
+                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
+                      ${communicationMethod || "-- اختر هنا --"}
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                      من قام بالتواصل:
+                    </label>
+                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
+                      ${whoCommunicated || "-- اختر هنا --"}
+                    </div>
+                  </div>
+                </div>
+
+                <!-- الصف الرابع: الهدف من التواصل -->
+                <div class="mb-6">
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    الهدف من التواصل:
+                  </label>
+                  <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
+                    ${communicationObjective}
+                  </div>
+                </div>
+
+                <!-- قسم اسم المعلم -->
+                <div class="mb-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    اسم المعلم:
+                  </label>
+                  <div class="bg-white border border-gray-300 rounded-md p-3 text-gray-600 whitespace-pre-line min-h-[80px]">
+                    ${teacherInfo}
+                  </div>
+                </div>
+
+                <!-- قسم اسم آخر (مدير المدرسة) -->
+                <div class="mb-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    اسم آخر:
+                  </label>
+                  <div class="bg-white border border-gray-300 rounded-md p-3 text-gray-600 whitespace-pre-line min-h-[80px]">
+                    ${otherInfo}
                   </div>
                 </div>
               </div>
@@ -1607,7 +1402,7 @@
           scale: 2,
         }).then((canvas) => {
           const link = document.createElement("a");
-          link.download = "enrichment-plan-preview.png";
+          link.download = "student-communication-record-preview.png";
           link.href = canvas.toDataURL();
           link.click();
         });
@@ -1627,7 +1422,7 @@
           const imgWidth = 210;
           const imgHeight = (canvas.height * imgWidth) / canvas.width;
           pdf.addImage(imgData, "JPEG", 0, 0, imgWidth, imgHeight);
-          pdf.save("enrichment-plan-preview.pdf");
+          pdf.save("student-communication-record-preview.pdf");
         });
       }
 
@@ -1635,34 +1430,6 @@
       document.addEventListener("DOMContentLoaded", function () {
         // إعداد الـ validation
         setupFieldValidation();
-
-        // إدارة رفع الملفات
-        const fileInput = document.getElementById("evidenceFiles");
-        const fileLabel = fileInput?.nextElementSibling?.querySelector("span");
-
-        if (fileInput && fileLabel) {
-          fileInput.addEventListener("change", function () {
-            const files = this.files;
-            if (files.length > 10) {
-              alert("الحد الأقصى للشواهد هو 10 ملفات");
-              this.value = "";
-              fileLabel.textContent = "No file chosen";
-              return;
-            }
-
-            if (files.length > 0) {
-              const fileNames = Array.from(files)
-                .map((file) => file.name)
-                .join(", ");
-              fileLabel.textContent =
-                files.length === 1
-                  ? files[0].name
-                  : `${files.length} ملفات محددة: ${fileNames}`;
-            } else {
-              fileLabel.textContent = "No file chosen";
-            }
-          });
-        }
       });
     </script>
   </body>

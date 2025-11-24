@@ -2,12 +2,11 @@
 <html lang="ar" dir="rtl">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-    <title>استبيان أنماط التعلم للأطفال - جاهز للتحميل والطباعة</title>
+    <title>خطة علاجية - جاهز للتحميل والطباعة</title>
     <style>
       /* Modal Styles */
       .modal-overlay {
@@ -45,14 +44,9 @@
         border-bottom: 1px solid #e5e7eb;
       }
       .modal-body {
-        padding: 15px;
+        padding: 20px;
         max-height: calc(100vh - 200px);
         overflow-y: auto;
-      }
-      @media (min-width: 640px) {
-        .modal-body {
-          padding: 20px;
-        }
       }
       .modal-close {
         background: none;
@@ -75,19 +69,9 @@
       }
       .preview-template {
         background: white;
-        padding: 20px;
+        padding: 40px;
         border: 2px solid #e5e7eb;
         border-radius: 12px;
-      }
-      @media (min-width: 640px) {
-        .preview-template {
-          padding: 30px;
-        }
-      }
-      @media (min-width: 1024px) {
-        .preview-template {
-          padding: 40px;
-        }
       }
       .error-message {
         color: #dc2626;
@@ -256,7 +240,7 @@
           <li class="navbar-item">
             <a href="#" class="navbar-link">
               <div class="w-[100px]">
-                <img src="./assets/imgs/edu-forms-logo.svg" alt="" />
+                <img src="../assets/imgs/edu-forms-logo.svg" alt="" />
               </div>
             </a>
           </li>
@@ -521,27 +505,29 @@
 
     <div class="max-w-6xl mx-auto">
       <div
-        class="max-w-4xl mx-auto border-4 rounded-2xl shadow-xl overflow-hidden mb-8 p-2 sm:p-4"
+        class="max-w-4xl mx-auto border-4 rounded-2xl shadow-xl overflow-hidden mb-8 p-4"
         id="template"
       >
-        <div class="bg-white rounded-xl p-4 sm:p-6">
+        <div class="bg-white rounded-xl p-6">
           <div
-            class="w-full max-w-[300px] h-[200px] sm:h-[250px] md:h-[300px] flex mx-auto rounded-full overflow-hidden items-center justify-center shadow-md mb-8"
+            class="w-[300px] h-[300px] flex mx-auto rounded-full overflow-hidden items-center justify-center shadow-md mb-8"
           >
             <img
-              src="./assets/imgs/card12/questionnaire-vark.webp"
+              src="../assets/imgs/card11/enrichment-plan.webp"
               alt="img-title"
               class="w-full h-full object-cover rounded-full"
             />
           </div>
-          <h1 class="text-2xl sm:text-3xl md:text-4xl text-center">استبيان أنماط التعلم للكبار</h1>
-          <p class="text-gray-700 my-4 text-center text-base sm:text-lg md:text-xl">
-            استبيان VARK للمتوسط والثانوي لتحديد أسلوب التعلم الأمثل، الطلاب
-            يقومون بتعبئة الاستبيان
+          <h1 class="text-4xl text-center">خطة إثرائية للطلاب والطالبات</h1>
+          <p class="text-gray-700 my-4 text-center text-xl">
+            إنشاء وتخصيص خطة إثرائية للطلاب والطالبات مع إمكانية تحرير وإضافة
+            جميع البيانات الخاصة بك، بطريقة سهلة واحترافية توفر عليه الوقت
+            والجهد ويتم حفظ الملف النهائي بتنسيق صورة أو ملف pdf لسهولة الطباعة
+            بجودة عالية وإعادة الاستخدام في تقارير ونماذج أخرى.
           </p>
 
           <!-- نموذج الاستمارة -->
-          <div class="mt-8 bg-white border border-gray-300 rounded-lg p-4 sm:p-6">
+          <div class="mt-8 bg-white border border-gray-300 rounded-lg p-6">
             <!-- القسم العلوي: إدارة التعليم -->
             <div class="mb-6">
               <label class="block text-sm font-medium text-gray-700 mb-2">
@@ -559,77 +545,121 @@
               <div id="eduInfoError" class="error-message">هذا الحقل مطلوب</div>
             </div>
 
-            <!-- اسم الموضوع والتاريخ -->
-            <div class="mb-6">
+            <!-- التصميم الجديد من الصورة -->
+            <!-- الصف الأول: اسم المدرسة، عنوان الخطة واسم المادة، اسم الطالبة -->
+            <div class="grid grid-cols-3 gap-4 mb-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  اسم المدرسة:
+                </label>
+                <input
+                  type="text"
+                  id="schoolName"
+                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  value="اسم المدرسة"
+                />
+                <div id="schoolNameError" class="error-message">
+                  هذا الحقل مطلوب
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  عنوان الخطة واسم المادة:
+                </label>
+                <input
+                  type="text"
+                  id="planTitle"
+                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  value="( خطة علاجية - اسم المادة )"
+                />
+                <div id="planTitleError" class="error-message">
+                  هذا الحقل مطلوب
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  اسم الطالبـ/ة:
+                </label>
+                <input
+                  type="text"
+                  id="studentName"
+                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  value="اسم الطالب"
+                />
+                <div id="studentNameError" class="error-message">
+                  هذا الحقل مطلوب
+                </div>
+              </div>
+            </div>
+
+            <!-- الصف الثاني: الصف/الفصل، الفصل الدراسي، تاريخ المراجعة -->
+            <div class="grid grid-cols-3 gap-4 mb-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  الصف/الفصل:
+                </label>
+                <input
+                  type="text"
+                  id="gradeClass"
+                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  value="أول متوسط / أ"
+                />
+                <div id="gradeClassError" class="error-message">
+                  هذا الحقل مطلوب
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  الفصل الدراسي:
+                </label>
+                <input
+                  type="text"
+                  id="semester"
+                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  value="الأول"
+                />
+                <div id="semesterError" class="error-message">
+                  هذا الحقل مطلوب
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  تاريخ المراجعة:
+                </label>
+                <input
+                  type="text"
+                  id="reviewDate"
+                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  value="١٤٤٦/١٢/١٢هـ"
+                />
+                <div id="reviewDateError" class="error-message">
+                  هذا الحقل مطلوب
+                </div>
+              </div>
+            </div>
+
+            <!-- قسم جوانب التميز لدى الطالبـ/ة -->
+            <div class="mb-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
               <label class="block text-sm font-medium text-gray-700 mb-2">
-                اسم الموضوع, التاريخ:
+                جوانب التميز لدى الطالبـ/ة:
               </label>
               <textarea
-                id="subjectDate"
-                class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
-                rows="3"
+                id="excellenceAspects"
+                class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-none focus:outline-none focus:ring-2 focus:ring-blue-500 overflow-hidden"
+                style="overflow: hidden"
               >
-أنماط التعلم
-١٤٤٦/١٢/١٢هـ</textarea
+١. المشاركة الفعالة داخل الفصل.
+
+٢. المبادرة ومساعدة الأقران بالفصل.
+
+٣. التحضير للدروس الجديدة.</textarea
               >
-              <div id="subjectDateError" class="error-message">
+              <div id="excellenceAspectsError" class="error-message">
                 هذا الحقل مطلوب
               </div>
             </div>
 
-            <!-- اسم المدرسة -->
-            <div class="mb-6">
-              <label class="block text-sm font-medium text-gray-700 mb-2">
-                اسم المدرسة:
-              </label>
-              <input
-                type="text"
-                id="schoolName"
-                class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                value="اسم المدرسة"
-              />
-              <div id="schoolNameError" class="error-message">
-                هذا الحقل مطلوب
-              </div>
-            </div>
-
-            <!-- الصف / الفصل -->
-            <div class="mb-6">
-              <label class="block text-sm font-medium text-gray-700 mb-2">
-                الصف / الفصل:
-              </label>
-              <input
-                type="text"
-                id="gradeClass"
-                class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                value="أول متوسط / ١"
-              />
-              <div id="gradeClassError" class="error-message">
-                هذا الحقل مطلوب
-              </div>
-            </div>
-
-            <!-- اسم الطالب/ـة -->
-            <div class="mb-6">
-              <label class="block text-sm font-medium text-gray-700 mb-2">
-                اسم الطالب/ـة - يقبل من 1 إلى 30 سم دفعة واحدة:
-              </label>
-              <textarea
-                id="studentNames"
-                class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
-                rows="30"
-              >
-الاسم الاول
-الاسم الثاني
-الاسم الثالث
-اسماء أخرى</textarea
-              >
-              <div id="studentNamesError" class="error-message">
-                هذا الحقل مطلوب
-              </div>
-            </div>
-
-            <!-- اسم المعلم -->
+            <!-- قسم اسم المعلم -->
             <div class="mb-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
               <label class="block text-sm font-medium text-gray-700 mb-2">
                 اسم المعلم:
@@ -637,28 +667,32 @@
               <textarea
                 id="teacherInfo"
                 class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
-                rows="3"
+                rows="4"
               >
-أ/ اسم المعلم</textarea
+اسم المعلم
+الاسم
+            </textarea
               >
               <div id="teacherInfoError" class="error-message">
                 هذا الحقل مطلوب
               </div>
             </div>
 
-            <!-- توقيع ولي الأمر -->
+            <!-- قسم اسم آخر (مدير المدرسة) -->
             <div class="mb-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
               <label class="block text-sm font-medium text-gray-700 mb-2">
-                توقيع ولي الأمر :
+                اسم آخر:
               </label>
               <textarea
-                id="guardianSignature"
+                id="otherInfo"
                 class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
-                rows="3"
+                rows="4"
               >
-توقيع ولي الأمر</textarea
+مدير المدرسة
+الاسم
+            </textarea
               >
-              <div id="guardianSignatureError" class="error-message">
+              <div id="otherInfoError" class="error-message">
                 هذا الحقل مطلوب
               </div>
             </div>
@@ -695,12 +729,12 @@
 
             <!-- أكثر الروابط استخداماً -->
             <div
-              class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-4 sm:p-6 mb-8 mt-8"
+              class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6 mb-8 mt-8"
             >
               <h2 class="text-lg font-bold text-gray-800 mb-4">
                 أكثر الروابط استخداماً
               </h2>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="grid grid-cols-2 gap-4">
                 <!-- الصف الأول -->
                 <button
                   class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
@@ -730,29 +764,29 @@
       </div>
     </div>
     <div
-      class="max-w-4xl mx-auto bg-white rounded-xl p-4 sm:p-6 mb-8 border shadow-lg"
+      class="max-w-4xl mx-auto bg-white rounded-xl p-6 mb-8 border shadow-lg"
     >
       <div class="space-y-4">
         <div class="pb-4">
           <div class="flex justify-between flex-col items-center">
-            <span class="text-lg sm:text-xl md:text-2xl text-gray-700 font-medium"
+            <span class="text-2xl text-gray-700 font-medium"
               >عدد الخدمات المنفذة:</span
             >
-            <span class="text-lg sm:text-xl md:text-2xl font-medium text-gray-800">2188628</span>
+            <span class="text-2xl font-medium text-gray-800">2188002</span>
           </div>
         </div>
       </div>
     </div>
     <div
-      class="max-w-4xl mx-auto bg-white rounded-xl p-4 sm:p-6 mb-8 border shadow-lg"
+      class="max-w-4xl mx-auto bg-white rounded-xl p-6 mb-8 border shadow-lg"
     >
       <div class="space-y-4">
         <div class="pb-4">
           <div class="flex justify-between flex-col items-center">
-            <span class="text-gray-700 font-medium text-lg sm:text-xl md:text-2xl"
+            <span class="text-gray-700 font-medium text-2xl"
               >عدد سجلات شواهد تقيم الأداء المنفذة:</span
             >
-            <span class="text-lg sm:text-xl md:text-2xl font-medium text-gray-800">6321</span>
+            <span class="text-2xl font-medium text-gray-800">6321</span>
           </div>
         </div>
       </div>
@@ -818,9 +852,7 @@
     <div id="previewModal" class="modal-overlay">
       <div class="modal-content">
         <div class="modal-header">
-          <h2 class="text-lg sm:text-xl md:text-2xl font-bold text-gray-800">
-            معاينة استبيان أنماط التعلم للكبار
-          </h2>
+          <h2 class="text-2xl font-bold text-gray-800">معاينة خطة علاجية</h2>
           <button class="modal-close" onclick="closePreviewModal()">
             &times;
           </button>
@@ -829,10 +861,10 @@
           <div id="previewTemplateContent" class="preview-template">
             <!-- سيتم ملء المحتوى ديناميكياً -->
           </div>
-          <div class="flex flex-col sm:flex-row justify-center gap-4 mt-6">
+          <div class="flex justify-center gap-4 mt-6">
             <button
               onclick="downloadImageFromModal()"
-              class="bg-blue-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-bold hover:bg-blue-700 transition flex items-center justify-center gap-2 text-sm sm:text-base"
+              class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition flex items-center gap-2"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -852,7 +884,7 @@
             </button>
             <button
               onclick="downloadPDFFromModal()"
-              class="bg-red-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-bold hover:bg-red-700 transition flex items-center justify-center gap-2 text-sm sm:text-base"
+              class="bg-red-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-red-700 transition flex items-center gap-2"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -872,7 +904,7 @@
             </button>
             <button
               onclick="closePreviewModal()"
-              class="bg-gray-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-lg font-bold hover:bg-gray-700 transition text-sm sm:text-base"
+              class="bg-gray-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-gray-700 transition"
             >
               إغلاق
             </button>
@@ -908,13 +940,6 @@
           isValid = false;
         }
 
-        // التحقق من اسم الموضوع والتاريخ
-        const subjectDate = document.getElementById("subjectDate").value.trim();
-        if (!subjectDate || subjectDate === "أنماط التعلم\n١٤٤٦/١٢/١٢هـ") {
-          showError("subjectDate", "subjectDateError");
-          isValid = false;
-        }
-
         // التحقق من اسم المدرسة
         const schoolName = document.getElementById("schoolName").value.trim();
         if (!schoolName || schoolName === "اسم المدرسة") {
@@ -922,38 +947,69 @@
           isValid = false;
         }
 
+        // التحقق من عنوان الخطة
+        const planTitle = document.getElementById("planTitle").value.trim();
+        if (!planTitle || planTitle === "( خطة علاجية - اسم المادة )") {
+          showError("planTitle", "planTitleError");
+          isValid = false;
+        }
+
+        // التحقق من اسم الطالبة
+        const studentName = document.getElementById("studentName").value.trim();
+        if (!studentName || studentName === "اسم الطالب") {
+          showError("studentName", "studentNameError");
+          isValid = false;
+        }
+
         // التحقق من الصف/الفصل
         const gradeClass = document.getElementById("gradeClass").value.trim();
-        if (!gradeClass || gradeClass === "أول متوسط / ١") {
+        if (!gradeClass) {
           showError("gradeClass", "gradeClassError");
           isValid = false;
         }
 
-        // التحقق من أسماء الطلاب
-        const studentNames = document
-          .getElementById("studentNames")
+        // التحقق من الفصل الدراسي
+        const semester = document.getElementById("semester").value.trim();
+        if (!semester) {
+          showError("semester", "semesterError");
+          isValid = false;
+        }
+
+        // التحقق من تاريخ المراجعة
+        const reviewDate = document.getElementById("reviewDate").value.trim();
+        if (!reviewDate) {
+          showError("reviewDate", "reviewDateError");
+          isValid = false;
+        }
+
+        // التحقق من جوانب التميز
+        const excellenceAspects = document
+          .getElementById("excellenceAspects")
           .value.trim();
-        if (
-          !studentNames ||
-          studentNames === "الاسم الاول\nالاسم الثاني\nالاسم الثالث\nاسماء أخرى"
-        ) {
-          showError("studentNames", "studentNamesError");
+        if (!excellenceAspects) {
+          showError("excellenceAspects", "excellenceAspectsError");
           isValid = false;
         }
 
         // التحقق من اسم المعلم
         const teacherInfo = document.getElementById("teacherInfo").value.trim();
-        if (!teacherInfo || teacherInfo === "أ/ اسم المعلم") {
+        if (
+          !teacherInfo ||
+          teacherInfo === "اسم المعلم\nالاسم" ||
+          teacherInfo === "اسم المعلم"
+        ) {
           showError("teacherInfo", "teacherInfoError");
           isValid = false;
         }
 
-        // التحقق من توقيع ولي الأمر
-        const guardianSignature = document
-          .getElementById("guardianSignature")
-          .value.trim();
-        if (!guardianSignature || guardianSignature === "توقيع ولي الأمر") {
-          showError("guardianSignature", "guardianSignatureError");
+        // التحقق من اسم آخر
+        const otherInfo = document.getElementById("otherInfo").value.trim();
+        if (
+          !otherInfo ||
+          otherInfo === "مدير المدرسة\nالاسم" ||
+          otherInfo === "مدير المدرسة"
+        ) {
+          showError("otherInfo", "otherInfoError");
           isValid = false;
         }
 
@@ -976,12 +1032,15 @@
       function setupFieldValidation() {
         const textFields = [
           "eduInfo",
-          "subjectDate",
           "schoolName",
+          "planTitle",
+          "studentName",
           "gradeClass",
-          "studentNames",
+          "semester",
+          "reviewDate",
+          "excellenceAspects",
           "teacherInfo",
-          "guardianSignature",
+          "otherInfo",
         ];
 
         // معالجة حقول النص
@@ -1026,16 +1085,17 @@
         const eduInfo = eduInfoLines[0] || "الإدارة العامة للتعليم";
         const region = eduInfoLines[1] || "بالمنطقة الشمالية";
         const officeName = eduInfoLines[2] || "مكتب التعليم";
-        const subjectDate = document.getElementById("subjectDate").value.trim();
         const schoolName = document.getElementById("schoolName").value.trim();
+        const planTitle = document.getElementById("planTitle").value.trim();
+        const studentName = document.getElementById("studentName").value.trim();
         const gradeClass = document.getElementById("gradeClass").value.trim();
-        const studentNames = document
-          .getElementById("studentNames")
+        const semester = document.getElementById("semester").value.trim();
+        const reviewDate = document.getElementById("reviewDate").value.trim();
+        const excellenceAspects = document
+          .getElementById("excellenceAspects")
           .value.trim();
         const teacherInfo = document.getElementById("teacherInfo").value.trim();
-        const guardianSignature = document
-          .getElementById("guardianSignature")
-          .value.trim();
+        const otherInfo = document.getElementById("otherInfo").value.trim();
 
         const previewContainer = document.getElementById(
           "previewTemplateContent"
@@ -1046,20 +1106,22 @@
           <div class="max-w-4xl mx-auto">
             <div class="bg-white rounded-xl p-6">
               <div
-                class="w-full max-w-[300px] h-[200px] sm:h-[250px] md:h-[300px] flex mx-auto rounded-full overflow-hidden items-center justify-center shadow-md mb-8"
+                class="w-[300px] h-[300px] flex mx-auto rounded-full overflow-hidden items-center justify-center shadow-md mb-8"
               >
                 <img
-                  src="./assets/imgs/card12/questionnaire-vark.webp"
+                  src="../assets/imgs/card11/enrichment-plan.webp"
                   alt="img-title"
                   class="w-full h-full object-cover rounded-full"
                 />
               </div>
-              <h1 class="text-2xl sm:text-3xl md:text-4xl text-center mb-4">
-                استبيان أنماط التعلم للكبار
+              <h1 class="text-4xl text-center mb-4">
+                خطة إثرائية للطلاب والطالبات
               </h1>
-              <p class="text-gray-700 my-4 text-center text-base sm:text-lg md:text-xl">
-                استبيان VARK للمتوسط والثانوي لتحديد أسلوب التعلم الأمثل، الطلاب
-                يقومون بتعبئة الاستبيان
+              <p class="text-gray-700 my-4 text-center text-xl">
+                إنشاء وتخصيص خطة إثرائية للطلاب والطالبات مع إمكانية تحرير وإضافة
+                جميع البيانات الخاصة بك، بطريقة سهلة واحترافية توفر عليه الوقت
+                والجهد ويتم حفظ الملف النهائي بتنسيق صورة أو ملف pdf لسهولة الطباعة
+                بجودة عالية وإعادة الاستخدام في تقارير ونماذج أخرى.
               </p>
               
               <div class="mt-8 bg-white border border-gray-300 rounded-lg p-6">
@@ -1075,63 +1137,89 @@
                   </div>
                 </div>
 
-                <!-- اسم الموضوع والتاريخ -->
-                <div class="mb-6">
-                  <label class="block text-sm font-medium text-gray-700 mb-2">
-                    اسم الموضوع, التاريخ:
-                  </label>
-                  <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600 whitespace-pre-line">
-                    ${subjectDate}
+                <!-- الصف الأول: اسم المدرسة، عنوان الخطة واسم المادة، اسم الطالبة -->
+                <div class="grid grid-cols-3 gap-4 mb-6">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                      اسم المدرسة:
+                    </label>
+                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
+                      ${schoolName}
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                      عنوان الخطة واسم المادة:
+                    </label>
+                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
+                      ${planTitle}
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                      اسم الطالبة:
+                    </label>
+                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
+                      ${studentName}
+                    </div>
                   </div>
                 </div>
 
-                <!-- اسم المدرسة -->
-                <div class="mb-6">
-                  <label class="block text-sm font-medium text-gray-700 mb-2">
-                    اسم المدرسة:
-                  </label>
-                  <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
-                    ${schoolName}
+                <!-- الصف الثاني: الصف/الفصل، الفصل الدراسي، تاريخ المراجعة -->
+                <div class="grid grid-cols-3 gap-4 mb-6">
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                      الصف/الفصل:
+                    </label>
+                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
+                      ${gradeClass}
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                      الفصل الدراسي:
+                    </label>
+                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
+                      ${semester}
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                      تاريخ المراجعة:
+                    </label>
+                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
+                      ${reviewDate}
+                    </div>
                   </div>
                 </div>
 
-                <!-- الصف / الفصل -->
-                <div class="mb-6">
+                <!-- قسم جوانب التميز لدى الطالبـ/ة -->
+                <div class="mb-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
                   <label class="block text-sm font-medium text-gray-700 mb-2">
-                    الصف / الفصل:
+                    جوانب التميز لدى الطالبـ/ة:
                   </label>
-                  <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
-                    ${gradeClass}
+                  <div class="bg-white border border-gray-300 rounded-md p-3 text-gray-600 whitespace-pre-line min-h-[80px]">
+                    ${excellenceAspects}
                   </div>
                 </div>
 
-                <!-- اسم الطالب/ـة -->
-                <div class="mb-6">
-                  <label class="block text-sm font-medium text-gray-700 mb-2">
-                    اسم الطالب/ـة - يقبل من 1 إلى 30 سم دفعة واحدة:
-                  </label>
-                  <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600 whitespace-pre-line min-h-[400px]">
-                    ${studentNames}
-                  </div>
-                </div>
-
-                <!-- اسم المعلم -->
+                <!-- قسم اسم المعلم -->
                 <div class="mb-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
                   <label class="block text-sm font-medium text-gray-700 mb-2">
                     اسم المعلم:
                   </label>
-                  <div class="bg-white border border-gray-300 rounded-md p-3 text-gray-600 whitespace-pre-line min-h-[60px]">
+                  <div class="bg-white border border-gray-300 rounded-md p-3 text-gray-600 whitespace-pre-line min-h-[80px]">
                     ${teacherInfo}
                   </div>
                 </div>
 
-                <!-- توقيع ولي الأمر -->
+                <!-- قسم اسم آخر (مدير المدرسة) -->
                 <div class="mb-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
                   <label class="block text-sm font-medium text-gray-700 mb-2">
-                    توقيع ولي الأمر :
+                    اسم آخر:
                   </label>
-                  <div class="bg-white border border-gray-300 rounded-md p-3 text-gray-600 whitespace-pre-line min-h-[60px]">
-                    ${guardianSignature}
+                  <div class="bg-white border border-gray-300 rounded-md p-3 text-gray-600 whitespace-pre-line min-h-[80px]">
+                    ${otherInfo}
                   </div>
                 </div>
               </div>
@@ -1182,7 +1270,7 @@
           scale: 2,
         }).then((canvas) => {
           const link = document.createElement("a");
-          link.download = "questionnaire-vark-adults.png";
+          link.download = "remedial-plan-preview.png";
           link.href = canvas.toDataURL();
           link.click();
         });
@@ -1202,14 +1290,32 @@
           const imgWidth = 210;
           const imgHeight = (canvas.height * imgWidth) / canvas.width;
           pdf.addImage(imgData, "JPEG", 0, 0, imgWidth, imgHeight);
-          pdf.save("questionnaire-vark-adults.pdf");
+          pdf.save("remedial-plan-preview.pdf");
         });
+      }
+
+      // دالة لتكيف textarea تلقائياً مع المحتوى
+      function autoResizeTextarea(textarea) {
+        textarea.style.height = "auto";
+        textarea.style.height = textarea.scrollHeight + "px";
       }
 
       // تطبيق عند تحميل الصفحة
       document.addEventListener("DOMContentLoaded", function () {
         // إعداد الـ validation
         setupFieldValidation();
+
+        // تكيف textarea جوانب التميز تلقائياً
+        const excellenceAspects = document.getElementById("excellenceAspects");
+        if (excellenceAspects) {
+          // تطبيق التكيف عند التحميل
+          autoResizeTextarea(excellenceAspects);
+
+          // تطبيق التكيف عند الكتابة
+          excellenceAspects.addEventListener("input", function () {
+            autoResizeTextarea(this);
+          });
+        }
       });
     </script>
   </body>

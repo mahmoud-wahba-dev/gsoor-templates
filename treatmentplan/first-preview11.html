@@ -6,7 +6,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-    <title>سجل تواصل مع الطلاب - جاهز للتحميل والطباعة</title>
+    <title>خطة علاجية - جاهز للتحميل والطباعة</title>
     <style>
       /* Modal Styles */
       .modal-overlay {
@@ -240,7 +240,7 @@
           <li class="navbar-item">
             <a href="#" class="navbar-link">
               <div class="w-[100px]">
-                <img src="./assets/imgs/edu-forms-logo.svg" alt="" />
+                <img src="../assets/imgs/edu-forms-logo.svg" alt="" />
               </div>
             </a>
           </li>
@@ -513,16 +513,17 @@
             class="w-[300px] h-[300px] flex mx-auto rounded-full overflow-hidden items-center justify-center shadow-md mb-8"
           >
             <img
-              src="./assets/imgs/card10/communication-parent-report.webp"
+              src="../assets/imgs/card11/remedial-plan.webp"
               alt="img-title"
               class="w-full h-full object-cover rounded-full"
             />
           </div>
-          <h1 class="text-4xl text-center">
-            تقرير لتوثيق التواصل مع أولياء الأمور
-          </h1>
+          <h1 class="text-4xl text-center">خطة علاجية للطلاب والطالبات</h1>
           <p class="text-gray-700 my-4 text-center text-xl">
-            نموذج لإنشاء تقرير لتوثيق التواصل مع أولياء الأمور من جوالك مباشرة
+            إنشاء وتخصيص خطة علاجية للطلاب والطالبات مع إمكانية تحرير وإضافة
+            جميع البيانات الخاصة بك، بطريقة سهلة واحترافية توفر عليه الوقت
+            والجهد ويتم حفظ الملف النهائي بتنسيق صورة أو ملف pdf لسهولة الطباعة
+            بجودة عالية وإعادة الاستخدام في تقارير ونماذج أخرى.
           </p>
 
           <!-- نموذج الاستمارة -->
@@ -530,7 +531,7 @@
             <!-- القسم العلوي: إدارة التعليم -->
             <div class="mb-6">
               <label class="block text-sm font-medium text-gray-700 mb-2">
-                إدارة التعليم، اسم المدرسة
+                الإدارة , المنطقة, المكتب :
               </label>
               <textarea
                 id="eduInfo"
@@ -538,18 +539,46 @@
                 rows="3"
               >
 الإدارة العامة للتعليم
-بالمنطقة
-مدرسة</textarea
+بالمنطقة الشمالية
+مكتب التعليم</textarea
               >
               <div id="eduInfoError" class="error-message">هذا الحقل مطلوب</div>
             </div>
 
             <!-- التصميم الجديد من الصورة -->
-            <!-- الصف الأول: اسم الطالب، تاريخ التواصل، الصف/الفصل -->
+            <!-- الصف الأول: اسم المدرسة، عنوان الخطة واسم المادة، اسم الطالبة -->
             <div class="grid grid-cols-3 gap-4 mb-6">
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">
-                  اسم الطالب/ة:
+                  اسم المدرسة:
+                </label>
+                <input
+                  type="text"
+                  id="schoolName"
+                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  value="اسم المدرسة"
+                />
+                <div id="schoolNameError" class="error-message">
+                  هذا الحقل مطلوب
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  عنوان الخطة واسم المادة:
+                </label>
+                <input
+                  type="text"
+                  id="planTitle"
+                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  value="( خطة علاجية - اسم المادة )"
+                />
+                <div id="planTitleError" class="error-message">
+                  هذا الحقل مطلوب
+                </div>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">
+                  اسم الطالبـ/ة:
                 </label>
                 <input
                   type="text"
@@ -561,20 +590,10 @@
                   هذا الحقل مطلوب
                 </div>
               </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">
-                  تاريخ التواصل:
-                </label>
-                <input
-                  type="text"
-                  id="communicationDate"
-                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  value="الأحد ١٤٤٦/١٢/١٢هـ"
-                />
-                <div id="communicationDateError" class="error-message">
-                  هذا الحقل مطلوب
-                </div>
-              </div>
+            </div>
+
+            <!-- الصف الثاني: الصف/الفصل، الفصل الدراسي، تاريخ المراجعة -->
+            <div class="grid grid-cols-3 gap-4 mb-6">
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">
                   الصف/الفصل:
@@ -583,25 +602,21 @@
                   type="text"
                   id="gradeClass"
                   class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  value="أول متوسط / ٢"
+                  value="أول متوسط / أ"
                 />
                 <div id="gradeClassError" class="error-message">
                   هذا الحقل مطلوب
                 </div>
               </div>
-            </div>
-
-            <!-- الصف الثاني: الفصل الدراسي الأول، ملاحظة، سبب التواصل -->
-            <div class="grid grid-cols-3 gap-4 mb-6">
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">
-                  الفصل الدراسي الأول:
+                  الفصل الدراسي:
                 </label>
                 <input
                   type="text"
                   id="semester"
                   class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  value="الفصل الدراسي الأول"
+                  value="الأول"
                 />
                 <div id="semesterError" class="error-message">
                   هذا الحقل مطلوب
@@ -609,95 +624,17 @@
               </div>
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">
-                  ملاحظة:
+                  تاريخ المراجعة:
                 </label>
                 <input
                   type="text"
-                  id="note"
+                  id="reviewDate"
                   class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  value="لا يوجد"
+                  value="١٤٤٦/١٢/١٢هـ"
                 />
-                <div id="noteError" class="error-message">هذا الحقل مطلوب</div>
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">
-                  سبب التواصل:
-                </label>
-                <select
-                  id="communicationReason"
-                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                  <option value="">-- اختر هنا --</option>
-                  <option value="تكريم">تكريم</option>
-                  <option value="غياب">غياب</option>
-                  <option value="تأخر">تأخر</option>
-                  <option value="الأداء الدراسي">الأداء الدراسي</option>
-                  <option value="سلوك">سلوك</option>
-                  <option value="أخرى">أخرى</option>
-                </select>
-                <div id="communicationReasonError" class="error-message">
+                <div id="reviewDateError" class="error-message">
                   هذا الحقل مطلوب
                 </div>
-              </div>
-            </div>
-
-            <!-- الصف الثالث: طريقة التواصل، من قام بالتواصل -->
-            <div class="grid grid-cols-2 gap-4 mb-6">
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">
-                  طريقة التواصل:
-                </label>
-                <select
-                  id="communicationMethod"
-                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                  <option value="">-- اختر هنا --</option>
-                  <option value="مكالمة هاتفية">مكالمة هاتفية</option>
-                  <option value="المنصة">المنصة</option>
-                  <option value="رسالة واتساب">رسالة واتساب</option>
-                  <option value="حضوري">حضوري</option>
-                  <option value="إشعار ورقي">إشعار ورقي</option>
-                  <option value="أخرى">أخرى</option>
-                </select>
-                <div id="communicationMethodError" class="error-message">
-                  هذا الحقل مطلوب
-                </div>
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">
-                  من قام بالتواصل:
-                </label>
-                <select
-                  id="whoCommunicated"
-                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                  <option value="">-- اختر هنا --</option>
-                  <option value="الموجه الطلابي">الموجه الطلابي</option>
-                  <option value="الوكيل الطلابي">الوكيل الطلابي</option>
-                  <option value="قائد المدرسة">قائد المدرسة</option>
-                  <option value="وكيل المدرسة">وكيل المدرسة</option>
-                  <option value="المعلم">المعلم</option>
-                  <option value="اخر">اخر</option>
-                </select>
-                <div id="whoCommunicatedError" class="error-message">
-                  هذا الحقل مطلوب
-                </div>
-              </div>
-            </div>
-
-            <!-- الصف الرابع: الهدف من التواصل -->
-            <div class="mb-6">
-              <label class="block text-sm font-medium text-gray-700 mb-2">
-                الهدف من التواصل:
-              </label>
-              <input
-                type="text"
-                id="communicationObjective"
-                class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                value="بحث وإيجاد طريقة لتحسين الأداء الدراسي للطالب"
-              />
-              <div id="communicationObjectiveError" class="error-message">
-                هذا الحقل مطلوب
               </div>
             </div>
 
@@ -711,8 +648,9 @@
                 class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
                 rows="4"
               >
-المعلم
-اسم المعلم</textarea
+اسم المعلم
+الاسم
+            </textarea
               >
               <div id="teacherInfoError" class="error-message">
                 هذا الحقل مطلوب
@@ -730,36 +668,11 @@
                 rows="4"
               >
 مدير المدرسة
-اسم المدير</textarea
+الاسم
+            </textarea
               >
               <div id="otherInfoError" class="error-message">
                 هذا الحقل مطلوب
-              </div>
-            </div>
-
-            <!-- رفع الملفات والباركود -->
-            <div class="grid grid-cols-2 gap-4 mb-6">
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">
-                  صورة الشاهد الأول:
-                </label>
-                <input
-                  type="file"
-                  id="firstWitnessPhoto"
-                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  accept="image/*"
-                />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">
-                  صورة الشاهد الثاني:
-                </label>
-                <input
-                  type="file"
-                  id="secondWitnessPhoto"
-                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  accept="image/*"
-                />
               </div>
             </div>
 
@@ -918,9 +831,7 @@
     <div id="previewModal" class="modal-overlay">
       <div class="modal-content">
         <div class="modal-header">
-          <h2 class="text-2xl font-bold text-gray-800">
-            معاينة تقرير لتوثيق التواصل مع أولياء الأمور
-          </h2>
+          <h2 class="text-2xl font-bold text-gray-800">معاينة خطة علاجية</h2>
           <button class="modal-close" onclick="closePreviewModal()">
             &times;
           </button>
@@ -1008,19 +919,24 @@
           isValid = false;
         }
 
-        // التحقق من اسم الطالب
-        const studentName = document.getElementById("studentName").value.trim();
-        if (!studentName) {
-          showError("studentName", "studentNameError");
+        // التحقق من اسم المدرسة
+        const schoolName = document.getElementById("schoolName").value.trim();
+        if (!schoolName || schoolName === "اسم المدرسة") {
+          showError("schoolName", "schoolNameError");
           isValid = false;
         }
 
-        // التحقق من تاريخ التواصل
-        const communicationDate = document
-          .getElementById("communicationDate")
-          .value.trim();
-        if (!communicationDate) {
-          showError("communicationDate", "communicationDateError");
+        // التحقق من عنوان الخطة
+        const planTitle = document.getElementById("planTitle").value.trim();
+        if (!planTitle || planTitle === "( خطة علاجية - اسم المادة )") {
+          showError("planTitle", "planTitleError");
+          isValid = false;
+        }
+
+        // التحقق من اسم الطالبة
+        const studentName = document.getElementById("studentName").value.trim();
+        if (!studentName || studentName === "اسم الطالب") {
+          showError("studentName", "studentNameError");
           isValid = false;
         }
 
@@ -1038,59 +954,31 @@
           isValid = false;
         }
 
-        // التحقق من طريقة التواصل
-        const communicationMethod = document
-          .getElementById("communicationMethod")
-          .value.trim();
-        if (!communicationMethod) {
-          showError("communicationMethod", "communicationMethodError");
-          isValid = false;
-        }
-
-        // التحقق من من قام بالتواصل
-        const whoCommunicated = document
-          .getElementById("whoCommunicated")
-          .value.trim();
-        if (!whoCommunicated) {
-          showError("whoCommunicated", "whoCommunicatedError");
-          isValid = false;
-        }
-
-        // التحقق من الملاحظة
-        const note = document.getElementById("note").value.trim();
-        if (!note) {
-          showError("note", "noteError");
-          isValid = false;
-        }
-
-        // التحقق من سبب التواصل
-        const communicationReason = document
-          .getElementById("communicationReason")
-          .value.trim();
-        if (!communicationReason) {
-          showError("communicationReason", "communicationReasonError");
-          isValid = false;
-        }
-
-        // التحقق من الهدف من التواصل
-        const communicationObjective = document
-          .getElementById("communicationObjective")
-          .value.trim();
-        if (!communicationObjective) {
-          showError("communicationObjective", "communicationObjectiveError");
+        // التحقق من تاريخ المراجعة
+        const reviewDate = document.getElementById("reviewDate").value.trim();
+        if (!reviewDate) {
+          showError("reviewDate", "reviewDateError");
           isValid = false;
         }
 
         // التحقق من اسم المعلم
         const teacherInfo = document.getElementById("teacherInfo").value.trim();
-        if (!teacherInfo) {
+        if (
+          !teacherInfo ||
+          teacherInfo === "اسم المعلم\nالاسم" ||
+          teacherInfo === "اسم المعلم"
+        ) {
           showError("teacherInfo", "teacherInfoError");
           isValid = false;
         }
 
         // التحقق من اسم آخر
         const otherInfo = document.getElementById("otherInfo").value.trim();
-        if (!otherInfo) {
+        if (
+          !otherInfo ||
+          otherInfo === "مدير المدرسة\nالاسم" ||
+          otherInfo === "مدير المدرسة"
+        ) {
           showError("otherInfo", "otherInfoError");
           isValid = false;
         }
@@ -1114,12 +1002,12 @@
       function setupFieldValidation() {
         const textFields = [
           "eduInfo",
+          "schoolName",
+          "planTitle",
           "studentName",
-          "communicationDate",
           "gradeClass",
           "semester",
-          "note",
-          "communicationObjective",
+          "reviewDate",
           "teacherInfo",
           "otherInfo",
         ];
@@ -1129,27 +1017,6 @@
           const field = document.getElementById(fieldId);
           if (field) {
             field.addEventListener("input", function () {
-              this.classList.remove("field-error");
-              const errorId = fieldId + "Error";
-              const error = document.getElementById(errorId);
-              if (error) {
-                error.classList.remove("show");
-              }
-            });
-          }
-        });
-
-        // معالجة القوائم المنسدلة
-        const selectFields = [
-          "communicationMethod",
-          "whoCommunicated",
-          "communicationReason",
-        ];
-
-        selectFields.forEach((fieldId) => {
-          const field = document.getElementById(fieldId);
-          if (field) {
-            field.addEventListener("change", function () {
               this.classList.remove("field-error");
               const errorId = fieldId + "Error";
               const error = document.getElementById(errorId);
@@ -1180,37 +1047,21 @@
 
       // توليد محتوى المعاينة
       function generatePreviewContent() {
-        const eduInfoText =
-          document.getElementById("eduInfo").value ||
-          "الإدارة العامة للتعليم\nبالمنطقة\nمدرسة";
-        const eduInfoLines = eduInfoText.split("\n");
+        const eduInfoText = document.getElementById("eduInfo").value.trim();
+        const eduInfoLines = eduInfoText
+          .split("\n")
+          .filter((line) => line.trim());
         const eduInfo = eduInfoLines[0] || "الإدارة العامة للتعليم";
-        const region = eduInfoLines[1] || "بالمنطقة";
-        const schoolName = eduInfoLines[2] || "مدرسة";
-        const studentName =
-          document.getElementById("studentName").value || "اسم الطالب";
-        const communicationDate =
-          document.getElementById("communicationDate").value ||
-          "الأحد ١٤٤٦/١٢/١٢هـ";
-        const gradeClass =
-          document.getElementById("gradeClass").value || "أول متوسط / ٢";
-        const semester =
-          document.getElementById("semester").value || "الفصل الدراسي الأول";
-        const communicationMethod =
-          document.getElementById("communicationMethod").value || "";
-        const whoCommunicated =
-          document.getElementById("whoCommunicated").value || "";
-        const note = document.getElementById("note").value || "لا يوجد";
-        const communicationReason =
-          document.getElementById("communicationReason").value || "";
-        const communicationObjective =
-          document.getElementById("communicationObjective").value ||
-          "بحث وإيجاد طريقة لتحسين الأداء الدراسي للطالب";
-        const teacherInfo =
-          document.getElementById("teacherInfo").value || "المعلم\nاسم المعلم";
-        const otherInfo =
-          document.getElementById("otherInfo").value ||
-          "مدير المدرسة\nاسم المدير";
+        const region = eduInfoLines[1] || "بالمنطقة الشمالية";
+        const officeName = eduInfoLines[2] || "مكتب التعليم";
+        const schoolName = document.getElementById("schoolName").value.trim();
+        const planTitle = document.getElementById("planTitle").value.trim();
+        const studentName = document.getElementById("studentName").value.trim();
+        const gradeClass = document.getElementById("gradeClass").value.trim();
+        const semester = document.getElementById("semester").value.trim();
+        const reviewDate = document.getElementById("reviewDate").value.trim();
+        const teacherInfo = document.getElementById("teacherInfo").value.trim();
+        const otherInfo = document.getElementById("otherInfo").value.trim();
 
         const previewContainer = document.getElementById(
           "previewTemplateContent"
@@ -1224,49 +1075,64 @@
                 class="w-[300px] h-[300px] flex mx-auto rounded-full overflow-hidden items-center justify-center shadow-md mb-8"
               >
                 <img
-                  src="./assets/imgs/card9/sub-period.webp"
+                  src="../assets/imgs/card11/remedial-plan.webp"
                   alt="img-title"
                   class="w-full h-full object-cover rounded-full"
                 />
               </div>
               <h1 class="text-4xl text-center mb-4">
-                تقرير لتوثيق التواصل مع أولياء الأمور
+                خطة علاجية للطلاب والطالبات
               </h1>
               <p class="text-gray-700 my-4 text-center text-xl">
-                نموذج لإنشاء تقرير لتوثيق التواصل مع أولياء الأمور من جوالك مباشرة
+                إنشاء وتخصيص خطة علاجية للطلاب والطالبات مع إمكانية تحرير وإضافة
+                جميع البيانات الخاصة بك، بطريقة سهلة واحترافية توفر عليه الوقت
+                والجهد ويتم حفظ الملف النهائي بتنسيق صورة أو ملف pdf لسهولة الطباعة
+                بجودة عالية وإعادة الاستخدام في تقارير ونماذج أخرى.
               </p>
               
               <div class="mt-8 bg-white border border-gray-300 rounded-lg p-6">
                 <!-- القسم العلوي: إدارة التعليم -->
                 <div class="mb-6">
                   <label class="block text-sm font-medium text-gray-700 mb-2">
-                    إدارة التعليم، اسم المدرسة
+                    الإدارة , المنطقة, المكتب :
                   </label>
                   <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600">
                     <p>${eduInfo}</p>
                     <p>${region}</p>
-                    <p class="font-bold">${schoolName}</p>
+                    <p class="font-bold">${officeName}</p>
                   </div>
                 </div>
 
-                <!-- الصف الأول: اسم الطالب، تاريخ التواصل، الصف/الفصل -->
+                <!-- الصف الأول: اسم المدرسة، عنوان الخطة واسم المادة، اسم الطالبة -->
                 <div class="grid grid-cols-3 gap-4 mb-6">
                   <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">
-                      اسم الطالب/ة:
+                      اسم المدرسة:
+                    </label>
+                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
+                      ${schoolName}
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                      عنوان الخطة واسم المادة:
+                    </label>
+                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
+                      ${planTitle}
+                    </div>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">
+                      اسم الطالبة:
                     </label>
                     <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
                       ${studentName}
                     </div>
                   </div>
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">
-                      تاريخ التواصل:
-                    </label>
-                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
-                      ${communicationDate}
-                    </div>
-                  </div>
+                </div>
+
+                <!-- الصف الثاني: الصف/الفصل، الفصل الدراسي، تاريخ المراجعة -->
+                <div class="grid grid-cols-3 gap-4 mb-6">
                   <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">
                       الصف/الفصل:
@@ -1275,13 +1141,9 @@
                       ${gradeClass}
                     </div>
                   </div>
-                </div>
-
-                <!-- الصف الثاني: الفصل الدراسي الأول، ملاحظة، سبب التواصل -->
-                <div class="grid grid-cols-3 gap-4 mb-6">
                   <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">
-                      الفصل الدراسي الأول:
+                      الفصل الدراسي:
                     </label>
                     <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
                       ${semester}
@@ -1289,49 +1151,11 @@
                   </div>
                   <div>
                     <label class="block text-sm font-medium text-gray-700 mb-2">
-                      ملاحظة:
+                      تاريخ المراجعة:
                     </label>
                     <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
-                      ${note}
+                      ${reviewDate}
                     </div>
-                  </div>
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">
-                      سبب التواصل:
-                    </label>
-                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
-                      ${communicationReason || "-- اختر هنا --"}
-                    </div>
-                  </div>
-                </div>
-
-                <!-- الصف الثالث: طريقة التواصل، من قام بالتواصل -->
-                <div class="grid grid-cols-2 gap-4 mb-6">
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">
-                      طريقة التواصل:
-                    </label>
-                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
-                      ${communicationMethod || "-- اختر هنا --"}
-                    </div>
-                  </div>
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">
-                      من قام بالتواصل:
-                    </label>
-                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
-                      ${whoCommunicated || "-- اختر هنا --"}
-                    </div>
-                  </div>
-                </div>
-
-                <!-- الصف الرابع: الهدف من التواصل -->
-                <div class="mb-6">
-                  <label class="block text-sm font-medium text-gray-700 mb-2">
-                    الهدف من التواصل:
-                  </label>
-                  <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
-                    ${communicationObjective}
                   </div>
                 </div>
 
@@ -1402,7 +1226,7 @@
           scale: 2,
         }).then((canvas) => {
           const link = document.createElement("a");
-          link.download = "student-communication-record-preview.png";
+          link.download = "remedial-plan-preview.png";
           link.href = canvas.toDataURL();
           link.click();
         });
@@ -1422,7 +1246,7 @@
           const imgWidth = 210;
           const imgHeight = (canvas.height * imgWidth) / canvas.width;
           pdf.addImage(imgData, "JPEG", 0, 0, imgWidth, imgHeight);
-          pdf.save("student-communication-record-preview.pdf");
+          pdf.save("remedial-plan-preview.pdf");
         });
       }
 
