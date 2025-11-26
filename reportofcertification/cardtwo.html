@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>نموذج تنفيذ استراتيجية مختصرة</title>
+
+  <style>
+    :root{
+      --bg:#f6f8fa;
+      --card:#fff;
+      --accent:#2aa44f;
+      --muted:#6b7280;
+      --input:#f3f4f6;
+      --switch-bg:#e6e7ee;
+      --switch-on:#4f46e5;
+    }
+
+    *{box-sizing:border-box;font-family:Tahoma,Arial, sans-serif}
+    body{background:var(--bg);padding:24px;color:#111}
+
+    .container{max-width:920px;margin:0 auto}
+    .card{
+      background:var(--card);
+      border-radius:12px;
+      padding:22px 24px;
+      box-shadow:0 6px 20px rgba(2,6,23,0.06)
+    }
+
+    h1{font-size:20px;margin:6px 0;text-align:center;}
+    p.lead{color:var(--muted);font-size:14px;text-align:center;margin-bottom:18px}
+
+    .top-img{
+      display:flex;
+      justify-content:center;
+      margin-bottom:14px
+    }
+    .top-img img{
+      width:130px;
+      height:130px;
+      border-radius:50%;
+      object-fit:cover;
+      border:6px solid #fff;
+      box-shadow:0 4px 12px rgba(0,0,0,0.08)
+    }
+
+    form .row{display:flex;gap:12px;margin-bottom:12px}
+    form .col{flex:1}
+    label{display:block;font-size:13px;margin-bottom:6px;color:#0f172a}
+    input[type=text], textarea, select, input[type=date], input[type=file]{
+      width:100%;
+      padding:10px;
+      border-radius:8px;
+      border:1px solid #e6e9ee;
+      background:var(--input);
+      font-size:14px
+    }
+    textarea{min-height:100px;resize:vertical}
+
+    .section{
+      margin-top:18px;
+      padding-top:14px;
+      border-top:1px dashed #e6e9ee
+    }
+
+    .two-cols{display:flex;gap:12px}
+    .two-cols>*{flex:1}
+
+    .small{font-size:12px;color:var(--muted)}
+
+    .actions{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      margin-top:16px
+    }
+
+    .btn{
+      padding:10px 18px;
+      border-radius:8px;
+      border:0;
+      cursor:pointer;
+      font-weight:600
+    }
+    .btn.green{background:var(--accent);color:#fff}
+    .btn.ghost{background:transparent;border:1px solid #d1d5db}
+
+    /* Switch Styling */
+    .toggle-item{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      background:#fff;
+      padding:8px 12px;
+      border-radius:12px;
+      border:1px solid rgba(15,23,42,0.06);
+      min-width:170px;
+    }
+
+    .switch{
+      --w:44px;
+      --h:24px;
+      position:relative;
+      width:var(--w);
+      height:var(--h);
+      background:var(--switch-bg);
+      border-radius:999px;
+      padding:3px;
+      transition:.18s;
+      display:inline-block;
+    }
+
+    .switch input{display:none;}
+
+    .knob{
+      position:absolute;
+      top:3px;
+      left:3px;
+      width:18px;
+      height:18px;
+      background:white;
+      border-radius:50%;
+      box-shadow:0 2px 6px rgba(2,6,23,0.12);
+      transition:.18s cubic-bezier(.2,.9,.3,1);
+    }
+
+    .switch input:checked + .knob{
+      transform:translateX(20px);
+    }
+
+    .switch-bg-active{
+      position:absolute;
+      inset:0;
+      border-radius:999px;
+      pointer-events:none;
+      background:#e6e7ee;
+      transition:.18s;
+    }
+
+    .switch input:checked ~ .switch-bg-active{
+      background:var(--switch-on);
+      box-shadow:0 6px 18px rgba(79,70,229,0.18)
+    }
+
+    @media (max-width:720px){
+      form .row, .two-cols{flex-direction:column}
+      .toggle-item{min-width:100%}
+      .top-img img{width:95px;height:95px}
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <div class="card">
+
+    <!-- Image -->
+    <div class="top-img">
+      <img src="your-image.png" alt="">
+    </div>
+
+    <h1>نموذج تنفيذ استراتيجية مختصرة</h1>
+    <p class="lead">
+      إنشاء وتخصيص نموذج تنفيذ استراتيجية مختصرة مع إمكانية تحرير وإضافة جميع البيانات الخاصة بك…
+    </p>
+
+    <form id="docForm">
+
+      <!-- Fields -->
+      <div class="row">
+        <div class="col">
+          <label>إدارة التعليم / المنطقة / مكتب التعليم</label>
+          <input type="text">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label>اسم المدرسة</label>
+          <input type="text">
+        </div>
+
+        <div class="col">
+          <label>تاريخ التنفيذ</label>
+          <input type="text">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label>المادة</label>
+          <input type="text">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label>استراتيجية التعلم</label>
+          <input type="text">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label>عدد المستفيدين</label>
+          <input type="text">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label>المرحلة الدراسية</label>
+          <input type="text">
+        </div>
+
+        <div class="col">
+          <label>الفصل</label>
+          <input type="text">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label>اسم الدرس</label>
+          <input type="text">
+        </div>
+      </div>
+
+      <!-- Goals -->
+      <div class="section">
+        <label>الأهداف</label>
+        <textarea></textarea>
+      </div>
+
+      <div class="section">
+        <label>اسم المعلم</label>
+        <textarea></textarea>
+      </div>
+
+      <!-- Names -->
+      <div class="section two-cols">
+        <div>
+          <label>اسم آخر</label>
+          <input type="text">
+        </div>
+
+        <div>
+          <label>حساب تويتر</label>
+          <input type="text">
+        </div>
+      </div>
+
+      <div class="container">
+    <h1>الوسائل التعليمية المستخدمة:</h1>
+
+    <div class="preview">
+     
+        <p style="margin:0 0 8px 0; color:var(--muted)">فعّل/أوقف الوسائل التي تريد استخدامها.</p>
+
+        <div class="controls" aria-live="polite">
+          <!-- Toggle item template -->
+          <label class="toggle-item">
+            <span class="label">جهاز عرض</span>
+            <span style="margin-inline-start:auto;">
+              <span class="switch" title="تبديل جهاز عرض">
+                <input type="checkbox" id="proj" />
+                <span class="knob" aria-hidden="true"></span>
+                <span class="switch-bg-active" style="position:absolute; inset:0; border-radius:999px; pointer-events:none;"></span>
+              </span>
+            </span>
+          </label>
+
+          <label class="toggle-item">
+            <span class="label">جهاز حاسب</span>
+            <span style="margin-inline-start:auto;">
+              <span class="switch">
+                <input type="checkbox" id="pc" checked/>
+                <span class="knob" aria-hidden="true"></span>
+                <span class="switch-bg-active" style="position:absolute; inset:0; border-radius:999px; pointer-events:none;"></span>
+              </span>
+            </span>
+          </label>
+
+          <label class="toggle-item">
+            <span class="label">صورة توضيحية</span>
+            <span style="margin-inline-start:auto;">
+              <span class="switch">
+                <input type="checkbox" id="img" />
+                <span class="knob" aria-hidden="true"></span>
+                <span class="switch-bg-active" style="position:absolute; inset:0; border-radius:999px; pointer-events:none;"></span>
+              </span>
+            </span>
+          </label>
+
+          <label class="toggle-item">
+            <span class="label">أدوات رياضية</span>
+            <span style="margin-inline-start:auto;">
+              <span class="switch">
+                <input type="checkbox" id="sports" />
+                <span class="knob" aria-hidden="true"></span>
+                <span class="switch-bg-active" style="position:absolute; inset:0; border-radius:999px; pointer-events:none;"></span>
+              </span>
+            </span>
+          </label>
+
+          <label class="toggle-item">
+            <span class="label">كتاب</span>
+            <span style="margin-inline-start:auto;">
+              <span class="switch">
+                <input type="checkbox" id="book" />
+                <span class="knob" aria-hidden="true"></span>
+                <span class="switch-bg-active" style="position:absolute; inset:0; border-radius:999px; pointer-events:none;"></span>
+              </span>
+            </span>
+          </label>
+
+          <label class="toggle-item">
+            <span class="label">سبورة تقليدية</span>
+            <span style="margin-inline-start:auto;">
+              <span class="switch">
+                <input type="checkbox" id="board" />
+                <span class="knob" aria-hidden="true"></span>
+                <span class="switch-bg-active" style="position:absolute; inset:0; border-radius:999px; pointer-events:none;"></span>
+              </span>
+            </span>
+          </label>
+
+          <label class="toggle-item">
+            <span class="label">سبورة ذكية</span>
+            <span style="margin-inline-start:auto;">
+              <span class="switch">
+                <input type="checkbox" id="smartboard" />
+                <span class="knob" aria-hidden="true"></span>
+                <span class="switch-bg-active" style="position:absolute; inset:0; border-radius:999px; pointer-events:none;"></span>
+              </span>
+            </span>
+          </label>
+
+          <label class="toggle-item">
+            <span class="label">بطاقات تعليمية</span>
+            <span style="margin-inline-start:auto;">
+              <span class="switch">
+                <input type="checkbox" id="cards" />
+                <span class="knob" aria-hidden="true"></span>
+                <span class="switch-bg-active" style="position:absolute; inset:0; border-radius:999px; pointer-events:none;"></span>
+              </span>
+            </span>
+          </label>
+
+          <label class="toggle-item">
+            <span class="label">عرض تقديمي</span>
+            <span style="margin-inline-start:auto;">
+              <span class="switch">
+                <input type="checkbox" id="presentation" />
+                <span class="knob" aria-hidden="true"></span>
+                <span class="switch-bg-active" style="position:absolute; inset:0; border-radius:999px; pointer-events:none;"></span>
+              </span>
+            </span>
+          </label>
+
+          <label class="toggle-item">
+            <span class="label">أوراق عمل</span>
+            <span style="margin-inline-start:auto;">
+              <span class="switch">
+                <input type="checkbox" id="worksheets" />
+                <span class="knob" aria-hidden="true"></span>
+                <span class="switch-bg-active" style="position:absolute; inset:0; border-radius:999px; pointer-events:none;"></span>
+              </span>
+            </span>
+          </label>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+      <!-- Witness images -->
+      <div class="section">
+        <label>صورة الشاهد الأول</label>
+        <input type="file">
+
+        <label style="margin-top:12px">صورة الشاهد الثاني</label>
+        <input type="file">
+      </div>
+
+      <!-- Barcode link -->
+      <div class="section">
+        <label>ضع رابط الشواهد إن وجد لإنشاء باركود ووضعه بالنموذج</label>
+        <input type="text">
+      </div>
+
+      <!-- Actions -->
+      <div class="actions">
+        <button type="button" class="btn green">معالجة</button>
+        <button type="reset" class="btn ghost">إعادة تعيين</button>
+        <span class="small">سيتم إنشاء باركود ورفع الملف عند المعالجة</span>
+      </div>
+
+    </form>
+
+    <!-- Footer stats -->
+    <div class="section small" style="text-align:center;margin-top:20px">
+      <div>أكثر الروابط استخداماً: <a href="#">نموذج</a> • <a href="#">خطط</a></div>
+      <div style="margin-top:10px">عدد الخدمات المنفذة: <strong>2202870</strong></div>
+      <div>عدد سجلات شواهد تقديم الخدمة: <strong>6322</strong></div>
+    </div>
+
+  </div>
+</div>
+
+
+  <script>
+    document.querySelectorAll('.switch input').forEach(chk=>{
+      const update = () => {
+        const wrapper = chk.closest('.switch');
+        const active = wrapper.querySelector('.switch-bg-active');
+        if(chk.checked){
+          active.style.background = getComputedStyle(document.documentElement).getPropertyValue('--switch-on') || '#4f46e5';
+        } else {
+          active.style.background = getComputedStyle(document.documentElement).getPropertyValue('--switch-bg') || '#e6e7ee';
+        }
+      };
+      chk.addEventListener('change', update);
+      update();
+    });
+  </script>
+</body>
+</html>

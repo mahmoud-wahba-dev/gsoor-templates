@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>أفضل نموذج لتوثيق برنامج أو نشاط</title>
+  <style>
+    :root{--bg:#f6f8fa;--card:#fff;--accent:#2aa44f;--muted:#6b7280;--input:#f3f4f6}
+    *{box-sizing:border-box;font-family:Tahoma,Arial, sans-serif}
+    body{background:var(--bg);padding:24px;color:#111}
+    .container{max-width:920px;margin:0 auto}
+    .card{background:var(--card);border-radius:12px;padding:22px 24px;box-shadow:0 6px 20px rgba(2,6,23,0.06)}
+    h1{font-size:20px;margin:0 0 6px}
+    p.lead{color:var(--muted);margin:0 0 20px}
+    .top-img{display:flex;justify-content:center;margin-bottom:14px}
+    .top-img img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:6px solid #fff;box-shadow:0 4px 12px rgba(0,0,0,0.08)}
+
+    form .row{display:flex;gap:12px;margin-bottom:12px}
+    form .col{flex:1}
+    label{display:block;font-size:13px;margin-bottom:6px;color:#0f172a}
+    input[type=text], textarea, select, input[type=date], input[type=file]{width:100%;padding:10px;border-radius:8px;border:1px solid #e6e9ee;background:var(--input);font-size:14px}
+    textarea{min-height:90px;resize:vertical}
+
+    .small{font-size:12px;color:var(--muted)}
+    .actions{display:flex;gap:10px;align-items:center;margin-top:14px}
+    .btn{padding:10px 18px;border-radius:8px;border:0;cursor:pointer;font-weight:600}
+    .btn.green{background:var(--accent);color:#fff}
+    .btn.ghost{background:transparent;border:1px solid #d1d5db;color:#111}
+
+    .section{margin-top:18px;padding-top:12px;border-top:1px dashed #e6e9ee}
+    .two-cols{display:flex;gap:12px}
+    .two-cols > *{flex:1}
+
+    @media (max-width:720px){
+      form .row, .two-cols{flex-direction:column}
+      .top-img img{width:88px;height:88px}
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <div class="top-img">
+        <img src="/mnt/data/76271298-6d31-418f-bd84-eba3e391710a.png" alt="logo">
+      </div>إنشاء وتخصيص فهرس تفاعلي لأي تقرير أو ملف مع إمكانية تحرير وإضافة جميع البيانات الخاصة بك، بطريقة سهلة واحترافية توفر عليه الوقت والجهد ويتم حفظ الملف النهائي بتنسيق صورة أو ملف pdf لسهولة الطباعة بجودة عالية وإعادة الاستخدام في تقارير ونماذج أخرى.
+
+      <form id="docForm">
+        <div class="row">
+         
+      <!doctype html>
+<html lang="ar">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+ <div class="actions"> </div>
+  <title>عناصر الفهرس</title>
+  <style>
+    :root{
+      --panel-bg: #fafafa;
+      --panel-border: #e6e6e6;
+      --muted:#9b9b9b;
+      --danger:#d9534f;
+      --accent:#f7f7f7;
+    }
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: "Segoe UI", Tahoma, "Noto Kufi Arabic", "Helvetica Neue", Arial, sans-serif;
+      background:#f1f1f1;
+      direction: rtl;
+      text-align: right;
+      color:#333;
+    }
+    .container{
+      max-width:900px;
+      margin:28px auto;
+      padding:12px;
+    }
+
+    h1{
+      margin:0 0 10px 0;
+      font-size:20px;
+      color:#444;
+    }
+
+    .note{
+      background:linear-gradient(#fff,#fbfbfb);
+      border:1px solid var(--panel-border);
+      padding:14px;
+      border-radius:4px;
+      box-shadow:0 1px 0 rgba(0,0,0,0.02);
+      margin-bottom:18px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .index-list{
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+
+    .item{
+      background:var(--panel-bg);
+      border:1px solid var(--panel-border);
+      border-radius:4px;
+      padding:14px;
+      box-shadow:0 1px 0 rgba(0,0,0,0.02);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .item-header{
+      display:flex;
+      justify-content:space-between;
+      align-items:flex-start;
+      gap:12px;
+      margin-bottom:8px;
+    }
+
+    .item-left{
+      min-width:110px;
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+
+    .badge{
+      background:#f5f5f5;
+      border:1px solid #e8e8e8;
+      padding:6px 10px;
+      border-radius:4px;
+      color:var(--muted);
+      font-size:13px;
+    }
+
+    .delete-btn{
+      background:transparent;
+      border:1px solid var(--danger);
+      color:var(--danger);
+      padding:6px 10px;
+      border-radius:4px;
+      cursor:pointer;
+      font-size:13px;
+    }
+    .delete-btn:hover{ background: rgba(217,83,79,0.05); }
+
+    .fields{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+      align-items:center;
+    }
+
+    label{
+      font-size:13px;
+      color:var(--muted);
+      margin-bottom:6px;
+      display:block;
+    }
+
+    input[type="text"], input[type="number"]{
+      padding:8px 10px;
+      border:1px solid #e6e6e6;
+      border-radius:4px;
+      font-size:14px;
+      width:260px;
+      box-sizing:border-box;
+      background:white;
+    }
+
+    input.small{
+      width:90px;
+    }
+
+    .title-field{
+      flex:1 1 300px;
+      min-width:170px;
+    }
+
+    .page-number{
+      width:100px;
+      text-align:center;
+    }
+
+    .controls{
+      margin-top:14px;
+      display:flex;
+      gap:10px;
+      justify-content:flex-end;
+    }
+
+    .add-btn{
+      padding:8px 14px;
+      background:#337ab7;
+      color:white;
+      border:none;
+      border-radius:4px;
+      cursor:pointer;
+    }
+
+    .add-btn:hover{ opacity:0.95; }
+
+    /* responsive */
+    @media (max-width:680px){
+      .container{ padding:10px; }
+      input[type="text"], input[type="number"]{ width:100%; }
+      .fields{ flex-direction:column; align-items:stretch; }
+      .item-left{ width:100%; justify-content:space-between; }
+      .controls{ justify-content:stretch; flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>عناصر الفهرس</h1>
+
+    <div class="note">
+      لا يتم ترتيب العناصر هنا. قم بترقيم الصفحات بالشكل الصحيح وسيتم إعادة ترتيبها بالنموذج
+    </div>
+
+    <div class="index-list" id="indexList">
+      <div class="item" data-id="1">
+        <div class="item-header">
+          <div style="display:flex;gap:12px;align-items:center;">
+            <div class="badge">العنصر 1</div>
+            <div style="color:#666;font-size:14px;">العنوان:</div>
+            <div style="color:#666;font-size:14px;font-weight:600;">المقدمة</div>
+          </div>
+          <button class="delete-btn" onclick="removeItem(this)">حذف</button>
+        </div>
+
+        <div class="fields">
+          <div>
+            <label>رقم الصفحة:</label>
+            <input class="small page-number" type="number" value="1" />
+          </div>
+
+          <div class="title-field">
+            <label>&nbsp;</label>
+            <input type="text" placeholder="اكتب عنوان العنصر..." value="المقدمة" />
+          </div>
+        </div>
+      </div>
+
+      <div class="item" data-id="2">
+        <div class="item-header">
+          <div style="display:flex;gap:12px;align-items:center;">
+            <div class="badge">العنصر 2</div>
+            <div style="color:#666;font-size:14px;">العنوان:</div>
+            <div style="color:#666;font-size:14px;font-weight:600;">الفصل الأول: الإطار النظري</div>
+          </div>
+          <button class="delete-btn" onclick="removeItem(this)">حذف</button>
+        </div>
+
+        <div class="fields">
+          <div>
+            <label>رقم الصفحة:</label>
+            <input class="small page-number" type="number" value="5" />
+          </div>
+
+          <div class="title-field">
+            <label>&nbsp;</label>
+            <input type="text" placeholder="اكتب عنوان العنصر..." value="الفصل الأول: الإطار النظري" />
+          </div>
+        </div>
+      </div>
+
+      <div class="item" data-id="3">
+        <div class="item-header">
+          <div style="display:flex;gap:12px;align-items:center;">
+            <div class="badge">العنصر 3</div>
+            <div style="color:#666;font-size:14px;">العنوان:</div>
+            <div style="color:#666;font-size:14px;font-weight:600;">الفصل الثاني: الدراسة التطبيقية</div>
+          </div>
+          <button class="delete-btn" onclick="removeItem(this)">حذف</button>
+        </div>
+
+        <div class="fields">
+          <div>
+            <label>رقم الصفحة:</label>
+            <input class="small page-number" type="number" value="15" />
+          </div>
+
+          <div class="title-field">
+            <label>&nbsp;</label>
+            <input type="text" placeholder="اكتب عنوان العنصر..." value="الفصل الثاني: الدراسة التطبيقية" />
+          </div>
+        </div>
+      </div>
+
+      <div class="item" data-id="4">
+        <div class="item-header">
+          <div style="display:flex;gap:12px;align-items:center;">
+            <div class="badge">العنصر 4</div>
+            <div style="color:#666;font-size:14px;">العنوان:</div>
+            <div style="color:#666;font-size:14px;font-weight:600;">الفصل الثالث: النتائج والتوصيات</div>
+          </div>
+          <button class="delete-btn" onclick="removeItem(this)">حذف</button>
+        </div>
+
+        <div class="fields">
+          <div>
+            <label>رقم الصفحة:</label>
+            <input class="small page-number" type="number" value="25" />
+          </div>
+
+          <div class="title-field">
+            <label>&nbsp;</label>
+            <input type="text" placeholder="اكتب عنوان العنصر..." value="الفصل الثالث: النتائج والتوصيات" />
+          </div>
+        </div>
+      </div>
+
+      <div class="item" data-id="5">
+        <div class="item-header">
+          <div style="display:flex;gap:12px;align-items:center;">
+            <div class="badge">العنصر 5</div>
+            <div style="color:#666;font-size:14px;">العنوان:</div>
+            <div style="color:#666;font-size:14px;font-weight:600;">الخاتمة</div>
+          </div>
+          <button class="delete-btn" onclick="removeItem(this)">حذف</button>
+        </div>
+
+        <div class="fields">
+          <div>
+            <label>رقم الصفحة:</label>
+            <input class="small page-number" type="number" value="35" />
+          </div>
+
+          <div class="title-field">
+            <label>&nbsp;</label>
+            <input type="text" placeholder="اكتب عنوان العنصر..." value="الخاتمة" />
+          </div>
+        </div>
+      </div>
+
+      <div class="item" data-id="6">
+        <div class="item-header">
+          <div style="display:flex;gap:12px;align-items:center;">
+            <div class="badge">العنصر 6</div>
+            <div style="color:#666;font-size:14px;">العنوان:</div>
+            <div style="color:#666;font-size:14px;font-weight:600;">المراجع</div>
+          </div>
+          <button class="delete-btn" onclick="removeItem(this)">حذف</button>
+        </div>
+
+        <div class="fields">
+          <div>
+            <label>رقم الصفحة:</label>
+            <input class="small page-number" type="number" value="40" />
+          </div>
+
+          <div class="title-field">
+            <label>&nbsp;</label>
+            <input type="text" placeholder="اكتب عنوان العنصر..." value="المراجع" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="item" data-id="4">
+        <div class="item-header">
+          <div style="display:flex;gap:12px;align-items:center;">
+            <div class="badge">العنصر 7</div>
+            <div style="color:#666;font-size:14px;">العنوان:</div>
+            <div style="color:#666;font-size:14px;font-weight:600;">الفصل الثالث: النتائج والتوصيات</div>
+          </div>
+          <button class="delete-btn" onclick="removeItem(this)">حذف</button>
+        </div>
+
+        <div class="fields">
+          <div>
+            <label>رقم الصفحة:</label>
+            <input class="small page-number" type="number" value="25" />
+          </div>
+
+          <div class="title-field">
+            <label>&nbsp;</label>
+            <input type="text" placeholder="اكتب عنوان العنصر..." value="الفصل الثالث: النتائج والتوصيات" />
+          </div>
+        </div>
+      </div>
+
+
+    <div class="controls">
+      <button class="add-btn" onclick="addItem()">إضافة عنصر جديد</button>
+    </div>
+  </div>
+
+  <script>
+    function removeItem(btn){
+      const item = btn.closest('.item');
+      if(!item) return;
+      item.remove();
+    }
+
+    let nextId = 7;
+    function addItem(){
+      const list = document.getElementById('indexList');
+      const el = document.createElement('div');
+      el.className = 'item';
+      el.setAttribute('data-id', nextId);
+      el.innerHTML = `
+        <div class="item-header">
+          <div style="display:flex;gap:12px;align-items:center;">
+            <div class="badge">العنصر ${nextId}</div>
+            <div style="color:#666;font-size:14px;">العنوان:</div>
+            <div style="color:#666;font-size:14px;font-weight:600;">&nbsp;</div>
+          </div>
+          <button class="delete-btn" onclick="removeItem(this)">حذف</button>
+        </div>
+
+        <div class="fields">
+          <div>
+            <label>رقم الصفحة:</label>
+            <input class="small page-number" type="number" value="1" />
+          </div>
+
+          <div class="title-field">
+            <label>&nbsp;</label>
+            <input type="text" placeholder="اكتب عنوان العنصر..." value="" />
+          </div>
+        </div>
+      `;
+      list.appendChild(el);
+      nextId++;
+      el.scrollIntoView({behavior:'smooth', block:'center'});
+    }
+  </script>
+</body>
+</html>
+        
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn green" onclick="submitForm()">معالجة</button>
+          <button type="reset" class="btn ghost">إعادة تعيين</button>
+          <span class="small">سيتم إنشاء باركود ورفع الملف عند المعالجة</span>
+        </div>
+
+      </form>
+
+      <div class="section small" style="margin-top:18px">
+        <div>أكثر الروابط استخداماً: <a href="#">نموذج</a> • <a href="#">خطط</a></div>
+        <div style="margin-top:10px">عدد الخدمات المنفذة: <strong>2202870</strong></div>
+        <div>عدد سجلات شواهد تقديم الخدمة: <strong>6322</strong></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function submitForm()
+  </script>
+</body>
+</html>

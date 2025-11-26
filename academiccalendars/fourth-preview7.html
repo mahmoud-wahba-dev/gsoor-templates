@@ -214,280 +214,109 @@
     </style>
   </head>
   <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-      <div class="navbar-container">
-        <div class="navbar-header">
-          <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
-            ☰
-          </button>
+    <!--Gsoor Nav Bar-->
+    <!-- NAVBAR -->
+    <header class="fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
+      <div class="max-w-6xl mx-auto relative">
+        <div class="nav-pill px-3 py-2 flex items-center justify-between gap-3">
+          <!-- LOGO -->
+          <div class="flex items-center gap-4 ml-2">
+            <a href="#" class="shrink-0">
+              <img
+                src="../assets/imgs/gsoor_logo.jpg"
+                alt="logo"
+                class="h-9 w-auto object-contain md:h-10"
+              />
+            </a>
+          </div>
+
+          <!-- NAV LINKS (desktop) -->
+          <nav class="hidden md:flex items-center gap-8 text-sm text-gray-700">
+            <a href="#" class="hover:text-cyan-600 transition">الشهادات</a>
+            <a href="#" class="hover:text-cyan-600 transition"
+              >الملفات الإدارية</a
+            >
+            <a href="#" class="hover:text-cyan-600 transition">البطاقات</a>
+          </nav>
+
+          <!-- UTILITY ICONS -->
+          <div class="flex items-center gap-2">
+            <div
+              class="hidden sm:flex items-center bg-gray-50 rounded-full px-2 py-1 gap-2 border border-gray-100"
+            >
+              <button
+                id="themeToggle"
+                class="text-gray-600"
+                title="تبديل الوضع"
+              >
+                <i class="fa-solid fa-moon text-gray-600 text-base"></i>
+              </button>
+
+              <button class="text-gray-600 relative" title="العربة">
+                <i class="fa-solid fa-bag-shopping text-gray-600 text-base"></i>
+                <span
+                  id="cartBadge"
+                  class="absolute -top-1 -left-2 bg-cyan-600 text-white text-xs rounded-full px-1"
+                  >0</span
+                >
+              </button>
+
+              <button id="profileBtn" class="text-gray-600" title="الحساب">
+                <i class="fa-regular fa-user text-gray-600 text-base"></i>
+              </button>
+            </div>
+
+            <!-- MOBILE MENU BUTTON -->
+            <button
+              id="menuBtn"
+              class="md:hidden text-gray-600 p-2"
+              aria-expanded="false"
+            >
+              <i class="fa-solid fa-bars text-lg"></i>
+            </button>
+          </div>
         </div>
-        <ul class="navbar-menu" id="navbarMenu">
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              <div class="w-[100px]">
-                <img src="../assets/imgs/edu-forms-logo.svg" alt="" />
+
+        <!-- MOBILE NAV -->
+        <div
+          id="mobileNav"
+          class="hidden mobile-nav-abs mt-2 bg-white rounded-2xl shadow-md p-3 mx-4"
+        >
+          <div class="flex flex-col gap-2 text-right">
+            <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition"
+              >الشهادات</a
+            >
+            <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition"
+              >الملفات الإدارية</a
+            >
+            <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition"
+              >البطاقات</a
+            >
+            <div
+              class="pt-2 border-t border-gray-100 mt-2 flex justify-between items-center"
+            >
+              <div class="flex items-center gap-3">
+                <button id="mobileThemeToggle" class="text-gray-600">
+                  <i class="fa-solid fa-moon"></i>
+                </button>
+                <button class="text-gray-600 relative">
+                  <i class="fa-solid fa-bag-shopping"></i>
+                  <span
+                    id="mobileCartBadge"
+                    class="absolute -top-2 -left-2 bg-cyan-600 text-white text-xs rounded-full px-1"
+                    >0</span
+                  >
+                </button>
               </div>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              نماذج وتقارير توثيق
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
+              <a href="#" class="text-sm text-cyan-600 font-semibold"
+                >تسجيل دخول</a
               >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              شواهد تقييم الأداء جاهزة
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              أدوات تحليل النتائج
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              الخطة الأسبوعية
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              تقرير إنجاز المعلم اليومي والأسبوعي
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              التقاويم الدراسية وتوزيع الأسابيع
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              شواهد التفاعل مع المجتمع المهني
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              شواهد أداء الواجبات الوظيفية
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              تقارير التواصل مع أولياء الأمور
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              خطط علاجية وإثرائية
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              استبيانات أنماط التعلم
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              شهادات شكر وتقدير
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              شهادات متنوعة
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              لوحات وبنرات
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              أدوات
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-        </ul>
+            </div>
+          </div>
+        </div>
       </div>
-    </nav>
+    </header>
+
 
     <div class="max-w-6xl mx-auto">
       <div
