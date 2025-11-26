@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <title>نقطة عقد قرآن 1 | نماذج تعليمية</title>
+
+    <style>
+      body {
+        font-family: "Helvetica", "Tajawal", sans-serif;
+      }
+      label {
+        font-weight: 600;
+        color: #136f3c;
+        display: block;
+        margin-bottom: 8px;
+      }
+      input[type="text"],
+      input[type="date"],
+      select,
+      textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #d1d5db;
+        border-radius: 6px;
+        background-color: #ffffff;
+        font-size: 14px;
+      }
+      /* تحسين textarea */
+      textarea {
+        min-height: 80px;
+        line-height: 1.8;
+        font-size: 14px;
+        padding: 12px;
+        resize: vertical;
+      }
+      /* Section Background */
+      .section-bg {
+        background-color: #f3f4f6;
+        padding: 16px;
+        border-radius: 8px;
+        margin-bottom: 16px;
+      }
+      /* Modal Styles */
+      .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 1000;
+        overflow-y: auto;
+        padding: 20px;
+      }
+      .modal-overlay.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .modal-content {
+        background: white;
+        border-radius: 16px;
+        max-width: 90%;
+        width: 100%;
+        max-width: 1200px;
+        position: relative;
+        margin: auto;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      }
+      .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        border-bottom: 1px solid #e5e7eb;
+      }
+      .modal-body {
+        padding: 20px;
+        max-height: calc(100vh - 200px);
+        overflow-y: auto;
+      }
+      .modal-close {
+        background: none;
+        border: none;
+        font-size: 28px;
+        cursor: pointer;
+        color: #6b7280;
+        padding: 0;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.2s;
+      }
+      .modal-close:hover {
+        background-color: #f3f4f6;
+        color: #111827;
+      }
+      .preview-template {
+        background: white;
+        padding: 40px;
+        border: 2px solid #e5e7eb;
+        border-radius: 12px;
+      }
+      /* Error Message Styles */
+      .error-message {
+        color: #dc2626;
+        font-size: 14px;
+        margin-top: 4px;
+        display: none;
+      }
+      .error-message.show {
+        display: block;
+      }
+      .field-error {
+        border-color: #dc2626 !important;
+        border-width: 2px !important;
+      }
+      .field-error:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+      }
+    </style>
+  </head>
+
+  <body class="bg-gray-100 py-10">
+    <div class="max-w-6xl mx-auto">
+      <div
+        class="max-w-4xl mx-auto border-4 rounded-2xl shadow-xl overflow-hidden mb-8 p-4"
+        id="template"
+      >
+        <div class="bg-white rounded-xl p-6">
+          <div
+            class="w-[300px] h-[300px] flex mx-auto rounded-full overflow-hidden items-center justify-center shadow-md mb-8"
+          >
+            <img
+              src="https://images.unsplash.com/photo-1563453399-8d6e61f3f4b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+              alt="quran-contract"
+              class="w-full h-full object-cover"
+            />
+          </div>
+          <h1 class="text-5xl text-center">
+            نقطة عقد قرآن 3
+          </h1>
+          <p class="text-gray-700 my-4 text-center text-xl">
+            نقطة عقد قرآن أدنى، نقطة عقد قرآن صحيقي، نقطات عقد قرآن، عبارات وصور عقد قرآن، نقطة عقد قرآن فارغة تصميم نقطة عقد قرآن
+          </p>
+          <div class="p-6 space-y-6">
+            <!-- قسم النص الأول -->
+            <div>
+              <label class="mb-2">النص الأول:</label>
+              <textarea id="firstText" class="w-full" placeholder="الحمد لله الذي ينعمه لتم الصالحات">
+الحمد لله الذي بنعمته تتم الصالحات
+              </textarea>
+              <div id="firstTextError" class="error-message">
+                هذا الحقل مطلوب
+              </div>
+            </div>
+
+            <!-- قسم النص الثاني -->
+            <div>
+              <label class="mb-2">النص الثاني:</label>
+              <textarea id="secondText" class="w-full" placeholder="تم بحمد الله ونصفه عُف في ران أدنى">
+تـم بحمـد اللـه ونعمــتـــه
+عقــــــد قـــــــران أخـتــــــي
+              </textarea>
+              <div id="secondTextError" class="error-message">
+                هذا الحقل مطلوب
+              </div>
+            </div>
+
+            <!-- قسم الاسم -->
+            <div>
+              <label class="mb-2">الاسم:</label>
+              <input
+                type="text"
+                id="name"
+                placeholder="ليلى"
+                class="w-full"
+                value="ليلى"
+              />
+              <div id="nameError" class="error-message">
+                هذا الحقل مطلوب
+              </div>
+            </div>
+
+            <!-- قسم النص الثالث -->
+            <div>
+              <label class="mb-2">النص الثالث:</label>
+              <textarea id="thirdText" class="w-full" placeholder="النص ارتحله عَمَا طَبَّياً نَفْعَف به سعادتهم وأرتفهم النام الجميل">
+اللهـــم اجعله عقداً متيناً تنعقد به
+سعادتهم وارزقهم التمام الجميل
+              </textarea>
+              <div id="thirdTextError" class="error-message">
+                هذا الحقل مطلوب
+              </div>
+            </div>
+
+            <!-- قسم النص الرابع -->
+            <div>
+              <label class="mb-2">النص الرابع:</label>
+              <textarea id="fourthText" class="w-full" placeholder="ضم وصا في كُمولى سوالكم">
+ضــمــوهــا فــي كفــوف دعواتكــم
+              </textarea>
+              <div id="fourthTextError" class="error-message">
+                هذا الحقل مطلوب
+              </div>
+            </div>
+
+            <!-- قسم التاريخ -->
+            <div>
+              <label class="mb-2">التاريخ:</label>
+              <input
+                type="text"
+                id="date"
+                placeholder="3.6.2025"
+                class="w-full"
+                value="3.6.2025"
+              />
+              <div id="dateError" class="error-message">
+                هذا الحقل مطلوب
+              </div>
+            </div>
+
+            <!-- زر المعاينة -->
+            <div class="flex justify-center mt-6 mb-8">
+              <button
+                onclick="previewTemplate()"
+                class="bg-green-600 text-white px-8 py-4 rounded-lg font-bold text-lg flex items-center gap-3 hover:bg-green-700 transition"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="2"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                  />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                  />
+                </svg>
+                معاينة
+              </button>
+            </div>
+            
+            <!-- قسم أكثر الروابط استخداماً -->
+            <div
+              class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6 mb-8"
+            >
+              <h2 class="text-lg font-bold text-gray-800 mb-4">
+                أكثر الروابط استخداماً
+              </h2>
+              <div class="grid grid-cols-2 gap-4">
+                <!-- الصف الأول -->
+                <button
+                  class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
+                >
+                  شهادات شكر وتقدير
+                </button>
+                <button
+                  class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
+                >
+                  شهادات منوعية
+                </button>
+                <!-- الصف الثاني -->
+                <button
+                  class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
+                >
+                  نماذج وزراة
+                </button>
+                <button
+                  class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
+                >
+                  أدوات
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Popup للمعاينة -->
+    <div id="previewModal" class="modal-overlay">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="text-2xl font-bold text-gray-800">معاينة نقطة عقد قرآن</h2>
+          <button class="modal-close" onclick="closePreviewModal()">
+            &times;
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="previewTemplateContent" class="preview-template">
+            <!-- سيتم ملء المحتوى ديناميكياً -->
+          </div>
+          <div class="flex justify-center gap-4 mt-6">
+            <button
+              onclick="downloadImageFromModal()"
+              class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition flex items-center gap-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
+                />
+              </svg>
+              تحميل كصورة
+            </button>
+            <button
+              onclick="downloadPDFFromModal()"
+              class="bg-red-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-red-700 transition flex items-center gap-2"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                class="w-5 h-5"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
+                />
+              </svg>
+              تحميل PDF
+            </button>
+            <button
+              onclick="closePreviewModal()"
+              class="bg-gray-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-gray-700 transition"
+            >
+              إغلاق
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- قسم البيانات -->
+    <div
+      class="max-w-4xl mx-auto bg-white rounded-xl p-6 mb-8 border shadow-lg"
+    >
+      <div class="space-y-4">
+        <div class="pb-4">
+          <div class="flex justify-between flex-col items-center">
+            <span class="text-2xl text-gray-700 font-medium"
+              >عدد الخدمات المنفذة:</span
+            >
+            <span class="text-2xl font-medium text-gray-800">2716439</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="max-w-4xl mx-auto bg-white rounded-xl p-6 mb-8 border shadow-lg"
+    >
+      <div class="space-y-4">
+        <div class="pb-4">
+          <div class="flex justify-between flex-col items-center">
+            <span class="text-gray-700 font-medium text-2xl"
+              >عدد سجلات شواهد تقييم الأداء المنفذة</span
+            >
+            <span class="text-2xl font-medium text-gray-800">6351</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- الفوتر -->
+    <footer class="mt-12 border-t border-gray-300 pt-6 pb-8">
+      <div class="max-w-6xl mx-auto">
+        <div
+          class="flex flex-wrap justify-center items-center gap-4 text-gray-700 text-sm mb-4"
+        >
+          <a href="#" class="hover:text-green-600 transition">من نحن</a>
+          <span class="text-gray-400">|</span>
+          <a href="#" class="hover:text-green-600 transition">سياسة الخصوصية</a>
+          <span class="text-gray-400">|</span>
+          <a href="#" class="hover:text-green-600 transition"
+            >اتفاقية الاستخدام</a
+          >
+          <span class="text-gray-400">|</span>
+          <a
+            href="#"
+            class="hover:text-green-600 transition flex items-center gap-1"
+          >
+            تويتر
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              class="w-4 h-4"
+            >
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+              />
+            </svg>
+          </a>
+          <span class="text-gray-400">|</span>
+          <a href="#" class="hover:text-green-600 transition">اتصل بنا</a>
+        </div>
+        <div class="text-center text-gray-600 text-sm">
+          edu-forms.com, Inc 2025 ©
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // دالة حفظ جميع البيانات في localStorage
+      async function saveTemplateData() {
+        try {
+          // تحميل البيانات الموجودة أولاً للحفاظ على الملفات المحفوظة
+          const existingData = JSON.parse(
+            localStorage.getItem("quranContractData") || "{}"
+          );
+          const data = { ...existingData };
+
+          // جمع بيانات النص الأساسية
+          data.firstText = document.getElementById("firstText").value;
+          data.secondText = document.getElementById("secondText").value;
+          data.name = document.getElementById("name").value;
+          data.thirdText = document.getElementById("thirdText").value;
+          data.fourthText = document.getElementById("fourthText").value;
+          data.date = document.getElementById("date").value;
+
+          // حفظ البيانات في localStorage
+          localStorage.setItem("quranContractData", JSON.stringify(data));
+
+          return data;
+        } catch (error) {
+          console.error("خطأ في حفظ البيانات:", error);
+          alert("حدث خطأ في حفظ البيانات");
+        }
+      }
+
+      // دالة لتوسيع textarea تلقائياً حسب المحتوى
+      function autoResizeTextarea(textarea) {
+        textarea.style.height = "auto";
+        textarea.style.height = textarea.scrollHeight + "px";
+      }
+
+      // إعداد التحقق من الحقول
+      setupFieldValidation();
+
+      // تحميل البيانات من localStorage إن وجدت
+      const data = JSON.parse(localStorage.getItem("quranContractData") || "{}");
+
+      // تحميل البيانات في الحقول
+      if (data.firstText) {
+        document.getElementById("firstText").value = data.firstText;
+      }
+      if (data.secondText) {
+        document.getElementById("secondText").value = data.secondText;
+      }
+      if (data.name) {
+        document.getElementById("name").value = data.name;
+      }
+      if (data.thirdText) {
+        document.getElementById("thirdText").value = data.thirdText;
+      }
+      if (data.fourthText) {
+        document.getElementById("fourthText").value = data.fourthText;
+      }
+      if (data.date) {
+        document.getElementById("date").value = data.date;
+      }
+
+      // تطبيق auto-resize عند التحميل
+      const textareas = document.querySelectorAll('textarea');
+      textareas.forEach(textarea => {
+        autoResizeTextarea(textarea);
+        textarea.addEventListener('input', function() {
+          autoResizeTextarea(this);
+        });
+      });
+
+      // دالة التحقق من صحة البيانات
+      function validateForm() {
+        let isValid = true;
+
+        // إزالة رسائل الخطأ السابقة
+        document.querySelectorAll(".error-message").forEach((error) => {
+          error.classList.remove("show");
+        });
+        document.querySelectorAll(".field-error").forEach((field) => {
+          field.classList.remove("field-error");
+        });
+
+        // التحقق من النص الأول
+        const firstText = document.getElementById("firstText").value.trim();
+        if (!firstText) {
+          showError("firstText", "firstTextError");
+          isValid = false;
+        }
+
+        // التحقق من النص الثاني
+        const secondText = document.getElementById("secondText").value.trim();
+        if (!secondText) {
+          showError("secondText", "secondTextError");
+          isValid = false;
+        }
+
+        // التحقق من الاسم
+        const name = document.getElementById("name").value.trim();
+        if (!name) {
+          showError("name", "nameError");
+          isValid = false;
+        }
+
+        // التحقق من النص الثالث
+        const thirdText = document.getElementById("thirdText").value.trim();
+        if (!thirdText) {
+          showError("thirdText", "thirdTextError");
+          isValid = false;
+        }
+
+        // التحقق من النص الرابع
+        const fourthText = document.getElementById("fourthText").value.trim();
+        if (!fourthText) {
+          showError("fourthText", "fourthTextError");
+          isValid = false;
+        }
+
+        // التحقق من التاريخ
+        const date = document.getElementById("date").value.trim();
+        if (!date) {
+          showError("date", "dateError");
+          isValid = false;
+        }
+
+        return isValid;
+      }
+
+      // دالة لإظهار رسالة الخطأ
+      function showError(fieldId, errorId) {
+        const field = document.getElementById(fieldId);
+        const error = document.getElementById(errorId);
+        if (field) {
+          field.classList.add("field-error");
+        }
+        if (error) {
+          error.classList.add("show");
+        }
+      }
+
+      // إزالة رسالة الخطأ عند الكتابة
+      function setupFieldValidation() {
+        const textFields = [
+          "firstText",
+          "secondText",
+          "name",
+          "thirdText",
+          "fourthText",
+          "date"
+        ];
+
+        // معالجة حقول النص
+        textFields.forEach((fieldId) => {
+          const field = document.getElementById(fieldId);
+          if (field) {
+            field.addEventListener("input", function () {
+              this.classList.remove("field-error");
+              const errorId = fieldId + "Error";
+              const error = document.getElementById(errorId);
+              if (error) {
+                error.classList.remove("show");
+              }
+            });
+          }
+        });
+      }
+
+      // دالة المعاينة - يمكن استدعاؤها من زر المعاينة
+      async function previewTemplate() {
+        // التحقق من صحة البيانات أولاً
+        if (!validateForm()) {
+          // التمرير إلى أول حقل به خطأ
+          const firstError = document.querySelector(".field-error");
+          if (firstError) {
+            firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+          return;
+        }
+
+        // إذا كانت البيانات صحيحة، حفظها وفتح المعاينة
+        await saveTemplateData();
+        generatePreviewContent();
+        openPreviewModal();
+      }
+
+      // فتح الـ modal
+      function openPreviewModal() {
+        const modal = document.getElementById("previewModal");
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      // إغلاق الـ modal
+      function closePreviewModal() {
+        const modal = document.getElementById("previewModal");
+        modal.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+
+      // إغلاق الـ modal عند الضغط خارج المحتوى
+      document
+        .getElementById("previewModal")
+        ?.addEventListener("click", function (e) {
+          if (e.target === this) {
+            closePreviewModal();
+          }
+        });
+
+      // إغلاق الـ modal عند الضغط على ESC
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closePreviewModal();
+        }
+      });
+
+      // توليد محتوى المعاينة
+      function generatePreviewContent() {
+        const data = JSON.parse(localStorage.getItem("quranContractData") || "{}");
+        const previewContainer = document.getElementById(
+          "previewTemplateContent"
+        );
+
+        // إنشاء HTML للمعاينة
+        let html = `
+          <div class="space-y-6 text-center">
+            <h2 class="text-3xl font-bold text-green-800 mb-4">نقطة عقد قرآن</h2>
+            
+            <div class="text-center mb-6">
+              <div class="text-xl text-gray-700 mb-2 whitespace-pre-line">${data.firstText || ""}</div>
+            </div>
+
+            <div class="mb-6">
+              <div class="text-lg text-gray-700 whitespace-pre-line">${data.secondText || ""}</div>
+            </div>
+
+            <div class="mb-6">
+              <p class="text-2xl font-bold text-gray-800 mb-2">${data.name || ""}</p>
+            </div>
+
+            <div class="mb-6">
+              <div class="text-lg text-gray-700 whitespace-pre-line">${data.thirdText || ""}</div>
+            </div>
+
+            <div class="mb-6">
+              <div class="text-lg text-gray-700 whitespace-pre-line">${data.fourthText || ""}</div>
+            </div>
+
+            <div class="mt-8 pt-4 border-t border-gray-300">
+              <p class="text-lg text-gray-700">${data.date || ""}</p>
+            </div>
+          </div>
+        `;
+
+        previewContainer.innerHTML = html;
+      }
+
+      // تحميل الصورة من الـ modal
+      function downloadImageFromModal() {
+        const previewContent = document.getElementById(
+          "previewTemplateContent"
+        );
+        html2canvas(previewContent, {
+          backgroundColor: "#ffffff",
+          scale: 2,
+        }).then((canvas) => {
+          const link = document.createElement("a");
+          link.download = "quran-contract.png";
+          link.href = canvas.toDataURL();
+          link.click();
+        });
+      }
+
+      // تحميل PDF من الـ modal
+      function downloadPDFFromModal() {
+        const previewContent = document.getElementById(
+          "previewTemplateContent"
+        );
+        html2canvas(previewContent, {
+          backgroundColor: "#ffffff",
+          scale: 2,
+        }).then((canvas) => {
+          const imgData = canvas.toDataURL("image/jpeg");
+          const pdf = new jspdf.jsPDF("p", "mm", "a4");
+          const imgWidth = 210;
+          const imgHeight = (canvas.height * imgWidth) / canvas.width;
+          pdf.addImage(imgData, "JPEG", 0, 0, imgWidth, imgHeight);
+          pdf.save("quran-contract.pdf");
+        });
+      }
+
+      function downloadImage() {
+        html2canvas(document.getElementById("template"), {
+          backgroundColor: "#ffffff",
+          scale: 2,
+        }).then((canvas) => {
+          const link = document.createElement("a");
+          link.download = "quran-contract.png";
+          link.href = canvas.toDataURL();
+          link.click();
+        });
+      }
+
+      function downloadPDF() {
+        html2canvas(document.getElementById("template"), {
+          backgroundColor: "#ffffff",
+          scale: 2,
+        }).then((canvas) => {
+          const imgData = canvas.toDataURL("image/jpeg");
+          const pdf = new jspdf.jsPDF("p", "mm", "a4");
+          const imgWidth = 210;
+          const imgHeight = (canvas.height * imgWidth) / canvas.width;
+          pdf.addImage(imgData, "JPEG", 0, 0, imgWidth, imgHeight);
+          pdf.save("quran-contract.pdf");
+        });
+      }
+    </script>
+  </body>
+</html>
