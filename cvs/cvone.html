@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء سيرة ذاتية احترافية</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap');
+        body {
+            font-family: 'Tajawal', sans-serif;
+        }
+        .section-bg {
+            background-color: #f8fafc;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-right: 4px solid #3b82f6;
+        }
+        .form-input {
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            padding: 10px 12px;
+            width: 100%;
+            transition: all 0.3s;
+        }
+        .form-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+        .btn-primary {
+            background-color: #3b82f6;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #2563eb;
+            transform: translateY(-2px);
+        }
+        .btn-secondary {
+            background-color: #10b981;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        .btn-secondary:hover {
+            background-color: #059669;
+            transform: translateY(-2px);
+        }
+        .cv-template {
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .cv-header {
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            color: white;
+            padding: 30px;
+        }
+        .section-title {
+            border-bottom: 2px solid #3b82f6;
+            padding-bottom: 8px;
+            margin-bottom: 15px;
+            color: #1e3a8a;
+            font-weight: 700;
+        }
+        .skill-bar {
+            height: 8px;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+        .skill-level {
+            height: 100%;
+            background-color: #3b82f6;
+            border-radius: 4px;
+        }
+        .language-level {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: #e5e7eb;
+            margin-right: 5px;
+        }
+        .language-level.filled {
+            background-color: #3b82f6;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        .modal-content {
+            background: white;
+            border-radius: 12px;
+            max-width: 800px;
+            margin: 40px auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .modal-body {
+            padding: 20px;
+        }
+        .close-modal {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: #6b7280;
+        }
+        .add-btn {
+            background-color: #10b981;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 8px 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-top: 10px;
+        }
+        .remove-btn {
+            background-color: #ef4444;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Header -->
+    <header class="bg-white shadow-sm py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center">
+                <div class="bg-blue-600 text-white p-2 rounded-lg mr-3">
+                    <i class="fas fa-file-alt text-xl"></i>
+                </div>
+                <h1 class="text-2xl font-bold text-gray-800">منشئ السيرة الذاتية الاحترافية</h1>
+            </div>
+            <div class="flex items-center space-x-4 space-x-reverse">
+                <button class="btn-primary flex items-center gap-2">
+                    <i class="fas fa-download"></i>
+                    تحميل السيرة الذاتية
+                </button>
+                <button class="bg-gray-200 text-gray-800 py-2 px-4 rounded-lg flex items-center gap-2">
+                    <i class="fas fa-user"></i>
+                    حسابي
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Form Section -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">المعلومات الشخصية</h2>
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-gray-700 mb-2">الاسم الكامل</label>
+                            <input type="text" id="fullName" class="form-input" placeholder="أدخل اسمك الكامل">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">المسمى الوظيفي</label>
+                            <input type="text" id="jobTitle" class="form-input" placeholder="المسمى الوظيفي الحالي">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">البريد الإلكتروني</label>
+                            <input type="email" id="email" class="form-input" placeholder="example@email.com">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">رقم الهاتف</label>
+                            <input type="tel" id="phone" class="form-input" placeholder="05XXXXXXXX">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">العنوان</label>
+                            <input type="text" id="address" class="form-input" placeholder="المدينة، الدولة">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">الموقع الإلكتروني (اختياري)</label>
+                            <input type="url" id="website" class="form-input" placeholder="www.example.com">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Professional Summary -->
+                <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800 mb-6">الملف الشخصي</h2>
+                    <div>
+                        <label class="block text-gray-700 mb-2">نبذة عنك</label>
+                        <textarea id="summary" class="form-input" rows="4" placeholder="اكتب نبذة مختصرة عن خبراتك ومهاراتك"></textarea>
+                    </div>
+                </div>
+
+                <!-- Experience -->
+                <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold text-gray-800">الخبرات العملية</h2>
+                        <button id="addExperience" class="add-btn">
+                            <i class="fas fa-plus"></i> إضافة خبرة
+                        </button>
+                    </div>
+                    <div id="experiencesContainer">
+                        <!-- Experience items will be added here -->
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold text-gray-800">التعليم</h2>
+                        <button id="addEducation" class="add-btn">
+                            <i class="fas fa-plus"></i> إضافة تعليم
+                        </button>
+                    </div>
+                    <div id="educationContainer">
+                        <!-- Education items will be added here -->
+                    </div>
+                </div>
+
+                <!-- Skills -->
+                <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold text-gray-800">المهارات</h2>
+                        <button id="addSkill" class="add-btn">
+                            <i class="fas fa-plus"></i> إضافة مهارة
+                        </button>
+                    </div>
+                    <div id="skillsContainer">
+                        <!-- Skills will be added here -->
+                    </div>
+                </div>
+
+                <!-- Languages -->
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <div class="flex justify-between items-center mb-6">
+                        <h2 class="text-2xl font-bold text-gray-800">اللغات</h2>
+                        <button id="addLanguage" class="add-btn">
+                            <i class="fas fa-plus"></i> إضافة لغة
+                        </button>
+                    </div>
+                    <div id="languagesContainer">
+                        <!-- Languages will be added here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Preview Section -->
+            <div class="lg:col-span-1">
+                <div class="sticky top-8">
+                    <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+                        <h2 class="text-2xl font-bold text-gray-800 mb-4">معاينة السيرة الذاتية</h2>
+                        <p class="text-gray-600 mb-6">استعرض سيرتك الذاتية قبل تحميلها</p>
+                        <button id="previewBtn" class="btn-secondary w-full flex items-center justify-center gap-2">
+                            <i class="fas fa-eye"></i>
+                            معاينة السيرة الذاتية
+                        </button>
+                    </div>
+
+                    <!-- CV Template Preview -->
+                    <div id="cvPreview" class="cv-template">
+                        <div class="cv-header">
+                            <h1 id="previewName" class="text-3xl font-bold">عبدالله الأحمد</h1>
+                            <p id="previewTitle" class="text-xl opacity-90 mt-2">مطور ويب</p>
+                            <div class="flex flex-wrap gap-4 mt-4">
+                                <div class="flex items-center">
+                                    <i class="fas fa-envelope mr-2"></i>
+                                    <span id="previewEmail">abdullah.alahmad@email.com</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-phone mr-2"></i>
+                                    <span id="previewPhone">0551234567</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-map-marker-alt mr-2"></i>
+                                    <span id="previewAddress">الرياض، السعودية</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <div class="mb-6">
+                                <h2 class="section-title">الملف الشخصي</h2>
+                                <p id="previewSummary" class="text-gray-700">مطور ويب بخبرة تزيد عن 5 سنوات في تصميم وتطوير تطبيقات الويب باستخدام أحدث التقنيات. متخصص في تطوير واجهات المستخدم وتجربة المستخدم باستخدام React وVue.js.</p>
+                            </div>
+                            <div class="mb-6">
+                                <h2 class="section-title">الخبرات العملية</h2>
+                                <div id="previewExperiences">
+                                    <div class="mb-4">
+                                        <h3 class="font-bold text-gray-800">مطور ويب أول</h3>
+                                        <p class="text-gray-600">شركة التقنية المتطورة | 2020 - الحاضر</p>
+                                        <p class="text-gray-700 mt-2">تطوير وإدارة تطبيقات الويب باستخدام React وNode.js، وتحسين أداء التطبيقات وواجهات المستخدم.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <h2 class="section-title">التعليم</h2>
+                                <div id="previewEducation">
+                                    <div class="mb-4">
+                                        <h3 class="font-bold text-gray-800">بكالوريوس علوم الحاسب</h3>
+                                        <p class="text-gray-600">جامعة الملك سعود | 2015 - 2019</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <h2 class="section-title">المهارات</h2>
+                                <div id="previewSkills" class="flex flex-wrap gap-2">
+                                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">JavaScript</span>
+                                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">React</span>
+                                    <span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">Node.js</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h2 class="section-title">اللغات</h2>
+                                <div id="previewLanguages" class="flex flex-wrap gap-4">
+                                    <div>
+                                        <span class="font-medium">العربية</span>
+                                        <div class="flex mt-1">
+                                            <span class="language-level filled"></span>
+                                            <span class="language-level filled"></span>
+                                            <span class="language-level filled"></span>
+                                            <span class="language-level filled"></span>
+                                            <span class="language-level filled"></span>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <span class="font-medium">الإنجليزية</span>
+                                        <div class="flex mt-1">
+                                            <span class="language-level filled"></span>
+                                            <span class="language-level filled"></span>
+                                            <span class="language-level filled"></span>
+                                            <span class="language-level filled"></span>
+                                            <span class="language-level"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Preview Modal -->
+    <div id="previewModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="text-2xl font-bold text-gray-800">معاينة السيرة الذاتية</h2>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="modalPreviewContent" class="cv-template">
+                    <!-- Preview content will be inserted here -->
+                </div>
+                <div class="flex justify-center gap-4 mt-6">
+                    <button id="downloadPdf" class="btn-primary flex items-center gap-2">
+                        <i class="fas fa-file-pdf"></i>
+                        تحميل PDF
+                    </button>
+                    <button id="downloadImage" class="btn-secondary flex items-center gap-2">
+                        <i class="fas fa-file-image"></i>
+                        تحميل صورة
+                    </button>
+                    <button class="close-modal bg-gray-500 text-white px-6 py-3 rounded-lg font-bold">
+                        إغلاق
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-12">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <h3 class="text-xl font-bold">منشئ السيرة الذاتية الاحترافية</h3>
+                    <p class="text-gray-400 mt-2">أنشئ سيرتك الذاتية بسهولة واحترافية</p>
+                </div>
+                <div class="flex space-x-6 space-x-reverse">
+                    <a href="#" class="text-gray-400 hover:text-white transition">من نحن</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">اتصل بنا</a>
+                    <a href="#" class="text-gray-400 hover:text-white transition">سياسة الخصوصية</a>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-6 pt-6 text-center text-gray-400">
+                <p>© 2025 منشئ السيرة الذاتية. جميع الحقوق محفوظة.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize with sample data
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add initial experience
+            addExperience('مطور ويب أول', 'شركة التقنية المتطورة', '2020', 'الحاضر', 'تطوير وإدارة تطبيقات الويب باستخدام React وNode.js، وتحسين أداء التطبيقات وواجهات المستخدم.');
+            
+            // Add initial education
+            addEducation('بكالوريوس علوم الحاسب', 'جامعة الملك سعود', '2015', '2019');
+            
+            // Add initial skills
+            addSkill('JavaScript', 90);
+            addSkill('React', 85);
+            addSkill('Node.js', 80);
+            
+            // Add initial languages
+            addLanguage('العربية', 5);
+            addLanguage('الإنجليزية', 4);
+            
+            // Update preview with initial data
+            updatePreview();
+        });
+
+        // Experience functionality
+        document.getElementById('addExperience').addEventListener('click', function() {
+            addExperience();
+        });
+
+        function addExperience(title = '', company = '', startYear = '', endYear = '', description = '') {
+            const container = document.getElementById('experiencesContainer');
+            const experienceId = 'experience-' + Date.now();
+            
+            const experienceHTML = `
+                <div class="section-bg mb-4" id="${experienceId}">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label class="block text-gray-700 mb-2">المسمى الوظيفي</label>
+                            <input type="text" class="form-input experience-title" value="${title}" placeholder="المسمى الوظيفي">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">اسم الشركة</label>
+                            <input type="text" class="form-input experience-company" value="${company}" placeholder="اسم الشركة">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">سنة البدء</label>
+                            <input type="text" class="form-input experience-start" value="${startYear}" placeholder="سنة البدء">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">سنة الانتهاء</label>
+                            <input type="text" class="form-input experience-end" value="${endYear}" placeholder="سنة الانتهاء">
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <label class="block text-gray-700 mb-2">الوصف</label>
+                        <textarea class="form-input experience-description" rows="3" placeholder="وصف المسؤوليات والإنجازات">${description}</textarea>
+                    </div>
+                    <button class="remove-btn remove-experience" data-id="${experienceId}">
+                        <i class="fas fa-trash"></i> حذف
+                    </button>
+                </div>
+            `;
+            
+            container.insertAdjacentHTML('beforeend', experienceHTML);
+            
+            // Add event listener to the remove button
+            document.querySelector(`#${experienceId} .remove-experience`).addEventListener('click', function() {
+                document.getElementById(experienceId).remove();
+                updatePreview();
+            });
+            
+            // Add input event listeners to update preview
+            const inputs = document.querySelectorAll(`#${experienceId} input, #${experienceId} textarea`);
+            inputs.forEach(input => {
+                input.addEventListener('input', updatePreview);
+            });
+        }
+
+        // Education functionality
+        document.getElementById('addEducation').addEventListener('click', function() {
+            addEducation();
+        });
+
+        function addEducation(degree = '', institution = '', startYear = '', endYear = '') {
+            const container = document.getElementById('educationContainer');
+            const educationId = 'education-' + Date.now();
+            
+            const educationHTML = `
+                <div class="section-bg mb-4" id="${educationId}">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <label class="block text-gray-700 mb-2">الشهادة</label>
+                            <input type="text" class="form-input education-degree" value="${degree}" placeholder="الشهادة العلمية">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">المؤسسة التعليمية</label>
+                            <input type="text" class="form-input education-institution" value="${institution}" placeholder="المؤسسة التعليمية">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">سنة البدء</label>
+                            <input type="text" class="form-input education-start" value="${startYear}" placeholder="سنة البدء">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">سنة التخرج</label>
+                            <input type="text" class="form-input education-end" value="${endYear}" placeholder="سنة التخرج">
+                        </div>
+                    </div>
+                    <button class="remove-btn remove-education" data-id="${educationId}">
+                        <i class="fas fa-trash"></i> حذف
+                    </button>
+                </div>
+            `;
+            
+            container.insertAdjacentHTML('beforeend', educationHTML);
+            
+            // Add event listener to the remove button
+            document.querySelector(`#${educationId} .remove-education`).addEventListener('click', function() {
+                document.getElementById(educationId).remove();
+                updatePreview();
+            });
+            
+            // Add input event listeners to update preview
+            const inputs = document.querySelectorAll(`#${educationId} input`);
+            inputs.forEach(input => {
+                input.addEventListener('input', updatePreview);
+            });
+        }
+
+        // Skills functionality
+        document.getElementById('addSkill').addEventListener('click', function() {
+            addSkill();
+        });
+
+        function addSkill(name = '', level = 50) {
+            const container = document.getElementById('skillsContainer');
+            const skillId = 'skill-' + Date.now();
+            
+            const skillHTML = `
+                <div class="section-bg mb-4" id="${skillId}">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-gray-700 mb-2">اسم المهارة</label>
+                            <input type="text" class="form-input skill-name" value="${name}" placeholder="اسم المهارة">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">المستوى (%)</label>
+                            <input type="range" class="form-input skill-level" min="0" max="100" value="${level}">
+                            <span class="skill-level-value text-sm text-gray-600">${level}%</span>
+                        </div>
+                    </div>
+                    <button class="remove-btn remove-skill" data-id="${skillId}">
+                        <i class="fas fa-trash"></i> حذف
+                    </button>
+                </div>
+            `;
+            
+            container.insertAdjacentHTML('beforeend', skillHTML);
+            
+            // Update the level value display when slider changes
+            const levelInput = document.querySelector(`#${skillId} .skill-level`);
+            const levelValue = document.querySelector(`#${skillId} .skill-level-value`);
+            
+            levelInput.addEventListener('input', function() {
+                levelValue.textContent = this.value + '%';
+                updatePreview();
+            });
+            
+            // Add event listener to the remove button
+            document.querySelector(`#${skillId} .remove-skill`).addEventListener('click', function() {
+                document.getElementById(skillId).remove();
+                updatePreview();
+            });
+            
+            // Add input event listeners to update preview
+            const nameInput = document.querySelector(`#${skillId} .skill-name`);
+            nameInput.addEventListener('input', updatePreview);
+        }
+
+        // Languages functionality
+        document.getElementById('addLanguage').addEventListener('click', function() {
+            addLanguage();
+        });
+
+        function addLanguage(name = '', level = 3) {
+            const container = document.getElementById('languagesContainer');
+            const languageId = 'language-' + Date.now();
+            
+            const languageHTML = `
+                <div class="section-bg mb-4" id="${languageId}">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-gray-700 mb-2">اللغة</label>
+                            <input type="text" class="form-input language-name" value="${name}" placeholder="اسم اللغة">
+                        </div>
+                        <div>
+                            <label class="block text-gray-700 mb-2">المستوى (1-5)</label>
+                            <input type="range" class="form-input language-level" min="1" max="5" value="${level}">
+                            <span class="language-level-value text-sm text-gray-600">${level}/5</span>
+                        </div>
+                    </div>
+                    <button class="remove-btn remove-language" data-id="${languageId}">
+                        <i class="fas fa-trash"></i> حذف
+                    </button>
+                </div>
+            `;
+            
+            container.insertAdjacentHTML('beforeend', languageHTML);
+            
+            // Update the level value display when slider changes
+            const levelInput = document.querySelector(`#${languageId} .language-level`);
+            const levelValue = document.querySelector(`#${languageId} .language-level-value`);
+            
+            levelInput.addEventListener('input', function() {
+                levelValue.textContent = this.value + '/5';
+                updatePreview();
+            });
+            
+            // Add event listener to the remove button
+            document.querySelector(`#${languageId} .remove-language`).addEventListener('click', function() {
+                document.getElementById(languageId).remove();
+                updatePreview();
+            });
+            
+            // Add input event listeners to update preview
+            const nameInput = document.querySelector(`#${languageId} .language-name`);
+            nameInput.addEventListener('input', updatePreview);
+        }
+
+        // Update preview function
+        function updatePreview() {
+            // Personal info
+            document.getElementById('previewName').textContent = document.getElementById('fullName').value || 'عبدالله الأحمد';
+            document.getElementById('previewTitle').textContent = document.getElementById('jobTitle').value || 'مطور ويب';
+            document.getElementById('previewEmail').textContent = document.getElementById('email').value || 'abdullah.alahmad@email.com';
+            document.getElementById('previewPhone').textContent = document.getElementById('phone').value || '0551234567';
+            document.getElementById('previewAddress').textContent = document.getElementById('address').value || 'الرياض، السعودية';
+            document.getElementById('previewSummary').textContent = document.getElementById('summary').value || 'مطور ويب بخبرة تزيد عن 5 سنوات في تصميم وتطوير تطبيقات الويب باستخدام أحدث التقنيات. متخصص في تطوير واجهات المستخدم وتجربة المستخدم باستخدام React وVue.js.';
+            
+            // Experiences
+            const previewExperiences = document.getElementById('previewExperiences');
+            previewExperiences.innerHTML = '';
+            
+            const experienceElements = document.querySelectorAll('#experiencesContainer > div');
+            experienceElements.forEach(exp => {
+                const title = exp.querySelector('.experience-title').value;
+                const company = exp.querySelector('.experience-company').value;
+                const start = exp.querySelector('.experience-start').value;
+                const end = exp.querySelector('.experience-end').value;
+                const description = exp.querySelector('.experience-description').value;
+                
+                if (title || company) {
+                    const expHTML = `
+                        <div class="mb-4">
+                            <h3 class="font-bold text-gray-800">${title}</h3>
+                            <p class="text-gray-600">${company} ${start ? '| ' + start : ''} ${end ? '- ' + end : ''}</p>
+                            ${description ? `<p class="text-gray-700 mt-2">${description}</p>` : ''}
+                        </div>
+                    `;
+                    previewExperiences.insertAdjacentHTML('beforeend', expHTML);
+                }
+            });
+            
+            // Education
+            const previewEducation = document.getElementById('previewEducation');
+            previewEducation.innerHTML = '';
+            
+            const educationElements = document.querySelectorAll('#educationContainer > div');
+            educationElements.forEach(edu => {
+                const degree = edu.querySelector('.education-degree').value;
+                const institution = edu.querySelector('.education-institution').value;
+                const start = edu.querySelector('.education-start').value;
+                const end = edu.querySelector('.education-end').value;
+                
+                if (degree || institution) {
+                    const eduHTML = `
+                        <div class="mb-4">
+                            <h3 class="font-bold text-gray-800">${degree}</h3>
+                            <p class="text-gray-600">${institution} ${start ? '| ' + start : ''} ${end ? '- ' + end : ''}</p>
+                        </div>
+                    `;
+                    previewEducation.insertAdjacentHTML('beforeend', eduHTML);
+                }
+            });
+            
+            // Skills
+            const previewSkills = document.getElementById('previewSkills');
+            previewSkills.innerHTML = '';
+            
+            const skillElements = document.querySelectorAll('#skillsContainer > div');
+            skillElements.forEach(skill => {
+                const name = skill.querySelector('.skill-name').value;
+                if (name) {
+                    const skillHTML = `<span class="bg-blue-100 text-blue-800 px-3 py-1 rounded-full">${name}</span>`;
+                    previewSkills.insertAdjacentHTML('beforeend', skillHTML);
+                }
+            });
+            
+            // Languages
+            const previewLanguages = document.getElementById('previewLanguages');
+            previewLanguages.innerHTML = '';
+            
+            const languageElements = document.querySelectorAll('#languagesContainer > div');
+            languageElements.forEach(lang => {
+                const name = lang.querySelector('.language-name').value;
+                const level = parseInt(lang.querySelector('.language-level').value);
+                
+                if (name) {
+                    let dotsHTML = '';
+                    for (let i = 1; i <= 5; i++) {
+                        dotsHTML += `<span class="language-level ${i <= level ? 'filled' : ''}"></span>`;
+                    }
+                    
+                    const langHTML = `
+                        <div>
+                            <span class="font-medium">${name}</span>
+                            <div class="flex mt-1">
+                                ${dotsHTML}
+                            </div>
+                        </div>
+                    `;
+                    previewLanguages.insertAdjacentHTML('beforeend', langHTML);
+                }
+            });
+        }
+
+        // Add event listeners to personal info fields
+        const personalInfoFields = ['fullName', 'jobTitle', 'email', 'phone', 'address', 'summary'];
+        personalInfoFields.forEach(field => {
+            document.getElementById(field).addEventListener('input', updatePreview);
+        });
+
+        // Modal functionality
+        document.getElementById('previewBtn').addEventListener('click', function() {
+            document.getElementById('modalPreviewContent').innerHTML = document.getElementById('cvPreview').innerHTML;
+            document.getElementById('previewModal').style.display = 'block';
+        });
+
+        document.querySelectorAll('.close-modal').forEach(button => {
+            button.addEventListener('click', function() {
+                document.getElementById('previewModal').style.display = 'none';
+            });
+        });
+
+        // Download functionality
+        document.getElementById('downloadPdf').addEventListener('click', function() {
+            const element = document.getElementById('modalPreviewContent');
+            html2canvas(element, {
+                scale: 2,
+                useCORS: true,
+                logging: false
+            }).then(canvas => {
+                const imgData = canvas.toDataURL('image/jpeg', 1.0);
+                const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
+                const imgWidth = 210;
+                const imgHeight = (canvas.height * imgWidth) / canvas.width;
+                pdf.addImage(imgData, 'JPEG', 0, 0, imgWidth, imgHeight);
+                pdf.save('السيرة الذاتية.pdf');
+            });
+        });
+
+        document.getElementById('downloadImage').addEventListener('click', function() {
+            const element = document.getElementById('modalPreviewContent');
+            html2canvas(element, {
+                scale: 2,
+                useCORS: true,
+                logging: false
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = 'السيرة الذاتية.png';
+                link.href = canvas.toDataURL();
+                link.click();
+            });
+        });
+    </script>
+</body>
+</html>

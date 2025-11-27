@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>أدوات</title>
+  <style>
+    :root{
+      --bg: #f5f7fb;
+      --card: #fff;
+      --text: #1f2d3d;
+      --muted: #6b7280;
+      --primary: #4f46e5;
+      --radius: 14px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+      height: 100%;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 60px auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 28px;
+      margin: 0 0 6px;
+    }
+    .subtitle {
+      text-align: center;
+      color: var(--muted);
+      margin: 0 0 24px;
+    }
+
+    /* row of cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    /* card */
+    .card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 22px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,.05);
+      transition: transform .25s ease, box-shadow .25s ease;
+      min-height: 140px;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 14px rgba(0,0,0,.08);
+    }
+
+    .icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 12px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: #e8eefc;
+      margin-bottom: 12px;
+      font-size: 28px;
+      color: #3b82f6;
+    }
+
+    .card-title {
+      font-weight: 600;
+      font-size: 15px;
+      line-height: 1.35;
+    }
+
+    /* responsive */
+    @media (max-width: 1000px){
+      .cards { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px){
+      .cards { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>أدوات</h1>
+    <p class="subtitle">مجموعة من الأدوات المجانية والجاهزة للمعلمين والطلاب وأولياء الأمور</p>
+
+    <section class="cards" aria-label="أدوات تعليمية">
+      <div class="card" role="article">
+        <div class="icon" aria-label="تصوير">🖼️</div>
+        <div class="card-title">ضغط وتحويل تنسيق الصور</div>
+        </p>
+
+            <a
+
+            href="./compressimage.html"
+
+            class="card-btn"
+
+            style="
+
+              text-decoration: none;
+
+              display: flex;
+
+              align-items: center;
+
+              justify-content: center;
+
+            "
+
+            ><i class="fas fa-arrow-left ml-2"></i> ابدأ الآن</a
+
+          >
+      </div>
+
+      <div class="card" role="article">
+        <div class="icon" aria-label="رابط">🔗</div>
+        <div class="card-title">  QRCODE بطاقة التواصل الخاصه بك         </div>
+        
+        </p>
+
+            <a
+
+            href="./qrcontactcard.html"
+
+            class="card-btn"
+
+            style="
+
+              text-decoration: none;
+
+              display: flex;
+
+              align-items: center;
+
+              justify-content: center;
+
+            "
+
+            ><i class="fas fa-arrow-left ml-2"></i> ابدأ الآن</a
+
+          >
+
+      </div>
+
+      <div class="card" role="article">
+        <div class="icon" aria-label="QR">🧾</div>
+        <div class="card-title">حول اي رابط الي QRCODE</div>
+      </div>
+
+      <div class="card" role="article">
+        <div class="icon" aria-label="حاسبة">🧮</div>
+        <div class="card-title">حاسبة النسبة الموزونة</div>
+        </p>
+
+            <a
+
+            href="./calculater.html"
+
+            class="card-btn"
+
+            style="
+
+              text-decoration: none;
+
+              display: flex;
+
+              align-items: center;
+
+              justify-content: center;
+
+            "
+
+            ><i class="fas fa-arrow-left ml-2"></i> ابدأ الآن</a
+
+          >
+      </div>
+
+      <div class="card" role="article" style="grid-column: span 2;">
+        <div class="icon" aria-label="حضانة">👨‍👩‍👧</div>
+        <div class="card-title">حاسبه العمر الدراسي للأطفال</div>
+        </p>
+
+            <a
+
+            href="./kids.html"
+
+            class="card-btn"
+
+            style="
+
+              text-decoration: none;
+
+              display: flex;
+
+              align-items: center;
+
+              justify-content: center;
+
+            "
+
+            ><i class="fas fa-arrow-left ml-2"></i> ابدأ الآن</a
+
+          >
+      </div>
+
+    </section>
+  </div>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>صفحة إحصاءات الأدوات</title>
+  <style>
+    :root{
+      --bg: #f7f7f7;
+      --card: #fff;
+      --border: #e0e0e0;
+      --text: #111;
+      --muted: #555;
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; background: var(--bg); font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; color: var(--text); }
+    .container {
+      max-width: 860px;
+      margin: 24px auto;
+      padding: 0 16px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 18px;
+      margin: 20px 0;
+      text-align: center;
+      box-shadow: 0 1px 2px rgba(0,0,0,.04);
+    }
+    .label {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #333;
+    }
+    .value {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      color: #222;
+    }
+
+    /* تباعد بسيط للنص داخل البطاقة */
+    .inner {
+      padding: 6px 0 0;
+    }
+
+    /* استجابة بسيطة */
+    @media (max-width: 600px){
+      .value { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container" aria-label="إحصاءات):
+    "
+  ">
+    <!-- بطاقة 1: عدد الخدمات المتوفقة -->
+    <section class="card" aria-label="عدد الخدمات المتوفقة">
+      <div class="label">عدد الخدمات المنفذة:</div>
+      <div class="inner">
+        <div class="value">2217740</div>
+      </div>
+    </section>
+
+    <!-- بطاقة 2: عدد تسجيلات شهادات تقييم الأداء المنفذة -->
+    <section class="card" aria-label="عدد تسجيلات شهادات تقييم الأداء المنفذة">
+      <div class="label">عدد سجلات شواهد تقيم الأداء المنفذة:</div>
+      <div class="inner">
+        <div class="value">6351</div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

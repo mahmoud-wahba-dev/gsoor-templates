@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ضغط وتحويل تشويق الصور</title>
+  <style>
+    :root{
+      --bg: #f6f7f9;
+      --card: #ffffff;
+      --border: #dfe3e8;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --primary: #0d6efd;
+      --secondary: #0a74cd;
+      --radius: 12px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; background: var(--bg); color: var(--text); }
+
+    .wrapper {
+      max-width: 860px;
+      margin: 40px auto;
+      padding: 0 16px;
+    }
+
+    .panel {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,.04);
+    }
+
+    h1 {
+      font-size: 28px;
+      margin: 6px 0 6px;
+      font-weight: 700;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    .form-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 14px 0;
+    }
+
+    .file-input {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 60%;
+      max-width: 540px;
+      height: 38px;
+      border: 1px solid #cbd5e1;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #f8fafc;
+    }
+    .file-input input[type="file"] {
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      cursor: pointer;
+    }
+    .file-label {
+      padding: 0 12px;
+      font-size: 14px;
+      color: #64748b;
+      white-space: nowrap;
+    }
+
+    .output-type {
+      display: inline-flex;
+      align-items: center;
+      border-radius: 8px;
+      border: 1px solid #cbd5e1;
+      overflow: hidden;
+    }
+    .output-type button {
+      background: #fff;
+      border: none;
+      padding: 12px 28px;
+      font-size: 14px;
+      cursor: pointer;
+      color: #374151;
+    }
+    .output-type button.active {
+      background: #0ea5e9;
+      color: #fff;
+    }
+    .bar {
+      height: 8px;
+      width: 100%;
+      background: #e5e7eb;
+      border-radius: 4px;
+      margin: 8px 0 0;
+      position: relative;
+    }
+    .bar .progress {
+      height: 100%;
+      width: 0%;
+      background: #38bdf8;
+      border-radius: 4px;
+    }
+
+    .button {
+      display: inline-block;
+      width: 70%;
+      max-width: 780px;
+      padding: 14px 20px;
+      border-radius: 8px;
+      border: 0;
+      color: #fff;
+      background: #0b66c7;
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 600;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* مظهر مستجيب بسيط */
+    @media (max-width: 700px){
+      .file-input { width: 100%; }
+      .button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+</div>
+    <main class="wrapper" aria-label="صفحة تحويل الصور">
+    <section class="panel" aria-label="أداة التحويل">
+      <h1>ضغط وتحويل تنسيق الصور</h1>
+      <div class="subtitle">أداة مجانية لضغط الصور وتحويلها بين التنسيقات المختلفة (JPG، PNG، WebP)</div>
+</div>
+<!DOCTYPE html>  
+<html lang="ar" dir="rtl">  
+<head>  
+  <meta charset="utf-8" />  
+  <meta name="viewport" content="width=device-width, initial-scale=1" />  
+  <title>صفحة تحويل الصور - بنمط مطابق</title>  
+  <style>  
+    :root{  
+      --text: #2b2b2b;  
+      --bg: #f6f7f9;  
+      --panel: #ffffff;  
+      --border: #d9dde3;  
+      --muted: #6b7280;  
+      --blue: #0e75ba;  
+      --radius: 12px;  
+      --font-blond: #d4a05a; /* لون أقرب لاتجاه blond */  
+    }  
+
+    * { box-sizing: border-box; }  
+    html, body { height: 100%; margin: 0; font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial; background: var(--bg); color: var(--text); direction: rtl; }  
+
+    .wrapper {  
+      max-width: 860px;  
+      margin: 28px auto;  
+      padding: 0 16px;  
+    }  
+
+    .panel {  
+      background: var(--panel);  
+      border: 1px solid var(--border);  
+      border-radius: var(--radius);  
+      padding: 18px 20px;  
+      text-align: center;  
+      box-shadow: 0 2px 4px rgba(0,0,0,.04);  
+    }  
+
+    h1 {  
+      font-size: 28px;  
+      margin: 6px 0 4px;  
+      font-weight: 700;  
+      color: var(--text);  
+    }  
+    .subtitle {  
+      font-size: 13px;  
+      color: var(--muted);  
+      margin-bottom: 14px;  
+    }  
+
+    .section {  
+      text-align: left;  
+      margin: 12px 0;  
+    }  
+
+    .label {  
+      font-weight: 600;  
+      font-size: 14px;  
+      color: #374151;  
+      margin-bottom: 6px;  
+    }  
+
+    .file-area {  
+      display: flex;  
+      align-items: center;  
+      gap: 12px;  
+      padding: 12px;  
+      border: 1px solid var(--border);  
+      border-radius: 8px;  
+      background: #fff;  
+    }  
+    .file-area input[type="file"] {  
+      width: 100%;  
+      height: 40px;  
+      opacity: 0;  
+      cursor: pointer;  
+    }  
+    .fake {  
+      flex: 1;  
+      padding: 8px 12px;  
+      border-radius: 6px;  
+      background: #f7f7f7;  
+      border: 1px solid #e5e7eb;  
+      font-size: 14px;  
+      color: #374151;  
+      text-align: right;  
+      direction: rtl;  
+    }  
+
+    .out-type {  
+      display: inline-flex;  
+      border: 1px solid var(--border);  
+      border-radius: 8px;  
+      overflow: hidden;  
+      margin: 0 8px;  
+    }  
+    .out-type button {  
+      background: #fff;  
+      border: none;  
+      padding: 10px 28px;  
+      font-size: 14px;  
+      cursor: pointer;  
+      color: #374151;  
+    }  
+    .out-type button.active {  
+      background: #0ea5e9;  
+      color: #fff;  
+    }  
+
+    .progress {  
+      height: 6px;  
+      width: 100%;  
+      background: #e5e7eb;  
+      border-radius: 4px;  
+      overflow: hidden;  
+      margin-top: 6px;  
+    }  
+    .progress > span {  
+      display: block;  
+      height: 100%;  
+      width: 80%;  
+      background: #38bdf8;  
+    }  
+
+    .btn {  
+      display: block;  
+      width: 70%;  
+      max-width: 780px;  
+      padding: 12px 18px;  
+      border-radius: 8px;  
+      border: 0;  
+      background: #0d69d3;  
+      color: #fff;  
+      font-size: 16px;  
+      font-weight: 700;  
+      cursor: pointer;  
+      margin: 14px auto 0;  
+      text-align: center;  
+    }  
+
+    .blond {  
+      color: var(--font-blond);  
+      font-weight: 700;  
+    }  
+
+    @media (max-width: 700px){  
+      .btn { width: 90%; }  
+      .fake { text-align: right; }  
+    }  
+  </style>  
+</head>  
+<body>  
+  <main class="wrapper" aria-label="صفحة تحويل الصور">  
+    <section class="panel" aria-label="أداة التحويل">  
+      <h1>اختر صورة للتحويل
+    
+      <div class="form-row" aria-label="اختيار ملف">
+        <div class="file-input" title="اختيار ملف الصورة">
+          <input type="file" id="file" accept="image/*" />
+          <span class="file-label" id="fileLabel">No file chosen</span>
+        </div>
+      </div>
+
+      <div class="form-row" aria-label="تحديد الإخراج">
+        <div class="output-type" role="group" aria-label="تنسيق الإخراج">
+          <button type="button" class="active" id="btnWebp" aria-pressed="true">WEBP</button>
+          <button type="button" id="btnJpg" aria-pressed="false">JPG</button>
+        </div>
+      </div>
+
+      <div class="bar" aria-label="جودة الصورة">
+        <div class="progress" style="width: 80%;"></div>
+      </div>
+      <div class="form-row" style="justify-content:center;">
+        <button class="button" id="convertBtn" type="button">تحويل الصورة</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // نصيّات بسيطة لتعزيز التجربة (يمكنك تجاهلها إن أردت)
+    const fileInput = document.getElementById('file');
+    const fileLabel = document.getElementById('fileLabel');
+    fileInput?.addEventListener('change', function(){
+      const name = this.files && this.files.length ? this.files[0].name : 'No file chosen';
+      fileLabel.textContent = name;
+    });
+
+    const btnWebp = document.getElementById('btnWebp');
+    const btnJpg  = document.getElementById('btnJpg');
+    btnWebp.addEventListener('click', ()=> {
+      btnWebp.classList.add('active');
+      btnJpg.classList.remove('active');
+    });
+    btnJpg.addEventListener('click', ()=> {
+      btnJpg.classList.add('active');
+      btnWebp.classList.remove('active');
+    });
+
+    document.getElementById('convertBtn').addEventListener('click', function(){
+      alert('تم إرسال الطلب للتحويل (واجهة تجريبية)');
+    });
+  </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>صفحة إحصاءات الأدوات</title>
+  <style>
+    :root{
+      --bg: #f7f7f7;
+      --card: #fff;
+      --border: #e0e0e0;
+      --text: #111;
+      --muted: #555;
+      --radius: 8px;
+    }
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; background: var(--bg); font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; color: var(--text); }
+    .container {
+      max-width: 860px;
+      margin: 24px auto;
+      padding: 0 16px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px 18px;
+      margin: 20px 0;
+      text-align: center;
+      box-shadow: 0 1px 2px rgba(0,0,0,.04);
+    }
+    .label {
+      font-size: 16px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #333;
+    }
+    .value {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      color: #222;
+    }
+
+    /* تباعد بسيط للنص داخل البطاقة */
+    .inner {
+      padding: 6px 0 0;
+    }
+
+    /* استجابة بسيطة */
+    @media (max-width: 600px){
+      .value { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+  <main class="container" aria-label="إحصاءات):
+    "
+  ">
+    <!-- بطاقة 1: عدد الخدمات المتوفقة -->
+    <section class="card" aria-label="عدد الخدمات المتوفقة">
+      <div class="label">عدد الخدمات المنفذة:
+
+</div>
+      <div class="inner">
+        <div class="value">2217234</div>
+      </div>
+    </section>
+
+    <!-- بطاقة 2: عدد تسجيلات شهادات تقييم الأداء المنفذة -->
+    <section class="card" aria-label="عدد تسجيلات شهادات تقييم الأداء المنفذة">
+      <div class="label">عدد سجلات شواهد تقيم الأداء المنفذة:</div>
+      <div class="inner">
+        <div class="value">6351</div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

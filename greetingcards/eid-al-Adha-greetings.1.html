@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>أفضل نموذج لتوثيق برنامج أو نشاط</title>
+
+  <style>
+    :root{
+      --bg:#f5f6f7;
+      --card:#ffffff;
+      --accent:#2AA44F;
+      --muted:#777;
+      --border:#d6d6d6;
+      --input:#fafafa;
+    }
+    *{
+      box-sizing:border-box;
+      font-family: "Tahoma", Arial, sans-serif;
+    }
+    body{
+      margin:0;
+      background:var(--bg);
+      color:#222;
+    }
+
+    /* Top gray info box */
+    .support-box{
+      background:#fff;
+      border:1px solid var(--border);
+      padding:18px;
+      margin:25px auto;
+      max-width:1000px;
+      border-radius:8px;
+      font-size:14px;
+      text-align:center;
+    }
+    .support-box button{
+      margin:6px;
+      padding:10px 22px;
+      border-radius:6px;
+      cursor:pointer;
+      border:0;
+      font-weight:bold;
+      color:#fff;
+    }
+    .btn-twitter{background:#1d9bf0;}
+    .btn-telegram{background:#0088cc;}
+
+    /* Main card */
+    .container{
+      max-width:850px;
+      margin:20px auto 30px;
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:10px;
+      padding:25px 32px;
+    }
+    .header-img{
+      text-align:center;
+      margin-bottom:15px;
+    }
+    .header-img img{
+      width:140px;
+      height:140px;
+      border-radius:50%;
+      object-fit:cover;
+      border:5px solid #fff;
+      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    }
+
+    h1{
+      margin-top:5px;
+      font-size:22px;
+      text-align:center;
+      font-weight:700;
+    }
+    .subtext{
+      text-align:center;
+      margin:8px auto 25px;
+      color:#666;
+      font-size:14px;
+      line-height:1.7;
+      max-width:650px;
+    }
+
+    /* Form layout */
+    label{
+      display:block;
+      font-size:14px;
+      margin-bottom:5px;
+      font-weight:600;
+    }
+    input[type=text],
+    input[type=date],
+    input[type=file],
+    textarea,
+    select{
+      width:100%;
+      padding:9px 10px;
+      border:1px solid var(--border);
+      border-radius:6px;
+      font-size:14px;
+      background:var(--input);
+    }
+
+    textarea{
+      min-height:95px;
+      resize:vertical;
+    }
+
+    .row{
+      display:flex;
+      gap:12px;
+      margin-bottom:16px;
+    }
+    .col{flex:1;}
+
+    .section-title{
+      margin:20px 0 8px;
+      font-weight:700;
+      font-size:15px;
+    }
+
+    /* Buttons */
+    .actions{
+      text-align:center;
+      margin-top:20px;
+    }
+    .btn-main{
+      background:var(--accent);
+      padding:12px 30px;
+      border:0;
+      border-radius:6px;
+      font-size:16px;
+      cursor:pointer;
+      color:#fff;
+      font-weight:bold;
+    }
+    .btn-reset{
+      background:#fff;
+      border:1px solid var(--border);
+      padding:12px 22px;
+      border-radius:6px;
+      margin-right:10px;
+      cursor:pointer;
+      font-size:14px;
+    }
+
+    /* Footer link boxes */
+    .footer-links{
+      text-align:center;
+      margin:25px 0 10px;
+    }
+    .footer-links a{
+      display:inline-block;
+      padding:7px 18px;
+      border:1px solid var(--border);
+      border-radius:6px;
+      margin:3px;
+      font-size:14px;
+      text-decoration:none;
+      color:#222;
+      background:#fdfdfd;
+    }
+
+    /* Stats */
+    .stats-box{
+      text-align:center;
+      margin:18px 0;
+      padding:12px;
+      border-radius:6px;
+      border:1px solid var(--border);
+      background:#fff;
+    }
+    .stats-box strong{
+      font-size:17px;
+    }
+
+    /* Bottom footer */
+    footer{
+      text-align:center;
+      font-size:13px;
+      color:#777;
+      padding:20px 0;
+    }
+    footer a{color:#777;text-decoration:none;margin:0 4px;}
+
+    @media(max-width:720px){
+      .row{flex-direction:column}
+      .container{padding:22px;}
+    }
+  </style>
+
+</head>
+<body>
+
+  <!-- Social support box -->
+  <div class="support-box">
+    <div>إذا حاب تدعمني 😊</div>
+    <p>متابعتك لي على منصات التواصل تدعم الموقع وتفيدك على الاطلاع دائم لأحدث الروابط والمحتوى المحسّن.</p>
+    <button class="btn-twitter">تابعني على منصة (X) تويتر</button>
+    <button class="btn-telegram">اشترك بقناتي على تليجرام</button>
+  </div>
+
+  <!-- Main content card -->
+  <div class="container">
+
+    <div class="header-img">
+      <img src="https://edu-forms.com/template-pdfs/thumbnail/eid-adha-1.webp">
+    </div>
+
+    <h1>تهنئة عيد الأضحى 1</h1>
+
+    <p class="subtext">
+      بطاقة تهنئة عيد الأضحى، بطاقة تهنئة فارغة، كتابة بطاقة تهنئة
+    </p>
+
+    <form>
+
+      <div class="row">
+        <div class="col">
+          <label>نص التهنئة:</label>
+          <input type="text" placeholder="">
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <label>الاسم:</label>
+          <input type="text" placeholder="">
+        </div>
+      </div>
+
+      
+
+
+      <div class="actions">
+        <button class="btn-main">معاينة</button>
+      </div>
+    </form>
+
+    
+
+    <div class="stats-box">
+      عدد الخدمات المنفذة: <strong>2218552</strong>
+    </div>
+    <div class="stats-box">
+      عدد سجلات شواهد تقييم الأداء المنفذة: <strong>6351</strong>
+    </div>
+
+  </div>
+
+  <footer>
+    <a href="#">من نحن</a> • 
+    <a href="#">سياسة الخصوصية</a> • 
+    <a href="#">اتفاقية الاستخدام</a> • 
+    <a href="#">اتصل بنا</a> • 
+    <a href="#">تويتر</a>
+    <div style="margin-top:10px">edu-forms.com, Inc © 2025</div>
+  </footer>
+
+</body>
+</html>
