@@ -11,6 +11,9 @@
   <title>نماذج وتقارير عامة - مجانية وجاهزة للطباعة | نماذج تعليمية</title>
 </head>
 <style>
+  .body{
+   padding-top: 100px; 
+  }
   .card-btn {
     background: linear-gradient(135deg, #0ba7d1 0%, #00a8e1 100%);
     color: white;
@@ -196,71 +199,64 @@
 <body class="mx-4 sm:mx-8 md:mx-12 lg:mx-20">
   <!--Gsoor Nav Bar-->
   <!-- NAVBAR -->
-  <header class="fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
-    <div class="max-w-6xl mx-auto relative">
-      <div class="nav-pill px-3 py-2 flex items-center justify-between gap-3">
-        <!-- LOGO -->
-        <div class="flex items-center gap-4 ml-2">
-          <a href="#" class="shrink-0">
-            <img src="../assets/imgs/gsoor_logo.jpg" alt="logo" class="h-9 w-auto object-contain md:h-10" />
-          </a>
-        </div>
-
-        <!-- NAV LINKS (desktop) -->
-        <nav class="hidden md:flex items-center gap-8 text-sm text-gray-700">
-          <a href="#" class="hover:text-cyan-600 transition">الشهادات</a>
-          <a href="#" class="hover:text-cyan-600 transition">الملفات الإدارية</a>
-          <a href="#" class="hover:text-cyan-600 transition">البطاقات</a>
-        </nav>
-
-        <!-- UTILITY ICONS -->
-        <div class="flex items-center gap-2">
-          <div class="hidden sm:flex items-center bg-gray-50 rounded-full px-2 py-1 gap-2 border border-gray-100">
-            <button id="themeToggle" class="text-gray-600" title="تبديل الوضع">
-              <i class="fa-solid fa-moon text-gray-600 text-base"></i>
-            </button>
-
-            <button class="text-gray-600 relative" title="العربة">
-              <i class="fa-solid fa-bag-shopping text-gray-600 text-base"></i>
-              <span id="cartBadge"
-                class="absolute -top-1 -left-2 bg-cyan-600 text-white text-xs rounded-full px-1">0</span>
-            </button>
-
-            <button id="profileBtn" class="text-gray-600" title="الحساب">
-              <i class="fa-regular fa-user text-gray-600 text-base"></i>
-            </button>
-          </div>
-
-          <!-- MOBILE MENU BUTTON -->
-          <button id="menuBtn" class="md:hidden text-gray-600 p-2" aria-expanded="false">
-            <i class="fa-solid fa-bars text-lg"></i>
-          </button>
-        </div>
+  <!-- NAVBAR WITHOUT CART -->
+<header class="fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
+  <div class="max-w-6xl mx-auto relative">
+    <div class="nav-pill px-3 py-2 flex items-center justify-between gap-3">
+      <!-- LOGO -->
+      <div class="flex items-center gap-4 ml-2">
+        <a href="#" class="shrink-0">
+          <img
+            src="../assets/imgs/gsoor_logo.jpg"
+            alt="logo"
+            class="h-9 w-auto object-contain md:h-10"
+          />
+        </a>
       </div>
 
-      <!-- MOBILE NAV -->
-      <div id="mobileNav" class="hidden mobile-nav-abs mt-2 bg-white rounded-2xl shadow-md p-3 mx-4">
-        <div class="flex flex-col gap-2 text-right">
-          <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition">الشهادات</a>
-          <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition">الملفات الإدارية</a>
-          <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition">البطاقات</a>
-          <div class="pt-2 border-t border-gray-100 mt-2 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-              <button id="mobileThemeToggle" class="text-gray-600">
-                <i class="fa-solid fa-moon"></i>
-              </button>
-              <button class="text-gray-600 relative">
-                <i class="fa-solid fa-bag-shopping"></i>
-                <span id="mobileCartBadge"
-                  class="absolute -top-2 -left-2 bg-cyan-600 text-white text-xs rounded-full px-1">0</span>
-              </button>
-            </div>
-            <a href="#" class="text-sm text-cyan-600 font-semibold">تسجيل دخول</a>
+      <!-- NAV LINKS (desktop) -->
+      <nav class="hidden md:flex items-center gap-8 text-sm text-gray-700">
+        <a href="#" class="hover:text-cyan-600 transition">الشهادات</a>
+        <a href="#" class="hover:text-cyan-600 transition">الملفات الإدارية</a>
+        <a href="#" class="hover:text-cyan-600 transition">البطاقات</a>
+      </nav>
+
+      <!-- UTILITY ICONS WITHOUT CART -->
+      <div class="flex items-center gap-2">
+        <div class="hidden sm:flex items-center bg-gray-50 rounded-full px-2 py-1 gap-2 border border-gray-100">
+          <button id="themeToggle" class="text-gray-600" title="تبديل الوضع">
+            <i class="fa-solid fa-moon text-gray-600 text-base"></i>
+          </button>
+          <button id="profileBtn" class="text-gray-600" title="الحساب">
+            <i class="fa-regular fa-user text-gray-600 text-base"></i>
+          </button>
+        </div>
+
+        <!-- MOBILE MENU BUTTON -->
+        <button id="menuBtn" class="md:hidden text-gray-600 p-2" aria-expanded="false">
+          <i class="fa-solid fa-bars text-lg"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- MOBILE NAV WITHOUT CART -->
+    <div id="mobileNav" class="hidden mobile-nav-abs mt-2 bg-white rounded-2xl shadow-md p-3 mx-4">
+      <div class="flex flex-col gap-2 text-right">
+        <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition">الشهادات</a>
+        <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition">الملفات الإدارية</a>
+        <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition">البطاقات</a>
+        <div class="pt-2 border-t border-gray-100 mt-2 flex justify-between items-center">
+          <div class="flex items-center gap-3">
+            <button id="mobileThemeToggle" class="text-gray-600">
+              <i class="fa-solid fa-moon"></i>
+            </button>
           </div>
+          <a href="#" class="text-sm text-cyan-600 font-semibold">تسجيل دخول</a>
         </div>
       </div>
     </div>
-  </header>
+  </div>
+</header>
 
   <div class="flex items-center justify-center flex-col mt-6 sm:mt-8 md:mt-10">
     <h1 class="text-xl sm:text-2xl font-700 md:text-4xl text-center px-4">
@@ -352,14 +348,52 @@
       </div>
     </div>
   </footer>
-  <script>      // دالة تبديل القائمة على الموبايل
-    function toggleMobileMenu() {
-      const menu = document.getElementById("navbarMenu");
-      menu.classList.toggle("mobile-active");
+  <script>
+  // NAVBAR FUNCTIONALITY WITHOUT CART
+  document.addEventListener('DOMContentLoaded', function() {
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileNav = document.getElementById("mobileNav");
+    const mobileThemeToggle = document.getElementById("mobileThemeToggle");
+
+    // Mobile menu toggle
+    if (menuBtn) {
+      menuBtn.addEventListener("click", (e) => {
+        const expanded = menuBtn.getAttribute("aria-expanded") === "true";
+        menuBtn.setAttribute("aria-expanded", String(!expanded));
+        mobileNav.classList.toggle("hidden");
+      });
     }
 
+    // Close mobile menu when clicking outside
+    document.addEventListener("click", (e) => {
+      if (!mobileNav || mobileNav.classList.contains("hidden")) return;
+      const path = e.composedPath?.() || e.path || [];
+      if (!path.includes(mobileNav) && !path.includes(menuBtn)) {
+        mobileNav.classList.add("hidden");
+        if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
+      }
+    });
 
-  </script>
+    // Close mobile menu on window resize
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 768) {
+        mobileNav.classList.add("hidden");
+        if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    // Theme toggle
+    document.getElementById("themeToggle")?.addEventListener("click", () => {
+      document.documentElement.classList.toggle("dark");
+    });
+    
+    if (mobileThemeToggle) {
+      mobileThemeToggle.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+      });
+    }
+  });
+</script>
 </body>
 
 </html>

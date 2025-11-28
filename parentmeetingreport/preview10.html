@@ -1,1039 +1,975 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://cdn.tailwindcss.com"></script>
+
+<head>
+  <meta charset="UTF-8" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
   <!-- Add this to your head section -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer">
 
-    <title>سجل تواصل مع الطلاب - جاهز للتحميل والطباعة</title>
-    <style>
-      /* Modal Styles */
-      .modal-overlay {
-        display: none;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(0, 0, 0, 0.7);
-        z-index: 1000;
-        overflow-y: auto;
-        padding: 20px;
+  <title>سجل تواصل مع الطلاب - جاهز للتحميل والطباعة</title>
+  <style>
+    /* Modal Styles */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+  body{
+    padding-top: 100px;
+  }
+
+    .footer-ink {
+      background: #f8fafb;
+    }
+
+    .social-icon {
+      width: 26px;
+      height: 26px;
+      fill: currentColor;
+    }
+
+
+    .modal-overlay.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 16px;
+      max-width: 90%;
+      width: 100%;
+      max-width: 1200px;
+      position: relative;
+      margin: auto;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .modal-body {
+      padding: 20px;
+      max-height: calc(100vh - 200px);
+      overflow-y: auto;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: #6b7280;
+      padding: 0;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.2s;
+    }
+
+    .modal-close:hover {
+      background-color: #f3f4f6;
+      color: #111827;
+    }
+
+    .preview-template {
+      background: white;
+      padding: 40px;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+    }
+
+    .error-message {
+      color: #dc2626;
+      font-size: 14px;
+      margin-top: 4px;
+      display: none;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    .field-error {
+      border-color: #dc2626 !important;
+      border-width: 2px !important;
+    }
+
+    .field-error:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      background-color: #f3f4f6;
+      padding: 12px 0;
+      border-bottom: 1px solid #e5e7eb;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      width: 100%;
+      margin: 0;
+    }
+
+    .navbar-container {
+      width: 100%;
+      margin: 0;
+      padding: 0 16px;
+    }
+
+    .navbar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .navbar-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #374151;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .navbar-icon {
+      width: 20px;
+      height: 20px;
+      color: #3b82f6;
+      flex-shrink: 0;
+    }
+
+    .navbar-menu {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 12px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .navbar-link {
+      color: #374151;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 4px 6px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+
+    .navbar-link:hover {
+      color: #111827;
+    }
+
+    .dropdown-icon {
+      width: 10px;
+      height: 10px;
+      color: #374151;
+      margin-right: 4px;
+    }
+
+    .navbar-separator {
+      color: #9ca3af;
+      margin: 0 4px;
+    }
+
+    /* Mobile Menu Toggle */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #374151;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      padding: 12px 0;
+      border-top: 1px solid #e5e7eb;
+      margin-top: 8px;
+    }
+
+    .mobile-menu.active {
+      display: flex;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1200px) {
+      .navbar-menu {
+        gap: 6px 12px;
       }
 
-      
-.footer-ink {
-        background: #f8fafb;
+      .navbar-link {
+        font-size: 13px;
+        padding: 5px 6px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .navbar-container {
+        padding: 0 12px;
       }
 
-      .social-icon {
-        width: 26px;
-        height: 26px;
-        fill: currentColor;
-      }
-
-
-      .modal-overlay.active {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      .modal-content {
-        background: white;
-        border-radius: 16px;
-        max-width: 90%;
-        width: 100%;
-        max-width: 1200px;
-        position: relative;
-        margin: auto;
-        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-      }
-      .modal-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px;
-        border-bottom: 1px solid #e5e7eb;
-      }
-      .modal-body {
-        padding: 20px;
-        max-height: calc(100vh - 200px);
-        overflow-y: auto;
-      }
-      .modal-close {
-        background: none;
-        border: none;
-        font-size: 28px;
-        cursor: pointer;
-        color: #6b7280;
-        padding: 0;
-        width: 32px;
-        height: 32px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 50%;
-        transition: all 0.2s;
-      }
-      .modal-close:hover {
-        background-color: #f3f4f6;
-        color: #111827;
-      }
-      .preview-template {
-        background: white;
-        padding: 40px;
-        border: 2px solid #e5e7eb;
-        border-radius: 12px;
-      }
-      .error-message {
-        color: #dc2626;
-        font-size: 14px;
-        margin-top: 4px;
-        display: none;
-      }
-      .error-message.show {
+      .mobile-menu-toggle {
         display: block;
       }
-      .field-error {
-        border-color: #dc2626 !important;
-        border-width: 2px !important;
-      }
-      .field-error:focus {
-        outline: none;
-        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
-      }
-          /* Navbar Styles */
-      .navbar {
-        background-color: #f3f4f6;
-        padding: 12px 0;
-        border-bottom: 1px solid #e5e7eb;
-        top: 0;
-        z-index: 100;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        width: 100%;
-        margin: 0;
-      }
-      .navbar-container {
-        width: 100%;
-        margin: 0;
-        padding: 0 16px;
-      }
-      .navbar-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 8px;
-      }
-      .navbar-title {
-        font-size: 16px;
-        font-weight: 600;
-        color: #374151;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .navbar-icon {
-        width: 20px;
-        height: 20px;
-        color: #3b82f6;
-        flex-shrink: 0;
-      }
+
       .navbar-menu {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 8px 12px;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-      .navbar-item {
-        position: relative;
-        display: flex;
-        align-items: center;
-        gap: 4px;
-      }
-      .navbar-link {
-        color: #374151;
-        text-decoration: none;
-        font-size: 18px;
-        padding: 4px 6px;
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        transition: color 0.2s;
-        white-space: nowrap;
-      }
-      .navbar-link:hover {
-        color: #111827;
-      }
-      .dropdown-icon {
-        width: 10px;
-        height: 10px;
-        color: #374151;
-        margin-right: 4px;
-      }
-      .navbar-separator {
-        color: #9ca3af;
-        margin: 0 4px;
-      }
-      /* Mobile Menu Toggle */
-      .mobile-menu-toggle {
         display: none;
-        background: none;
-        border: none;
-        font-size: 24px;
-        color: #374151;
-        cursor: pointer;
-        padding: 8px;
       }
-      .mobile-menu {
-        display: none;
+
+      .navbar-menu.mobile-active {
+        display: flex;
         flex-direction: column;
+        align-items: flex-start;
         gap: 8px;
         padding: 12px 0;
-        border-top: 1px solid #e5e7eb;
-        margin-top: 8px;
-      }
-      .mobile-menu.active {
-        display: flex;
-      }
-      /* Responsive Styles */
-      @media (max-width: 1200px) {
-        .navbar-menu {
-          gap: 6px 12px;
-        }
-        .navbar-link {
-          font-size: 13px;
-          padding: 5px 6px;
-        }
-      }
-      @media (max-width: 768px) {
-        .navbar-container {
-          padding: 0 12px;
-        }
-        .mobile-menu-toggle {
-          display: block;
-        }
-        .navbar-menu {
-          display: none;
-        }
-        .navbar-menu.mobile-active {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 8px;
-          padding: 12px 0;
-        }
-        .navbar-item {
-          width: 100%;
-        }
-        .navbar-link {
-          width: 100%;
-          padding: 10px 8px;
-        }
-        .navbar-separator {
-          display: none;
-        }
       }
 
-    </style>
-  </head>
-  <body>
-     <!--Gsoor Nav Bar-->
-    <!-- NAVBAR -->
-    <header class="fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
-      <div class="max-w-6xl mx-auto relative">
-        <div class="nav-pill px-3 py-2 flex items-center justify-between gap-3">
-          <!-- LOGO -->
-          <div class="flex items-center gap-4 ml-2">
-            <a href="#" class="shrink-0">
-              <img
-                src="../assets/imgs/gsoor_logo.jpg"
-                alt="logo"
-                class="h-9 w-auto object-contain md:h-10"
-              />
-            </a>
-          </div>
+      .navbar-item {
+        width: 100%;
+      }
 
-          <!-- NAV LINKS (desktop) -->
-          <nav class="hidden md:flex items-center gap-8 text-sm text-gray-700">
-            <a href="#" class="hover:text-cyan-600 transition">الشهادات</a>
-            <a href="#" class="hover:text-cyan-600 transition"
-              >الملفات الإدارية</a
-            >
-            <a href="#" class="hover:text-cyan-600 transition">البطاقات</a>
-          </nav>
+      .navbar-link {
+        width: 100%;
+        padding: 10px 8px;
+      }
 
-          <!-- UTILITY ICONS -->
-          <div class="flex items-center gap-2">
-            <div
-              class="hidden sm:flex items-center bg-gray-50 rounded-full px-2 py-1 gap-2 border border-gray-100"
-            >
-              <button
-                id="themeToggle"
-                class="text-gray-600"
-                title="تبديل الوضع"
-              >
-                <i class="fa-solid fa-moon text-gray-600 text-base"></i>
-              </button>
+      .navbar-separator {
+        display: none;
+      }
+    }
+  </style>
+</head>
 
-              <button class="text-gray-600 relative" title="العربة">
-                <i class="fa-solid fa-bag-shopping text-gray-600 text-base"></i>
-                <span
-                  id="cartBadge"
-                  class="absolute -top-1 -left-2 bg-cyan-600 text-white text-xs rounded-full px-1"
-                  >0</span
-                >
-              </button>
+<body>
+  <!--Gsoor Nav Bar-->
+  <!-- NAVBAR -->
+  <!-- NAVBAR WITHOUT CART -->
+  <header class="fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
+    <div class="max-w-6xl mx-auto relative">
+      <div class="nav-pill px-3 py-2 flex items-center justify-between gap-3">
+        <!-- LOGO -->
+        <div class="flex items-center gap-4 ml-2">
+          <a href="#" class="shrink-0">
+            <img src="../assets/imgs/gsoor_logo.jpg" alt="logo" class="h-9 w-auto object-contain md:h-10" />
+          </a>
+        </div>
 
-              <button id="profileBtn" class="text-gray-600" title="الحساب">
-                <i class="fa-regular fa-user text-gray-600 text-base"></i>
-              </button>
-            </div>
+        <!-- NAV LINKS (desktop) -->
+        <nav class="hidden md:flex items-center gap-8 text-sm text-gray-700">
+          <a href="#" class="hover:text-cyan-600 transition">الشهادات</a>
+          <a href="#" class="hover:text-cyan-600 transition">الملفات الإدارية</a>
+          <a href="#" class="hover:text-cyan-600 transition">البطاقات</a>
+        </nav>
 
-            <!-- MOBILE MENU BUTTON -->
-            <button
-              id="menuBtn"
-              class="md:hidden text-gray-600 p-2"
-              aria-expanded="false"
-            >
-              <i class="fa-solid fa-bars text-lg"></i>
+        <!-- UTILITY ICONS WITHOUT CART -->
+        <div class="flex items-center gap-2">
+          <div class="hidden sm:flex items-center bg-gray-50 rounded-full px-2 py-1 gap-2 border border-gray-100">
+            <button id="themeToggle" class="text-gray-600" title="تبديل الوضع">
+              <i class="fa-solid fa-moon text-gray-600 text-base"></i>
+            </button>
+            <button id="profileBtn" class="text-gray-600" title="الحساب">
+              <i class="fa-regular fa-user text-gray-600 text-base"></i>
             </button>
           </div>
-        </div>
 
-        <!-- MOBILE NAV -->
-        <div
-          id="mobileNav"
-          class="hidden mobile-nav-abs mt-2 bg-white rounded-2xl shadow-md p-3 mx-4"
-        >
-          <div class="flex flex-col gap-2 text-right">
-            <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition"
-              >الشهادات</a
-            >
-            <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition"
-              >الملفات الإدارية</a
-            >
-            <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition"
-              >البطاقات</a
-            >
-            <div
-              class="pt-2 border-t border-gray-100 mt-2 flex justify-between items-center"
-            >
-              <div class="flex items-center gap-3">
-                <button id="mobileThemeToggle" class="text-gray-600">
-                  <i class="fa-solid fa-moon"></i>
-                </button>
-                <button class="text-gray-600 relative">
-                  <i class="fa-solid fa-bag-shopping"></i>
-                  <span
-                    id="mobileCartBadge"
-                    class="absolute -top-2 -left-2 bg-cyan-600 text-white text-xs rounded-full px-1"
-                    >0</span
-                  >
-                </button>
-              </div>
-              <a href="#" class="text-sm text-cyan-600 font-semibold"
-                >تسجيل دخول</a
-              >
-            </div>
-          </div>
-        </div>
-      </div>
-    </header>
-
-
-    <div class="max-w-6xl mx-auto">
-      <div
-        class="max-w-4xl mx-auto border-4 rounded-2xl shadow-xl overflow-hidden mb-8 p-4"
-        id="template"
-      >
-        <div class="bg-white rounded-xl p-6">
-          <div
-            class="w-[300px] h-[300px] flex mx-auto rounded-full overflow-hidden items-center justify-center shadow-md mb-8"
-          >
-            <img
-              src="../assets/imgs/card10/communication-parent-report.webp"
-              alt="img-title"
-              class="w-full h-full object-cover rounded-full"
-            />
-          </div>
-          <h1 class="text-4xl text-center">
-            تقرير لتوثيق التواصل مع أولياء الأمور
-          </h1>
-          <p class="text-gray-700 my-4 text-center text-xl">
-            نموذج لإنشاء تقرير لتوثيق التواصل مع أولياء الأمور من جوالك مباشرة
-          </p>
-
-          <!-- نموذج الاستمارة -->
-          <div class="mt-8 bg-white border border-gray-300 rounded-lg p-6">
-            <!-- القسم العلوي: إدارة التعليم -->
-            <div class="mb-6">
-              <label class="block text-sm font-medium text-gray-700 mb-2">
-                إدارة التعليم، اسم المدرسة
-              </label>
-              <textarea
-                id="eduInfo"
-                class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
-                rows="3"
-              >
-الإدارة العامة للتعليم
-بالمنطقة
-مدرسة</textarea
-              >
-              <div id="eduInfoError" class="error-message">هذا الحقل مطلوب</div>
-            </div>
-
-            <!-- التصميم الجديد من الصورة -->
-            <!-- الصف الأول: اسم الطالب، تاريخ التواصل، الصف/الفصل -->
-            <div class="grid grid-cols-3 gap-4 mb-6">
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">
-                  اسم الطالب/ة:
-                </label>
-                <input
-                  type="text"
-                  id="studentName"
-                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  value="اسم الطالب"
-                />
-                <div id="studentNameError" class="error-message">
-                  هذا الحقل مطلوب
-                </div>
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">
-                  تاريخ التواصل:
-                </label>
-                <input
-                  type="text"
-                  id="communicationDate"
-                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  value="الأحد ١٤٤٦/١٢/١٢هـ"
-                />
-                <div id="communicationDateError" class="error-message">
-                  هذا الحقل مطلوب
-                </div>
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">
-                  الصف/الفصل:
-                </label>
-                <input
-                  type="text"
-                  id="gradeClass"
-                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  value="أول متوسط / ٢"
-                />
-                <div id="gradeClassError" class="error-message">
-                  هذا الحقل مطلوب
-                </div>
-              </div>
-            </div>
-
-            <!-- الصف الثاني: الفصل الدراسي الأول، ملاحظة، سبب التواصل -->
-            <div class="grid grid-cols-3 gap-4 mb-6">
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">
-                  الفصل الدراسي الأول:
-                </label>
-                <input
-                  type="text"
-                  id="semester"
-                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  value="الفصل الدراسي الأول"
-                />
-                <div id="semesterError" class="error-message">
-                  هذا الحقل مطلوب
-                </div>
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">
-                  ملاحظة:
-                </label>
-                <input
-                  type="text"
-                  id="note"
-                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  value="لا يوجد"
-                />
-                <div id="noteError" class="error-message">هذا الحقل مطلوب</div>
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">
-                  سبب التواصل:
-                </label>
-                <select
-                  id="communicationReason"
-                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                  <option value="">-- اختر هنا --</option>
-                  <option value="تكريم">تكريم</option>
-                  <option value="غياب">غياب</option>
-                  <option value="تأخر">تأخر</option>
-                  <option value="الأداء الدراسي">الأداء الدراسي</option>
-                  <option value="سلوك">سلوك</option>
-                  <option value="أخرى">أخرى</option>
-                </select>
-                <div id="communicationReasonError" class="error-message">
-                  هذا الحقل مطلوب
-                </div>
-              </div>
-            </div>
-
-            <!-- الصف الثالث: طريقة التواصل، من قام بالتواصل -->
-            <div class="grid grid-cols-2 gap-4 mb-6">
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">
-                  طريقة التواصل:
-                </label>
-                <select
-                  id="communicationMethod"
-                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                  <option value="">-- اختر هنا --</option>
-                  <option value="مكالمة هاتفية">مكالمة هاتفية</option>
-                  <option value="المنصة">المنصة</option>
-                  <option value="رسالة واتساب">رسالة واتساب</option>
-                  <option value="حضوري">حضوري</option>
-                  <option value="إشعار ورقي">إشعار ورقي</option>
-                  <option value="أخرى">أخرى</option>
-                </select>
-                <div id="communicationMethodError" class="error-message">
-                  هذا الحقل مطلوب
-                </div>
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">
-                  من قام بالتواصل:
-                </label>
-                <select
-                  id="whoCommunicated"
-                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                >
-                  <option value="">-- اختر هنا --</option>
-                  <option value="الموجه الطلابي">الموجه الطلابي</option>
-                  <option value="الوكيل الطلابي">الوكيل الطلابي</option>
-                  <option value="قائد المدرسة">قائد المدرسة</option>
-                  <option value="وكيل المدرسة">وكيل المدرسة</option>
-                  <option value="المعلم">المعلم</option>
-                  <option value="اخر">اخر</option>
-                </select>
-                <div id="whoCommunicatedError" class="error-message">
-                  هذا الحقل مطلوب
-                </div>
-              </div>
-            </div>
-
-            <!-- الصف الرابع: الهدف من التواصل -->
-            <div class="mb-6">
-              <label class="block text-sm font-medium text-gray-700 mb-2">
-                الهدف من التواصل:
-              </label>
-              <input
-                type="text"
-                id="communicationObjective"
-                class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                value="بحث وإيجاد طريقة لتحسين الأداء الدراسي للطالب"
-              />
-              <div id="communicationObjectiveError" class="error-message">
-                هذا الحقل مطلوب
-              </div>
-            </div>
-
-            <!-- قسم اسم المعلم -->
-            <div class="mb-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
-              <label class="block text-sm font-medium text-gray-700 mb-2">
-                اسم المعلم:
-              </label>
-              <textarea
-                id="teacherInfo"
-                class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
-                rows="4"
-              >
-المعلم
-اسم المعلم</textarea
-              >
-              <div id="teacherInfoError" class="error-message">
-                هذا الحقل مطلوب
-              </div>
-            </div>
-
-            <!-- قسم اسم آخر (مدير المدرسة) -->
-            <div class="mb-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
-              <label class="block text-sm font-medium text-gray-700 mb-2">
-                اسم آخر:
-              </label>
-              <textarea
-                id="otherInfo"
-                class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
-                rows="4"
-              >
-مدير المدرسة
-اسم المدير</textarea
-              >
-              <div id="otherInfoError" class="error-message">
-                هذا الحقل مطلوب
-              </div>
-            </div>
-
-            <!-- رفع الملفات والباركود -->
-            <div class="grid grid-cols-2 gap-4 mb-6">
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">
-                  صورة الشاهد الأول:
-                </label>
-                <input
-                  type="file"
-                  id="firstWitnessPhoto"
-                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  accept="image/*"
-                />
-              </div>
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">
-                  صورة الشاهد الثاني:
-                </label>
-                <input
-                  type="file"
-                  id="secondWitnessPhoto"
-                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  accept="image/*"
-                />
-              </div>
-            </div>
-
-            <!-- زر المعاينة -->
-            <div class="mt-8">
-              <button
-                onclick="previewTemplate()"
-                class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition-colors"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                  />
-                </svg>
-                <span>معاينة</span>
-              </button>
-            </div>
-
-            <!-- أكثر الروابط استخداماً -->
-            <div
-              class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6 mb-8 mt-8"
-            >
-              <h2 class="text-lg font-bold text-gray-800 mb-4">
-                أكثر الروابط استخداماً
-              </h2>
-              <div class="grid grid-cols-2 gap-4">
-                <!-- الصف الأول -->
-                <button
-                  class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
-                >
-                  أفضل نموذج لتوثيق برنامج أو نشاط (المطور)
-                </button>
-                <button
-                  class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
-                >
-                  تقرير جاهز لليوم العالمي للفيزياء الطبية
-                </button>
-                <!-- الصف الثاني -->
-                <button
-                  class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
-                >
-                  نموذج تنفيذ استراتيجية مختصرة
-                </button>
-                <button
-                  class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]"
-                >
-                  خطط علاجية وإثرائية
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-   
-<!-- FOOTER -->
-    <footer class="mt-12 footer-ink border-t border-gray-100">
-      <div
-        class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
-      >
-        <!-- RIGHT COLUMN -->
-        <div class="text-right md:flex-1">
-          <img
-            src="../assets/imgs/gsoor_logo.jpg"
-            alt="logo"
-            class="h-10 mx-auto md:mx-0"
-          />
-          <div
-            class="flex justify-center md:justify-end gap-4 mt-3 text-gray-600"
-          >
-            <i class="fa-brands fa-youtube social-icon text-lg"></i>
-            <i class="fa-brands fa-tiktok social-icon text-lg"></i>
-            <i class="fa-brands fa-instagram social-icon text-lg"></i>
-          </div>
-        </div>
-
-        <!-- CENTER COLUMN -->
-        <div class="text-center md:flex-1">
-          <h3 class="font-bold mb-2">تواصل معنا</h3>
-          <div class="flex items-center justify-center gap-4 text-gray-600">
-            <div class="flex items-center gap-2">
-              <i class="fa-regular fa-envelope text-sm"></i>
-              <span>البريد</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <i class="fa-solid fa-mobile-screen-button text-sm"></i>
-              <span>واتس</span>
-            </div>
-          </div>
-          <div class="mt-3 text-sm text-gray-500">موقّع لدى منصة الأعمال</div>
-        </div>
-
-        <!-- LEFT COLUMN -->
-        <div class="text-left md:flex-1">
-          <div class="text-sm text-gray-500">
-            © 2025 متجر جسور الرقمي | جميع الحقوق محفوظة
-          </div>
-          <div
-            class="mt-3 flex gap-2 items-center justify-center md:justify-start"
-          >
-            <span class="sr-only">Visa</span>
-            <i class="fa-brands fa-cc-visa text-gray-600 text-lg"></i>
-            <span class="sr-only">Mada</span>
-            <i class="fa-solid fa-credit-card text-gray-600 text-lg"></i>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <!-- Modal Popup للمعاينة -->
-    <div id="previewModal" class="modal-overlay">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h2 class="text-2xl font-bold text-gray-800">
-            معاينة تقرير لتوثيق التواصل مع أولياء الأمور
-          </h2>
-          <button class="modal-close" onclick="closePreviewModal()">
-            &times;
+          <!-- MOBILE MENU BUTTON -->
+          <button id="menuBtn" class="md:hidden text-gray-600 p-2" aria-expanded="false">
+            <i class="fa-solid fa-bars text-lg"></i>
           </button>
         </div>
-        <div class="modal-body">
-          <div id="previewTemplateContent" class="preview-template">
-            <!-- سيتم ملء المحتوى ديناميكياً -->
-          </div>
-          <div class="flex justify-center gap-4 mt-6">
-            <button
-              onclick="downloadImageFromModal()"
-              class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition flex items-center gap-2"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="2"
-                stroke="currentColor"
-                class="w-5 h-5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
-                />
-              </svg>
-              تحميل كصورة
-            </button>
-            <button
-              onclick="downloadPDFFromModal()"
-              class="bg-red-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-red-700 transition flex items-center gap-2"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="2"
-                stroke="currentColor"
-                class="w-5 h-5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
-                />
-              </svg>
-              تحميل PDF
-            </button>
-            <button
-              onclick="closePreviewModal()"
-              class="bg-gray-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-gray-700 transition"
-            >
-              إغلاق
-            </button>
+      </div>
+
+      <!-- MOBILE NAV WITHOUT CART -->
+      <div id="mobileNav" class="hidden mobile-nav-abs mt-2 bg-white rounded-2xl shadow-md p-3 mx-4">
+        <div class="flex flex-col gap-2 text-right">
+          <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition">الشهادات</a>
+          <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition">الملفات الإدارية</a>
+          <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition">البطاقات</a>
+          <div class="pt-2 border-t border-gray-100 mt-2 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+              <button id="mobileThemeToggle" class="text-gray-600">
+                <i class="fa-solid fa-moon"></i>
+              </button>
+            </div>
+            <a href="#" class="text-sm text-cyan-600 font-semibold">تسجيل دخول</a>
           </div>
         </div>
       </div>
     </div>
+  </header>
+  <script>
+    // NAVBAR FUNCTIONALITY WITHOUT CART
+    document.addEventListener('DOMContentLoaded', function () {
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileNav = document.getElementById("mobileNav");
+      const mobileThemeToggle = document.getElementById("mobileThemeToggle");
 
-    <script>
-      // دالة تبديل القائمة على الموبايل
-      function toggleMobileMenu() {
-        const menu = document.getElementById("navbarMenu");
-        menu.classList.toggle("mobile-active");
+      // Mobile menu toggle
+      if (menuBtn) {
+        menuBtn.addEventListener("click", (e) => {
+          const expanded = menuBtn.getAttribute("aria-expanded") === "true";
+          menuBtn.setAttribute("aria-expanded", String(!expanded));
+          mobileNav.classList.toggle("hidden");
+        });
       }
 
+      // Close mobile menu when clicking outside
+      document.addEventListener("click", (e) => {
+        if (!mobileNav || mobileNav.classList.contains("hidden")) return;
+        const path = e.composedPath?.() || e.path || [];
+        if (!path.includes(mobileNav) && !path.includes(menuBtn)) {
+          mobileNav.classList.add("hidden");
+          if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
+        }
+      });
 
-      // دالة للتحقق من صحة البيانات
-      function validateForm() {
-        let isValid = true;
+      // Close mobile menu on window resize
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 768) {
+          mobileNav.classList.add("hidden");
+          if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
+        }
+      });
 
-        // إزالة جميع رسائل الخطأ السابقة
-        document.querySelectorAll(".field-error").forEach((field) => {
-          field.classList.remove("field-error");
+      // Theme toggle
+      document.getElementById("themeToggle")?.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+      });
+
+      if (mobileThemeToggle) {
+        mobileThemeToggle.addEventListener("click", () => {
+          document.documentElement.classList.toggle("dark");
         });
-        document.querySelectorAll(".error-message").forEach((error) => {
-          error.classList.remove("show");
-        });
+      }
+    });
+  </script>
 
-        // التحقق من إدارة التعليم
-        const eduInfo = document.getElementById("eduInfo").value.trim();
-        if (!eduInfo) {
-          showError("eduInfo", "eduInfoError");
-          isValid = false;
-        }
+  <div class="max-w-6xl mx-auto">
+    <div class="max-w-4xl mx-auto border-4 rounded-2xl shadow-xl overflow-hidden mb-8 p-4" id="template">
+      <div class="bg-white rounded-xl p-6">
+        <div
+          class="w-[300px] h-[300px] flex mx-auto rounded-full overflow-hidden items-center justify-center shadow-md mb-8">
+          <img src="../assets/imgs/card10/communication-parent-report.webp" alt="img-title"
+            class="w-full h-full object-cover rounded-full" />
+        </div>
+        <h1 class="text-4xl text-center">
+          تقرير لتوثيق التواصل مع أولياء الأمور
+        </h1>
+        <p class="text-gray-700 my-4 text-center text-xl">
+          نموذج لإنشاء تقرير لتوثيق التواصل مع أولياء الأمور من جوالك مباشرة
+        </p>
 
-        // التحقق من اسم الطالب
-        const studentName = document.getElementById("studentName").value.trim();
-        if (!studentName) {
-          showError("studentName", "studentNameError");
-          isValid = false;
-        }
+        <!-- نموذج الاستمارة -->
+        <div class="mt-8 bg-white border border-gray-300 rounded-lg p-6">
+          <!-- القسم العلوي: إدارة التعليم -->
+          <div class="mb-6">
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+              إدارة التعليم، اسم المدرسة
+            </label>
+            <textarea id="eduInfo"
+              class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+              rows="3">
+الإدارة العامة للتعليم
+بالمنطقة
+مدرسة</textarea>
+            <div id="eduInfoError" class="error-message">هذا الحقل مطلوب</div>
+          </div>
 
-        // التحقق من تاريخ التواصل
-        const communicationDate = document
-          .getElementById("communicationDate")
-          .value.trim();
-        if (!communicationDate) {
-          showError("communicationDate", "communicationDateError");
-          isValid = false;
-        }
+          <!-- التصميم الجديد من الصورة -->
+          <!-- الصف الأول: اسم الطالب، تاريخ التواصل، الصف/الفصل -->
+          <div class="grid grid-cols-3 gap-4 mb-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                اسم الطالب/ة:
+              </label>
+              <input type="text" id="studentName"
+                class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value="اسم الطالب" />
+              <div id="studentNameError" class="error-message">
+                هذا الحقل مطلوب
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                تاريخ التواصل:
+              </label>
+              <input type="text" id="communicationDate"
+                class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value="الأحد ١٤٤٦/١٢/١٢هـ" />
+              <div id="communicationDateError" class="error-message">
+                هذا الحقل مطلوب
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                الصف/الفصل:
+              </label>
+              <input type="text" id="gradeClass"
+                class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value="أول متوسط / ٢" />
+              <div id="gradeClassError" class="error-message">
+                هذا الحقل مطلوب
+              </div>
+            </div>
+          </div>
 
-        // التحقق من الصف/الفصل
-        const gradeClass = document.getElementById("gradeClass").value.trim();
-        if (!gradeClass) {
-          showError("gradeClass", "gradeClassError");
-          isValid = false;
-        }
+          <!-- الصف الثاني: الفصل الدراسي الأول، ملاحظة، سبب التواصل -->
+          <div class="grid grid-cols-3 gap-4 mb-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                الفصل الدراسي الأول:
+              </label>
+              <input type="text" id="semester"
+                class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value="الفصل الدراسي الأول" />
+              <div id="semesterError" class="error-message">
+                هذا الحقل مطلوب
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                ملاحظة:
+              </label>
+              <input type="text" id="note"
+                class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value="لا يوجد" />
+              <div id="noteError" class="error-message">هذا الحقل مطلوب</div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                سبب التواصل:
+              </label>
+              <select id="communicationReason"
+                class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="">-- اختر هنا --</option>
+                <option value="تكريم">تكريم</option>
+                <option value="غياب">غياب</option>
+                <option value="تأخر">تأخر</option>
+                <option value="الأداء الدراسي">الأداء الدراسي</option>
+                <option value="سلوك">سلوك</option>
+                <option value="أخرى">أخرى</option>
+              </select>
+              <div id="communicationReasonError" class="error-message">
+                هذا الحقل مطلوب
+              </div>
+            </div>
+          </div>
 
-        // التحقق من الفصل الدراسي
-        const semester = document.getElementById("semester").value.trim();
-        if (!semester) {
-          showError("semester", "semesterError");
-          isValid = false;
-        }
+          <!-- الصف الثالث: طريقة التواصل، من قام بالتواصل -->
+          <div class="grid grid-cols-2 gap-4 mb-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                طريقة التواصل:
+              </label>
+              <select id="communicationMethod"
+                class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="">-- اختر هنا --</option>
+                <option value="مكالمة هاتفية">مكالمة هاتفية</option>
+                <option value="المنصة">المنصة</option>
+                <option value="رسالة واتساب">رسالة واتساب</option>
+                <option value="حضوري">حضوري</option>
+                <option value="إشعار ورقي">إشعار ورقي</option>
+                <option value="أخرى">أخرى</option>
+              </select>
+              <div id="communicationMethodError" class="error-message">
+                هذا الحقل مطلوب
+              </div>
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                من قام بالتواصل:
+              </label>
+              <select id="whoCommunicated"
+                class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <option value="">-- اختر هنا --</option>
+                <option value="الموجه الطلابي">الموجه الطلابي</option>
+                <option value="الوكيل الطلابي">الوكيل الطلابي</option>
+                <option value="قائد المدرسة">قائد المدرسة</option>
+                <option value="وكيل المدرسة">وكيل المدرسة</option>
+                <option value="المعلم">المعلم</option>
+                <option value="اخر">اخر</option>
+              </select>
+              <div id="whoCommunicatedError" class="error-message">
+                هذا الحقل مطلوب
+              </div>
+            </div>
+          </div>
 
-        // التحقق من طريقة التواصل
-        const communicationMethod = document
-          .getElementById("communicationMethod")
-          .value.trim();
-        if (!communicationMethod) {
-          showError("communicationMethod", "communicationMethodError");
-          isValid = false;
-        }
+          <!-- الصف الرابع: الهدف من التواصل -->
+          <div class="mb-6">
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+              الهدف من التواصل:
+            </label>
+            <input type="text" id="communicationObjective"
+              class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              value="بحث وإيجاد طريقة لتحسين الأداء الدراسي للطالب" />
+            <div id="communicationObjectiveError" class="error-message">
+              هذا الحقل مطلوب
+            </div>
+          </div>
 
-        // التحقق من من قام بالتواصل
-        const whoCommunicated = document
-          .getElementById("whoCommunicated")
-          .value.trim();
-        if (!whoCommunicated) {
-          showError("whoCommunicated", "whoCommunicatedError");
-          isValid = false;
-        }
+          <!-- قسم اسم المعلم -->
+          <div class="mb-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+              اسم المعلم:
+            </label>
+            <textarea id="teacherInfo"
+              class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+              rows="4">
+المعلم
+اسم المعلم</textarea>
+            <div id="teacherInfoError" class="error-message">
+              هذا الحقل مطلوب
+            </div>
+          </div>
 
-        // التحقق من الملاحظة
-        const note = document.getElementById("note").value.trim();
-        if (!note) {
-          showError("note", "noteError");
-          isValid = false;
-        }
+          <!-- قسم اسم آخر (مدير المدرسة) -->
+          <div class="mb-6 bg-gray-50 p-4 rounded-lg border border-gray-200">
+            <label class="block text-sm font-medium text-gray-700 mb-2">
+              اسم آخر:
+            </label>
+            <textarea id="otherInfo"
+              class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
+              rows="4">
+مدير المدرسة
+اسم المدير</textarea>
+            <div id="otherInfoError" class="error-message">
+              هذا الحقل مطلوب
+            </div>
+          </div>
 
-        // التحقق من سبب التواصل
-        const communicationReason = document
-          .getElementById("communicationReason")
-          .value.trim();
-        if (!communicationReason) {
-          showError("communicationReason", "communicationReasonError");
-          isValid = false;
-        }
+          <!-- رفع الملفات والباركود -->
+          <div class="grid grid-cols-2 gap-4 mb-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                صورة الشاهد الأول:
+              </label>
+              <input type="file" id="firstWitnessPhoto"
+                class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                accept="image/*" />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                صورة الشاهد الثاني:
+              </label>
+              <input type="file" id="secondWitnessPhoto"
+                class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                accept="image/*" />
+            </div>
+          </div>
 
-        // التحقق من الهدف من التواصل
-        const communicationObjective = document
-          .getElementById("communicationObjective")
-          .value.trim();
-        if (!communicationObjective) {
-          showError("communicationObjective", "communicationObjectiveError");
-          isValid = false;
-        }
+          <!-- زر المعاينة -->
+          <div class="mt-8">
+            <button onclick="previewTemplate()"
+              class="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+              <span>معاينة</span>
+            </button>
+          </div>
 
-        // التحقق من اسم المعلم
-        const teacherInfo = document.getElementById("teacherInfo").value.trim();
-        if (!teacherInfo) {
-          showError("teacherInfo", "teacherInfoError");
-          isValid = false;
-        }
+          <!-- أكثر الروابط استخداماً -->
+          <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-6 mb-8 mt-8">
+            <h2 class="text-lg font-bold text-gray-800 mb-4">
+              أكثر الروابط استخداماً
+            </h2>
+            <div class="grid grid-cols-2 gap-4">
+              <!-- الصف الأول -->
+              <button
+                class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]">
+                أفضل نموذج لتوثيق برنامج أو نشاط (المطور)
+              </button>
+              <button
+                class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]">
+                تقرير جاهز لليوم العالمي للفيزياء الطبية
+              </button>
+              <!-- الصف الثاني -->
+              <button
+                class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]">
+                نموذج تنفيذ استراتيجية مختصرة
+              </button>
+              <button
+                class="border-2 border-blue-300 bg-white rounded-lg p-4 text-right hover:bg-[#3d7eb9] hover:text-white transition text-center font-bold text-[#3d7eb9]">
+                خطط علاجية وإثرائية
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
-        // التحقق من اسم آخر
-        const otherInfo = document.getElementById("otherInfo").value.trim();
-        if (!otherInfo) {
-          showError("otherInfo", "otherInfoError");
-          isValid = false;
-        }
 
-        return isValid;
+
+  <!-- FOOTER -->
+  <footer class="mt-12 footer-ink border-t border-gray-100">
+    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+      <!-- RIGHT COLUMN -->
+      <div class="text-right md:flex-1">
+        <img src="../assets/imgs/gsoor_logo.jpg" alt="logo" class="h-10 mx-auto md:mx-0" />
+        <div class="flex justify-center md:justify-end gap-4 mt-3 text-gray-600">
+          <i class="fa-brands fa-youtube social-icon text-lg"></i>
+          <i class="fa-brands fa-tiktok social-icon text-lg"></i>
+          <i class="fa-brands fa-instagram social-icon text-lg"></i>
+        </div>
+      </div>
+
+      <!-- CENTER COLUMN -->
+      <div class="text-center md:flex-1">
+        <h3 class="font-bold mb-2">تواصل معنا</h3>
+        <div class="flex items-center justify-center gap-4 text-gray-600">
+          <div class="flex items-center gap-2">
+            <i class="fa-regular fa-envelope text-sm"></i>
+            <span>البريد</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-mobile-screen-button text-sm"></i>
+            <span>واتس</span>
+          </div>
+        </div>
+        <div class="mt-3 text-sm text-gray-500">موقّع لدى منصة الأعمال</div>
+      </div>
+
+      <!-- LEFT COLUMN -->
+      <div class="text-left md:flex-1">
+        <div class="text-sm text-gray-500">
+          © 2025 متجر جسور الرقمي | جميع الحقوق محفوظة
+        </div>
+        <div class="mt-3 flex gap-2 items-center justify-center md:justify-start">
+          <span class="sr-only">Visa</span>
+          <i class="fa-brands fa-cc-visa text-gray-600 text-lg"></i>
+          <span class="sr-only">Mada</span>
+          <i class="fa-solid fa-credit-card text-gray-600 text-lg"></i>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- Modal Popup للمعاينة -->
+  <div id="previewModal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="text-2xl font-bold text-gray-800">
+          معاينة تقرير لتوثيق التواصل مع أولياء الأمور
+        </h2>
+        <button class="modal-close" onclick="closePreviewModal()">
+          &times;
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="previewTemplateContent" class="preview-template">
+          <!-- سيتم ملء المحتوى ديناميكياً -->
+        </div>
+        <div class="flex justify-center gap-4 mt-6">
+          <button onclick="downloadImageFromModal()"
+            class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+            </svg>
+            تحميل كصورة
+          </button>
+          <button onclick="downloadPDFFromModal()"
+            class="bg-red-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-red-700 transition flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2"
+              stroke="currentColor" class="w-5 h-5">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+            </svg>
+            تحميل PDF
+          </button>
+          <button onclick="closePreviewModal()"
+            class="bg-gray-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-gray-700 transition">
+            إغلاق
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // دالة تبديل القائمة على الموبايل
+    function toggleMobileMenu() {
+      const menu = document.getElementById("navbarMenu");
+      menu.classList.toggle("mobile-active");
+    }
+
+
+    // دالة للتحقق من صحة البيانات
+    function validateForm() {
+      let isValid = true;
+
+      // إزالة جميع رسائل الخطأ السابقة
+      document.querySelectorAll(".field-error").forEach((field) => {
+        field.classList.remove("field-error");
+      });
+      document.querySelectorAll(".error-message").forEach((error) => {
+        error.classList.remove("show");
+      });
+
+      // التحقق من إدارة التعليم
+      const eduInfo = document.getElementById("eduInfo").value.trim();
+      if (!eduInfo) {
+        showError("eduInfo", "eduInfoError");
+        isValid = false;
       }
 
-      // دالة لإظهار رسالة الخطأ
-      function showError(fieldId, errorId) {
+      // التحقق من اسم الطالب
+      const studentName = document.getElementById("studentName").value.trim();
+      if (!studentName) {
+        showError("studentName", "studentNameError");
+        isValid = false;
+      }
+
+      // التحقق من تاريخ التواصل
+      const communicationDate = document
+        .getElementById("communicationDate")
+        .value.trim();
+      if (!communicationDate) {
+        showError("communicationDate", "communicationDateError");
+        isValid = false;
+      }
+
+      // التحقق من الصف/الفصل
+      const gradeClass = document.getElementById("gradeClass").value.trim();
+      if (!gradeClass) {
+        showError("gradeClass", "gradeClassError");
+        isValid = false;
+      }
+
+      // التحقق من الفصل الدراسي
+      const semester = document.getElementById("semester").value.trim();
+      if (!semester) {
+        showError("semester", "semesterError");
+        isValid = false;
+      }
+
+      // التحقق من طريقة التواصل
+      const communicationMethod = document
+        .getElementById("communicationMethod")
+        .value.trim();
+      if (!communicationMethod) {
+        showError("communicationMethod", "communicationMethodError");
+        isValid = false;
+      }
+
+      // التحقق من من قام بالتواصل
+      const whoCommunicated = document
+        .getElementById("whoCommunicated")
+        .value.trim();
+      if (!whoCommunicated) {
+        showError("whoCommunicated", "whoCommunicatedError");
+        isValid = false;
+      }
+
+      // التحقق من الملاحظة
+      const note = document.getElementById("note").value.trim();
+      if (!note) {
+        showError("note", "noteError");
+        isValid = false;
+      }
+
+      // التحقق من سبب التواصل
+      const communicationReason = document
+        .getElementById("communicationReason")
+        .value.trim();
+      if (!communicationReason) {
+        showError("communicationReason", "communicationReasonError");
+        isValid = false;
+      }
+
+      // التحقق من الهدف من التواصل
+      const communicationObjective = document
+        .getElementById("communicationObjective")
+        .value.trim();
+      if (!communicationObjective) {
+        showError("communicationObjective", "communicationObjectiveError");
+        isValid = false;
+      }
+
+      // التحقق من اسم المعلم
+      const teacherInfo = document.getElementById("teacherInfo").value.trim();
+      if (!teacherInfo) {
+        showError("teacherInfo", "teacherInfoError");
+        isValid = false;
+      }
+
+      // التحقق من اسم آخر
+      const otherInfo = document.getElementById("otherInfo").value.trim();
+      if (!otherInfo) {
+        showError("otherInfo", "otherInfoError");
+        isValid = false;
+      }
+
+      return isValid;
+    }
+
+    // دالة لإظهار رسالة الخطأ
+    function showError(fieldId, errorId) {
+      const field = document.getElementById(fieldId);
+      const error = document.getElementById(errorId);
+      if (field) {
+        field.classList.add("field-error");
+      }
+      if (error) {
+        error.classList.add("show");
+      }
+    }
+
+    // إزالة رسالة الخطأ عند الكتابة
+    function setupFieldValidation() {
+      const textFields = [
+        "eduInfo",
+        "studentName",
+        "communicationDate",
+        "gradeClass",
+        "semester",
+        "note",
+        "communicationObjective",
+        "teacherInfo",
+        "otherInfo",
+      ];
+
+      // معالجة حقول النص
+      textFields.forEach((fieldId) => {
         const field = document.getElementById(fieldId);
-        const error = document.getElementById(errorId);
         if (field) {
-          field.classList.add("field-error");
+          field.addEventListener("input", function () {
+            this.classList.remove("field-error");
+            const errorId = fieldId + "Error";
+            const error = document.getElementById(errorId);
+            if (error) {
+              error.classList.remove("show");
+            }
+          });
         }
-        if (error) {
-          error.classList.add("show");
+      });
+
+      // معالجة القوائم المنسدلة
+      const selectFields = [
+        "communicationMethod",
+        "whoCommunicated",
+        "communicationReason",
+      ];
+
+      selectFields.forEach((fieldId) => {
+        const field = document.getElementById(fieldId);
+        if (field) {
+          field.addEventListener("change", function () {
+            this.classList.remove("field-error");
+            const errorId = fieldId + "Error";
+            const error = document.getElementById(errorId);
+            if (error) {
+              error.classList.remove("show");
+            }
+          });
         }
+      });
+    }
+
+    // دالة المعاينة
+    function previewTemplate() {
+      // التحقق من صحة البيانات أولاً
+      if (!validateForm()) {
+        // التمرير إلى أول حقل به خطأ
+        const firstError = document.querySelector(".field-error");
+        if (firstError) {
+          firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+        return;
       }
 
-      // إزالة رسالة الخطأ عند الكتابة
-      function setupFieldValidation() {
-        const textFields = [
-          "eduInfo",
-          "studentName",
-          "communicationDate",
-          "gradeClass",
-          "semester",
-          "note",
-          "communicationObjective",
-          "teacherInfo",
-          "otherInfo",
-        ];
+      // إذا كانت البيانات صحيحة، توليد محتوى المعاينة وفتح الـ modal
+      generatePreviewContent();
+      openPreviewModal();
+    }
 
-        // معالجة حقول النص
-        textFields.forEach((fieldId) => {
-          const field = document.getElementById(fieldId);
-          if (field) {
-            field.addEventListener("input", function () {
-              this.classList.remove("field-error");
-              const errorId = fieldId + "Error";
-              const error = document.getElementById(errorId);
-              if (error) {
-                error.classList.remove("show");
-              }
-            });
-          }
-        });
+    // توليد محتوى المعاينة
+    function generatePreviewContent() {
+      const eduInfoText =
+        document.getElementById("eduInfo").value ||
+        "الإدارة العامة للتعليم\nبالمنطقة\nمدرسة";
+      const eduInfoLines = eduInfoText.split("\n");
+      const eduInfo = eduInfoLines[0] || "الإدارة العامة للتعليم";
+      const region = eduInfoLines[1] || "بالمنطقة";
+      const schoolName = eduInfoLines[2] || "مدرسة";
+      const studentName =
+        document.getElementById("studentName").value || "اسم الطالب";
+      const communicationDate =
+        document.getElementById("communicationDate").value ||
+        "الأحد ١٤٤٦/١٢/١٢هـ";
+      const gradeClass =
+        document.getElementById("gradeClass").value || "أول متوسط / ٢";
+      const semester =
+        document.getElementById("semester").value || "الفصل الدراسي الأول";
+      const communicationMethod =
+        document.getElementById("communicationMethod").value || "";
+      const whoCommunicated =
+        document.getElementById("whoCommunicated").value || "";
+      const note = document.getElementById("note").value || "لا يوجد";
+      const communicationReason =
+        document.getElementById("communicationReason").value || "";
+      const communicationObjective =
+        document.getElementById("communicationObjective").value ||
+        "بحث وإيجاد طريقة لتحسين الأداء الدراسي للطالب";
+      const teacherInfo =
+        document.getElementById("teacherInfo").value || "المعلم\nاسم المعلم";
+      const otherInfo =
+        document.getElementById("otherInfo").value ||
+        "مدير المدرسة\nاسم المدير";
 
-        // معالجة القوائم المنسدلة
-        const selectFields = [
-          "communicationMethod",
-          "whoCommunicated",
-          "communicationReason",
-        ];
+      const previewContainer = document.getElementById(
+        "previewTemplateContent"
+      );
 
-        selectFields.forEach((fieldId) => {
-          const field = document.getElementById(fieldId);
-          if (field) {
-            field.addEventListener("change", function () {
-              this.classList.remove("field-error");
-              const errorId = fieldId + "Error";
-              const error = document.getElementById(errorId);
-              if (error) {
-                error.classList.remove("show");
-              }
-            });
-          }
-        });
-      }
-
-      // دالة المعاينة
-      function previewTemplate() {
-        // التحقق من صحة البيانات أولاً
-        if (!validateForm()) {
-          // التمرير إلى أول حقل به خطأ
-          const firstError = document.querySelector(".field-error");
-          if (firstError) {
-            firstError.scrollIntoView({ behavior: "smooth", block: "center" });
-          }
-          return;
-        }
-
-        // إذا كانت البيانات صحيحة، توليد محتوى المعاينة وفتح الـ modal
-        generatePreviewContent();
-        openPreviewModal();
-      }
-
-      // توليد محتوى المعاينة
-      function generatePreviewContent() {
-        const eduInfoText =
-          document.getElementById("eduInfo").value ||
-          "الإدارة العامة للتعليم\nبالمنطقة\nمدرسة";
-        const eduInfoLines = eduInfoText.split("\n");
-        const eduInfo = eduInfoLines[0] || "الإدارة العامة للتعليم";
-        const region = eduInfoLines[1] || "بالمنطقة";
-        const schoolName = eduInfoLines[2] || "مدرسة";
-        const studentName =
-          document.getElementById("studentName").value || "اسم الطالب";
-        const communicationDate =
-          document.getElementById("communicationDate").value ||
-          "الأحد ١٤٤٦/١٢/١٢هـ";
-        const gradeClass =
-          document.getElementById("gradeClass").value || "أول متوسط / ٢";
-        const semester =
-          document.getElementById("semester").value || "الفصل الدراسي الأول";
-        const communicationMethod =
-          document.getElementById("communicationMethod").value || "";
-        const whoCommunicated =
-          document.getElementById("whoCommunicated").value || "";
-        const note = document.getElementById("note").value || "لا يوجد";
-        const communicationReason =
-          document.getElementById("communicationReason").value || "";
-        const communicationObjective =
-          document.getElementById("communicationObjective").value ||
-          "بحث وإيجاد طريقة لتحسين الأداء الدراسي للطالب";
-        const teacherInfo =
-          document.getElementById("teacherInfo").value || "المعلم\nاسم المعلم";
-        const otherInfo =
-          document.getElementById("otherInfo").value ||
-          "مدير المدرسة\nاسم المدير";
-
-        const previewContainer = document.getElementById(
-          "previewTemplateContent"
-        );
-
-        // إنشاء HTML للمعاينة
-        const html = `
+      // إنشاء HTML للمعاينة
+      const html = `
           <div class="max-w-4xl mx-auto">
             <div class="bg-white rounded-xl p-6">
               <div
@@ -1175,78 +1111,79 @@
           </div>
         `;
 
-        previewContainer.innerHTML = html;
-      }
+      previewContainer.innerHTML = html;
+    }
 
-      // فتح الـ modal
-      function openPreviewModal() {
-        const modal = document.getElementById("previewModal");
-        modal.classList.add("active");
-        document.body.style.overflow = "hidden";
-      }
+    // فتح الـ modal
+    function openPreviewModal() {
+      const modal = document.getElementById("previewModal");
+      modal.classList.add("active");
+      document.body.style.overflow = "hidden";
+    }
 
-      // إغلاق الـ modal
-      function closePreviewModal() {
-        const modal = document.getElementById("previewModal");
-        modal.classList.remove("active");
-        document.body.style.overflow = "auto";
-      }
+    // إغلاق الـ modal
+    function closePreviewModal() {
+      const modal = document.getElementById("previewModal");
+      modal.classList.remove("active");
+      document.body.style.overflow = "auto";
+    }
 
-      // إغلاق الـ modal عند الضغط خارج المحتوى
-      document
-        .getElementById("previewModal")
-        ?.addEventListener("click", function (e) {
-          if (e.target === this) {
-            closePreviewModal();
-          }
-        });
-
-      // إغلاق الـ modal عند الضغط على ESC
-      document.addEventListener("keydown", function (e) {
-        if (e.key === "Escape") {
+    // إغلاق الـ modal عند الضغط خارج المحتوى
+    document
+      .getElementById("previewModal")
+      ?.addEventListener("click", function (e) {
+        if (e.target === this) {
           closePreviewModal();
         }
       });
 
-      // تحميل الصورة من الـ modal
-      function downloadImageFromModal() {
-        const previewContent = document.getElementById(
-          "previewTemplateContent"
-        );
-        html2canvas(previewContent, {
-          backgroundColor: "#ffffff",
-          scale: 2,
-        }).then((canvas) => {
-          const link = document.createElement("a");
-          link.download = "student-communication-record-preview.png";
-          link.href = canvas.toDataURL();
-          link.click();
-        });
+    // إغلاق الـ modal عند الضغط على ESC
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape") {
+        closePreviewModal();
       }
+    });
 
-      // تحميل PDF من الـ modal
-      function downloadPDFFromModal() {
-        const previewContent = document.getElementById(
-          "previewTemplateContent"
-        );
-        html2canvas(previewContent, {
-          backgroundColor: "#ffffff",
-          scale: 2,
-        }).then((canvas) => {
-          const imgData = canvas.toDataURL("image/jpeg");
-          const pdf = new jspdf.jsPDF("p", "mm", "a4");
-          const imgWidth = 210;
-          const imgHeight = (canvas.height * imgWidth) / canvas.width;
-          pdf.addImage(imgData, "JPEG", 0, 0, imgWidth, imgHeight);
-          pdf.save("student-communication-record-preview.pdf");
-        });
-      }
-
-      // تطبيق عند تحميل الصفحة
-      document.addEventListener("DOMContentLoaded", function () {
-        // إعداد الـ validation
-        setupFieldValidation();
+    // تحميل الصورة من الـ modal
+    function downloadImageFromModal() {
+      const previewContent = document.getElementById(
+        "previewTemplateContent"
+      );
+      html2canvas(previewContent, {
+        backgroundColor: "#ffffff",
+        scale: 2,
+      }).then((canvas) => {
+        const link = document.createElement("a");
+        link.download = "student-communication-record-preview.png";
+        link.href = canvas.toDataURL();
+        link.click();
       });
-    </script>
-  </body>
+    }
+
+    // تحميل PDF من الـ modal
+    function downloadPDFFromModal() {
+      const previewContent = document.getElementById(
+        "previewTemplateContent"
+      );
+      html2canvas(previewContent, {
+        backgroundColor: "#ffffff",
+        scale: 2,
+      }).then((canvas) => {
+        const imgData = canvas.toDataURL("image/jpeg");
+        const pdf = new jspdf.jsPDF("p", "mm", "a4");
+        const imgWidth = 210;
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        pdf.addImage(imgData, "JPEG", 0, 0, imgWidth, imgHeight);
+        pdf.save("student-communication-record-preview.pdf");
+      });
+    }
+
+    // تطبيق عند تحميل الصفحة
+    document.addEventListener("DOMContentLoaded", function () {
+      // إعداد الـ validation
+      setupFieldValidation();
+    });
+  </script>
+</body>
+
 </html>

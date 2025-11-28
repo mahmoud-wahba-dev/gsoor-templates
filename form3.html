@@ -1,878 +1,645 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <title>إنشاء نموذج توثيق</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 
-    <!-- add responsive viewport -->
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-      /* load HelveticaNeueLT Arabic 75 Bold from local files (provide woff2/woff/ttf in ./public/fonts/) */
-      @font-face {
-        font-family: "Helvetica";
-        src: url("../assets/fonts/HelveticaNeueLTArabic-75Bold.ttf")
-          format("truetype");
-        font-weight: 700;
-        font-style: normal;
-        font-display: swap;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>إنشاء نموذج توثيق</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer">
 
-      body {
-        font-family: "Helvetica", "Tajawal", sans-serif;
-      }
-      
-.footer-ink {
-        background: #f8fafb;
-      }
+  <!-- add responsive viewport -->
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    /* load HelveticaNeueLT Arabic 75 Bold from local files (provide woff2/woff/ttf in ./public/fonts/) */
+    @font-face {
+      font-family: "Helvetica";
+      src: url("../assets/fonts/HelveticaNeueLTArabic-75Bold.ttf") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
 
-      .social-icon {
-        width: 26px;
-        height: 26px;
-        fill: currentColor;
-      }
+    body {
+      font-family: "Helvetica", "Tajawal", sans-serif;
+    }
+
+    .footer-ink {
+      background: #f8fafb;
+    }
+
+    .social-icon {
+      width: 26px;
+      height: 26px;
+      fill: currentColor;
+    }
 
 
 
-      /* Optionally force headings to the new font */
-      h1,
-      h2,
-      h3,
-      h4,
-      h5,
-      h6 {
-        font-family: "Helvetica", "Tajawal", sans-serif;
-        font-weight: 700;
-      }
+    /* Optionally force headings to the new font */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: "Helvetica", "Tajawal", sans-serif;
+      font-weight: 700;
+    }
 
-      /* small custom tweaks to better match screenshots */
+    /* small custom tweaks to better match screenshots */
+    .nav-pill {
+      background: #fff;
+      box-shadow: 0 6px 20px rgba(2, 6, 23, 0.06);
+      border-radius: 28px;
+    }
+
+    .footer-ink {
+      background: #f8fafb;
+    }
+
+    .social-icon {
+      width: 26px;
+      height: 26px;
+      fill: currentColor;
+    }
+
+    /* responsive/mobile tweaks */
+    .mobile-nav-abs {
+      position: absolute;
+      inset-inline-start: 0;
+      /* RTL-friendly */
+      right: 0;
+      left: 0;
+      margin-top: 0.6rem;
+      z-index: 40;
+    }
+
+    @media (max-width: 768px) {
       .nav-pill {
-        background: #fff;
-        box-shadow: 0 6px 20px rgba(2, 6, 23, 0.06);
-        border-radius: 28px;
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
       }
+    }
 
-      .footer-ink {
-        background: #f8fafb;
-      }
+    /* Navbar Styles */
+    .navbar {
+      background-color: #f3f4f6;
+      padding: 12px 0;
+      border-bottom: 1px solid #e5e7eb;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      width: 100%;
+      margin: 0;
+    }
 
-      .social-icon {
-        width: 26px;
-        height: 26px;
-        fill: currentColor;
-      }
+    .navbar-container {
+      width: 100%;
+      margin: 0;
+      padding: 0 16px;
+    }
 
-      /* responsive/mobile tweaks */
-      .mobile-nav-abs {
-        position: absolute;
-        inset-inline-start: 0;
-        /* RTL-friendly */
-        right: 0;
-        left: 0;
-        margin-top: 0.6rem;
-        z-index: 40;
-      }
+    .navbar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
 
-      @media (max-width: 768px) {
-        .nav-pill {
-          padding-left: 0.75rem;
-          padding-right: 0.75rem;
-        }
-      }
-          /* Navbar Styles */
-      .navbar {
-        background-color: #f3f4f6;
-        padding: 12px 0;
-        border-bottom: 1px solid #e5e7eb;
-        top: 0;
-        z-index: 100;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        width: 100%;
-        margin: 0;
-      }
-      .navbar-container {
-        width: 100%;
-        margin: 0;
-        padding: 0 16px;
-      }
-      .navbar-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 8px;
-      }
-      .navbar-title {
-        font-size: 16px;
-        font-weight: 600;
-        color: #374151;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .navbar-icon {
-        width: 20px;
-        height: 20px;
-        color: #3b82f6;
-        flex-shrink: 0;
-      }
+    .navbar-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #374151;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .navbar-icon {
+      width: 20px;
+      height: 20px;
+      color: #3b82f6;
+      flex-shrink: 0;
+    }
+
+    .navbar-menu {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 12px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .navbar-link {
+      color: #374151;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 4px 6px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+
+    .navbar-link:hover {
+      color: #111827;
+    }
+
+    .dropdown-icon {
+      width: 10px;
+      height: 10px;
+      color: #374151;
+      margin-right: 4px;
+    }
+
+    .navbar-separator {
+      color: #9ca3af;
+      margin: 0 4px;
+    }
+
+    /* Mobile Menu Toggle */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #374151;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      padding: 12px 0;
+      border-top: 1px solid #e5e7eb;
+      margin-top: 8px;
+    }
+
+    .mobile-menu.active {
+      display: flex;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1200px) {
       .navbar-menu {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 8px 12px;
-        list-style: none;
-        margin: 0;
-        padding: 0;
+        gap: 6px 12px;
       }
-      .navbar-item {
-        position: relative;
-        display: flex;
-        align-items: center;
-        gap: 4px;
-      }
+
       .navbar-link {
-        color: #374151;
-        text-decoration: none;
-        font-size: 18px;
-        padding: 4px 6px;
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        transition: color 0.2s;
-        white-space: nowrap;
+        font-size: 13px;
+        padding: 5px 6px;
       }
-      .navbar-link:hover {
-        color: #111827;
+    }
+
+    @media (max-width: 768px) {
+      .navbar-container {
+        padding: 0 12px;
       }
-      .dropdown-icon {
-        width: 10px;
-        height: 10px;
-        color: #374151;
-        margin-right: 4px;
-      }
-      .navbar-separator {
-        color: #9ca3af;
-        margin: 0 4px;
-      }
-      /* Mobile Menu Toggle */
+
       .mobile-menu-toggle {
-        display: none;
-        background: none;
-        border: none;
-        font-size: 24px;
-        color: #374151;
-        cursor: pointer;
-        padding: 8px;
+        display: block;
       }
-      .mobile-menu {
+
+      .navbar-menu {
         display: none;
+      }
+
+      .navbar-menu.mobile-active {
+        display: flex;
         flex-direction: column;
+        align-items: flex-start;
         gap: 8px;
         padding: 12px 0;
-        border-top: 1px solid #e5e7eb;
-        margin-top: 8px;
-      }
-      .mobile-menu.active {
-        display: flex;
-      }
-      /* Responsive Styles */
-      @media (max-width: 1200px) {
-        .navbar-menu {
-          gap: 6px 12px;
-        }
-        .navbar-link {
-          font-size: 13px;
-          padding: 5px 6px;
-        }
-      }
-      @media (max-width: 768px) {
-        .navbar-container {
-          padding: 0 12px;
-        }
-        .mobile-menu-toggle {
-          display: block;
-        }
-        .navbar-menu {
-          display: none;
-        }
-        .navbar-menu.mobile-active {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 8px;
-          padding: 12px 0;
-        }
-        .navbar-item {
-          width: 100%;
-        }
-        .navbar-link {
-          width: 100%;
-          padding: 10px 8px;
-        }
-        .navbar-separator {
-          display: none;
-        }
       }
 
-    </style>
+      .navbar-item {
+        width: 100%;
+      }
 
-    <!-- Font Awesome CDN for icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
+      .navbar-link {
+        width: 100%;
+        padding: 10px 8px;
+      }
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-  </head>
+      .navbar-separator {
+        display: none;
+      }
+    }
+  </style>
 
-  <body class="pt-24">
-    <!-- Navbar -->
-    <nav class="navbar">
-      <div class="navbar-container">
-        <div class="navbar-header">
-          <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
-            ☰
-          </button>
+  <!-- Font Awesome CDN for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
+</head>
+
+<body class="pt-24">
+  <!-- NAVBAR WITHOUT CART -->
+  <header class="fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
+    <div class="max-w-6xl mx-auto relative">
+      <div class="nav-pill px-3 py-2 flex items-center justify-between gap-3">
+        <!-- LOGO -->
+        <div class="flex items-center gap-4 ml-2">
+          <a href="#" class="shrink-0">
+            <img src="../assets/imgs/gsoor_logo.jpg" alt="logo" class="h-9 w-auto object-contain md:h-10" />
+          </a>
         </div>
-        <ul class="navbar-menu" id="navbarMenu">
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              <div class="w-[100px]">
-                <img src="../assets/imgs/edu-forms-logo.svg" alt="" />
-              </div>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              نماذج وتقارير توثيق
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              شواهد تقييم الأداء جاهزة
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              أدوات تحليل النتائج
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              الخطة الأسبوعية
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              تقرير إنجاز المعلم اليومي والأسبوعي
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              التقاويم الدراسية وتوزيع الأسابيع
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              شواهد التفاعل مع المجتمع المهني
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              شواهد أداء الواجبات الوظيفية
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              تقارير التواصل مع أولياء الأمور
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              خطط علاجية وإثرائية
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              استبيانات أنماط التعلم
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              شهادات شكر وتقدير
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              شهادات متنوعة
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              لوحات وبنرات
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              أدوات
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
 
-    <!-- increased top padding to avoid overlap with fixed header -->
-    <!-- NEW: navbar -->
-    <header class="fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
-      <div class="max-w-6xl mx-auto relative">
-        <div class="nav-pill px-3 py-2 flex items-center justify-between gap-3">
-          <!-- right: logo (centered on very small screens) -->
-          <div class="flex items-center gap-4 ml-2">
-            <a href="#" class="shrink-0">
-              <img
-                src="../assets/imgs/gsoor_logo.jpg"
-                alt="logo"
-                class="h-9 w-auto object-contain md:h-10"
-              />
-            </a>
-          </div>
+        <!-- NAV LINKS (desktop) -->
+        <nav class="hidden md:flex items-center gap-8 text-sm text-gray-700">
+          <a href="#" class="hover:text-cyan-600 transition">الشهادات</a>
+          <a href="#" class="hover:text-cyan-600 transition">الملفات الإدارية</a>
+          <a href="#" class="hover:text-cyan-600 transition">البطاقات</a>
+        </nav>
 
-          <!-- center: nav links (hidden on sm) -->
-          <nav class="hidden md:flex items-center gap-8 text-sm text-gray-700">
-            <a href="#" class="hover:text-cyan-600">الشهادات</a>
-            <a href="#" class="hover:text-cyan-600">الملفات الإدارية</a>
-            <a href="#" class="hover:text-cyan-600">البطاقات</a>
-          </nav>
-
-          <!-- left: utility icons -->
-          <div class="flex items-center gap-2">
-            <div
-              class="hidden sm:flex items-center bg-gray-50 rounded-full px-2 py-1 gap-2 border border-gray-100"
-            >
-              <button
-                id="themeToggle"
-                class="text-gray-600"
-                title="تبديل الوضع"
-                aria-label="toggle theme"
-              >
-                <i class="fa-solid fa-moon text-gray-600 text-base"></i>
-              </button>
-
-              <button
-                class="text-gray-600 relative"
-                title="العربة"
-                aria-label="cart"
-              >
-                <i class="fa-solid fa-bag-shopping text-gray-600 text-base"></i>
-                <span
-                  id="cartBadge"
-                  class="absolute -top-1 -left-2 bg-cyan-600 text-white text-xs rounded-full px-1"
-                  >0</span
-                >
-              </button>
-
-              <button
-                id="profileBtn"
-                class="text-gray-600"
-                title="الحساب"
-                aria-label="account"
-              >
-                <i class="fa-regular fa-user text-gray-600 text-base"></i>
-              </button>
-            </div>
-
-            <!-- mobile menu button (visible on small screens) -->
-            <button
-              id="menuBtn"
-              class="md:hidden text-gray-600 p-2"
-              aria-expanded="false"
-              aria-controls="mobileNav"
-              aria-label="open menu"
-            >
-              <i class="fa-solid fa-bars text-lg"></i>
+        <!-- UTILITY ICONS WITHOUT CART -->
+        <div class="flex items-center gap-2">
+          <div class="hidden sm:flex items-center bg-gray-50 rounded-full px-2 py-1 gap-2 border border-gray-100">
+            <button id="themeToggle" class="text-gray-600" title="تبديل الوضع">
+              <i class="fa-solid fa-moon text-gray-600 text-base"></i>
+            </button>
+            <button id="profileBtn" class="text-gray-600" title="الحساب">
+              <i class="fa-regular fa-user text-gray-600 text-base"></i>
             </button>
           </div>
-        </div>
 
-        <!-- mobile nav (absolute dropdown) -->
-        <div
-          id="mobileNav"
-          class="hidden mobile-nav-abs mt-2 bg-white rounded-2xl shadow-md p-3 mx-4 md:mx-0"
-        >
-          <div class="flex flex-col gap-2 text-right">
-            <a href="#" class="py-2 px-3 rounded hover:bg-gray-50">الشهادات</a>
-            <a href="#" class="py-2 px-3 rounded hover:bg-gray-50"
-              >الملفات الإدارية</a
-            >
-            <a href="#" class="py-2 px-3 rounded hover:bg-gray-50">البطاقات</a>
-            <!-- condensed utilities inside mobile menu -->
-            <div
-              class="pt-2 border-t border-gray-100 mt-2 flex justify-between items-center"
-            >
-              <div class="flex items-center gap-3">
-                <button id="mobileThemeToggle" class="text-gray-600">
-                  <i class="fa-solid fa-moon"></i>
-                </button>
-                <button class="text-gray-600 relative">
-                  <i class="fa-solid fa-bag-shopping"></i>
-                  <span
-                    id="mobileCartBadge"
-                    class="absolute -top-2 -left-2 bg-cyan-600 text-white text-xs rounded-full px-1"
-                    >0</span
-                  >
-                </button>
-              </div>
-              <a href="#" class="text-sm text-cyan-600 font-semibold"
-                >تسجيل دخول</a
-              >
-            </div>
-          </div>
+          <!-- MOBILE MENU BUTTON -->
+          <button id="menuBtn" class="md:hidden text-gray-600 p-2" aria-expanded="false">
+            <i class="fa-solid fa-bars text-lg"></i>
+          </button>
         </div>
       </div>
-    </header>
 
-    <div class="grid sm:w-[50%] mx-auto p-6 sm:p-12">
-      <div class="border border-gray-300 rounded-2xl p-6 shadow-lg bg-white">
-        <div class="bg-white shadow-xl border rounded-2xl overflow-hidden">
-          <div
-            class="bg-gradient-to-l from-green-900 to-cyan-500 text-white p-6 flex justify-between items-center"
-          >
-            <div>
-              <p class="text-sm">الإدارة العامة للتعليم</p>
-              <p class="text-sm">بالمنطقة</p>
-              <p class="font-bold mt-1">مدرسة</p>
+      <!-- MOBILE NAV WITHOUT CART -->
+      <div id="mobileNav" class="hidden mobile-nav-abs mt-2 bg-white rounded-2xl shadow-md p-3 mx-4">
+        <div class="flex flex-col gap-2 text-right">
+          <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition">الشهادات</a>
+          <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition">الملفات الإدارية</a>
+          <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition">البطاقات</a>
+          <div class="pt-2 border-t border-gray-100 mt-2 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+              <button id="mobileThemeToggle" class="text-gray-600">
+                <i class="fa-solid fa-moon"></i>
+              </button>
             </div>
-
-            <img
-              src="img/qr.png"
-              alt="QR"
-              class="w-20 h-20 bg-white p-1 rounded shadow"
-            />
+            <a href="#" class="text-sm text-cyan-600 font-semibold">تسجيل دخول</a>
           </div>
-
-          <div
-            class="bg-cyan-700 text-white text-center py-3 text-xl font-bold"
-          >
-            تقرير الاحتفاء باليوم الوطني 95
-          </div>
-
-          <div class="p-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-700 text-sm">
-            <div>
-              <p class="font-bold text-green-800 mb-1">المنفذون:</p>
-              <div class="border rounded-md p-2">جميع منسوبي المدرسة</div>
-            </div>
-
-            <div>
-              <p class="font-bold text-green-800 mb-1">المشاركون:</p>
-              <div class="border rounded-md p-2">أولياء الأمور</div>
-            </div>
-
-            <div>
-              <p class="font-bold text-green-800 mb-1">مكان التنفيذ:</p>
-              <div class="border rounded-md p-2">فناء المدرسة</div>
-            </div>
-
-            <div>
-              <p class="font-bold text-green-800 mb-1">مدة التنفيذ:</p>
-              <div class="border rounded-md p-2">يوم واحد</div>
-            </div>
-
-            <div>
-              <p class="font-bold text-green-800 mb-1">تاريخ التنفيذ:</p>
-              <div class="border rounded-md p-2">هــ ١٤٤٧/٤/١</div>
-            </div>
-
-            <div>
-              <p class="font-bold text-green-800 mb-1">المجال:</p>
-              <div class="border rounded-md p-2">المواطنة</div>
-            </div>
-
-            <div class="col-span-2">
-              <p class="font-bold text-green-800 mb-1">المستفيدون / العدد:</p>
-              <div class="border rounded-md p-2">
-                منسوبي المدرسة / أولياء الأمور
-              </div>
-            </div>
-
-            <div class="col-span-2">
-              <p class="font-bold text-green-800 mb-1">الأهداف:</p>
-              <div class="border rounded-md p-3 leading-7">
-                ١. تعزيز الهوية الوطنية والانتماء والولاء للوطن.<br />
-                ٢. الإعلاء بالدين الإسلامي الحنيف.<br />
-                ٣. تعزيز الهوية الوطنية.<br />
-                ٤. تفعيل دور الأسرة والمجتمع.
-              </div>
-            </div>
-
-            <div class="col-span-2">
-              <p class="font-bold text-green-800 mb-1">
-                خطوات التنفيذ / الوصف:
-              </p>
-              <div class="border rounded-md p-3 leading-7">
-                ١. إذاعة صباحية متنوعة عن اليوم الوطني.<br />
-                ٢. عمل مسابقات متنوعة.<br />
-                ٣. إلقاء كلمات بمشاركة المعلمين والطلاب والأهالي.<br />
-                ٤. تكريم المشاركين وتوزيع شهادات الشكر.
-              </div>
-            </div>
-
-            <div class="col-span-2 text-center mt-4">
-              <p class="text-green-800 font-bold text-lg mb-3">الشواهد:</p>
-
-              <div class="flex justify-center gap-6">
-                <div class="w-80 h-48 flex items-center justify-center">
-                  <img
-                    src="img/c2.webp"
-                    class="w-full h-full object-contain س"
-                  />
-                </div>
-
-                <div class="w-80 h-48 flex items-center justify-center">
-                  <img src="img/c3.webp" class="w-full h-full object-contain" />
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="bg-[#003b49] text-white text-center py-3 text-sm">
-            موقع نماذج تعليمية - www.edu-forms.com
-          </div>
-        </div>
-
-        <div class="text-center mt-10 mb-6">
-          <h2 class="text-3xl font-bold text-gray-800">
-            إنشاء أفضل نموذج لتوثيق برنامج أو نشاط (المطور)
-          </h2>
-
-          <!-- زر مطابق للشكل في الصورة -->
-          <button
-            onclick="goToForm()"
-            class="mt-6 border-2 border-[#0BA7D1] text-[#0BA7D1] px-10 py-4 rounded-2xl text-xl font-bold hover:bg-[#0BA7D1]/10 transition flex items-center justify-center gap-3 mx-auto"
-          >
-            ابدأ التصميم
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="#0BA7D1"
-              viewBox="0 0 24 24"
-              class="w-6 h-6"
-            >
-              <path d="M2 21l21-9L2 3v7l15 2-15 2v7z" />
-            </svg>
-          </button>
         </div>
       </div>
     </div>
-
-    <!-- NEW: footer -->
-    <footer class="mt-12 footer-ink border-t border-gray-100">
-      <div
-        class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
-      >
-        <!-- right column -->
-        <div class="text-right md:flex-1">
-          <img
-            src="../assets/imgs/gsoor_logo.jpg"
-            alt="logo"
-            class="h-10 mx-auto md:mx-0"
-          />
-          <div
-            class="flex justify-center md:justify-end gap-4 mt-3 text-gray-600"
-          >
-            <i class="fa-brands fa-youtube social-icon text-lg"></i>
-            <i class="fa-brands fa-tiktok social-icon text-lg"></i>
-            <i class="fa-brands fa-instagram social-icon text-lg"></i>
-          </div>
-        </div>
-
-        <!-- center column -->
-        <div class="text-center md:flex-1">
-          <h3 class="font-bold mb-2">تواصل معنا</h3>
-          <div class="flex items-center justify-center gap-4 text-gray-600">
-            <div class="flex items-center gap-2">
-              <i class="fa-regular fa-envelope text-sm"></i>
-              <span>البريد</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <i class="fa-solid fa-mobile-screen-button text-sm"></i>
-              <span>واتس</span>
-            </div>
-          </div>
-          <div class="mt-3 text-sm text-gray-500">موقّع لدى منصة الأعمال</div>
-        </div>
-
-        <!-- left column -->
-        <div class="text-left md:flex-1">
-          <div class="text-sm text-gray-500">
-            © 2025 متجر جسور الرقمي | جميع الحقوق محفوظة
-          </div>
-          <div
-            class="mt-3 flex gap-2 items-center justify-center md:justify-start"
-          >
-            <!-- replaced raster images with Font Awesome icons -->
-            <span class="sr-only">Visa</span>
-            <i
-              class="fa-brands fa-cc-visa text-gray-600 text-lg"
-              title="Visa"
-              aria-hidden="true"
-            ></i>
-
-            <span class="sr-only">Mada</span>
-            <i
-              class="fa-solid fa-credit-card text-gray-600 text-lg"
-              title="Mada (credit card)"
-              aria-hidden="true"
-            ></i>
-          </div>
-        </div>
-      </div>
-    </footer>
-
-    <!-- updated scripts -->
-    <script>
-      // دالة تبديل القائمة على الموبايل
-      function toggleMobileMenu() {
-        const menu = document.getElementById("navbarMenu");
-        menu.classList.toggle("mobile-active");
-      }
-
-
-      function goToForm() {
-        window.location.href = "form.html";
-      }
-
+  </header>
+  <script>
+    // NAVBAR FUNCTIONALITY WITHOUT CART
+    document.addEventListener('DOMContentLoaded', function () {
       const menuBtn = document.getElementById("menuBtn");
       const mobileNav = document.getElementById("mobileNav");
       const mobileThemeToggle = document.getElementById("mobileThemeToggle");
-      const cartBadge = document.getElementById("cartBadge");
-      const mobileCartBadge = document.getElementById("mobileCartBadge");
 
-      let cartCount = 0;
-      setInterval(() => {
-        cartCount = (cartCount + 1) % 10;
-        cartBadge && (cartBadge.textContent = cartCount);
-        mobileCartBadge && (mobileCartBadge.textContent = cartCount);
-      }, 7000);
-
-      menuBtn &&
+      // Mobile menu toggle
+      if (menuBtn) {
         menuBtn.addEventListener("click", (e) => {
           const expanded = menuBtn.getAttribute("aria-expanded") === "true";
           menuBtn.setAttribute("aria-expanded", String(!expanded));
           mobileNav.classList.toggle("hidden");
         });
+      }
 
-      // close mobile menu on outside click
+      // Close mobile menu when clicking outside
       document.addEventListener("click", (e) => {
         if (!mobileNav || mobileNav.classList.contains("hidden")) return;
         const path = e.composedPath?.() || e.path || [];
         if (!path.includes(mobileNav) && !path.includes(menuBtn)) {
           mobileNav.classList.add("hidden");
-          menuBtn && menuBtn.setAttribute("aria-expanded", "false");
+          if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
         }
       });
 
-      // close mobile menu when resizing above mobile breakpoint
+      // Close mobile menu on window resize
       window.addEventListener("resize", () => {
         if (window.innerWidth >= 768) {
           mobileNav.classList.add("hidden");
-          menuBtn && menuBtn.setAttribute("aria-expanded", "false");
+          if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
         }
       });
 
-      // theme toggles
-      document
-        .getElementById("themeToggle")
-        ?.addEventListener("click", () =>
-          document.documentElement.classList.toggle("dark")
-        );
-      mobileThemeToggle?.addEventListener("click", () =>
+      // Theme toggle
+      document.getElementById("themeToggle")?.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+      });
+
+      if (mobileThemeToggle) {
+        mobileThemeToggle.addEventListener("click", () => {
+          document.documentElement.classList.toggle("dark");
+        });
+      }
+    });
+  </script>
+
+  <!-- increased top padding to avoid overlap with fixed header -->
+  <!-- NEW: navbar -->
+  <header class="fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
+    <div class="max-w-6xl mx-auto relative">
+      <div class="nav-pill px-3 py-2 flex items-center justify-between gap-3">
+        <!-- right: logo (centered on very small screens) -->
+        <div class="flex items-center gap-4 ml-2">
+          <a href="#" class="shrink-0">
+            <img src="../assets/imgs/gsoor_logo.jpg" alt="logo" class="h-9 w-auto object-contain md:h-10" />
+          </a>
+        </div>
+
+        <!-- center: nav links (hidden on sm) -->
+        <nav class="hidden md:flex items-center gap-8 text-sm text-gray-700">
+          <a href="#" class="hover:text-cyan-600">الشهادات</a>
+          <a href="#" class="hover:text-cyan-600">الملفات الإدارية</a>
+          <a href="#" class="hover:text-cyan-600">البطاقات</a>
+        </nav>
+
+        <!-- left: utility icons -->
+        <div class="flex items-center gap-2">
+          <div class="hidden sm:flex items-center bg-gray-50 rounded-full px-2 py-1 gap-2 border border-gray-100">
+            <button id="themeToggle" class="text-gray-600" title="تبديل الوضع" aria-label="toggle theme">
+              <i class="fa-solid fa-moon text-gray-600 text-base"></i>
+            </button>
+
+            <button class="text-gray-600 relative" title="العربة" aria-label="cart">
+              <i class="fa-solid fa-bag-shopping text-gray-600 text-base"></i>
+              <span id="cartBadge"
+                class="absolute -top-1 -left-2 bg-cyan-600 text-white text-xs rounded-full px-1">0</span>
+            </button>
+
+            <button id="profileBtn" class="text-gray-600" title="الحساب" aria-label="account">
+              <i class="fa-regular fa-user text-gray-600 text-base"></i>
+            </button>
+          </div>
+
+          <!-- mobile menu button (visible on small screens) -->
+          <button id="menuBtn" class="md:hidden text-gray-600 p-2" aria-expanded="false" aria-controls="mobileNav"
+            aria-label="open menu">
+            <i class="fa-solid fa-bars text-lg"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- mobile nav (absolute dropdown) -->
+      <div id="mobileNav" class="hidden mobile-nav-abs mt-2 bg-white rounded-2xl shadow-md p-3 mx-4 md:mx-0">
+        <div class="flex flex-col gap-2 text-right">
+          <a href="#" class="py-2 px-3 rounded hover:bg-gray-50">الشهادات</a>
+          <a href="#" class="py-2 px-3 rounded hover:bg-gray-50">الملفات الإدارية</a>
+          <a href="#" class="py-2 px-3 rounded hover:bg-gray-50">البطاقات</a>
+          <!-- condensed utilities inside mobile menu -->
+          <div class="pt-2 border-t border-gray-100 mt-2 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+              <button id="mobileThemeToggle" class="text-gray-600">
+                <i class="fa-solid fa-moon"></i>
+              </button>
+              <button class="text-gray-600 relative">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span id="mobileCartBadge"
+                  class="absolute -top-2 -left-2 bg-cyan-600 text-white text-xs rounded-full px-1">0</span>
+              </button>
+            </div>
+            <a href="#" class="text-sm text-cyan-600 font-semibold">تسجيل دخول</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="grid sm:w-[50%] mx-auto p-6 sm:p-12">
+    <div class="border border-gray-300 rounded-2xl p-6 shadow-lg bg-white">
+      <div class="bg-white shadow-xl border rounded-2xl overflow-hidden">
+        <div class="bg-gradient-to-l from-green-900 to-cyan-500 text-white p-6 flex justify-between items-center">
+          <div>
+            <p class="text-sm">الإدارة العامة للتعليم</p>
+            <p class="text-sm">بالمنطقة</p>
+            <p class="font-bold mt-1">مدرسة</p>
+          </div>
+
+          <img src="img/qr.png" alt="QR" class="w-20 h-20 bg-white p-1 rounded shadow" />
+        </div>
+
+        <div class="bg-cyan-700 text-white text-center py-3 text-xl font-bold">
+          تقرير الاحتفاء باليوم الوطني 95
+        </div>
+
+        <div class="p-6 grid grid-cols-1 sm:grid-cols-2 gap-4 text-gray-700 text-sm">
+          <div>
+            <p class="font-bold text-green-800 mb-1">المنفذون:</p>
+            <div class="border rounded-md p-2">جميع منسوبي المدرسة</div>
+          </div>
+
+          <div>
+            <p class="font-bold text-green-800 mb-1">المشاركون:</p>
+            <div class="border rounded-md p-2">أولياء الأمور</div>
+          </div>
+
+          <div>
+            <p class="font-bold text-green-800 mb-1">مكان التنفيذ:</p>
+            <div class="border rounded-md p-2">فناء المدرسة</div>
+          </div>
+
+          <div>
+            <p class="font-bold text-green-800 mb-1">مدة التنفيذ:</p>
+            <div class="border rounded-md p-2">يوم واحد</div>
+          </div>
+
+          <div>
+            <p class="font-bold text-green-800 mb-1">تاريخ التنفيذ:</p>
+            <div class="border rounded-md p-2">هــ ١٤٤٧/٤/١</div>
+          </div>
+
+          <div>
+            <p class="font-bold text-green-800 mb-1">المجال:</p>
+            <div class="border rounded-md p-2">المواطنة</div>
+          </div>
+
+          <div class="col-span-2">
+            <p class="font-bold text-green-800 mb-1">المستفيدون / العدد:</p>
+            <div class="border rounded-md p-2">
+              منسوبي المدرسة / أولياء الأمور
+            </div>
+          </div>
+
+          <div class="col-span-2">
+            <p class="font-bold text-green-800 mb-1">الأهداف:</p>
+            <div class="border rounded-md p-3 leading-7">
+              ١. تعزيز الهوية الوطنية والانتماء والولاء للوطن.<br />
+              ٢. الإعلاء بالدين الإسلامي الحنيف.<br />
+              ٣. تعزيز الهوية الوطنية.<br />
+              ٤. تفعيل دور الأسرة والمجتمع.
+            </div>
+          </div>
+
+          <div class="col-span-2">
+            <p class="font-bold text-green-800 mb-1">
+              خطوات التنفيذ / الوصف:
+            </p>
+            <div class="border rounded-md p-3 leading-7">
+              ١. إذاعة صباحية متنوعة عن اليوم الوطني.<br />
+              ٢. عمل مسابقات متنوعة.<br />
+              ٣. إلقاء كلمات بمشاركة المعلمين والطلاب والأهالي.<br />
+              ٤. تكريم المشاركين وتوزيع شهادات الشكر.
+            </div>
+          </div>
+
+          <div class="col-span-2 text-center mt-4">
+            <p class="text-green-800 font-bold text-lg mb-3">الشواهد:</p>
+
+            <div class="flex justify-center gap-6">
+              <div class="w-80 h-48 flex items-center justify-center">
+                <img src="img/c2.webp" class="w-full h-full object-contain س" />
+              </div>
+
+              <div class="w-80 h-48 flex items-center justify-center">
+                <img src="img/c3.webp" class="w-full h-full object-contain" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-[#003b49] text-white text-center py-3 text-sm">
+          موقع نماذج تعليمية - www.edu-forms.com
+        </div>
+      </div>
+
+      <div class="text-center mt-10 mb-6">
+        <h2 class="text-3xl font-bold text-gray-800">
+          إنشاء أفضل نموذج لتوثيق برنامج أو نشاط (المطور)
+        </h2>
+
+        <!-- زر مطابق للشكل في الصورة -->
+        <button onclick="goToForm()"
+          class="mt-6 border-2 border-[#0BA7D1] text-[#0BA7D1] px-10 py-4 rounded-2xl text-xl font-bold hover:bg-[#0BA7D1]/10 transition flex items-center justify-center gap-3 mx-auto">
+          ابدأ التصميم
+          <svg xmlns="http://www.w3.org/2000/svg" fill="#0BA7D1" viewBox="0 0 24 24" class="w-6 h-6">
+            <path d="M2 21l21-9L2 3v7l15 2-15 2v7z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEW: footer -->
+  <footer class="mt-12 footer-ink border-t border-gray-100">
+    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+      <!-- right column -->
+      <div class="text-right md:flex-1">
+        <img src="../assets/imgs/gsoor_logo.jpg" alt="logo" class="h-10 mx-auto md:mx-0" />
+        <div class="flex justify-center md:justify-end gap-4 mt-3 text-gray-600">
+          <i class="fa-brands fa-youtube social-icon text-lg"></i>
+          <i class="fa-brands fa-tiktok social-icon text-lg"></i>
+          <i class="fa-brands fa-instagram social-icon text-lg"></i>
+        </div>
+      </div>
+
+      <!-- center column -->
+      <div class="text-center md:flex-1">
+        <h3 class="font-bold mb-2">تواصل معنا</h3>
+        <div class="flex items-center justify-center gap-4 text-gray-600">
+          <div class="flex items-center gap-2">
+            <i class="fa-regular fa-envelope text-sm"></i>
+            <span>البريد</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-mobile-screen-button text-sm"></i>
+            <span>واتس</span>
+          </div>
+        </div>
+        <div class="mt-3 text-sm text-gray-500">موقّع لدى منصة الأعمال</div>
+      </div>
+
+      <!-- left column -->
+      <div class="text-left md:flex-1">
+        <div class="text-sm text-gray-500">
+          © 2025 متجر جسور الرقمي | جميع الحقوق محفوظة
+        </div>
+        <div class="mt-3 flex gap-2 items-center justify-center md:justify-start">
+          <!-- replaced raster images with Font Awesome icons -->
+          <span class="sr-only">Visa</span>
+          <i class="fa-brands fa-cc-visa text-gray-600 text-lg" title="Visa" aria-hidden="true"></i>
+
+          <span class="sr-only">Mada</span>
+          <i class="fa-solid fa-credit-card text-gray-600 text-lg" title="Mada (credit card)" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- updated scripts -->
+  <script>
+    // دالة تبديل القائمة على الموبايل
+    function toggleMobileMenu() {
+      const menu = document.getElementById("navbarMenu");
+      menu.classList.toggle("mobile-active");
+    }
+
+
+    function goToForm() {
+      window.location.href = "form.html";
+    }
+
+    const menuBtn = document.getElementById("menuBtn");
+    const mobileNav = document.getElementById("mobileNav");
+    const mobileThemeToggle = document.getElementById("mobileThemeToggle");
+    const cartBadge = document.getElementById("cartBadge");
+    const mobileCartBadge = document.getElementById("mobileCartBadge");
+
+    let cartCount = 0;
+    setInterval(() => {
+      cartCount = (cartCount + 1) % 10;
+      cartBadge && (cartBadge.textContent = cartCount);
+      mobileCartBadge && (mobileCartBadge.textContent = cartCount);
+    }, 7000);
+
+    menuBtn &&
+      menuBtn.addEventListener("click", (e) => {
+        const expanded = menuBtn.getAttribute("aria-expanded") === "true";
+        menuBtn.setAttribute("aria-expanded", String(!expanded));
+        mobileNav.classList.toggle("hidden");
+      });
+
+    // close mobile menu on outside click
+    document.addEventListener("click", (e) => {
+      if (!mobileNav || mobileNav.classList.contains("hidden")) return;
+      const path = e.composedPath?.() || e.path || [];
+      if (!path.includes(mobileNav) && !path.includes(menuBtn)) {
+        mobileNav.classList.add("hidden");
+        menuBtn && menuBtn.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    // close mobile menu when resizing above mobile breakpoint
+    window.addEventListener("resize", () => {
+      if (window.innerWidth >= 768) {
+        mobileNav.classList.add("hidden");
+        menuBtn && menuBtn.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    // theme toggles
+    document
+      .getElementById("themeToggle")
+      ?.addEventListener("click", () =>
         document.documentElement.classList.toggle("dark")
       );
-    </script>
-  </body>
+    mobileThemeToggle?.addEventListener("click", () =>
+      document.documentElement.classList.toggle("dark")
+    );
+  </script>
+</body>
+
 </html>

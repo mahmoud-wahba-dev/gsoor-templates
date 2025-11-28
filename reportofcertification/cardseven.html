@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
@@ -7,16 +8,22 @@
 
   <!-- Tailwind CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  
+
   <!-- Add required libraries -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer">
 
   <!-- small extra styles to match screenshot look -->
   <style>
     /* subtle page background */
-    body { background: #f5f6f7; font-family: "Tahoma", Arial, sans-serif; color:#222; }
+    body {
+      background: #f5f6f7;
+      font-family: "Tahoma", Arial, sans-serif;
+      color: #222;
+      padding-top: 100px;
+    }
 
     /* circular preview image */
     .circle-img {
@@ -26,25 +33,34 @@
       overflow: hidden;
       display: inline-block;
       border: 6px solid #ffffff;
-      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
       background: #fff;
     }
-    
-.footer-ink {
-        background: #f8fafb;
-      }
 
-      .social-icon {
-        width: 26px;
-        height: 26px;
-        fill: currentColor;
-      }
+    .footer-ink {
+      background: #f8fafb;
+    }
+
+    .social-icon {
+      width: 26px;
+      height: 26px;
+      fill: currentColor;
+    }
 
 
-    .circle-img img { width:100%; height:100%; object-fit:cover; display:block; }
+    .circle-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
 
     /* dashed top-of-form divider */
-    .dashed-top { border-top: 1px dashed #e6e9ee; padding-top: 18px; margin-top: 18px; }
+    .dashed-top {
+      border-top: 1px dashed #e6e9ee;
+      padding-top: 18px;
+      margin-top: 18px;
+    }
 
     /* file input custom */
     .file-input {
@@ -52,7 +68,11 @@
       gap: 12px;
       align-items: center;
     }
-    .file-input input[type="file"] { display: none; }
+
+    .file-input input[type="file"] {
+      display: none;
+    }
+
     .file-btn {
       background: #fff;
       border: 1px solid #d1d5db;
@@ -61,8 +81,9 @@
       cursor: pointer;
       font-size: 14px;
     }
+
     .file-name {
-      flex:1;
+      flex: 1;
       background: #f3f4f6;
       border: 1px solid #e6e9ee;
       padding: 8px 10px;
@@ -87,7 +108,10 @@
     }
 
     /* breadcrumb thin divider spacing */
-    .breadcrumb { font-size: 13px; color: #4b5563; }
+    .breadcrumb {
+      font-size: 13px;
+      color: #4b5563;
+    }
 
     /* Error Styles */
     .error-message {
@@ -96,9 +120,11 @@
       margin-top: 4px;
       display: none;
     }
+
     .error-message.show {
       display: block;
     }
+
     .field-error {
       border-color: #dc2626 !important;
       border-width: 2px !important;
@@ -117,11 +143,13 @@
       overflow-y: auto;
       padding: 20px;
     }
+
     .modal-overlay.active {
       display: flex;
       align-items: center;
       justify-content: center;
     }
+
     .modal-content {
       background: white;
       border-radius: 16px;
@@ -132,6 +160,7 @@
       margin: auto;
       box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
     }
+
     .modal-header {
       display: flex;
       justify-content: space-between;
@@ -139,11 +168,13 @@
       padding: 20px;
       border-bottom: 1px solid #e5e7eb;
     }
+
     .modal-body {
       padding: 20px;
       max-height: calc(100vh - 200px);
       overflow-y: auto;
     }
+
     .modal-close {
       background: none;
       border: none;
@@ -159,10 +190,12 @@
       border-radius: 50%;
       transition: all 0.2s;
     }
+
     .modal-close:hover {
       background-color: #f3f4f6;
       color: #111827;
     }
+
     .preview-template {
       background: white;
       padding: 30px;
@@ -178,6 +211,7 @@
       margin-top: 20px;
       flex-wrap: wrap;
     }
+
     .btn-download {
       padding: 10px 20px;
       border: none;
@@ -190,35 +224,46 @@
       gap: 8px;
       transition: all 0.3s;
     }
+
     .btn-download-pdf {
       background: #dc2626;
       color: white;
     }
+
     .btn-download-pdf:hover {
       background: #b91c1c;
     }
+
     .btn-download-image {
       background: #2563eb;
       color: white;
     }
+
     .btn-download-image:hover {
       background: #1d4ed8;
     }
+
     .btn-close {
       background: #6b7280;
       color: white;
     }
+
     .btn-close:hover {
       background: #4b5563;
     }
 
     /* responsive tweaks */
     @media (max-width: 768px) {
-      .circle-img { width: 110px; height:110px; }
+      .circle-img {
+        width: 110px;
+        height: 110px;
+      }
+
       .download-buttons {
         flex-direction: column;
         align-items: center;
       }
+
       .btn-download {
         width: 200px;
         justify-content: center;
@@ -229,37 +274,106 @@
 
 <body class="antialiased">
 
-  <!-- top nav / categories (light) -->
-  <div class="max-w-6xl mx-auto px-4 sm:px-6">
-    <div class="py-3 border-b border-gray-200 text-gray-600 text-sm">
-      <!-- simplified breadcrumb / categories row -->
-      <div class="breadcrumb">
-        نماذج وتقارير توثيق &nbsp; / &nbsp; ملحق شواهد (شواهد إضافية لأي تقرير)
+  <!-- NAVBAR WITHOUT CART -->
+  <header class="fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
+    <div class="max-w-6xl mx-auto relative">
+      <div class="nav-pill px-3 py-2 flex items-center justify-between gap-3">
+        <!-- LOGO -->
+        <div class="flex items-center gap-4 ml-2">
+          <a href="#" class="shrink-0">
+            <img src="../assets/imgs/gsoor_logo.jpg" alt="logo" class="h-9 w-auto object-contain md:h-10" />
+          </a>
+        </div>
+
+        <!-- NAV LINKS (desktop) -->
+        <nav class="hidden md:flex items-center gap-8 text-sm text-gray-700">
+          <a href="#" class="hover:text-cyan-600 transition">الشهادات</a>
+          <a href="#" class="hover:text-cyan-600 transition">الملفات الإدارية</a>
+          <a href="#" class="hover:text-cyan-600 transition">البطاقات</a>
+        </nav>
+
+        <!-- UTILITY ICONS WITHOUT CART -->
+        <div class="flex items-center gap-2">
+          <div class="hidden sm:flex items-center bg-gray-50 rounded-full px-2 py-1 gap-2 border border-gray-100">
+            <button id="themeToggle" class="text-gray-600" title="تبديل الوضع">
+              <i class="fa-solid fa-moon text-gray-600 text-base"></i>
+            </button>
+            <button id="profileBtn" class="text-gray-600" title="الحساب">
+              <i class="fa-regular fa-user text-gray-600 text-base"></i>
+            </button>
+          </div>
+
+          <!-- MOBILE MENU BUTTON -->
+          <button id="menuBtn" class="md:hidden text-gray-600 p-2" aria-expanded="false">
+            <i class="fa-solid fa-bars text-lg"></i>
+          </button>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <!-- support box -->
-  <section class="max-w-5xl mx-auto px-4 sm:px-6 mt-6">
-    <div class="bg-white border border-gray-200 rounded-lg p-5 shadow-sm">
-      <div class="text-center">
-        <div class="text-lg font-semibold">إذا حاب تدعمني 😊</div>
-        <p class="text-sm text-gray-600 mt-2">متابعتك لي على منصات التواصل تدعم الموقع وتفيدك على الاطلاع دائم بأحدث الروابط والمحتوى الحصري.</p>
-
-        <div class="mt-4 flex justify-center gap-3">
-          <a class="inline-flex items-center gap-2 bg-[#1d9bf0] text-white text-sm px-4 py-2 rounded-md" href="#" role="button">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M23 4.5c-.7.3-1.5.6-2.2.8.8-.5 1.5-1.4 1.8-2.4-.8.5-1.6.8-2.6 1-1.4-1.4-3.7-1.2-5 0-1.3 1.3-1.3 3.4 0 4.7C10.6 9 7.2 8 4.6 6.1c-.9 1.6-.5 3.6.8 4.5-.6 0-1.4-.2-2-.6v.1c0 2 1.3 3.6 3.3 3.9-.7.2-1.4.2-2.2.1.6 1.8 2.3 3.1 4.3 3.1C6.5 18.3 4.6 19 2.6 18.9 4.6 20 7 20.7 9.6 20.7c9.1 0 14-7.8 14-14.6v-.6c1-.8 1.7-1.8 2.2-3z" fill="currentColor"></path></svg>
-            تابعني على منصة (X) تويتر
-          </a>
-
-          <a class="inline-flex items-center gap-2 bg-[#0088cc] text-white text-sm px-4 py-2 rounded-md" href="#" role="button">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.6 2 2.3 6 2 11c-.1 1.3.1 2.5.5 3.7.8 2.4 2.8 4.3 5.3 5.2 2.2.8 4.5.8 6.7.2 2.1-.6 3.9-2 5-3.7l1-1.4c.2-.3.2-.7 0-1-.2-.4-.6-.6-1-.5L8.5 14.2 12 2z" fill="currentColor"></path></svg>
-            اشترك بقناتي على تليجرام
-          </a>
+      <!-- MOBILE NAV WITHOUT CART -->
+      <div id="mobileNav" class="hidden mobile-nav-abs mt-2 bg-white rounded-2xl shadow-md p-3 mx-4">
+        <div class="flex flex-col gap-2 text-right">
+          <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition">الشهادات</a>
+          <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition">الملفات الإدارية</a>
+          <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition">البطاقات</a>
+          <div class="pt-2 border-t border-gray-100 mt-2 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+              <button id="mobileThemeToggle" class="text-gray-600">
+                <i class="fa-solid fa-moon"></i>
+              </button>
+            </div>
+            <a href="#" class="text-sm text-cyan-600 font-semibold">تسجيل دخول</a>
+          </div>
         </div>
       </div>
     </div>
-  </section>
+  </header>
+  <script>
+    // NAVBAR FUNCTIONALITY WITHOUT CART
+    document.addEventListener('DOMContentLoaded', function () {
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileNav = document.getElementById("mobileNav");
+      const mobileThemeToggle = document.getElementById("mobileThemeToggle");
+
+      // Mobile menu toggle
+      if (menuBtn) {
+        menuBtn.addEventListener("click", (e) => {
+          const expanded = menuBtn.getAttribute("aria-expanded") === "true";
+          menuBtn.setAttribute("aria-expanded", String(!expanded));
+          mobileNav.classList.toggle("hidden");
+        });
+      }
+
+      // Close mobile menu when clicking outside
+      document.addEventListener("click", (e) => {
+        if (!mobileNav || mobileNav.classList.contains("hidden")) return;
+        const path = e.composedPath?.() || e.path || [];
+        if (!path.includes(mobileNav) && !path.includes(menuBtn)) {
+          mobileNav.classList.add("hidden");
+          if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      // Close mobile menu on window resize
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 768) {
+          mobileNav.classList.add("hidden");
+          if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      // Theme toggle
+      document.getElementById("themeToggle")?.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+      });
+
+      if (mobileThemeToggle) {
+        mobileThemeToggle.addEventListener("click", () => {
+          document.documentElement.classList.toggle("dark");
+        });
+      }
+    });
+  </script>
 
   <!-- main card -->
   <main class="max-w-5xl mx-auto px-4 sm:px-6 mt-8">
@@ -279,7 +393,8 @@
           <h1 class="text-2xl font-semibold">ملحق شواهد (شواهد إضافية لأي تقرير)</h1>
           <p class="text-gray-600 mt-3 max-w-3xl mx-auto leading-relaxed">
             إنشاء وتخصيص ملحق شواهد (شواهد إضافية لأي تقرير) مع إمكانية تحرير وإضافة جميع البيانات الخاصة بك،
-            بطريقة سهلة واحترافية توفر عليك الوقت والجهد ويتم حفظ الملف النهائي بتنسيق صورة أو pdf لسهولة الطباعة وإعادة الاستخدام.
+            بطريقة سهلة واحترافية توفر عليك الوقت والجهد ويتم حفظ الملف النهائي بتنسيق صورة أو pdf لسهولة الطباعة وإعادة
+            الاستخدام.
           </p>
         </header>
 
@@ -291,7 +406,9 @@
             <!-- row: education area -->
             <div class="mb-4">
               <label class="block text-sm font-medium text-gray-700 mb-2">إدارة التعليم، المنطقة، مكتب التعليم:</label>
-              <input name="edu_office" id="eduOffice" class="w-full bg-gray-50 border border-gray-200 rounded-md px-3 py-2 text-sm" placeholder="الإدارة العامة للتعليم / المنطقة / مكتب التعليم">
+              <input name="edu_office" id="eduOffice"
+                class="w-full bg-gray-50 border border-gray-200 rounded-md px-3 py-2 text-sm"
+                placeholder="الإدارة العامة للتعليم / المنطقة / مكتب التعليم">
               <div id="eduOfficeError" class="error-message">هذا الحقل مطلوب</div>
             </div>
 
@@ -299,12 +416,15 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
               <div class="md:col-span-2">
                 <label class="block text-sm font-medium text-gray-700 mb-2">العنوان:</label>
-                <input name="title" id="title" class="w-full bg-gray-50 border border-gray-200 rounded-md px-3 py-2 text-sm" placeholder="ملحق شواهد برنامج ...">
+                <input name="title" id="title"
+                  class="w-full bg-gray-50 border border-gray-200 rounded-md px-3 py-2 text-sm"
+                  placeholder="ملحق شواهد برنامج ...">
                 <div id="titleError" class="error-message">هذا الحقل مطلوب</div>
               </div>
               <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">حساب تويتر:</label>
-                <input name="twitter" id="twitter" class="w-full bg-gray-50 border border-gray-200 rounded-md px-3 py-2 text-sm" placeholder="@username">
+                <input name="twitter" id="twitter"
+                  class="w-full bg-gray-50 border border-gray-200 rounded-md px-3 py-2 text-sm" placeholder="@username">
               </div>
             </div>
 
@@ -374,7 +494,8 @@
 
             <!-- Preview button -->
             <div class="mt-5">
-              <button type="button" id="previewBtn" class="w-full btn-green text-white py-3 rounded-md font-semibold hover:bg-green-600 transition duration-200">معاينة</button>
+              <button type="button" id="previewBtn"
+                class="w-full btn-green text-white py-3 rounded-md font-semibold hover:bg-green-600 transition duration-200">معاينة</button>
             </div>
 
             <!-- helpful links / small buttons -->
@@ -382,10 +503,14 @@
               <div class="text-sm text-gray-600 mb-2">أكثر الروابط استخداماً:</div>
 
               <div class="inline-flex flex-wrap gap-2 justify-center">
-                <a class="inline-block px-3 py-2 border border-[#cde3f1] text-[#0b6ea8] rounded-md text-sm bg-white" href="#">أفضل نموذج لتوثيق برنامج أو نشاط (المطوّع)</a>
-                <a class="inline-block px-3 py-2 border border-[#cde3f1] text-[#0b6ea8] rounded-md text-sm bg-white" href="#">نموذج تنفيذ استراتيجية مختصرة</a>
-                <a class="inline-block px-3 py-2 border border-[#cde3f1] text-[#0b6ea8] rounded-md text-sm bg-white" href="#">تقرير جاهز لليوم العالمي للفيزياء</a>
-                <a class="inline-block px-3 py-2 border border-[#cde3f1] text-[#0b6ea8] rounded-md text-sm bg-white" href="#">خطط علاجية وإثرائية</a>
+                <a class="inline-block px-3 py-2 border border-[#cde3f1] text-[#0b6ea8] rounded-md text-sm bg-white"
+                  href="#">أفضل نموذج لتوثيق برنامج أو نشاط (المطوّع)</a>
+                <a class="inline-block px-3 py-2 border border-[#cde3f1] text-[#0b6ea8] rounded-md text-sm bg-white"
+                  href="#">نموذج تنفيذ استراتيجية مختصرة</a>
+                <a class="inline-block px-3 py-2 border border-[#cde3f1] text-[#0b6ea8] rounded-md text-sm bg-white"
+                  href="#">تقرير جاهز لليوم العالمي للفيزياء</a>
+                <a class="inline-block px-3 py-2 border border-[#cde3f1] text-[#0b6ea8] rounded-md text-sm bg-white"
+                  href="#">خطط علاجية وإثرائية</a>
               </div>
             </div>
 
@@ -397,59 +522,49 @@
     </article>
   </main>
 
-<!-- FOOTER -->
-    <footer class="mt-12 footer-ink border-t border-gray-100">
-      <div
-        class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
-      >
-        <!-- RIGHT COLUMN -->
-        <div class="text-right md:flex-1">
-          <img
-            src="../assets/imgs/gsoor_logo.jpg"
-            alt="logo"
-            class="h-10 mx-auto md:mx-0"
-          />
-          <div
-            class="flex justify-center md:justify-end gap-4 mt-3 text-gray-600"
-          >
-            <i class="fa-brands fa-youtube social-icon text-lg"></i>
-            <i class="fa-brands fa-tiktok social-icon text-lg"></i>
-            <i class="fa-brands fa-instagram social-icon text-lg"></i>
-          </div>
-        </div>
-
-        <!-- CENTER COLUMN -->
-        <div class="text-center md:flex-1">
-          <h3 class="font-bold mb-2">تواصل معنا</h3>
-          <div class="flex items-center justify-center gap-4 text-gray-600">
-            <div class="flex items-center gap-2">
-              <i class="fa-regular fa-envelope text-sm"></i>
-              <span>البريد</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <i class="fa-solid fa-mobile-screen-button text-sm"></i>
-              <span>واتس</span>
-            </div>
-          </div>
-          <div class="mt-3 text-sm text-gray-500">موقّع لدى منصة الأعمال</div>
-        </div>
-
-        <!-- LEFT COLUMN -->
-        <div class="text-left md:flex-1">
-          <div class="text-sm text-gray-500">
-            © 2025 متجر جسور الرقمي | جميع الحقوق محفوظة
-          </div>
-          <div
-            class="mt-3 flex gap-2 items-center justify-center md:justify-start"
-          >
-            <span class="sr-only">Visa</span>
-            <i class="fa-brands fa-cc-visa text-gray-600 text-lg"></i>
-            <span class="sr-only">Mada</span>
-            <i class="fa-solid fa-credit-card text-gray-600 text-lg"></i>
-          </div>
+  <!-- FOOTER -->
+  <footer class="mt-12 footer-ink border-t border-gray-100">
+    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+      <!-- RIGHT COLUMN -->
+      <div class="text-right md:flex-1">
+        <img src="../assets/imgs/gsoor_logo.jpg" alt="logo" class="h-10 mx-auto md:mx-0" />
+        <div class="flex justify-center md:justify-end gap-4 mt-3 text-gray-600">
+          <i class="fa-brands fa-youtube social-icon text-lg"></i>
+          <i class="fa-brands fa-tiktok social-icon text-lg"></i>
+          <i class="fa-brands fa-instagram social-icon text-lg"></i>
         </div>
       </div>
-    </footer>
+
+      <!-- CENTER COLUMN -->
+      <div class="text-center md:flex-1">
+        <h3 class="font-bold mb-2">تواصل معنا</h3>
+        <div class="flex items-center justify-center gap-4 text-gray-600">
+          <div class="flex items-center gap-2">
+            <i class="fa-regular fa-envelope text-sm"></i>
+            <span>البريد</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-mobile-screen-button text-sm"></i>
+            <span>واتس</span>
+          </div>
+        </div>
+        <div class="mt-3 text-sm text-gray-500">موقّع لدى منصة الأعمال</div>
+      </div>
+
+      <!-- LEFT COLUMN -->
+      <div class="text-left md:flex-1">
+        <div class="text-sm text-gray-500">
+          © 2025 متجر جسور الرقمي | جميع الحقوق محفوظة
+        </div>
+        <div class="mt-3 flex gap-2 items-center justify-center md:justify-start">
+          <span class="sr-only">Visa</span>
+          <i class="fa-brands fa-cc-visa text-gray-600 text-lg"></i>
+          <span class="sr-only">Mada</span>
+          <i class="fa-solid fa-credit-card text-gray-600 text-lg"></i>
+        </div>
+      </div>
+    </div>
+  </footer>
 
   <!-- Modal Popup للمعاينة -->
   <div id="previewModal" class="modal-overlay">
@@ -465,15 +580,19 @@
         <div class="download-buttons">
           <button onclick="downloadImageFromModal()" class="btn-download btn-download-image">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-              <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+              <path
+                d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+              <path
+                d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
             </svg>
             تحميل كصورة
           </button>
           <button onclick="downloadPDFFromModal()" class="btn-download btn-download-pdf">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-              <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
-              <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+              <path
+                d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+              <path
+                d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
             </svg>
             تحميل PDF
           </button>
@@ -494,7 +613,7 @@
       textFields.forEach(fieldId => {
         const field = document.getElementById(fieldId);
         if (field) {
-          field.addEventListener('input', function() {
+          field.addEventListener('input', function () {
             this.classList.remove('field-error');
             const errorId = fieldId + 'Error';
             const error = document.getElementById(errorId);
@@ -510,7 +629,7 @@
       fileFields.forEach(fieldId => {
         const field = document.getElementById(fieldId);
         if (field) {
-          field.addEventListener('change', function() {
+          field.addEventListener('change', function () {
             this.classList.remove('field-error');
             const errorId = fieldId + 'Error';
             const error = document.getElementById(errorId);
@@ -525,7 +644,7 @@
     // دالة التحقق من صحة البيانات
     function validateForm() {
       let isValid = true;
-      
+
       // إزالة رسائل الخطأ السابقة
       document.querySelectorAll('.error-message').forEach(error => {
         error.classList.remove('show');
@@ -635,7 +754,7 @@
     // تحميل الصورة من الـ modal
     function downloadImageFromModal() {
       const previewContent = document.getElementById('previewTemplateContent');
-      
+
       // إظهار رسالة تحميل
       const downloadBtn = event.target;
       const originalText = downloadBtn.innerHTML;
@@ -652,7 +771,7 @@
         link.download = `ملحق-شواهد-${new Date().toLocaleDateString('ar-SA')}.png`;
         link.href = canvas.toDataURL('image/png', 1.0);
         link.click();
-        
+
         // إعادة زر التحميل إلى حالته الأصلية
         downloadBtn.innerHTML = originalText;
         downloadBtn.disabled = false;
@@ -667,7 +786,7 @@
     // تحميل PDF من الـ modal
     function downloadPDFFromModal() {
       const previewContent = document.getElementById('previewTemplateContent');
-      
+
       // إظهار رسالة تحميل
       const downloadBtn = event.target;
       const originalText = downloadBtn.innerHTML;
@@ -685,7 +804,7 @@
         const imgWidth = 190;
         const pageHeight = 280;
         const imgHeight = (canvas.height * imgWidth) / canvas.width;
-        
+
         let heightLeft = imgHeight;
         let position = 10;
 
@@ -702,7 +821,7 @@
         }
 
         pdf.save(`ملحق-شواهد-${new Date().toLocaleDateString('ar-SA')}.pdf`);
-        
+
         // إعادة زر التحميل إلى حالته الأصلية
         downloadBtn.innerHTML = originalText;
         downloadBtn.disabled = false;
@@ -740,7 +859,7 @@
     }
 
     // تهيئة الأحداث عند تحميل الصفحة
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
       // تهيئة التحقق من الحقول
       setupFieldValidation();
 
@@ -751,24 +870,24 @@
       document.getElementById('closeModal').addEventListener('click', closePreviewModal);
 
       // إغلاق الـ modal عند الضغط خارج المحتوى
-      document.getElementById('previewModal').addEventListener('click', function(e) {
+      document.getElementById('previewModal').addEventListener('click', function (e) {
         if (e.target === this) {
           closePreviewModal();
         }
       });
 
       // إغلاق الـ modal عند الضغط على ESC
-      document.addEventListener('keydown', function(e) {
+      document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') {
           closePreviewModal();
         }
       });
 
       // hook the hidden file labels to open file picker
-      document.querySelectorAll('.file-btn').forEach(btn=>{
-        btn.addEventListener('click', (e)=>{
+      document.querySelectorAll('.file-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
           const id = btn.getAttribute('for');
-          if(id){
+          if (id) {
             document.getElementById(id).click();
           }
         });
@@ -785,4 +904,5 @@
     });
   </script>
 </body>
+
 </html>

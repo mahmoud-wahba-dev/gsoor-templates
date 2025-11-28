@@ -1,667 +1,639 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-  <head>
-    <meta charset="utf-8" />
-    <script src="https://cdn.tailwindcss.com"></script>
+
+<head>
+  <meta charset="utf-8" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 
-    <title>نموذج شواهد تقييم الأداء</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-      body {
-        font-family: "Helvetica", "Tajawal", sans-serif;
-      }
-      
-.footer-ink {
-        background: #f8fafb;
-      }
+  <title>نموذج شواهد تقييم الأداء</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: "Helvetica", "Tajawal", sans-serif;
+      padding-top: 100px;
+    }
 
-      .social-icon {
-        width: 26px;
-        height: 26px;
-        fill: currentColor;
-      }
+    .footer-ink {
+      background: #f8fafb;
+    }
+
+    .social-icon {
+      width: 26px;
+      height: 26px;
+      fill: currentColor;
+    }
 
 
-      label {
-        font-weight: 600;
-        color: #136f3c;
-        display: block;
-        margin-bottom: 8px;
-      }
-      .error {
-        color: #d00000;
-        font-size: 14px;
-        margin-top: 4px;
-        display: none;
-      }
-      .field-error {
-        border-color: #dc2626 !important;
-        border-width: 2px !important;
-      }
-      .btn-main {
-        background-color: #10b981;
-        color: white;
-        padding: 16px 32px;
-        border-radius: 8px;
-        font-weight: bold;
-        font-size: 18px;
-        border: none;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 12px;
-        transition: background-color 0.3s;
-        margin: 20px auto;
-        width: 100%;
-      }
-      .btn-main:hover {
-        background-color: #059669;
-      }
-      .required-field::after {
-        content: " *";
-        color: #dc2626;
-      }
-      /* Navbar Styles */
-      .navbar {
-        background-color: #f3f4f6;
-        padding: 12px 0;
-        border-bottom: 1px solid #e5e7eb;
-        top: 0;
-        z-index: 100;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        width: 100%;
-        margin: 0;
-      }
-      .navbar-container {
-        width: 100%;
-        margin: 0;
-        padding: 0 16px;
-      }
-      .navbar-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 8px;
-      }
-      .navbar-title {
-        font-size: 16px;
-        font-weight: 600;
-        color: #374151;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .navbar-icon {
-        width: 20px;
-        height: 20px;
-        color: #3b82f6;
-        flex-shrink: 0;
-      }
+    label {
+      font-weight: 600;
+      color: #136f3c;
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .error {
+      color: #d00000;
+      font-size: 14px;
+      margin-top: 4px;
+      display: none;
+    }
+
+    .field-error {
+      border-color: #dc2626 !important;
+      border-width: 2px !important;
+    }
+
+    .btn-main {
+      background-color: #10b981;
+      color: white;
+      padding: 16px 32px;
+      border-radius: 8px;
+      font-weight: bold;
+      font-size: 18px;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      transition: background-color 0.3s;
+      margin: 20px auto;
+      width: 100%;
+    }
+
+    .btn-main:hover {
+      background-color: #059669;
+    }
+
+    .required-field::after {
+      content: " *";
+      color: #dc2626;
+    }
+
+    /* Navbar Styles */
+    .navbar {
+      background-color: #f3f4f6;
+      padding: 12px 0;
+      border-bottom: 1px solid #e5e7eb;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      width: 100%;
+      margin: 0;
+    }
+
+    .navbar-container {
+      width: 100%;
+      margin: 0;
+      padding: 0 16px;
+    }
+
+    .navbar-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .navbar-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: #374151;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .navbar-icon {
+      width: 20px;
+      height: 20px;
+      color: #3b82f6;
+      flex-shrink: 0;
+    }
+
+    .navbar-menu {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px 12px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .navbar-item {
+      position: relative;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .navbar-link {
+      color: #374151;
+      text-decoration: none;
+      font-size: 18px;
+      padding: 4px 6px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: color 0.2s;
+      white-space: nowrap;
+    }
+
+    .navbar-link:hover {
+      color: #111827;
+    }
+
+    .dropdown-icon {
+      width: 10px;
+      height: 10px;
+      color: #374151;
+      margin-right: 4px;
+    }
+
+    .navbar-separator {
+      color: #9ca3af;
+      margin: 0 4px;
+    }
+
+    /* Mobile Menu Toggle */
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #374151;
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    .mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      padding: 12px 0;
+      border-top: 1px solid #e5e7eb;
+      margin-top: 8px;
+    }
+
+    .mobile-menu.active {
+      display: flex;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 1200px) {
       .navbar-menu {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 8px 12px;
-        list-style: none;
-        margin: 0;
-        padding: 0;
+        gap: 6px 12px;
       }
-      .navbar-item {
-        position: relative;
-        display: flex;
-        align-items: center;
-        gap: 4px;
-      }
+
       .navbar-link {
-        color: #374151;
-        text-decoration: none;
-        font-size: 18px;
-        padding: 4px 6px;
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        transition: color 0.2s;
-        white-space: nowrap;
+        font-size: 13px;
+        padding: 5px 6px;
       }
-      .navbar-link:hover {
-        color: #111827;
+    }
+
+    @media (max-width: 768px) {
+      .navbar-container {
+        padding: 0 12px;
       }
-      .dropdown-icon {
-        width: 10px;
-        height: 10px;
-        color: #374151;
-        margin-right: 4px;
-      }
-      .navbar-separator {
-        color: #9ca3af;
-        margin: 0 4px;
-      }
-      /* Mobile Menu Toggle */
+
       .mobile-menu-toggle {
-        display: none;
-        background: none;
-        border: none;
-        font-size: 24px;
-        color: #374151;
-        cursor: pointer;
-        padding: 8px;
+        display: block;
       }
-      .mobile-menu {
+
+      .navbar-menu {
         display: none;
+      }
+
+      .navbar-menu.mobile-active {
+        display: flex;
         flex-direction: column;
+        align-items: flex-start;
         gap: 8px;
         padding: 12px 0;
-        border-top: 1px solid #e5e7eb;
-        margin-top: 8px;
       }
-      .mobile-menu.active {
-        display: flex;
+
+      .navbar-item {
+        width: 100%;
       }
-      /* Responsive Styles */
-      @media (max-width: 1200px) {
-        .navbar-menu {
-          gap: 6px 12px;
-        }
-        .navbar-link {
-          font-size: 13px;
-          padding: 5px 6px;
-        }
+
+      .navbar-link {
+        width: 100%;
+        padding: 10px 8px;
       }
-      @media (max-width: 768px) {
-        .navbar-container {
-          padding: 0 12px;
-        }
-        .mobile-menu-toggle {
-          display: block;
-        }
-        .navbar-menu {
-          display: none;
-        }
-        .navbar-menu.mobile-active {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 8px;
-          padding: 12px 0;
-        }
-        .navbar-item {
-          width: 100%;
-        }
-        .navbar-link {
-          width: 100%;
-          padding: 10px 8px;
-        }
-        .navbar-separator {
-          display: none;
-        }
+
+      .navbar-separator {
+        display: none;
       }
-    </style>
-  </head>
-  <body class="bg-gray-100 py-10">
-   <!--Gsoor Nav Bar-->
-    <!-- NAVBAR -->
-    <header class="fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
-      <div class="max-w-6xl mx-auto relative">
-        <div class="nav-pill px-3 py-2 flex items-center justify-between gap-3">
-          <!-- LOGO -->
-          <div class="flex items-center gap-4 ml-2">
-            <a href="#" class="shrink-0">
-              <img
-                src="../assets/imgs/gsoor_logo.jpg"
-                alt="logo"
-                class="h-9 w-auto object-contain md:h-10"
-              />
-            </a>
-          </div>
+    }
+  </style>
+</head>
 
-          <!-- NAV LINKS (desktop) -->
-          <nav class="hidden md:flex items-center gap-8 text-sm text-gray-700">
-            <a href="#" class="hover:text-cyan-600 transition">الشهادات</a>
-            <a href="#" class="hover:text-cyan-600 transition"
-              >الملفات الإدارية</a
-            >
-            <a href="#" class="hover:text-cyan-600 transition">البطاقات</a>
-          </nav>
+<body class="bg-gray-100 py-10">
+  <!--Gsoor Nav Bar-->
+  <!-- NAVBAR -->
+  <!-- NAVBAR WITHOUT CART -->
+  <header class="fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
+    <div class="max-w-6xl mx-auto relative">
+      <div class="nav-pill px-3 py-2 flex items-center justify-between gap-3">
+        <!-- LOGO -->
+        <div class="flex items-center gap-4 ml-2">
+          <a href="#" class="shrink-0">
+            <img src="../assets/imgs/gsoor_logo.jpg" alt="logo" class="h-9 w-auto object-contain md:h-10" />
+          </a>
+        </div>
 
-          <!-- UTILITY ICONS -->
-          <div class="flex items-center gap-2">
-            <div
-              class="hidden sm:flex items-center bg-gray-50 rounded-full px-2 py-1 gap-2 border border-gray-100"
-            >
-              <button
-                id="themeToggle"
-                class="text-gray-600"
-                title="تبديل الوضع"
-              >
-                <i class="fa-solid fa-moon text-gray-600 text-base"></i>
-              </button>
+        <!-- NAV LINKS (desktop) -->
+        <nav class="hidden md:flex items-center gap-8 text-sm text-gray-700">
+          <a href="#" class="hover:text-cyan-600 transition">الشهادات</a>
+          <a href="#" class="hover:text-cyan-600 transition">الملفات الإدارية</a>
+          <a href="#" class="hover:text-cyan-600 transition">البطاقات</a>
+        </nav>
 
-              <button class="text-gray-600 relative" title="العربة">
-                <i class="fa-solid fa-bag-shopping text-gray-600 text-base"></i>
-                <span
-                  id="cartBadge"
-                  class="absolute -top-1 -left-2 bg-cyan-600 text-white text-xs rounded-full px-1"
-                  >0</span
-                >
-              </button>
-
-              <button id="profileBtn" class="text-gray-600" title="الحساب">
-                <i class="fa-regular fa-user text-gray-600 text-base"></i>
-              </button>
-            </div>
-
-            <!-- MOBILE MENU BUTTON -->
-            <button
-              id="menuBtn"
-              class="md:hidden text-gray-600 p-2"
-              aria-expanded="false"
-            >
-              <i class="fa-solid fa-bars text-lg"></i>
+        <!-- UTILITY ICONS WITHOUT CART -->
+        <div class="flex items-center gap-2">
+          <div class="hidden sm:flex items-center bg-gray-50 rounded-full px-2 py-1 gap-2 border border-gray-100">
+            <button id="themeToggle" class="text-gray-600" title="تبديل الوضع">
+              <i class="fa-solid fa-moon text-gray-600 text-base"></i>
+            </button>
+            <button id="profileBtn" class="text-gray-600" title="الحساب">
+              <i class="fa-regular fa-user text-gray-600 text-base"></i>
             </button>
           </div>
-        </div>
 
-        <!-- MOBILE NAV -->
-        <div
-          id="mobileNav"
-          class="hidden mobile-nav-abs mt-2 bg-white rounded-2xl shadow-md p-3 mx-4"
-        >
-          <div class="flex flex-col gap-2 text-right">
-            <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition"
-              >الشهادات</a
-            >
-            <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition"
-              >الملفات الإدارية</a
-            >
-            <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition"
-              >البطاقات</a
-            >
-            <div
-              class="pt-2 border-t border-gray-100 mt-2 flex justify-between items-center"
-            >
-              <div class="flex items-center gap-3">
-                <button id="mobileThemeToggle" class="text-gray-600">
-                  <i class="fa-solid fa-moon"></i>
-                </button>
-                <button class="text-gray-600 relative">
-                  <i class="fa-solid fa-bag-shopping"></i>
-                  <span
-                    id="mobileCartBadge"
-                    class="absolute -top-2 -left-2 bg-cyan-600 text-white text-xs rounded-full px-1"
-                    >0</span
-                  >
-                </button>
-              </div>
-              <a href="#" class="text-sm text-cyan-600 font-semibold"
-                >تسجيل دخول</a
-              >
+          <!-- MOBILE MENU BUTTON -->
+          <button id="menuBtn" class="md:hidden text-gray-600 p-2" aria-expanded="false">
+            <i class="fa-solid fa-bars text-lg"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- MOBILE NAV WITHOUT CART -->
+      <div id="mobileNav" class="hidden mobile-nav-abs mt-2 bg-white rounded-2xl shadow-md p-3 mx-4">
+        <div class="flex flex-col gap-2 text-right">
+          <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition">الشهادات</a>
+          <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition">الملفات الإدارية</a>
+          <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition">البطاقات</a>
+          <div class="pt-2 border-t border-gray-100 mt-2 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+              <button id="mobileThemeToggle" class="text-gray-600">
+                <i class="fa-solid fa-moon"></i>
+              </button>
             </div>
+            <a href="#" class="text-sm text-cyan-600 font-semibold">تسجيل دخول</a>
           </div>
         </div>
-      </div>
-    </header>
-
-    <div class="max-w-4xl mx-auto bg-white shadow-xl border rounded-2xl p-8 mt-16">
-      <h2 class="text-3xl font-bold text-green-700 text-center mb-8">
-        نموذج شواهد تقييم الأداء
-      </h2>
-
-      <!-- Selected template preview (shows when coming from gallery) -->
-      <div
-        id="selectedTemplatePreview"
-        class="mb-6 text-center"
-        style="display: none"
-      >
-        <p class="text-sm text-gray-600 mb-2">القالب المختار:</p>
-        <img
-          id="selectedTemplateImg"
-          src=""
-          class="mx-auto w-48 h-36 object-contain bg-white p-2 rounded shadow"
-        />
-      </div>
-
-      <form id="card2FormPage" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
-        <div>
-          <label class="required-field">اسم المتعلم/ة:</label>
-          <input name="studentName" class="w-full border p-3 rounded-md" required />
-          <div class="error">هذا الحقل مطلوب</div>
-        </div>
-
-        <div>
-          <label class="required-field">المرحلة الدراسية:</label>
-          <select name="stage" class="w-full border p-3 rounded-md" required>
-            <option value="">-- اختر --</option>
-            <option>الابتدائية</option>
-            <option>المتوسطة</option>
-            <option>الثانوية</option>
-          </select>
-          <div class="error">هذا الحقل مطلوب</div>
-        </div>
-
-        <div>
-          <label class="required-field">المادة:</label>
-          <input name="subject" class="w-full border p-3 rounded-md" required />
-          <div class="error">هذا الحقل مطلوب</div>
-        </div>
-
-        <div>
-          <label class="required-field">التقييم (من 100):</label>
-          <input
-            type="number"
-            name="score"
-            min="0"
-            max="100"
-            class="w-full border p-3 rounded-md"
-            required
-          />
-          <div class="error">أدخل قيمة صالحة (0-100)</div>
-        </div>
-
-        <div class="col-span-2">
-          <label>الملاحظات:</label>
-          <textarea
-            name="notes"
-            rows="4"
-            class="w-full border p-3 rounded-md"
-          ></textarea>
-        </div>
-
-        <div class="col-span-2">
-          <label class="required-field">اختر نموذج الشهادة:</label>
-          <select name="templateImage" class="w-full border p-3 rounded-md" required>
-            <option value="">-- اختر نموذج الشهادة --</option>
-            <option
-              value="assets/imgs/card2/advanced-cybersecurity-initiative.webp"
-            >
-              Advanced Cybersecurity
-            </option>
-            <option
-              value="assets/imgs/card2/cyber-security-initiative-report.webp"
-            >
-              Cyber Security Initiative
-            </option>
-            <option
-              value="assets/imgs/card2/international-tolerance-day-report.webp"
-            >
-              International Tolerance Day
-            </option>
-            <option
-              value="assets/imgs/card2/national-tree-planting-initiative.webp"
-            >
-              National Tree Planting
-            </option>
-            <option value="assets/imgs/card2/parents-communication-report.webp">
-              Parents Communication
-            </option>
-          </select>
-          <div class="error">هذا الحقل مطلوب</div>
-        </div>
-
-        <div class="col-span-2">
-          <label>رفع صورة الشهادة (اختياري):</label>
-          <input
-            type="file"
-            name="certificateFile"
-            accept="image/*"
-            class="w-full border p-3 rounded-md bg-gray-50"
-          />
-        </div>
-      </form>
-
-      <div class="flex gap-4 mt-8">
-        <button
-          onclick="previewTemplate()"
-          class="btn-main"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke-width="2"
-            stroke="currentColor"
-            class="w-6 h-6"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-            />
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-            />
-          </svg>
-          معاينة الشهادة
-        </button>
-        <button
-          onclick="goBack()"
-          class="bg-gray-600 text-white px-8 py-3 rounded-xl text-lg font-bold flex-1"
-        >
-          رجوع
-        </button>
       </div>
     </div>
+  </header>
+  <script>
+    // NAVBAR FUNCTIONALITY WITHOUT CART
+    document.addEventListener('DOMContentLoaded', function () {
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileNav = document.getElementById("mobileNav");
+      const mobileThemeToggle = document.getElementById("mobileThemeToggle");
 
-    
-<!-- FOOTER -->
-    <footer class="mt-12 footer-ink border-t border-gray-100">
-      <div
-        class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
-      >
-        <!-- RIGHT COLUMN -->
-        <div class="text-right md:flex-1">
-          <img
-            src="../assets/imgs/gsoor_logo.jpg"
-            alt="logo"
-            class="h-10 mx-auto md:mx-0"
-          />
-          <div
-            class="flex justify-center md:justify-end gap-4 mt-3 text-gray-600"
-          >
-            <i class="fa-brands fa-youtube social-icon text-lg"></i>
-            <i class="fa-brands fa-tiktok social-icon text-lg"></i>
-            <i class="fa-brands fa-instagram social-icon text-lg"></i>
-          </div>
-        </div>
+      // Mobile menu toggle
+      if (menuBtn) {
+        menuBtn.addEventListener("click", (e) => {
+          const expanded = menuBtn.getAttribute("aria-expanded") === "true";
+          menuBtn.setAttribute("aria-expanded", String(!expanded));
+          mobileNav.classList.toggle("hidden");
+        });
+      }
 
-        <!-- CENTER COLUMN -->
-        <div class="text-center md:flex-1">
-          <h3 class="font-bold mb-2">تواصل معنا</h3>
-          <div class="flex items-center justify-center gap-4 text-gray-600">
-            <div class="flex items-center gap-2">
-              <i class="fa-regular fa-envelope text-sm"></i>
-              <span>البريد</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <i class="fa-solid fa-mobile-screen-button text-sm"></i>
-              <span>واتس</span>
-            </div>
-          </div>
-          <div class="mt-3 text-sm text-gray-500">موقّع لدى منصة الأعمال</div>
-        </div>
+      // Close mobile menu when clicking outside
+      document.addEventListener("click", (e) => {
+        if (!mobileNav || mobileNav.classList.contains("hidden")) return;
+        const path = e.composedPath?.() || e.path || [];
+        if (!path.includes(mobileNav) && !path.includes(menuBtn)) {
+          mobileNav.classList.add("hidden");
+          if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
+        }
+      });
 
-        <!-- LEFT COLUMN -->
-        <div class="text-left md:flex-1">
-          <div class="text-sm text-gray-500">
-            © 2025 متجر جسور الرقمي | جميع الحقوق محفوظة
-          </div>
-          <div
-            class="mt-3 flex gap-2 items-center justify-center md:justify-start"
-          >
-            <span class="sr-only">Visa</span>
-            <i class="fa-brands fa-cc-visa text-gray-600 text-lg"></i>
-            <span class="sr-only">Mada</span>
-            <i class="fa-solid fa-credit-card text-gray-600 text-lg"></i>
-          </div>
+      // Close mobile menu on window resize
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 768) {
+          mobileNav.classList.add("hidden");
+          if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      // Theme toggle
+      document.getElementById("themeToggle")?.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+      });
+
+      if (mobileThemeToggle) {
+        mobileThemeToggle.addEventListener("click", () => {
+          document.documentElement.classList.toggle("dark");
+        });
+      }
+    });
+  </script>
+  <div class="max-w-4xl mx-auto bg-white shadow-xl border rounded-2xl p-8 mt-16">
+    <h2 class="text-3xl font-bold text-green-700 text-center mb-8">
+      نموذج شواهد تقييم الأداء
+    </h2>
+
+    <!-- Selected template preview (shows when coming from gallery) -->
+    <div id="selectedTemplatePreview" class="mb-6 text-center" style="display: none">
+      <p class="text-sm text-gray-600 mb-2">القالب المختار:</p>
+      <img id="selectedTemplateImg" src="" class="mx-auto w-48 h-36 object-contain bg-white p-2 rounded shadow" />
+    </div>
+
+    <form id="card2FormPage" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+      <div>
+        <label class="required-field">اسم المتعلم/ة:</label>
+        <input name="studentName" class="w-full border p-3 rounded-md" required />
+        <div class="error">هذا الحقل مطلوب</div>
+      </div>
+
+      <div>
+        <label class="required-field">المرحلة الدراسية:</label>
+        <select name="stage" class="w-full border p-3 rounded-md" required>
+          <option value="">-- اختر --</option>
+          <option>الابتدائية</option>
+          <option>المتوسطة</option>
+          <option>الثانوية</option>
+        </select>
+        <div class="error">هذا الحقل مطلوب</div>
+      </div>
+
+      <div>
+        <label class="required-field">المادة:</label>
+        <input name="subject" class="w-full border p-3 rounded-md" required />
+        <div class="error">هذا الحقل مطلوب</div>
+      </div>
+
+      <div>
+        <label class="required-field">التقييم (من 100):</label>
+        <input type="number" name="score" min="0" max="100" class="w-full border p-3 rounded-md" required />
+        <div class="error">أدخل قيمة صالحة (0-100)</div>
+      </div>
+
+      <div class="col-span-2">
+        <label>الملاحظات:</label>
+        <textarea name="notes" rows="4" class="w-full border p-3 rounded-md"></textarea>
+      </div>
+
+      <div class="col-span-2">
+        <label class="required-field">اختر نموذج الشهادة:</label>
+        <select name="templateImage" class="w-full border p-3 rounded-md" required>
+          <option value="">-- اختر نموذج الشهادة --</option>
+          <option value="assets/imgs/card2/advanced-cybersecurity-initiative.webp">
+            Advanced Cybersecurity
+          </option>
+          <option value="assets/imgs/card2/cyber-security-initiative-report.webp">
+            Cyber Security Initiative
+          </option>
+          <option value="assets/imgs/card2/international-tolerance-day-report.webp">
+            International Tolerance Day
+          </option>
+          <option value="assets/imgs/card2/national-tree-planting-initiative.webp">
+            National Tree Planting
+          </option>
+          <option value="assets/imgs/card2/parents-communication-report.webp">
+            Parents Communication
+          </option>
+        </select>
+        <div class="error">هذا الحقل مطلوب</div>
+      </div>
+
+      <div class="col-span-2">
+        <label>رفع صورة الشهادة (اختياري):</label>
+        <input type="file" name="certificateFile" accept="image/*" class="w-full border p-3 rounded-md bg-gray-50" />
+      </div>
+    </form>
+
+    <div class="flex gap-4 mt-8">
+      <button onclick="previewTemplate()" class="btn-main">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+          class="w-6 h-6">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+          <path stroke-linecap="round" stroke-linejoin="round"
+            d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+        </svg>
+        معاينة الشهادة
+      </button>
+      <button onclick="goBack()" class="bg-gray-600 text-white px-8 py-3 rounded-xl text-lg font-bold flex-1">
+        رجوع
+      </button>
+    </div>
+  </div>
+
+
+  <!-- FOOTER -->
+  <footer class="mt-12 footer-ink border-t border-gray-100">
+    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+      <!-- RIGHT COLUMN -->
+      <div class="text-right md:flex-1">
+        <img src="../assets/imgs/gsoor_logo.jpg" alt="logo" class="h-10 mx-auto md:mx-0" />
+        <div class="flex justify-center md:justify-end gap-4 mt-3 text-gray-600">
+          <i class="fa-brands fa-youtube social-icon text-lg"></i>
+          <i class="fa-brands fa-tiktok social-icon text-lg"></i>
+          <i class="fa-brands fa-instagram social-icon text-lg"></i>
         </div>
       </div>
-    </footer>
 
-    <script>
-      // دالة التحقق من صحة البيانات
-      function validateForm() {
-        let isValid = true;
+      <!-- CENTER COLUMN -->
+      <div class="text-center md:flex-1">
+        <h3 class="font-bold mb-2">تواصل معنا</h3>
+        <div class="flex items-center justify-center gap-4 text-gray-600">
+          <div class="flex items-center gap-2">
+            <i class="fa-regular fa-envelope text-sm"></i>
+            <span>البريد</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-mobile-screen-button text-sm"></i>
+            <span>واتس</span>
+          </div>
+        </div>
+        <div class="mt-3 text-sm text-gray-500">موقّع لدى منصة الأعمال</div>
+      </div>
 
-        // إزالة رسائل الخطأ السابقة
-        document.querySelectorAll(".error").forEach((error) => {
-          error.style.display = "none";
-        });
-        document.querySelectorAll(".field-error").forEach((field) => {
-          field.classList.remove("field-error");
-        });
+      <!-- LEFT COLUMN -->
+      <div class="text-left md:flex-1">
+        <div class="text-sm text-gray-500">
+          © 2025 متجر جسور الرقمي | جميع الحقوق محفوظة
+        </div>
+        <div class="mt-3 flex gap-2 items-center justify-center md:justify-start">
+          <span class="sr-only">Visa</span>
+          <i class="fa-brands fa-cc-visa text-gray-600 text-lg"></i>
+          <span class="sr-only">Mada</span>
+          <i class="fa-solid fa-credit-card text-gray-600 text-lg"></i>
+        </div>
+      </div>
+    </div>
+  </footer>
 
-        // التحقق من الحقول المطلوبة
-        const requiredFields = [
-          'studentName', 'stage', 'subject', 'score', 'templateImage'
-        ];
+  <script>
+    // دالة التحقق من صحة البيانات
+    function validateForm() {
+      let isValid = true;
 
-        requiredFields.forEach(fieldName => {
-          const field = document.querySelector(`[name="${fieldName}"]`);
-          if (!field.value.trim()) {
-            showError(field, fieldName);
-            isValid = false;
+      // إزالة رسائل الخطأ السابقة
+      document.querySelectorAll(".error").forEach((error) => {
+        error.style.display = "none";
+      });
+      document.querySelectorAll(".field-error").forEach((field) => {
+        field.classList.remove("field-error");
+      });
+
+      // التحقق من الحقول المطلوبة
+      const requiredFields = [
+        'studentName', 'stage', 'subject', 'score', 'templateImage'
+      ];
+
+      requiredFields.forEach(fieldName => {
+        const field = document.querySelector(`[name="${fieldName}"]`);
+        if (!field.value.trim()) {
+          showError(field, fieldName);
+          isValid = false;
+        }
+      });
+
+      // التحقق من صحة التقييم
+      const scoreField = document.querySelector('[name="score"]');
+      if (scoreField.value) {
+        const score = parseInt(scoreField.value);
+        if (isNaN(score) || score < 0 || score > 100) {
+          showError(scoreField, 'score');
+          isValid = false;
+        }
+      }
+
+      return isValid;
+    }
+
+    // دالة لإظهار رسالة الخطأ
+    function showError(field, fieldName) {
+      field.classList.add("field-error");
+      const error = field.nextElementSibling;
+      if (error && error.classList.contains('error')) {
+        error.style.display = 'block';
+      }
+    }
+
+    // إزالة رسالة الخطأ عند الكتابة
+    function setupFieldValidation() {
+      const fields = document.querySelectorAll('input, select, textarea');
+
+      fields.forEach(field => {
+        field.addEventListener('input', function () {
+          this.classList.remove('field-error');
+          const error = this.nextElementSibling;
+          if (error && error.classList.contains('error')) {
+            error.style.display = 'none';
           }
         });
 
-        // التحقق من صحة التقييم
-        const scoreField = document.querySelector('[name="score"]');
-        if (scoreField.value) {
-          const score = parseInt(scoreField.value);
-          if (isNaN(score) || score < 0 || score > 100) {
-            showError(scoreField, 'score');
-            isValid = false;
-          }
-        }
-
-        return isValid;
-      }
-
-      // دالة لإظهار رسالة الخطأ
-      function showError(field, fieldName) {
-        field.classList.add("field-error");
-        const error = field.nextElementSibling;
-        if (error && error.classList.contains('error')) {
-          error.style.display = 'block';
-        }
-      }
-
-      // إزالة رسالة الخطأ عند الكتابة
-      function setupFieldValidation() {
-        const fields = document.querySelectorAll('input, select, textarea');
-        
-        fields.forEach(field => {
-          field.addEventListener('input', function() {
-            this.classList.remove('field-error');
-            const error = this.nextElementSibling;
-            if (error && error.classList.contains('error')) {
-              error.style.display = 'none';
-            }
-          });
-
-          field.addEventListener('change', function() {
-            this.classList.remove('field-error');
-            const error = this.nextElementSibling;
-            if (error && error.classList.contains('error')) {
-              error.style.display = 'none';
-            }
-          });
-        });
-      }
-
-      // دالة المعاينة المحسنة
-      async function previewTemplate() {
-        // التحقق من صحة البيانات أولاً
-        if (!validateForm()) {
-          // التمرير إلى أول حقل به خطأ
-          const firstError = document.querySelector(".field-error");
-          if (firstError) {
-            firstError.scrollIntoView({ behavior: "smooth", block: "center" });
-          }
-          return;
-        }
-
-        // إذا كانت البيانات صحيحة، حفظها وفتح المعاينة
-        await saveTemplateData();
-        window.location.href = "preview2.html";
-      }
-
-      function goBack() {
-        window.history.back();
-      }
-
-      // If page opened with ?template=... preselect that image and show preview
-      (function preselectFromQuery() {
-        const params = new URLSearchParams(window.location.search);
-        const tpl = params.get("template");
-        if (!tpl) return;
-        const decoded = decodeURIComponent(tpl);
-        // set select value (add option if needed)
-        const sel = document.querySelector('select[name="templateImage"]');
-        if (sel) {
-          let opt = Array.from(sel.options).find((o) => o.value === decoded);
-          if (!opt) {
-            opt = document.createElement("option");
-            opt.value = decoded;
-            opt.text = "القالب المختار";
-            sel.appendChild(opt);
-          }
-          sel.value = decoded;
-        }
-        // show preview image
-        const preview = document.getElementById("selectedTemplatePreview");
-        const img = document.getElementById("selectedTemplateImg");
-        if (preview && img) {
-          img.src = decoded;
-          preview.style.display = "block";
-          // scroll to form so user sees it
-          setTimeout(() => {
-            const form = document.getElementById("card2FormPage");
-            if (form)
-              form.scrollIntoView({ behavior: "smooth", block: "center" });
-          }, 120);
-        }
-      })();
-
-      function fileToBase64(file) {
-        return new Promise((resolve) => {
-          const r = new FileReader();
-          r.onload = () => resolve(r.result);
-          r.readAsDataURL(file);
-        });
-      }
-
-      async function saveTemplateData() {
-        const form = document.getElementById("card2FormPage");
-        const data = {};
-        const fd = new FormData(form);
-        
-        for (const [k, v] of fd.entries()) {
-          if (k === "certificateFile" && v && v.size) {
-            data[k] = await fileToBase64(v);
-          } else {
-            data[k] = v;
-          }
-        }
-        
-        localStorage.setItem("templateData2", JSON.stringify(data));
-      }
-
-      // تهيئة التحقق من الصحة عند تحميل الصفحة
-      document.addEventListener('DOMContentLoaded', function() {
-        setupFieldValidation();
-        
-        // تحميل البيانات المحفوظة إن وجدت
-        const savedData = JSON.parse(localStorage.getItem("templateData2") || "{}");
-        Object.keys(savedData).forEach(key => {
-          const element = document.querySelector(`[name="${key}"]`);
-          if (element && savedData[key] && key !== 'certificateFile') {
-            element.value = savedData[key];
+        field.addEventListener('change', function () {
+          this.classList.remove('field-error');
+          const error = this.nextElementSibling;
+          if (error && error.classList.contains('error')) {
+            error.style.display = 'none';
           }
         });
       });
-    </script>
-  </body>
+    }
+
+    // دالة المعاينة المحسنة
+    async function previewTemplate() {
+      // التحقق من صحة البيانات أولاً
+      if (!validateForm()) {
+        // التمرير إلى أول حقل به خطأ
+        const firstError = document.querySelector(".field-error");
+        if (firstError) {
+          firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+        return;
+      }
+
+      // إذا كانت البيانات صحيحة، حفظها وفتح المعاينة
+      await saveTemplateData();
+      window.location.href = "preview2.html";
+    }
+
+    function goBack() {
+      window.history.back();
+    }
+
+    // If page opened with ?template=... preselect that image and show preview
+    (function preselectFromQuery() {
+      const params = new URLSearchParams(window.location.search);
+      const tpl = params.get("template");
+      if (!tpl) return;
+      const decoded = decodeURIComponent(tpl);
+      // set select value (add option if needed)
+      const sel = document.querySelector('select[name="templateImage"]');
+      if (sel) {
+        let opt = Array.from(sel.options).find((o) => o.value === decoded);
+        if (!opt) {
+          opt = document.createElement("option");
+          opt.value = decoded;
+          opt.text = "القالب المختار";
+          sel.appendChild(opt);
+        }
+        sel.value = decoded;
+      }
+      // show preview image
+      const preview = document.getElementById("selectedTemplatePreview");
+      const img = document.getElementById("selectedTemplateImg");
+      if (preview && img) {
+        img.src = decoded;
+        preview.style.display = "block";
+        // scroll to form so user sees it
+        setTimeout(() => {
+          const form = document.getElementById("card2FormPage");
+          if (form)
+            form.scrollIntoView({ behavior: "smooth", block: "center" });
+        }, 120);
+      }
+    })();
+
+    function fileToBase64(file) {
+      return new Promise((resolve) => {
+        const r = new FileReader();
+        r.onload = () => resolve(r.result);
+        r.readAsDataURL(file);
+      });
+    }
+
+    async function saveTemplateData() {
+      const form = document.getElementById("card2FormPage");
+      const data = {};
+      const fd = new FormData(form);
+
+      for (const [k, v] of fd.entries()) {
+        if (k === "certificateFile" && v && v.size) {
+          data[k] = await fileToBase64(v);
+        } else {
+          data[k] = v;
+        }
+      }
+
+      localStorage.setItem("templateData2", JSON.stringify(data));
+    }
+
+    // تهيئة التحقق من الصحة عند تحميل الصفحة
+    document.addEventListener('DOMContentLoaded', function () {
+      setupFieldValidation();
+
+      // تحميل البيانات المحفوظة إن وجدت
+      const savedData = JSON.parse(localStorage.getItem("templateData2") || "{}");
+      Object.keys(savedData).forEach(key => {
+        const element = document.querySelector(`[name="${key}"]`);
+        if (element && savedData[key] && key !== 'certificateFile') {
+          element.value = savedData[key];
+        }
+      });
+    });
+  </script>
+</body>
+
 </html>

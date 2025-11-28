@@ -5,6 +5,8 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>
       التقويم الدراسي ف 1 عام 1447ه - وتوزيع الأسابيع والمهام جاهز للتحميل
@@ -76,146 +78,31 @@
         border: 2px solid #e5e7eb;
         border-radius: 12px;
       }
-          /* Navbar Styles */
-      .navbar {
-        background-color: #f3f4f6;
-        padding: 12px 0;
-        border-bottom: 1px solid #e5e7eb;
-        top: 0;
-        z-index: 100;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        width: 100%;
-        margin: 0;
-      }
-      .navbar-container {
-        width: 100%;
-        margin: 0;
-        padding: 0 16px;
-      }
-      .navbar-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 8px;
-      }
-      .navbar-title {
-        font-size: 16px;
-        font-weight: 600;
-        color: #374151;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .navbar-icon {
-        width: 20px;
-        height: 20px;
-        color: #3b82f6;
-        flex-shrink: 0;
-      }
-      .navbar-menu {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 8px 12px;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-      .navbar-item {
-        position: relative;
-        display: flex;
-        align-items: center;
-        gap: 4px;
-      }
-      .navbar-link {
-        color: #374151;
-        text-decoration: none;
-        font-size: 18px;
-        padding: 4px 6px;
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        transition: color 0.2s;
-        white-space: nowrap;
-      }
-      .navbar-link:hover {
-        color: #111827;
-      }
-      .dropdown-icon {
-        width: 10px;
-        height: 10px;
-        color: #374151;
-        margin-right: 4px;
-      }
-      .navbar-separator {
-        color: #9ca3af;
-        margin: 0 4px;
-      }
-      /* Mobile Menu Toggle */
-      .mobile-menu-toggle {
-        display: none;
-        background: none;
-        border: none;
-        font-size: 24px;
-        color: #374151;
-        cursor: pointer;
-        padding: 8px;
-      }
-      .mobile-menu {
-        display: none;
-        flex-direction: column;
-        gap: 8px;
-        padding: 12px 0;
-        border-top: 1px solid #e5e7eb;
-        margin-top: 8px;
-      }
-      .mobile-menu.active {
-        display: flex;
-      }
-      /* Responsive Styles */
-      @media (max-width: 1200px) {
-        .navbar-menu {
-          gap: 6px 12px;
-        }
-        .navbar-link {
-          font-size: 13px;
-          padding: 5px 6px;
-        }
-      }
-      @media (max-width: 768px) {
-        .navbar-container {
-          padding: 0 12px;
-        }
-        .mobile-menu-toggle {
-          display: block;
-        }
-        .navbar-menu {
-          display: none;
-        }
-        .navbar-menu.mobile-active {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 8px;
-          padding: 12px 0;
-        }
-        .navbar-item {
-          width: 100%;
-        }
-        .navbar-link {
-          width: 100%;
-          padding: 10px 8px;
-        }
-        .navbar-separator {
-          display: none;
-        }
+      
+      /* NAVBAR STYLES */
+      .nav-pill {
+        background: #fff;
+        box-shadow: 0 6px 20px rgba(2, 6, 23, 0.06);
+        border-radius: 28px;
       }
 
+      .mobile-nav-abs {
+        position: absolute;
+        inset-inline-start: 0;
+        right: 0;
+        left: 0;
+        margin-top: 0.6rem;
+        z-index: 40;
+      }
+
+      /* Prevent content overlap */
+      body {
+        padding-top: 100px;
+      }
     </style>
   </head>
   <body>
-    <!--Gsoor Nav Bar-->
-    <!-- NAVBAR -->
+    <!-- NAVBAR WITHOUT CART -->
     <header class="fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
       <div class="max-w-6xl mx-auto relative">
         <div class="nav-pill px-3 py-2 flex items-center justify-between gap-3">
@@ -233,90 +120,46 @@
           <!-- NAV LINKS (desktop) -->
           <nav class="hidden md:flex items-center gap-8 text-sm text-gray-700">
             <a href="#" class="hover:text-cyan-600 transition">الشهادات</a>
-            <a href="#" class="hover:text-cyan-600 transition"
-              >الملفات الإدارية</a
-            >
+            <a href="#" class="hover:text-cyan-600 transition">الملفات الإدارية</a>
             <a href="#" class="hover:text-cyan-600 transition">البطاقات</a>
           </nav>
 
-          <!-- UTILITY ICONS -->
+          <!-- UTILITY ICONS WITHOUT CART -->
           <div class="flex items-center gap-2">
-            <div
-              class="hidden sm:flex items-center bg-gray-50 rounded-full px-2 py-1 gap-2 border border-gray-100"
-            >
-              <button
-                id="themeToggle"
-                class="text-gray-600"
-                title="تبديل الوضع"
-              >
+            <div class="hidden sm:flex items-center bg-gray-50 rounded-full px-2 py-1 gap-2 border border-gray-100">
+              <button id="themeToggle" class="text-gray-600" title="تبديل الوضع">
                 <i class="fa-solid fa-moon text-gray-600 text-base"></i>
               </button>
-
-              <button class="text-gray-600 relative" title="العربة">
-                <i class="fa-solid fa-bag-shopping text-gray-600 text-base"></i>
-                <span
-                  id="cartBadge"
-                  class="absolute -top-1 -left-2 bg-cyan-600 text-white text-xs rounded-full px-1"
-                  >0</span
-                >
-              </button>
-
               <button id="profileBtn" class="text-gray-600" title="الحساب">
                 <i class="fa-regular fa-user text-gray-600 text-base"></i>
               </button>
             </div>
 
             <!-- MOBILE MENU BUTTON -->
-            <button
-              id="menuBtn"
-              class="md:hidden text-gray-600 p-2"
-              aria-expanded="false"
-            >
+            <button id="menuBtn" class="md:hidden text-gray-600 p-2" aria-expanded="false">
               <i class="fa-solid fa-bars text-lg"></i>
             </button>
           </div>
         </div>
 
-        <!-- MOBILE NAV -->
-        <div
-          id="mobileNav"
-          class="hidden mobile-nav-abs mt-2 bg-white rounded-2xl shadow-md p-3 mx-4"
-        >
+        <!-- MOBILE NAV WITHOUT CART -->
+        <div id="mobileNav" class="hidden mobile-nav-abs mt-2 bg-white rounded-2xl shadow-md p-3 mx-4">
           <div class="flex flex-col gap-2 text-right">
-            <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition"
-              >الشهادات</a
-            >
-            <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition"
-              >الملفات الإدارية</a
-            >
-            <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition"
-              >البطاقات</a
-            >
-            <div
-              class="pt-2 border-t border-gray-100 mt-2 flex justify-between items-center"
-            >
+            <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition">الشهادات</a>
+            <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition">الملفات الإدارية</a>
+            <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition">البطاقات</a>
+            <div class="pt-2 border-t border-gray-100 mt-2 flex justify-between items-center">
               <div class="flex items-center gap-3">
                 <button id="mobileThemeToggle" class="text-gray-600">
                   <i class="fa-solid fa-moon"></i>
                 </button>
-                <button class="text-gray-600 relative">
-                  <i class="fa-solid fa-bag-shopping"></i>
-                  <span
-                    id="mobileCartBadge"
-                    class="absolute -top-2 -left-2 bg-cyan-600 text-white text-xs rounded-full px-1"
-                    >0</span
-                  >
-                </button>
               </div>
-              <a href="#" class="text-sm text-cyan-600 font-semibold"
-                >تسجيل دخول</a
-              >
+              <a href="#" class="text-sm text-cyan-600 font-semibold">تسجيل دخول</a>
             </div>
           </div>
         </div>
       </div>
     </header>
-
 
     <div class="max-w-6xl mx-auto">
       <div
@@ -540,13 +383,6 @@
     </div>
 
     <script>
-      // دالة تبديل القائمة على الموبايل
-      function toggleMobileMenu() {
-        const menu = document.getElementById("navbarMenu");
-        menu.classList.toggle("mobile-active");
-      }
-
-
       // دالة المعاينة
       function previewTemplate() {
         const calendarTopic = document.getElementById("calendarTopic").value;
@@ -663,6 +499,54 @@
           pdf.save("calendar-preview.pdf");
         });
       }
+    </script>
+
+    <!-- NAVBAR JAVASCRIPT -->
+    <script>
+      // NAVBAR FUNCTIONALITY WITHOUT CART
+      document.addEventListener('DOMContentLoaded', function() {
+        const menuBtn = document.getElementById("menuBtn");
+        const mobileNav = document.getElementById("mobileNav");
+        const mobileThemeToggle = document.getElementById("mobileThemeToggle");
+
+        // Mobile menu toggle
+        if (menuBtn) {
+          menuBtn.addEventListener("click", (e) => {
+            const expanded = menuBtn.getAttribute("aria-expanded") === "true";
+            menuBtn.setAttribute("aria-expanded", String(!expanded));
+            mobileNav.classList.toggle("hidden");
+          });
+        }
+
+        // Close mobile menu when clicking outside
+        document.addEventListener("click", (e) => {
+          if (!mobileNav || mobileNav.classList.contains("hidden")) return;
+          const path = e.composedPath?.() || e.path || [];
+          if (!path.includes(mobileNav) && !path.includes(menuBtn)) {
+            mobileNav.classList.add("hidden");
+            if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
+          }
+        });
+
+        // Close mobile menu on window resize
+        window.addEventListener("resize", () => {
+          if (window.innerWidth >= 768) {
+            mobileNav.classList.add("hidden");
+            if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
+          }
+        });
+
+        // Theme toggle
+        document.getElementById("themeToggle")?.addEventListener("click", () => {
+          document.documentElement.classList.toggle("dark");
+        });
+        
+        if (mobileThemeToggle) {
+          mobileThemeToggle.addEventListener("click", () => {
+            document.documentElement.classList.toggle("dark");
+          });
+        }
+      });
     </script>
   </body>
 </html>

@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Add this to your head section -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <!-- Add this to your head section -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        crossorigin="anonymous" referrerpolicy="no-referrer">
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>بطاقة التواصل الشخصية</title>
@@ -13,16 +15,20 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-        
-.footer-ink {
-        background: #f8fafb;
-      }
 
-      .social-icon {
-        width: 26px;
-        height: 26px;
-        fill: currentColor;
-      }
+        .footer-ink {
+            background: #f8fafb;
+        }
+
+        body {
+            padding-top: 100px;
+        }
+
+        .social-icon {
+            width: 26px;
+            height: 26px;
+            fill: currentColor;
+        }
 
 
         body {
@@ -32,13 +38,13 @@
             color: #333;
             line-height: 1.6;
         }
-        
+
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
-        
+
         header {
             background-color: #2c3e50;
             color: white;
@@ -46,40 +52,40 @@
             text-align: center;
             border-radius: 8px 8px 0 0;
         }
-        
+
         .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 0 20px;
         }
-        
+
         .logo {
             font-size: 24px;
             font-weight: bold;
         }
-        
+
         .breadcrumb {
             font-size: 14px;
             color: #ecf0f1;
         }
-        
+
         .breadcrumb a {
             color: #ecf0f1;
             text-decoration: none;
         }
-        
+
         .breadcrumb a:hover {
             text-decoration: underline;
         }
-        
+
         .main-content {
             display: flex;
             flex-wrap: wrap;
             gap: 30px;
             margin-top: 20px;
         }
-        
+
         .form-section {
             flex: 1;
             min-width: 300px;
@@ -88,7 +94,7 @@
             border-radius: 8px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
-        
+
         .preview-section {
             flex: 1;
             min-width: 300px;
@@ -100,7 +106,7 @@
             flex-direction: column;
             align-items: center;
         }
-        
+
         h1 {
             color: #2c3e50;
             text-align: center;
@@ -108,19 +114,20 @@
             border-bottom: 2px solid #3498db;
             padding-bottom: 10px;
         }
-        
+
         .form-group {
             margin-bottom: 20px;
         }
-        
+
         label {
             display: block;
             margin-bottom: 8px;
             font-weight: bold;
             color: #2c3e50;
         }
-        
-        input, textarea {
+
+        input,
+        textarea {
             width: 100%;
             padding: 12px;
             border: 1px solid #ddd;
@@ -128,31 +135,32 @@
             font-size: 16px;
             transition: border 0.3s;
         }
-        
-        input:focus, textarea:focus {
+
+        input:focus,
+        textarea:focus {
             border-color: #3498db;
             outline: none;
             box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
         }
-        
+
         .error {
             color: #e74c3c;
             font-size: 14px;
             margin-top: 5px;
             display: none;
         }
-        
+
         .hint {
             color: #7f8c8d;
             font-size: 14px;
             margin-top: 5px;
         }
-        
+
         .qr-container {
             margin: 20px 0;
             text-align: center;
         }
-        
+
         #qrcode {
             display: inline-block;
             padding: 10px;
@@ -165,12 +173,12 @@
             justify-content: center;
             align-items: center;
         }
-        
+
         #qrcode canvas {
             max-width: 100%;
             height: auto;
         }
-        
+
         .contact-card {
             width: 100%;
             max-width: 350px;
@@ -181,7 +189,7 @@
             margin-bottom: 20px;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-        
+
         .contact-name {
             font-size: 22px;
             font-weight: bold;
@@ -189,34 +197,34 @@
             margin-bottom: 10px;
             text-align: center;
         }
-        
+
         .contact-details {
             margin-top: 15px;
         }
-        
+
         .contact-item {
             margin-bottom: 10px;
             display: flex;
             align-items: flex-start;
         }
-        
+
         .contact-label {
             font-weight: bold;
             width: 100px;
             color: #2c3e50;
         }
-        
+
         .contact-value {
             flex: 1;
         }
-        
+
         .buttons {
             display: flex;
             justify-content: center;
             gap: 15px;
             margin-top: 20px;
         }
-        
+
         button {
             padding: 12px 25px;
             border: none;
@@ -225,25 +233,25 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
-        
+
         .generate-btn {
             background-color: #3498db;
             color: white;
         }
-        
+
         .generate-btn:hover {
             background-color: #2980b9;
         }
-        
+
         .reset-btn {
             background-color: #e74c3c;
             color: white;
         }
-        
+
         .reset-btn:hover {
             background-color: #c0392b;
         }
-        
+
         footer {
             margin-top: 40px;
             text-align: center;
@@ -252,14 +260,14 @@
             padding: 20px 0;
             border-top: 1px solid #ddd;
         }
-        
+
         .stats {
             display: flex;
             justify-content: space-around;
             margin: 20px 0;
             flex-wrap: wrap;
         }
-        
+
         .stat-item {
             text-align: center;
             padding: 15px;
@@ -269,28 +277,28 @@
             flex: 1;
             min-width: 200px;
         }
-        
+
         .stat-number {
             font-size: 24px;
             font-weight: bold;
             color: #2c3e50;
         }
-        
+
         .stat-label {
             font-size: 14px;
             color: #7f8c8d;
         }
-        
+
         .placeholder-text {
             color: #95a5a6;
             font-style: italic;
         }
-        
+
         @media (max-width: 768px) {
             .main-content {
                 flex-direction: column;
             }
-            
+
             .header-content {
                 flex-direction: column;
                 gap: 10px;
@@ -298,17 +306,112 @@
         }
     </style>
 </head>
+
 <body>
     <div class="container">
-        <header>
-            <div class="header-content">
-                <div class="logo">Gsoor.com</div>
-                <div class="breadcrumb">
-                    <a href="#">الرئيسية</a> / <a href="#">أدوات</a> / <a href="#">QR Code</a> / بطاقة التواصل
+        <!-- NAVBAR WITHOUT CART -->
+        <header class="fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
+            <div class="max-w-6xl mx-auto relative">
+                <div class="nav-pill px-3 py-2 flex items-center justify-between gap-3">
+                    <!-- LOGO -->
+                    <div class="flex items-center gap-4 ml-2">
+                        <a href="#" class="shrink-0">
+                            <img src="../assets/imgs/gsoor_logo.jpg" alt="logo"
+                                class="h-9 w-auto object-contain md:h-10" />
+                        </a>
+                    </div>
+
+                    <!-- NAV LINKS (desktop) -->
+                    <nav class="hidden md:flex items-center gap-8 text-sm text-gray-700">
+                        <a href="#" class="hover:text-cyan-600 transition">الشهادات</a>
+                        <a href="#" class="hover:text-cyan-600 transition">الملفات الإدارية</a>
+                        <a href="#" class="hover:text-cyan-600 transition">البطاقات</a>
+                    </nav>
+
+                    <!-- UTILITY ICONS WITHOUT CART -->
+                    <div class="flex items-center gap-2">
+                        <div
+                            class="hidden sm:flex items-center bg-gray-50 rounded-full px-2 py-1 gap-2 border border-gray-100">
+                            <button id="themeToggle" class="text-gray-600" title="تبديل الوضع">
+                                <i class="fa-solid fa-moon text-gray-600 text-base"></i>
+                            </button>
+                            <button id="profileBtn" class="text-gray-600" title="الحساب">
+                                <i class="fa-regular fa-user text-gray-600 text-base"></i>
+                            </button>
+                        </div>
+
+                        <!-- MOBILE MENU BUTTON -->
+                        <button id="menuBtn" class="md:hidden text-gray-600 p-2" aria-expanded="false">
+                            <i class="fa-solid fa-bars text-lg"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- MOBILE NAV WITHOUT CART -->
+                <div id="mobileNav" class="hidden mobile-nav-abs mt-2 bg-white rounded-2xl shadow-md p-3 mx-4">
+                    <div class="flex flex-col gap-2 text-right">
+                        <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition">الشهادات</a>
+                        <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition">الملفات الإدارية</a>
+                        <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition">البطاقات</a>
+                        <div class="pt-2 border-t border-gray-100 mt-2 flex justify-between items-center">
+                            <div class="flex items-center gap-3">
+                                <button id="mobileThemeToggle" class="text-gray-600">
+                                    <i class="fa-solid fa-moon"></i>
+                                </button>
+                            </div>
+                            <a href="#" class="text-sm text-cyan-600 font-semibold">تسجيل دخول</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </header>
-        
+        <script>
+            // NAVBAR FUNCTIONALITY WITHOUT CART
+            document.addEventListener('DOMContentLoaded', function () {
+                const menuBtn = document.getElementById("menuBtn");
+                const mobileNav = document.getElementById("mobileNav");
+                const mobileThemeToggle = document.getElementById("mobileThemeToggle");
+
+                // Mobile menu toggle
+                if (menuBtn) {
+                    menuBtn.addEventListener("click", (e) => {
+                        const expanded = menuBtn.getAttribute("aria-expanded") === "true";
+                        menuBtn.setAttribute("aria-expanded", String(!expanded));
+                        mobileNav.classList.toggle("hidden");
+                    });
+                }
+
+                // Close mobile menu when clicking outside
+                document.addEventListener("click", (e) => {
+                    if (!mobileNav || mobileNav.classList.contains("hidden")) return;
+                    const path = e.composedPath?.() || e.path || [];
+                    if (!path.includes(mobileNav) && !path.includes(menuBtn)) {
+                        mobileNav.classList.add("hidden");
+                        if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
+                    }
+                });
+
+                // Close mobile menu on window resize
+                window.addEventListener("resize", () => {
+                    if (window.innerWidth >= 768) {
+                        mobileNav.classList.add("hidden");
+                        if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
+                    }
+                });
+
+                // Theme toggle
+                document.getElementById("themeToggle")?.addEventListener("click", () => {
+                    document.documentElement.classList.toggle("dark");
+                });
+
+                if (mobileThemeToggle) {
+                    mobileThemeToggle.addEventListener("click", () => {
+                        document.documentElement.classList.toggle("dark");
+                    });
+                }
+            });
+        </script>
+
         <div class="main-content">
             <div class="form-section">
                 <h1>بطاقة التواصل الشخصية</h1>
@@ -319,145 +422,140 @@
                         <div class="hint">أدخل اسمك كما تريد أن يظهر في جهات الاتصال</div>
                         <div class="error" id="nameError">يرجى إدخال الاسم الكامل</div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="phone">رقم الهاتف:</label>
                         <input type="tel" id="phone" placeholder="رقم الجوال او الهاتف الثابت">
                         <div class="hint">يمكنك إدخال أي رقم هاتف دولي أو محلي</div>
                         <div class="error" id="phoneError">يرجى إدخال رقم هاتف صحيح</div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="email">البريد الإلكتروني:</label>
                         <input type="email" id="email" placeholder="بريدك الإلكتروني">
                         <div class="error" id="emailError">يرجى إدخال بريد إلكتروني صحيح</div>
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="workplace">جهة العمل:</label>
                         <input type="text" id="workplace" placeholder="مثال: اسم المدرسة">
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="jobTitle">المسمى الوظيفي:</label>
                         <input type="text" id="jobTitle" placeholder="مثال: معلم ممارس">
                     </div>
-                    
+
                     <div class="form-group">
                         <label for="address">العنوان:</label>
                         <textarea id="address" rows="3" placeholder="مثال: الرياض، حي الملز، شارع الملك فهد"></textarea>
                     </div>
-                    
+
                     <div class="buttons">
                         <button type="button" class="generate-btn" id="generateBtn">إنشاء رمز QR</button>
                         <button type="reset" class="reset-btn" id="resetBtn">إعادة تعيين</button>
                     </div>
                 </form>
             </div>
-            
+
             <div class="preview-section">
                 <h1>معاينة بطاقة التواصل</h1>
-                
+
                 <div class="contact-card">
                     <div class="contact-name" id="previewName">الاسم الكامل</div>
                     <div class="contact-details">
                         <div class="contact-item">
                             <span class="contact-label">رقم الهاتف:</span>
-                            <span class="contact-value" id="previewPhone"><span class="placeholder-text">---</span></span>
+                            <span class="contact-value" id="previewPhone"><span
+                                    class="placeholder-text">---</span></span>
                         </div>
                         <div class="contact-item">
                             <span class="contact-label">البريد الإلكتروني:</span>
-                            <span class="contact-value" id="previewEmail"><span class="placeholder-text">---</span></span>
+                            <span class="contact-value" id="previewEmail"><span
+                                    class="placeholder-text">---</span></span>
                         </div>
                         <div class="contact-item">
                             <span class="contact-label">جهة العمل:</span>
-                            <span class="contact-value" id="previewWorkplace"><span class="placeholder-text">---</span></span>
+                            <span class="contact-value" id="previewWorkplace"><span
+                                    class="placeholder-text">---</span></span>
                         </div>
                         <div class="contact-item">
                             <span class="contact-label">المسمى الوظيفي:</span>
-                            <span class="contact-value" id="previewJobTitle"><span class="placeholder-text">---</span></span>
+                            <span class="contact-value" id="previewJobTitle"><span
+                                    class="placeholder-text">---</span></span>
                         </div>
                         <div class="contact-item">
                             <span class="contact-label">العنوان:</span>
-                            <span class="contact-value" id="previewAddress"><span class="placeholder-text">---</span></span>
+                            <span class="contact-value" id="previewAddress"><span
+                                    class="placeholder-text">---</span></span>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="qr-container">
                     <div id="qrcode">
                         <span class="placeholder-text">سيظهر رمز QR هنا بعد تعبئة النموذج</span>
                     </div>
                 </div>
-                
+
                 <div class="hint">يمكن مسح رمز QR باستخدام هاتفك الذكي لحفظ معلومات الاتصال</div>
             </div>
         </div>
 
-        
-       
-<!-- FOOTER -->
-    <footer class="mt-12 footer-ink border-t border-gray-100">
-      <div
-        class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
-      >
-        <!-- RIGHT COLUMN -->
-        <div class="text-right md:flex-1">
-          <img
-            src="../assets/imgs/gsoor_logo.jpg"
-            alt="logo"
-            class="h-10 mx-auto md:mx-0"
-          />
-          <div
-            class="flex justify-center md:justify-end gap-4 mt-3 text-gray-600"
-          >
-            <i class="fa-brands fa-youtube social-icon text-lg"></i>
-            <i class="fa-brands fa-tiktok social-icon text-lg"></i>
-            <i class="fa-brands fa-instagram social-icon text-lg"></i>
-          </div>
-        </div>
 
-        <!-- CENTER COLUMN -->
-        <div class="text-center md:flex-1">
-          <h3 class="font-bold mb-2">تواصل معنا</h3>
-          <div class="flex items-center justify-center gap-4 text-gray-600">
-            <div class="flex items-center gap-2">
-              <i class="fa-regular fa-envelope text-sm"></i>
-              <span>البريد</span>
-            </div>
-            <div class="flex items-center gap-2">
-              <i class="fa-solid fa-mobile-screen-button text-sm"></i>
-              <span>واتس</span>
-            </div>
-          </div>
-          <div class="mt-3 text-sm text-gray-500">موقّع لدى منصة الأعمال</div>
-        </div>
 
-        <!-- LEFT COLUMN -->
-        <div class="text-left md:flex-1">
-          <div class="text-sm text-gray-500">
-            © 2025 متجر جسور الرقمي | جميع الحقوق محفوظة
-          </div>
-          <div
-            class="mt-3 flex gap-2 items-center justify-center md:justify-start"
-          >
-            <span class="sr-only">Visa</span>
-            <i class="fa-brands fa-cc-visa text-gray-600 text-lg"></i>
-            <span class="sr-only">Mada</span>
-            <i class="fa-solid fa-credit-card text-gray-600 text-lg"></i>
-          </div>
-        </div>
-      </div>
-    </footer>
+        <!-- FOOTER -->
+        <footer class="mt-12 footer-ink border-t border-gray-100">
+            <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+                <!-- RIGHT COLUMN -->
+                <div class="text-right md:flex-1">
+                    <img src="../assets/imgs/gsoor_logo.jpg" alt="logo" class="h-10 mx-auto md:mx-0" />
+                    <div class="flex justify-center md:justify-end gap-4 mt-3 text-gray-600">
+                        <i class="fa-brands fa-youtube social-icon text-lg"></i>
+                        <i class="fa-brands fa-tiktok social-icon text-lg"></i>
+                        <i class="fa-brands fa-instagram social-icon text-lg"></i>
+                    </div>
+                </div>
+
+                <!-- CENTER COLUMN -->
+                <div class="text-center md:flex-1">
+                    <h3 class="font-bold mb-2">تواصل معنا</h3>
+                    <div class="flex items-center justify-center gap-4 text-gray-600">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-regular fa-envelope text-sm"></i>
+                            <span>البريد</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-mobile-screen-button text-sm"></i>
+                            <span>واتس</span>
+                        </div>
+                    </div>
+                    <div class="mt-3 text-sm text-gray-500">موقّع لدى منصة الأعمال</div>
+                </div>
+
+                <!-- LEFT COLUMN -->
+                <div class="text-left md:flex-1">
+                    <div class="text-sm text-gray-500">
+                        © 2025 متجر جسور الرقمي | جميع الحقوق محفوظة
+                    </div>
+                    <div class="mt-3 flex gap-2 items-center justify-center md:justify-start">
+                        <span class="sr-only">Visa</span>
+                        <i class="fa-brands fa-cc-visa text-gray-600 text-lg"></i>
+                        <span class="sr-only">Mada</span>
+                        <i class="fa-solid fa-credit-card text-gray-600 text-lg"></i>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             const form = document.getElementById('contactForm');
             const generateBtn = document.getElementById('generateBtn');
             const resetBtn = document.getElementById('resetBtn');
             const qrcodeDiv = document.getElementById('qrcode');
-            
+
             // عناصر المعاينة
             const previewName = document.getElementById('previewName');
             const previewPhone = document.getElementById('previewPhone');
@@ -465,12 +563,12 @@
             const previewWorkplace = document.getElementById('previewWorkplace');
             const previewJobTitle = document.getElementById('previewJobTitle');
             const previewAddress = document.getElementById('previewAddress');
-            
+
             // عناصر الأخطاء
             const nameError = document.getElementById('nameError');
             const phoneError = document.getElementById('phoneError');
             const emailError = document.getElementById('emailError');
-            
+
             // تحديث المعاينة عند الكتابة
             document.getElementById('fullName').addEventListener('input', updatePreview);
             document.getElementById('phone').addEventListener('input', updatePreview);
@@ -478,7 +576,7 @@
             document.getElementById('workplace').addEventListener('input', updatePreview);
             document.getElementById('jobTitle').addEventListener('input', updatePreview);
             document.getElementById('address').addEventListener('input', updatePreview);
-            
+
             function updatePreview() {
                 const name = document.getElementById('fullName').value.trim();
                 const phone = document.getElementById('phone').value.trim();
@@ -486,7 +584,7 @@
                 const workplace = document.getElementById('workplace').value.trim();
                 const jobTitle = document.getElementById('jobTitle').value.trim();
                 const address = document.getElementById('address').value.trim();
-                
+
                 previewName.textContent = name || 'الاسم الكامل';
                 previewPhone.innerHTML = phone ? phone : '<span class="placeholder-text">---</span>';
                 previewEmail.innerHTML = email ? email : '<span class="placeholder-text">---</span>';
@@ -494,11 +592,11 @@
                 previewJobTitle.innerHTML = jobTitle ? jobTitle : '<span class="placeholder-text">---</span>';
                 previewAddress.innerHTML = address ? address : '<span class="placeholder-text">---</span>';
             }
-            
+
             // التحقق من صحة البيانات
             function validateForm() {
                 let isValid = true;
-                
+
                 // التحقق من الاسم
                 const name = document.getElementById('fullName').value.trim();
                 if (name === '') {
@@ -507,7 +605,7 @@
                 } else {
                     nameError.style.display = 'none';
                 }
-                
+
                 // التحقق من رقم الهاتف
                 const phone = document.getElementById('phone').value.trim();
                 const phoneRegex = /^[\+]?[0-9\s\-\(\)]{8,}$/;
@@ -517,7 +615,7 @@
                 } else {
                     phoneError.style.display = 'none';
                 }
-                
+
                 // التحقق من البريد الإلكتروني
                 const email = document.getElementById('email').value.trim();
                 const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -527,53 +625,53 @@
                 } else {
                     emailError.style.display = 'none';
                 }
-                
+
                 return isValid;
             }
-            
+
             // دالة إنشاء رمز QR مبسطة
             function generateSimpleQR(text) {
                 // مسح المحتوى السابق
                 qrcodeDiv.innerHTML = '';
-                
+
                 // إنشاء عنصر canvas
                 const canvas = document.createElement('canvas');
                 const ctx = canvas.getContext('2d');
                 const size = 200;
                 canvas.width = size;
                 canvas.height = size;
-                
+
                 // تعيين خلفية بيضاء
                 ctx.fillStyle = 'white';
                 ctx.fillRect(0, 0, size, size);
-                
+
                 // إنشاء نمط QR مبسط (نمط تجريبي)
                 ctx.fillStyle = 'black';
-                
+
                 // إطار خارجي
                 ctx.fillRect(10, 10, size - 20, size - 20);
-                
+
                 // نقاط تحديد (مثل الرموز الحقيقية)
                 ctx.fillStyle = 'white';
                 ctx.fillRect(15, 15, 30, 30);
                 ctx.fillRect(size - 45, 15, 30, 30);
                 ctx.fillRect(15, size - 45, 30, 30);
-                
+
                 ctx.fillStyle = 'black';
                 ctx.fillRect(20, 20, 20, 20);
                 ctx.fillRect(size - 40, 20, 20, 20);
                 ctx.fillRect(20, size - 40, 20, 20);
-                
+
                 // إضافة نص في المنتصف (بدلاً من البيانات المشفرة)
                 ctx.fillStyle = 'black';
                 ctx.font = '12px Arial';
                 ctx.textAlign = 'center';
                 ctx.fillText('QR Code', size / 2, size / 2);
                 ctx.fillText('بطاقة التواصل', size / 2, size / 2 + 15);
-                
+
                 // إضافة Canvas إلى الصفحة
                 qrcodeDiv.appendChild(canvas);
-                
+
                 // بديل: إنشاء صورة من Canvas
                 const dataURL = canvas.toDataURL('image/png');
                 const img = document.createElement('img');
@@ -581,14 +679,14 @@
                 img.alt = 'رمز QR لبطاقة التواصل';
                 qrcodeDiv.appendChild(img);
             }
-            
+
             // إنشاء رمز QR
-            generateBtn.addEventListener('click', function() {
+            generateBtn.addEventListener('click', function () {
                 if (!validateForm()) {
                     alert('يرجى تصحيح الأخطاء في النموذج قبل إنشاء رمز QR');
                     return;
                 }
-                
+
                 // إنشاء بيانات vCard
                 const name = document.getElementById('fullName').value.trim();
                 const phone = document.getElementById('phone').value.trim();
@@ -596,34 +694,35 @@
                 const workplace = document.getElementById('workplace').value.trim();
                 const jobTitle = document.getElementById('jobTitle').value.trim();
                 const address = document.getElementById('address').value.trim();
-                
+
                 let vcard = 'BEGIN:VCARD\nVERSION:3.0\n';
                 vcard += `FN:${name}\n`;
-                
+
                 if (phone) vcard += `TEL:${phone}\n`;
                 if (email) vcard += `EMAIL:${email}\n`;
                 if (workplace) vcard += `ORG:${workplace}\n`;
                 if (jobTitle) vcard += `TITLE:${jobTitle}\n`;
                 if (address) vcard += `ADR:;;${address};;;\n`;
-                
+
                 vcard += 'END:VCARD';
-                
+
                 // إنشاء رمز QR مبسط
                 generateSimpleQR(vcard);
             });
-            
+
             // إعادة تعيين النموذج
-            resetBtn.addEventListener('click', function() {
+            resetBtn.addEventListener('click', function () {
                 qrcodeDiv.innerHTML = '<span class="placeholder-text">سيظهر رمز QR هنا بعد تعبئة النموذج</span>';
                 updatePreview();
                 nameError.style.display = 'none';
                 phoneError.style.display = 'none';
                 emailError.style.display = 'none';
             });
-            
+
             // تحديث المعاينة عند التحميل
             updatePreview();
         });
     </script>
 </body>
+
 </html>

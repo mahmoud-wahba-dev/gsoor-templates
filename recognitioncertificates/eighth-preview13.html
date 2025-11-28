@@ -6,7 +6,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer">
 
   <title>
     إنشاء وتخصيص شهادة شكر وتقدير للطالبات والمعلمات ACFFS-4 - جاهز للتحميل
@@ -27,15 +28,18 @@
       padding: 20px;
     }
 
-.footer-ink {
-        background: #f8fafb;
-      }
+  body{
+    padding-top: 100px;
+  }
+    .footer-ink {
+      background: #f8fafb;
+    }
 
-      .social-icon {
-        width: 26px;
-        height: 26px;
-        fill: currentColor;
-      }
+    .social-icon {
+      width: 26px;
+      height: 26px;
+      fill: currentColor;
+    }
 
 
     .modal-overlay.active {
@@ -280,6 +284,7 @@
 <body>
   <!--Gsoor Nav Bar-->
   <!-- NAVBAR -->
+  <!-- NAVBAR WITHOUT CART -->
   <header class="fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
     <div class="max-w-6xl mx-auto relative">
       <div class="nav-pill px-3 py-2 flex items-center justify-between gap-3">
@@ -297,19 +302,12 @@
           <a href="#" class="hover:text-cyan-600 transition">البطاقات</a>
         </nav>
 
-        <!-- UTILITY ICONS -->
+        <!-- UTILITY ICONS WITHOUT CART -->
         <div class="flex items-center gap-2">
           <div class="hidden sm:flex items-center bg-gray-50 rounded-full px-2 py-1 gap-2 border border-gray-100">
             <button id="themeToggle" class="text-gray-600" title="تبديل الوضع">
               <i class="fa-solid fa-moon text-gray-600 text-base"></i>
             </button>
-
-            <button class="text-gray-600 relative" title="العربة">
-              <i class="fa-solid fa-bag-shopping text-gray-600 text-base"></i>
-              <span id="cartBadge"
-                class="absolute -top-1 -left-2 bg-cyan-600 text-white text-xs rounded-full px-1">0</span>
-            </button>
-
             <button id="profileBtn" class="text-gray-600" title="الحساب">
               <i class="fa-regular fa-user text-gray-600 text-base"></i>
             </button>
@@ -322,7 +320,7 @@
         </div>
       </div>
 
-      <!-- MOBILE NAV -->
+      <!-- MOBILE NAV WITHOUT CART -->
       <div id="mobileNav" class="hidden mobile-nav-abs mt-2 bg-white rounded-2xl shadow-md p-3 mx-4">
         <div class="flex flex-col gap-2 text-right">
           <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition">الشهادات</a>
@@ -333,11 +331,6 @@
               <button id="mobileThemeToggle" class="text-gray-600">
                 <i class="fa-solid fa-moon"></i>
               </button>
-              <button class="text-gray-600 relative">
-                <i class="fa-solid fa-bag-shopping"></i>
-                <span id="mobileCartBadge"
-                  class="absolute -top-2 -left-2 bg-cyan-600 text-white text-xs rounded-full px-1">0</span>
-              </button>
             </div>
             <a href="#" class="text-sm text-cyan-600 font-semibold">تسجيل دخول</a>
           </div>
@@ -345,6 +338,52 @@
       </div>
     </div>
   </header>
+  <script>
+    // NAVBAR FUNCTIONALITY WITHOUT CART
+    document.addEventListener('DOMContentLoaded', function () {
+      const menuBtn = document.getElementById("menuBtn");
+      const mobileNav = document.getElementById("mobileNav");
+      const mobileThemeToggle = document.getElementById("mobileThemeToggle");
+
+      // Mobile menu toggle
+      if (menuBtn) {
+        menuBtn.addEventListener("click", (e) => {
+          const expanded = menuBtn.getAttribute("aria-expanded") === "true";
+          menuBtn.setAttribute("aria-expanded", String(!expanded));
+          mobileNav.classList.toggle("hidden");
+        });
+      }
+
+      // Close mobile menu when clicking outside
+      document.addEventListener("click", (e) => {
+        if (!mobileNav || mobileNav.classList.contains("hidden")) return;
+        const path = e.composedPath?.() || e.path || [];
+        if (!path.includes(mobileNav) && !path.includes(menuBtn)) {
+          mobileNav.classList.add("hidden");
+          if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      // Close mobile menu on window resize
+      window.addEventListener("resize", () => {
+        if (window.innerWidth >= 768) {
+          mobileNav.classList.add("hidden");
+          if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
+        }
+      });
+
+      // Theme toggle
+      document.getElementById("themeToggle")?.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
+      });
+
+      if (mobileThemeToggle) {
+        mobileThemeToggle.addEventListener("click", () => {
+          document.documentElement.classList.toggle("dark");
+        });
+      }
+    });
+  </script>
 
 
   <div class="max-w-6xl mx-auto">
