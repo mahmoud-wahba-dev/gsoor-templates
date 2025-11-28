@@ -7,12 +7,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <title>مبادرة الأمن السيبراني والمواطنة الرقمية | نماذج تعليمية</title>
+    <title>تقرير استخدام شات جي بي تي (ChatGPT) لدعم المعلم | نماذج تعليمية</title>
 
     <style>
       body {
         font-family: "Helvetica", "Tajawal", sans-serif;
       }
+      
+.footer-ink {
+        background: #f8fafb;
+      }
+
+      .social-icon {
+        width: 26px;
+        height: 26px;
+        fill: currentColor;
+      }
+
+
       label {
         font-weight: 600;
         color: #136f3c;
@@ -224,6 +236,29 @@
       .numbered-list li {
         margin-bottom: 8px;
       }
+      /* Button Styles */
+      .btn-main {
+        background-color: #10b981;
+        color: white;
+        padding: 16px 32px;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 18px;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        transition: background-color 0.3s;
+        margin: 20px auto;
+      }
+      .btn-main:hover {
+        background-color: #059669;
+      }
+      .required-field::after {
+        content: " *";
+        color: #dc2626;
+      }
     </style>
   </head>
 
@@ -245,631 +280,323 @@
           <h1 class="text-5xl text-center">
 تقرير استخدام شات جي بي تي (ChatGPT) لدعم المعلم </h1>
           <p class="text-gray-700 my-4 text-center text-xl">
-إنشاء وتخصيص تقرير استخدام شات جي بي تي (ChatGPT) لدعم المعلم مع إمكانية تحرير وإضافة جميع البيانات الخاصة بك، بطريقة سهلة واحترافية توفر عليه الوقت والجهد ويتم حفظ الملف النهائي بتنسيق صورة أو ملف pdf لسهولة الطباعة بجودة عالية وإعادة الاستخدام في تقارير ونماذج أخرى.            <div>
-              <label class="mb-2">عنوان التقرير:</label>
-              <input
-                type="text"
-                id="reportTitle"
-                placeholder="مبادرة الأمن السيبراني والمواطنة الرقمية"
-                class="w-full"
-              />
-              <div id="reportTitleError" class="error-message">هذا الحقل مطلوب</div>
-            </div>
+إنشاء وتخصيص تقرير استخدام شات جي بي تي (ChatGPT) لدعم المعلم مع إمكانية تحرير وإضافة جميع البيانات الخاصة بك، بطريقة سهلة واحترافية توفر عليه الوقت والجهد ويتم حفظ الملف النهائي بتنسيق صورة أو ملف pdf لسهولة الطباعة بجودة عالية وإعادة الاستخدام في تقارير ونماذج أخرى.</p>
+          
+          <!-- الحقول الأساسية المطلوبة -->
+          <div>
+            <label class="mb-2 required-field">عنوان التقرير:</label>
+            <input
+              type="text"
+              id="reportTitle"
+              placeholder="تقرير استخدام شات جي بي تي (ChatGPT) لدعم المعلم"
+              class="w-full"
+            />
+            <div id="reportTitleError" class="error-message">هذا الحقل مطلوب</div>
+          </div>
 
-            <!-- معلومات الهيدر -->
-            <div class="section-bg">
-              <h3 class="text-lg font-bold mb-4">معلومات الهيدر</h3>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label class="mb-2">البلد:</label>
-                  <input
-                    type="text"
-                    id="country"
-                    placeholder="المملكة العربية السعودية"
-                    class="w-full"
-                  />
-                </div>
-                <div>
-                  <label class="mb-2">الوزارة:</label>
-                  <input
-                    type="text"
-                    id="ministry"
-                    placeholder="وزارة التعليم"
-                    class="w-full"
-                  />
-                </div>
-                <div>
-                  <label class="mb-2">الإدارة:</label>
-                  <input
-                    type="text"
-                    id="administration"
-                    placeholder="الإدارة العامة للتعليم بالمنطقة الشرقية"
-                    class="w-full"
-                  />
-                </div>
-                <div>
-                  <label class="mb-2">المدرسة:</label>
-                  <input
-                    type="text"
-                    id="school"
-                    placeholder="مدرسة"
-                    class="w-full"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <!-- معلومات إضافية -->
-            <div class="section-bg">
-              <h3 class="text-lg font-bold mb-4">معلومات إضافية</h3>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label class="mb-2">العام الدراسي:</label>
-                  <input
-                    type="text"
-                    id="academicYear"
-                    placeholder="١٤٤٧هـ"
-                    class="w-full"
-                  />
-                </div>
-                <div>
-                  <label class="mb-2">الفصل الدراسي:</label>
-                  <input
-                    type="text"
-                    id="semester"
-                    placeholder="الفصل الدراسي الأول"
-                    class="w-full"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <!-- المعلومات الأساسية -->
-            <div class="section-bg">
-              <h3 class="text-lg font-bold mb-4">المعلومات الأساسية:</h3>
-              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <label class="mb-2">اسم الاستراتيجية:</label>
-                  <input
-                    type="text"
-                    id="strategyName"
-                    placeholder="التعلم المبني على المشاريع"
-                    class="w-full"
-                  />
-                </div>
-                <div>
-                  <label class="mb-2">عدد المستهدفين:</label>
-                  <input
-                    type="text"
-                    id="targetCount"
-                    placeholder="٣٠٠"
-                    class="w-full"
-                  />
-                </div>
-                <div>
-                  <label class="mb-2">تاريخ التنفيذ:</label>
-                  <input
-                    type="text"
-                    id="executionDate"
-                    placeholder="٢٩ ربيع الآخر ١٤٤٧ هـ"
-                    class="w-full"
-                  />
-                </div>
-                <div>
-                  <label class="mb-2">شعار المبادرة:</label>
-                  <input
-                    type="text"
-                    id="initiativeLogo"
-                    placeholder="مستقبلنا الرقمي آمن"
-                    class="w-full"
-                  />
-                </div>
-                <div>
-                  <label class="mb-2">مكان المبادرة:</label>
-                  <input
-                    type="text"
-                    id="initiativeLocation"
-                    placeholder="معمل الحاسب والفصول الدراسية"
-                    class="w-full"
-                  />
-                </div>
-                <div>
-                  <label class="mb-2">الفئة المستهدفة:</label>
-                  <input
-                    type="text"
-                    id="targetGroup"
-                    placeholder="طلاب المرحلة المتوسطة"
-                    class="w-full"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <!-- فكرة المبادرة (الهدف العام) -->
-            <div class="section-bg">
-              <h3 class="text-lg font-bold mb-4">فكرة المبادرة (الهدف العام):</h3>
-              <textarea
-                id="initiativeIdea"
-                class="w-full"
-                placeholder="تعزيز الوعي بالأمن السيبراني والمواطنة الرقمية لدى الطلاب، وتطوير مهاراتهم في التعامل الآمن مع التقنية الحديثة بما يتوافق مع رؤية ٢٠٣٠"
-              ></textarea>
-              <div class="mt-4">
-                <label class="mb-2">اشرح الفكرة الرئيسية والهدف العام من المبادرة:</label>
-                <textarea
-                  id="initiativeExplanation"
-                  class="w-full"
-                  placeholder="اكتب شرحاً مفصلاً عن الفكرة الرئيسية والهدف العام من المبادرة"
-                ></textarea>
-              </div>
-            </div>
-
-            <!-- الأهداف -->
-            <div class="section-bg">
-              <h3 class="text-lg font-bold mb-4">الأهداف:</h3>
-              <div class="space-y-3">
-                <div class="flex items-start gap-2">
-                  <span class="mt-1">①</span>
-                  <input
-                    type="text"
-                    id="goal1"
-                    placeholder="تعزيز مفاهيم الأمن السيبراني لدى الطلاب"
-                    class="w-full"
-                  />
-                </div>
-                <div class="flex items-start gap-2">
-                  <span class="mt-1">②</span>
-                  <input
-                    type="text"
-                    id="goal2"
-                    placeholder="تنمية مهارات المواطنة الرقمية والاستخدام الآمن للإنترنت"
-                    class="w-full"
-                  />
-                </div>
-                <div class="flex items-start gap-2">
-                  <span class="mt-1">③</span>
-                  <input
-                    type="text"
-                    id="goal3"
-                    placeholder="توعية الطلاب بمخاطر الجرائم الإلكترونية وطرق الحماية منها"
-                    class="w-full"
-                  />
-                </div>
-                <div class="flex items-start gap-2">
-                  <span class="mt-1">④</span>
-                  <input
-                    type="text"
-                    id="goal4"
-                    placeholder="تعزيز القيم الأخلاقية في التعاملات الرقمية"
-                    class="w-full"
-                  />
-                </div>
-              </div>
-              <div class="mt-4">
-                <label class="mb-2">حدد الأهداف التفصيلية للمبادرة:</label>
-                <textarea
-                  id="detailedGoals"
-                  class="w-full"
-                  placeholder="اكتب الأهداف التفصيلية للمبادرة"
-                ></textarea>
-              </div>
-            </div>
-
-            <!-- مكونات المبادرة (آلية التنفيذ) -->
-            <div class="section-bg">
-              <h3 class="text-lg font-bold mb-4">مكونات المبادرة (آلية التنفيذ):</h3>
-              <div class="space-y-3">
-                <div class="flex items-start gap-2">
-                  <span class="mt-1">•</span>
-                  <input
-                    type="text"
-                    id="component1"
-                    placeholder="ورش عمل تفاعلية عن الأمن السيبراني"
-                    class="w-full"
-                  />
-                </div>
-                <div class="flex items-start gap-2">
-                  <span class="mt-1">•</span>
-                  <input
-                    type="text"
-                    id="component2"
-                    placeholder="محاضرات توعوية من متخصصين في الأمن الوطني للأمن السيبراني"
-                    class="w-full"
-                  />
-                </div>
-                <div class="flex items-start gap-2">
-                  <span class="mt-1">•</span>
-                  <input
-                    type="text"
-                    id="component3"
-                    placeholder="مسابقات وتحديات في مجال الأمن الرقمي"
-                    class="w-full"
-                  />
-                </div>
-                <div class="flex items-start gap-2">
-                  <span class="mt-1">•</span>
-                  <input
-                    type="text"
-                    id="component4"
-                    placeholder="معرض تقني تفاعلي"
-                    class="w-full"
-                  />
-                </div>
-                <div class="flex items-start gap-2">
-                  <span class="mt-1">•</span>
-                  <input
-                    type="text"
-                    id="component5"
-                    placeholder="جلسات تدريبية عملية"
-                    class="w-full"
-                  />
-                </div>
-                <div class="flex items-start gap-2">
-                  <span class="mt-1">•</span>
-                  <input
-                    type="text"
-                    id="component6"
-                    placeholder="تنفيذ حملة توعوية على مواقع التواصل الاجتماعي"
-                    class="w-full"
-                  />
-                </div>
-              </div>
-              <div class="mt-4">
-                <label class="mb-2">اذكر العناصر والأنشطة المكونة للمبادرة:</label>
-                <textarea
-                  id="componentsExplanation"
-                  class="w-full"
-                  placeholder="اكتب شرحاً مفصلاً عن العناصر والأنشطة المكونة للمبادرة"
-                ></textarea>
-              </div>
-            </div>
-
-            <!-- الأنشطة -->
-            <div class="section-bg">
-              <h3 class="text-lg font-bold mb-4">الأنشطة:</h3>
-              <div class="space-y-3">
-                <div class="flex items-start gap-2">
-                  <span class="mt-1">•</span>
-                  <input
-                    type="text"
-                    id="activity1"
-                    placeholder="تطبيقات عملية لحماية الحسابات الشخصية"
-                    class="w-full"
-                  />
-                </div>
-                <div class="flex items-start gap-2">
-                  <span class="mt-1">•</span>
-                  <input
-                    type="text"
-                    id="activity2"
-                    placeholder="مسابقة لتصميم منصات توعوية"
-                    class="w-full"
-                  />
-                </div>
-                <div class="flex items-start gap-2">
-                  <span class="mt-1">•</span>
-                  <input
-                    type="text"
-                    id="activity3"
-                    placeholder="محاكاة لسيناريوهات الاختراق وطرق الحماية"
-                    class="w-full"
-                  />
-                </div>
-                <div class="flex items-start gap-2">
-                  <span class="mt-1">•</span>
-                  <input
-                    type="text"
-                    id="activity4"
-                    placeholder="إنتاج دليل إرشادي رقمي"
-                    class="w-full"
-                  />
-                </div>
-                <div class="flex items-start gap-2">
-                  <span class="mt-1">•</span>
-                  <input
-                    type="text"
-                    id="activity5"
-                    placeholder="تنفيذ حملة توعوية على مواقع التواصل الاجتماعي"
-                    class="w-full"
-                  />
-                </div>
-              </div>
-              <div class="mt-4">
-                <label class="mb-2">وصف الأنشطة المنفذة ضمن المبادرة:</label>
-                <textarea
-                  id="activitiesDescription"
-                  class="w-full"
-                  placeholder="اكتب وصفاً مفصلاً للأنشطة المنفذة ضمن المبادرة"
-                ></textarea>
-              </div>
-            </div>
-
-            <!-- مؤشرات النجاح (المخرجات المتوقعة) -->
-            <div class="section-bg">
-              <h3 class="text-lg font-bold mb-4">مؤشرات النجاح (المخرجات المتوقعة):</h3>
-              <div class="space-y-3">
-                <div class="flex items-start gap-2">
-                  <span class="mt-1">•</span>
-                  <input
-                    type="text"
-                    id="successIndicator1"
-                    placeholder="زيادة وعي الطلاب بقضايا الأمن السيبراني"
-                    class="w-full"
-                  />
-                </div>
-                <div class="flex items-start gap-2">
-                  <span class="mt-1">•</span>
-                  <input
-                    type="text"
-                    id="successIndicator2"
-                    placeholder="تحسين مستوى الممارسات الرقمية الآمنة"
-                    class="w-full"
-                  />
-                </div>
-                <div class="flex items-start gap-2">
-                  <span class="mt-1">•</span>
-                  <input
-                    type="text"
-                    id="successIndicator3"
-                    placeholder="عدد المشاركين في الأنشطة والفعاليات"
-                    class="w-full"
-                  />
-                </div>
-                <div class="flex items-start gap-2">
-                  <span class="mt-1">•</span>
-                  <input
-                    type="text"
-                    id="successIndicator4"
-                    placeholder="نتائج استبيانات قياس الأثر"
-                    class="w-full"
-                  />
-                </div>
-                <div class="flex items-start gap-2">
-                  <span class="mt-1">•</span>
-                  <input
-                    type="text"
-                    id="successIndicator5"
-                    placeholder="تفاعل أولياء الأمور مع المبادرة"
-                    class="w-full"
-                  />
-                </div>
-              </div>
-              <div class="mt-4">
-                <label class="mb-2">حدد مؤشرات قياس نجاح المبادرة:</label>
-                <textarea
-                  id="successIndicatorsExplanation"
-                  class="w-full"
-                  placeholder="اكتب شرحاً مفصلاً عن مؤشرات قياس نجاح المبادرة"
-                ></textarea>
-              </div>
-            </div>
-
-            <!-- المرفقات (وسائل التوثيق) -->
-            <div class="section-bg">
-              <h3 class="text-lg font-bold mb-4">المرفقات (وسائل التوثيق):</h3>
-              <div class="space-y-3">
-                <div class="flex items-start gap-2">
-                  <span class="mt-1">•</span>
-                  <input
-                    type="text"
-                    id="attachment1"
-                    placeholder="تقارير الأنشطة والفعاليات"
-                    class="w-full"
-                  />
-                </div>
-                <div class="flex items-start gap-2">
-                  <span class="mt-1">•</span>
-                  <input
-                    type="text"
-                    id="attachment2"
-                    placeholder="نماذج من أعمال الطلاب"
-                    class="w-full"
-                  />
-                </div>
-                <div class="flex items-start gap-2">
-                  <span class="mt-1">•</span>
-                  <input
-                    type="text"
-                    id="attachment3"
-                    placeholder="شهادات المشاركة"
-                    class="w-full"
-                  />
-                </div>
-                <div class="flex items-start gap-2">
-                  <span class="mt-1">•</span>
-                  <input
-                    type="text"
-                    id="attachment4"
-                    placeholder="توثيق مرئي للفعاليات"
-                    class="w-full"
-                  />
-                </div>
-                <div class="flex items-start gap-2">
-                  <span class="mt-1">•</span>
-                  <input
-                    type="text"
-                    id="attachment5"
-                    placeholder="نتائج الاستبيانات والتقييم"
-                    class="w-full"
-                  />
-                </div>
-              </div>
-              <div class="mt-4">
-                <label class="mb-2">اذكر المرفقات والوثائق الداعمة:</label>
-                <textarea
-                  id="attachmentsExplanation"
-                  class="w-full"
-                  placeholder="اكتب شرحاً مفصلاً عن المرفقات والوثائق الداعمة للمبادرة"
-                ></textarea>
-              </div>
-            </div>
-
-            <!-- التوقيعات -->
-            <div class="section-bg">
-              <h3 class="text-lg font-bold mb-4">التوقيعات:</h3>
-              <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div>
-                  <label class="mb-2">توقيع يمين:</label>
-                  <input
-                    type="text"
-                    id="rightSignature"
-                    placeholder="المعلم / اسم المعلم"
-                    class="w-full"
-                  />
-                </div>
-                <div>
-                  <label class="mb-2">توقيع وسط:</label>
-                  <input
-                    type="text"
-                    id="middleSignature"
-                    placeholder=""
-                    class="w-full"
-                  />
-                </div>
-                <div>
-                  <label class="mb-2">توقيع يسار:</label>
-                  <input
-                    type="text"
-                    id="leftSignature"
-                    placeholder=""
-                    class="w-full"
-                  />
-                </div>
-              </div>
-            </div>
-
-            <!-- تخصيص التصميم -->
-            <div class="section-bg">
-              <h3 class="text-lg font-bold mb-4">تخصيص التصميم:</h3>
-              
-              <!-- ستايل النموذج -->
-              <div class="mb-4">
-                <label class="mb-2">ستايل النموذج:</label>
-                <div class="radio-group">
-                  <div class="radio-option">
-                    <input type="radio" id="style1" name="templateStyle" value="white" checked>
-                    <label for="style1">أبيض (توفير حبر)</label>
-                  </div>
-                  <div class="radio-option">
-                    <input type="radio" id="style2" name="templateStyle" value="original">
-                    <label for="style2">الهوية البصرية الأصلية</label>
-                  </div>
-                  <div class="radio-option">
-                    <input type="radio" id="style3" name="templateStyle" value="gradient">
-                    <label for="style3">الهوية البصرية تدرج</label>
-                  </div>
-                </div>
-              </div>
-              
-              <!-- شعار الجهة -->
-              <div class="mb-4">
-                <label class="mb-2">شعار الجهة:</label>
-                <div class="file-upload">
-                  <div class="file-upload-btn">
-                    <span>شعار وزارة التعليم السعودية</span>
-                    <span>No file chosen</span>
-                  </div>
-                  <input type="file" id="mainLogo" accept="image/*">
-                </div>
-                <p class="text-gray-600 text-sm mt-2">اختياري - سيظهر شعار وزارة التعليم افتراضياً</p>
-              </div>
-              
-              <!-- الشعار الفرعي -->
-              <div class="mb-4">
-                <label class="mb-2">الشعار الفرعي:</label>
-                <div class="file-upload">
-                  <div class="file-upload-btn">
-                    <span>الشعار الفرعي</span>
-                    <span>No file chosen</span>
-                  </div>
-                  <input type="file" id="subLogo" accept="image/*">
-                </div>
-                <p class="text-gray-600 text-sm mt-2">اختياري - يظهر بجانب الشعار الرئيسي</p>
-              </div>
-              
-              <!-- استخدام الأرقام العربية -->
-              <div class="mb-4">
-                <label class="mb-2">استخدام الأرقام العربية:</label>
-                <div class="radio-group">
-                  <div class="radio-option">
-                    <input type="radio" id="arabicNumbersOn" name="arabicNumbers" value="on" checked>
-                    <label for="arabicNumbersOn">مفعل</label>
-                  </div>
-                  <div class="radio-option">
-                    <input type="radio" id="arabicNumbersOff" name="arabicNumbers" value="off">
-                    <label for="arabicNumbersOff">معطل</label>
-                  </div>
-                </div>
-                <p class="text-gray-600 text-sm mt-2">عند الإيقاف تظهر الأرقام كما أدخلت</p>
-              </div>
-              
-              <!-- تصغير الشواهد -->
-              <div class="mb-4">
-                <label class="mb-2">تصغير الشواهد:</label>
-                <div class="radio-group">
-                  <div class="radio-option">
-                    <input type="radio" id="smallCertificatesOn" name="smallCertificates" value="on">
-                    <label for="smallCertificatesOn">مفعل</label>
-                  </div>
-                  <div class="radio-option">
-                    <input type="radio" id="smallCertificatesOff" name="smallCertificates" value="off" checked>
-                    <label for="smallCertificatesOff">معطل</label>
-                  </div>
-                </div>
-                <p class="text-gray-600 text-sm mt-2">4 صور بالصفحة بدلاً من 2</p>
-              </div>
-              
-              <!-- إضافة شواهد (صور) -->
+          <!-- معلومات الهيدر -->
+          <div class="section-bg">
+            <h3 class="text-lg font-bold mb-4">معلومات الهيدر</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <label class="mb-2">إضافة شواهد (صور):</label>
-                <div class="file-upload">
-                  <div class="file-upload-btn">
-                    <span>إضافة شواهد</span>
-                    <span>No file chosen</span>
-                  </div>
-                  <input type="file" id="certificates" accept="image/*" multiple>
-                </div>
-                <p class="text-gray-600 text-sm mt-2">أقصى حد للشواهد 10 شواهد</p>
+                <label class="mb-2 required-field">البلد:</label>
+                <input
+                  type="text"
+                  id="country"
+                  placeholder="المملكة العربية السعودية"
+                  class="w-full"
+                />
+                <div id="countryError" class="error-message">هذا الحقل مطلوب</div>
+              </div>
+              <div>
+                <label class="mb-2 required-field">الوزارة:</label>
+                <input
+                  type="text"
+                  id="ministry"
+                  placeholder="وزارة التعليم"
+                  class="w-full"
+                />
+                <div id="ministryError" class="error-message">هذا الحقل مطلوب</div>
+              </div>
+              <div>
+                <label class="mb-2 required-field">الإدارة:</label>
+                <input
+                  type="text"
+                  id="administration"
+                  placeholder="الإدارة العامة للتعليم بالمنطقة الشرقية"
+                  class="w-full"
+                />
+                <div id="administrationError" class="error-message">هذا الحقل مطلوب</div>
+              </div>
+              <div>
+                <label class="mb-2 required-field">المدرسة:</label>
+                <input
+                  type="text"
+                  id="school"
+                  placeholder="مدرسة"
+                  class="w-full"
+                />
+                <div id="schoolError" class="error-message">هذا الحقل مطلوب</div>
               </div>
             </div>
+          </div>
 
-            <!-- زر المعاينة -->
-            <div class="flex justify-center mt-6 mb-8">
-              <button
-                onclick="previewTemplate()"
-                class="bg-green-600 text-white px-8 py-4 rounded-lg font-bold text-lg flex items-center gap-3 hover:bg-green-700 transition"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="2"
-                  stroke="currentColor"
-                  class="w-6 h-6"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                  />
-                </svg>
-                معاينة المبادرة
-              </button>
+          <!-- معلومات إضافية -->
+          <div class="section-bg">
+            <h3 class="text-lg font-bold mb-4">معلومات إضافية</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="mb-2 required-field">العام الدراسي:</label>
+                <input
+                  type="text"
+                  id="academicYear"
+                  placeholder="١٤٤٧هـ"
+                  class="w-full"
+                />
+                <div id="academicYearError" class="error-message">هذا الحقل مطلوب</div>
+              </div>
+              <div>
+                <label class="mb-2 required-field">الفصل الدراسي:</label>
+                <input
+                  type="text"
+                  id="semester"
+                  placeholder="الفصل الدراسي الأول"
+                  class="w-full"
+                />
+                <div id="semesterError" class="error-message">هذا الحقل مطلوب</div>
+              </div>
             </div>
+          </div>
+
+          <!-- المعلومات الأساسية -->
+          <div class="section-bg">
+            <h3 class="text-lg font-bold mb-4">المعلومات الأساسية:</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label class="mb-2 required-field">اسم الاستراتيجية:</label>
+                <input
+                  type="text"
+                  id="strategyName"
+                  placeholder="استخدام الذكاء الاصطناعي في التعليم"
+                  class="w-full"
+                />
+                <div id="strategyNameError" class="error-message">هذا الحقل مطلوب</div>
+              </div>
+              <div>
+                <label class="mb-2 required-field">عدد المستهدفين:</label>
+                <input
+                  type="text"
+                  id="targetCount"
+                  placeholder="٣٠٠"
+                  class="w-full"
+                />
+                <div id="targetCountError" class="error-message">هذا الحقل مطلوب</div>
+              </div>
+              <div>
+                <label class="mb-2 required-field">تاريخ التنفيذ:</label>
+                <input
+                  type="text"
+                  id="executionDate"
+                  placeholder="٢٩ ربيع الآخر ١٤٤٧ هـ"
+                  class="w-full"
+                />
+                <div id="executionDateError" class="error-message">هذا الحقل مطلوب</div>
+              </div>
+              <div>
+                <label class="mb-2 required-field">مكان المبادرة:</label>
+                <input
+                  type="text"
+                  id="initiativeLocation"
+                  placeholder="معمل الحاسب والفصول الدراسية"
+                  class="w-full"
+                />
+                <div id="initiativeLocationError" class="error-message">هذا الحقل مطلوب</div>
+              </div>
+              <div>
+                <label class="mb-2 required-field">الفئة المستهدفة:</label>
+                <input
+                  type="text"
+                  id="targetGroup"
+                  placeholder="طلاب المرحلة المتوسطة"
+                  class="w-full"
+                />
+                <div id="targetGroupError" class="error-message">هذا الحقل مطلوب</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- فكرة المبادرة (الهدف العام) -->
+          <div class="section-bg">
+            <h3 class="text-lg font-bold mb-4">فكرة المبادرة (الهدف العام):</h3>
+            <textarea
+              id="initiativeIdea"
+              class="w-full"
+              placeholder="تعزيز استخدام الذكاء الاصطناعي وتطبيقاته في العملية التعليمية، وتطوير مهارات الطلاب في التعامل مع التقنيات الحديثة بما يتوافق مع رؤية ٢٠٣٠"
+            ></textarea>
+            <div id="initiativeIdeaError" class="error-message">هذا الحقل مطلوب</div>
+          </div>
+
+          <!-- الأهداف -->
+          <div class="section-bg">
+            <h3 class="text-lg font-bold mb-4">الأهداف:</h3>
+            <div class="space-y-3">
+              <div class="flex items-start gap-2">
+                <span class="mt-1">①</span>
+                <input
+                  type="text"
+                  id="goal1"
+                  placeholder="تعزيز مهارات استخدام الذكاء الاصطناعي في التعليم"
+                  class="w-full"
+                />
+                <div id="goal1Error" class="error-message">هذا الحقل مطلوب</div>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="mt-1">②</span>
+                <input
+                  type="text"
+                  id="goal2"
+                  placeholder="تنمية القدرات الإبداعية باستخدام أدوات الذكاء الاصطناعي"
+                  class="w-full"
+                />
+                <div id="goal2Error" class="error-message">هذا الحقل مطلوب</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- مكونات المبادرة (آلية التنفيذ) -->
+          <div class="section-bg">
+            <h3 class="text-lg font-bold mb-4">مكونات المبادرة (آلية التنفيذ):</h3>
+            <div class="space-y-3">
+              <div class="flex items-start gap-2">
+                <span class="mt-1">•</span>
+                <input
+                  type="text"
+                  id="component1"
+                  placeholder="ورش عمل تفاعلية عن استخدام ChatGPT"
+                  class="w-full"
+                />
+                <div id="component1Error" class="error-message">هذا الحقل مطلوب</div>
+              </div>
+              <div class="flex items-start gap-2">
+                <span class="mt-1">•</span>
+                <input
+                  type="text"
+                  id="component2"
+                  placeholder="تدريبات عملية على كتابة prompts فعالة"
+                  class="w-full"
+                />
+                <div id="component2Error" class="error-message">هذا الحقل مطلوب</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- التوقيعات -->
+          <div class="section-bg">
+            <h3 class="text-lg font-bold mb-4">التوقيعات:</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div>
+                <label class="mb-2 required-field">توقيع يمين:</label>
+                <input
+                  type="text"
+                  id="rightSignature"
+                  placeholder="المعلم / اسم المعلم"
+                  class="w-full"
+                />
+                <div id="rightSignatureError" class="error-message">هذا الحقل مطلوب</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- زر المعاينة -->
+          <div class="flex justify-center mt-6 mb-8">
+            <button
+              class="btn-main"
+              onclick="previewTemplate()"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="2"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+                />
+              </svg>
+              معاينة التقرير
+            </button>
           </div>
         </div>
       </div>
     </div>
 
+<!-- FOOTER -->
+    <footer class="mt-12 footer-ink border-t border-gray-100">
+      <div
+        class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+      >
+        <!-- RIGHT COLUMN -->
+        <div class="text-right md:flex-1">
+          <img
+            src="../assets/imgs/gsoor_logo.jpg"
+            alt="logo"
+            class="h-10 mx-auto md:mx-0"
+          />
+          <div
+            class="flex justify-center md:justify-end gap-4 mt-3 text-gray-600"
+          >
+            <i class="fa-brands fa-youtube social-icon text-lg"></i>
+            <i class="fa-brands fa-tiktok social-icon text-lg"></i>
+            <i class="fa-brands fa-instagram social-icon text-lg"></i>
+          </div>
+        </div>
+
+        <!-- CENTER COLUMN -->
+        <div class="text-center md:flex-1">
+          <h3 class="font-bold mb-2">تواصل معنا</h3>
+          <div class="flex items-center justify-center gap-4 text-gray-600">
+            <div class="flex items-center gap-2">
+              <i class="fa-regular fa-envelope text-sm"></i>
+              <span>البريد</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-mobile-screen-button text-sm"></i>
+              <span>واتس</span>
+            </div>
+          </div>
+          <div class="mt-3 text-sm text-gray-500">موقّع لدى منصة الأعمال</div>
+        </div>
+
+        <!-- LEFT COLUMN -->
+        <div class="text-left md:flex-1">
+          <div class="text-sm text-gray-500">
+            © 2025 متجر جسور الرقمي | جميع الحقوق محفوظة
+          </div>
+          <div
+            class="mt-3 flex gap-2 items-center justify-center md:justify-start"
+          >
+            <span class="sr-only">Visa</span>
+            <i class="fa-brands fa-cc-visa text-gray-600 text-lg"></i>
+            <span class="sr-only">Mada</span>
+            <i class="fa-solid fa-credit-card text-gray-600 text-lg"></i>
+          </div>
+        </div>
+      </div>
+    </footer>
     <!-- Modal Popup للمعاينة -->
     <div id="previewModal" class="modal-overlay">
       <div class="modal-content">
         <div class="modal-header">
-          <h2 class="text-2xl font-bold text-gray-800">معاينة مبادرة الأمن السيبراني والمواطنة الرقمية</h2>
+          <h2 class="text-2xl font-bold text-gray-800">معاينة تقرير استخدام شات جي بي تي (ChatGPT)</h2>
           <button class="modal-close" onclick="closePreviewModal()">
             &times;
           </button>
@@ -944,9 +671,8 @@
       // دالة حفظ جميع البيانات في localStorage
       async function saveTemplateData() {
         try {
-          // تحميل البيانات الموجودة أولاً للحفاظ على الملفات المحفوظة
           const existingData = JSON.parse(
-            localStorage.getItem("cybersecurityInitiativeData") || "{}"
+            localStorage.getItem("chatgptInitiativeData") || "{}"
           );
           const data = { ...existingData };
 
@@ -961,64 +687,17 @@
           data.strategyName = document.getElementById("strategyName").value;
           data.targetCount = document.getElementById("targetCount").value;
           data.executionDate = document.getElementById("executionDate").value;
-          data.initiativeLogo = document.getElementById("initiativeLogo").value;
           data.initiativeLocation = document.getElementById("initiativeLocation").value;
           data.targetGroup = document.getElementById("targetGroup").value;
           data.initiativeIdea = document.getElementById("initiativeIdea").value;
-          data.initiativeExplanation = document.getElementById("initiativeExplanation").value;
           data.goal1 = document.getElementById("goal1").value;
           data.goal2 = document.getElementById("goal2").value;
-          data.goal3 = document.getElementById("goal3").value;
-          data.goal4 = document.getElementById("goal4").value;
-          data.detailedGoals = document.getElementById("detailedGoals").value;
           data.component1 = document.getElementById("component1").value;
           data.component2 = document.getElementById("component2").value;
-          data.component3 = document.getElementById("component3").value;
-          data.component4 = document.getElementById("component4").value;
-          data.component5 = document.getElementById("component5").value;
-          data.component6 = document.getElementById("component6").value;
-          data.componentsExplanation = document.getElementById("componentsExplanation").value;
-          data.activity1 = document.getElementById("activity1").value;
-          data.activity2 = document.getElementById("activity2").value;
-          data.activity3 = document.getElementById("activity3").value;
-          data.activity4 = document.getElementById("activity4").value;
-          data.activity5 = document.getElementById("activity5").value;
-          data.activitiesDescription = document.getElementById("activitiesDescription").value;
-          data.successIndicator1 = document.getElementById("successIndicator1").value;
-          data.successIndicator2 = document.getElementById("successIndicator2").value;
-          data.successIndicator3 = document.getElementById("successIndicator3").value;
-          data.successIndicator4 = document.getElementById("successIndicator4").value;
-          data.successIndicator5 = document.getElementById("successIndicator5").value;
-          data.successIndicatorsExplanation = document.getElementById("successIndicatorsExplanation").value;
-          data.attachment1 = document.getElementById("attachment1").value;
-          data.attachment2 = document.getElementById("attachment2").value;
-          data.attachment3 = document.getElementById("attachment3").value;
-          data.attachment4 = document.getElementById("attachment4").value;
-          data.attachment5 = document.getElementById("attachment5").value;
-          data.attachmentsExplanation = document.getElementById("attachmentsExplanation").value;
           data.rightSignature = document.getElementById("rightSignature").value;
-          data.middleSignature = document.getElementById("middleSignature").value;
-          data.leftSignature = document.getElementById("leftSignature").value;
-          
-          // جمع بيانات التصميم
-          data.templateStyle = document.querySelector('input[name="templateStyle"]:checked').value;
-          data.arabicNumbers = document.querySelector('input[name="arabicNumbers"]:checked').value;
-          data.smallCertificates = document.querySelector('input[name="smallCertificates"]:checked').value;
-
-          // جمع بيانات الشعارات
-          const mainLogoFile = document.getElementById("mainLogo").files[0];
-          if (mainLogoFile) {
-            data.mainLogo = await fileToBase64(mainLogoFile);
-          }
-          
-          const subLogoFile = document.getElementById("subLogo").files[0];
-          if (subLogoFile) {
-            data.subLogo = await fileToBase64(subLogoFile);
-          }
 
           // حفظ البيانات في localStorage
-          localStorage.setItem("cybersecurityInitiativeData", JSON.stringify(data));
-
+          localStorage.setItem("chatgptInitiativeData", JSON.stringify(data));
           return data;
         } catch (error) {
           console.error("خطأ في حفظ البيانات:", error);
@@ -1026,8 +705,85 @@
         }
       }
 
+      // دالة التحقق من صحة البيانات
+      function validateForm() {
+        let isValid = true;
+
+        // إزالة رسائل الخطأ السابقة
+        document.querySelectorAll(".error-message").forEach((error) => {
+          error.classList.remove("show");
+        });
+        document.querySelectorAll(".field-error").forEach((field) => {
+          field.classList.remove("field-error");
+        });
+
+        // التحقق من الحقول المطلوبة
+        const requiredFields = [
+          'reportTitle', 'country', 'ministry', 'administration', 'school',
+          'academicYear', 'semester', 'strategyName', 'targetCount', 
+          'executionDate', 'initiativeLocation', 'targetGroup', 'initiativeIdea', 
+          'goal1', 'goal2', 'component1', 'component2', 'rightSignature'
+        ];
+
+        requiredFields.forEach(fieldId => {
+          const field = document.getElementById(fieldId);
+          if (!field.value.trim()) {
+            showError(fieldId, fieldId + 'Error');
+            isValid = false;
+          }
+        });
+
+        return isValid;
+      }
+
+      // دالة لإظهار رسالة الخطأ
+      function showError(fieldId, errorId) {
+        const field = document.getElementById(fieldId);
+        const error = document.getElementById(errorId);
+        if (field) {
+          field.classList.add("field-error");
+        }
+        if (error) {
+          error.classList.add("show");
+        }
+      }
+
+      // إزالة رسالة الخطأ عند الكتابة
+      function setupFieldValidation() {
+        const textFields = [
+          'reportTitle', 'country', 'ministry', 'administration', 'school',
+          'academicYear', 'semester', 'strategyName', 'targetCount', 
+          'executionDate', 'initiativeLocation', 'targetGroup', 'initiativeIdea', 
+          'goal1', 'goal2', 'component1', 'component2', 'rightSignature'
+        ];
+
+        textFields.forEach((fieldId) => {
+          const field = document.getElementById(fieldId);
+          if (field) {
+            field.addEventListener("input", function () {
+              this.classList.remove("field-error");
+              const errorId = fieldId + "Error";
+              const error = document.getElementById(errorId);
+              if (error) {
+                error.classList.remove("show");
+              }
+            });
+          }
+        });
+      }
+
       // دالة المعاينة
       async function previewTemplate() {
+        // التحقق من صحة البيانات أولاً
+        if (!validateForm()) {
+          // التمرير إلى أول حقل به خطأ
+          const firstError = document.querySelector(".field-error");
+          if (firstError) {
+            firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+          return;
+        }
+
         // إذا كانت البيانات صحيحة، حفظها وفتح المعاينة
         await saveTemplateData();
         generatePreviewContent();
@@ -1048,18 +804,30 @@
         document.body.style.overflow = "auto";
       }
 
+      // إغلاق الـ modal عند الضغط خارج المحتوى
+      document.getElementById("previewModal")?.addEventListener("click", function (e) {
+        if (e.target === this) {
+          closePreviewModal();
+        }
+      });
+
+      // إغلاق الـ modal عند الضغط على ESC
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closePreviewModal();
+        }
+      });
+
       // توليد محتوى المعاينة
       function generatePreviewContent() {
-        const data = JSON.parse(localStorage.getItem("cybersecurityInitiativeData") || "{}");
-        const previewContainer = document.getElementById(
-          "previewTemplateContent"
-        );
+        const data = JSON.parse(localStorage.getItem("chatgptInitiativeData") || "{}");
+        const previewContainer = document.getElementById("previewTemplateContent");
 
         // إنشاء HTML للمعاينة
         let html = `
           <div class="space-y-6 text-right">
             <div class="text-center mb-6">
-              <h2 class="text-3xl font-bold text-green-800 mb-4">${data.reportTitle || "مبادرة الأمن السيبراني والمواطنة الرقمية"}</h2>
+              <h2 class="text-3xl font-bold text-green-800 mb-4">${data.reportTitle || "تقرير استخدام شات جي بي تي (ChatGPT) لدعم المعلم"}</h2>
             </div>
 
             <div class="mb-6">
@@ -1081,7 +849,6 @@
               <p class="text-lg text-gray-700">اسم الاستراتيجية: ${data.strategyName || ""}</p>
               <p class="text-lg text-gray-700">عدد المستهدفين: ${data.targetCount || ""}</p>
               <p class="text-lg text-gray-700">تاريخ التنفيذ: ${data.executionDate || ""}</p>
-              <p class="text-lg text-gray-700">شعار المبادرة: ${data.initiativeLogo || ""}</p>
               <p class="text-lg text-gray-700">مكان المبادرة: ${data.initiativeLocation || ""}</p>
               <p class="text-lg text-gray-700">الفئة المستهدفة: ${data.targetGroup || ""}</p>
             </div>
@@ -1089,7 +856,6 @@
             <div class="mb-6">
               <h3 class="text-xl font-bold text-gray-800 mb-2">فكرة المبادرة (الهدف العام)</h3>
               <p class="text-lg text-gray-700">${data.initiativeIdea || ""}</p>
-              <p class="mt-4 text-lg text-gray-700"><strong>شرح الفكرة الرئيسية:</strong> ${data.initiativeExplanation || ""}</p>
             </div>
 
             <div class="mb-6">
@@ -1097,10 +863,7 @@
               <ul class="numbered-list text-lg text-gray-700">
                 <li>${data.goal1 || ""}</li>
                 <li>${data.goal2 || ""}</li>
-                <li>${data.goal3 || ""}</li>
-                <li>${data.goal4 || ""}</li>
               </ul>
-              <p class="mt-4 text-lg text-gray-700"><strong>الأهداف التفصيلية:</strong> ${data.detailedGoals || ""}</p>
             </div>
 
             <div class="mb-6">
@@ -1108,48 +871,7 @@
               <ul class="list-disc pr-6 text-lg text-gray-700">
                 <li>${data.component1 || ""}</li>
                 <li>${data.component2 || ""}</li>
-                <li>${data.component3 || ""}</li>
-                <li>${data.component4 || ""}</li>
-                <li>${data.component5 || ""}</li>
-                <li>${data.component6 || ""}</li>
               </ul>
-              <p class="mt-4 text-lg text-gray-700"><strong>شرح العناصر والأنشطة:</strong> ${data.componentsExplanation || ""}</p>
-            </div>
-
-            <div class="mb-6">
-              <h3 class="text-xl font-bold text-gray-800 mb-2">الأنشطة</h3>
-              <ul class="list-disc pr-6 text-lg text-gray-700">
-                <li>${data.activity1 || ""}</li>
-                <li>${data.activity2 || ""}</li>
-                <li>${data.activity3 || ""}</li>
-                <li>${data.activity4 || ""}</li>
-                <li>${data.activity5 || ""}</li>
-              </ul>
-              <p class="mt-4 text-lg text-gray-700"><strong>وصف الأنشطة المنفذة:</strong> ${data.activitiesDescription || ""}</p>
-            </div>
-
-            <div class="mb-6">
-              <h3 class="text-xl font-bold text-gray-800 mb-2">مؤشرات النجاح (المخرجات المتوقعة)</h3>
-              <ul class="list-disc pr-6 text-lg text-gray-700">
-                <li>${data.successIndicator1 || ""}</li>
-                <li>${data.successIndicator2 || ""}</li>
-                <li>${data.successIndicator3 || ""}</li>
-                <li>${data.successIndicator4 || ""}</li>
-                <li>${data.successIndicator5 || ""}</li>
-              </ul>
-              <p class="mt-4 text-lg text-gray-700"><strong>مؤشرات قياس النجاح:</strong> ${data.successIndicatorsExplanation || ""}</p>
-            </div>
-
-            <div class="mb-6">
-              <h3 class="text-xl font-bold text-gray-800 mb-2">المرفقات (وسائل التوثيق)</h3>
-              <ul class="list-disc pr-6 text-lg text-gray-700">
-                <li>${data.attachment1 || ""}</li>
-                <li>${data.attachment2 || ""}</li>
-                <li>${data.attachment3 || ""}</li>
-                <li>${data.attachment4 || ""}</li>
-                <li>${data.attachment5 || ""}</li>
-              </ul>
-              <p class="mt-4 text-lg text-gray-700"><strong>الوثائق الداعمة:</strong> ${data.attachmentsExplanation || ""}</p>
             </div>
 
             <div class="mt-8 pt-4 border-t border-gray-300">
@@ -1158,14 +880,6 @@
                 <div class="text-center">
                   <p class="text-lg text-gray-700">${data.rightSignature || ""}</p>
                   <p class="text-sm text-gray-600 mt-2">توقيع يمين</p>
-                </div>
-                <div class="text-center">
-                  <p class="text-lg text-gray-700">${data.middleSignature || ""}</p>
-                  <p class="text-sm text-gray-600 mt-2">توقيع وسط</p>
-                </div>
-                <div class="text-center">
-                  <p class="text-lg text-gray-700">${data.leftSignature || ""}</p>
-                  <p class="text-sm text-gray-600 mt-2">توقيع يسار</p>
                 </div>
               </div>
             </div>
@@ -1177,15 +891,13 @@
 
       // تحميل الصورة من الـ modal
       function downloadImageFromModal() {
-        const previewContent = document.getElementById(
-          "previewTemplateContent"
-        );
+        const previewContent = document.getElementById("previewTemplateContent");
         html2canvas(previewContent, {
           backgroundColor: "#ffffff",
           scale: 2,
         }).then((canvas) => {
           const link = document.createElement("a");
-          link.download = "cybersecurity-initiative.png";
+          link.download = "chatgpt-initiative-report.png";
           link.href = canvas.toDataURL();
           link.click();
         });
@@ -1193,9 +905,7 @@
 
       // تحميل PDF من الـ modal
       function downloadPDFFromModal() {
-        const previewContent = document.getElementById(
-          "previewTemplateContent"
-        );
+        const previewContent = document.getElementById("previewTemplateContent");
         html2canvas(previewContent, {
           backgroundColor: "#ffffff",
           scale: 2,
@@ -1205,9 +915,23 @@
           const imgWidth = 210;
           const imgHeight = (canvas.height * imgWidth) / canvas.width;
           pdf.addImage(imgData, "JPEG", 0, 0, imgWidth, imgHeight);
-          pdf.save("cybersecurity-initiative.pdf");
+          pdf.save("chatgpt-initiative-report.pdf");
         });
       }
+
+      // تهيئة التحقق من الصحة عند تحميل الصفحة
+      document.addEventListener('DOMContentLoaded', function() {
+        setupFieldValidation();
+        
+        // تحميل البيانات المحفوظة إن وجدت
+        const savedData = JSON.parse(localStorage.getItem("chatgptInitiativeData") || "{}");
+        Object.keys(savedData).forEach(key => {
+          const element = document.getElementById(key);
+          if (element && savedData[key]) {
+            element.value = savedData[key];
+          }
+        });
+      });
     </script>
   </body>
 </html>

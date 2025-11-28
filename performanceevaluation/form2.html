@@ -3,15 +3,31 @@
   <head>
     <meta charset="utf-8" />
     <script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
     <title>نموذج شواهد تقييم الأداء</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <style>
       body {
         font-family: "Helvetica", "Tajawal", sans-serif;
       }
+      
+.footer-ink {
+        background: #f8fafb;
+      }
+
+      .social-icon {
+        width: 26px;
+        height: 26px;
+        fill: currentColor;
+      }
+
+
       label {
         font-weight: 600;
         color: #136f3c;
+        display: block;
+        margin-bottom: 8px;
       }
       .error {
         color: #d00000;
@@ -19,7 +35,35 @@
         margin-top: 4px;
         display: none;
       }
-          /* Navbar Styles */
+      .field-error {
+        border-color: #dc2626 !important;
+        border-width: 2px !important;
+      }
+      .btn-main {
+        background-color: #10b981;
+        color: white;
+        padding: 16px 32px;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 18px;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        transition: background-color 0.3s;
+        margin: 20px auto;
+        width: 100%;
+      }
+      .btn-main:hover {
+        background-color: #059669;
+      }
+      .required-field::after {
+        content: " *";
+        color: #dc2626;
+      }
+      /* Navbar Styles */
       .navbar {
         background-color: #f3f4f6;
         padding: 12px 0;
@@ -153,7 +197,6 @@
           display: none;
         }
       }
-
     </style>
   </head>
   <body class="bg-gray-100 py-10">
@@ -260,7 +303,7 @@
       </div>
     </header>
 
-    <div class="max-w-4xl mx-auto bg-white shadow-xl border rounded-2xl p-8">
+    <div class="max-w-4xl mx-auto bg-white shadow-xl border rounded-2xl p-8 mt-16">
       <h2 class="text-3xl font-bold text-green-700 text-center mb-8">
         نموذج شواهد تقييم الأداء
       </h2>
@@ -281,14 +324,14 @@
 
       <form id="card2FormPage" class="grid grid-cols-1 sm:grid-cols-2 gap-6">
         <div>
-          <label>اسم المتعلم/ة:</label>
-          <input name="studentName" class="w-full border p-3 rounded-md" />
+          <label class="required-field">اسم المتعلم/ة:</label>
+          <input name="studentName" class="w-full border p-3 rounded-md" required />
           <div class="error">هذا الحقل مطلوب</div>
         </div>
 
         <div>
-          <label>المرحلة الدراسية:</label>
-          <select name="stage" class="w-full border p-3 rounded-md">
+          <label class="required-field">المرحلة الدراسية:</label>
+          <select name="stage" class="w-full border p-3 rounded-md" required>
             <option value="">-- اختر --</option>
             <option>الابتدائية</option>
             <option>المتوسطة</option>
@@ -298,19 +341,20 @@
         </div>
 
         <div>
-          <label>المادة:</label>
-          <input name="subject" class="w-full border p-3 rounded-md" />
+          <label class="required-field">المادة:</label>
+          <input name="subject" class="w-full border p-3 rounded-md" required />
           <div class="error">هذا الحقل مطلوب</div>
         </div>
 
         <div>
-          <label>التقييم (من 100):</label>
+          <label class="required-field">التقييم (من 100):</label>
           <input
             type="number"
             name="score"
             min="0"
             max="100"
             class="w-full border p-3 rounded-md"
+            required
           />
           <div class="error">أدخل قيمة صالحة (0-100)</div>
         </div>
@@ -325,8 +369,9 @@
         </div>
 
         <div class="col-span-2">
-          <label>اختر نموذج الشهادة:</label>
-          <select name="templateImage" class="w-full border p-3 rounded-md">
+          <label class="required-field">اختر نموذج الشهادة:</label>
+          <select name="templateImage" class="w-full border p-3 rounded-md" required>
+            <option value="">-- اختر نموذج الشهادة --</option>
             <option
               value="assets/imgs/card2/advanced-cybersecurity-initiative.webp"
             >
@@ -351,6 +396,7 @@
               Parents Communication
             </option>
           </select>
+          <div class="error">هذا الحقل مطلوب</div>
         </div>
 
         <div class="col-span-2">
@@ -366,10 +412,29 @@
 
       <div class="flex gap-4 mt-8">
         <button
-          onclick="preview2()"
-          class="bg-green-600 text-white px-8 py-3 rounded-xl text-lg font-bold flex-1"
+          onclick="previewTemplate()"
+          class="btn-main"
         >
-          معاينة
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
+            />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
+            />
+          </svg>
+          معاينة الشهادة
         </button>
         <button
           onclick="goBack()"
@@ -380,13 +445,148 @@
       </div>
     </div>
 
+    
+<!-- FOOTER -->
+    <footer class="mt-12 footer-ink border-t border-gray-100">
+      <div
+        class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+      >
+        <!-- RIGHT COLUMN -->
+        <div class="text-right md:flex-1">
+          <img
+            src="../assets/imgs/gsoor_logo.jpg"
+            alt="logo"
+            class="h-10 mx-auto md:mx-0"
+          />
+          <div
+            class="flex justify-center md:justify-end gap-4 mt-3 text-gray-600"
+          >
+            <i class="fa-brands fa-youtube social-icon text-lg"></i>
+            <i class="fa-brands fa-tiktok social-icon text-lg"></i>
+            <i class="fa-brands fa-instagram social-icon text-lg"></i>
+          </div>
+        </div>
+
+        <!-- CENTER COLUMN -->
+        <div class="text-center md:flex-1">
+          <h3 class="font-bold mb-2">تواصل معنا</h3>
+          <div class="flex items-center justify-center gap-4 text-gray-600">
+            <div class="flex items-center gap-2">
+              <i class="fa-regular fa-envelope text-sm"></i>
+              <span>البريد</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-mobile-screen-button text-sm"></i>
+              <span>واتس</span>
+            </div>
+          </div>
+          <div class="mt-3 text-sm text-gray-500">موقّع لدى منصة الأعمال</div>
+        </div>
+
+        <!-- LEFT COLUMN -->
+        <div class="text-left md:flex-1">
+          <div class="text-sm text-gray-500">
+            © 2025 متجر جسور الرقمي | جميع الحقوق محفوظة
+          </div>
+          <div
+            class="mt-3 flex gap-2 items-center justify-center md:justify-start"
+          >
+            <span class="sr-only">Visa</span>
+            <i class="fa-brands fa-cc-visa text-gray-600 text-lg"></i>
+            <span class="sr-only">Mada</span>
+            <i class="fa-solid fa-credit-card text-gray-600 text-lg"></i>
+          </div>
+        </div>
+      </div>
+    </footer>
+
     <script>
-      // دالة تبديل القائمة على الموبايل
-      function toggleMobileMenu() {
-        const menu = document.getElementById("navbarMenu");
-        menu.classList.toggle("mobile-active");
+      // دالة التحقق من صحة البيانات
+      function validateForm() {
+        let isValid = true;
+
+        // إزالة رسائل الخطأ السابقة
+        document.querySelectorAll(".error").forEach((error) => {
+          error.style.display = "none";
+        });
+        document.querySelectorAll(".field-error").forEach((field) => {
+          field.classList.remove("field-error");
+        });
+
+        // التحقق من الحقول المطلوبة
+        const requiredFields = [
+          'studentName', 'stage', 'subject', 'score', 'templateImage'
+        ];
+
+        requiredFields.forEach(fieldName => {
+          const field = document.querySelector(`[name="${fieldName}"]`);
+          if (!field.value.trim()) {
+            showError(field, fieldName);
+            isValid = false;
+          }
+        });
+
+        // التحقق من صحة التقييم
+        const scoreField = document.querySelector('[name="score"]');
+        if (scoreField.value) {
+          const score = parseInt(scoreField.value);
+          if (isNaN(score) || score < 0 || score > 100) {
+            showError(scoreField, 'score');
+            isValid = false;
+          }
+        }
+
+        return isValid;
       }
 
+      // دالة لإظهار رسالة الخطأ
+      function showError(field, fieldName) {
+        field.classList.add("field-error");
+        const error = field.nextElementSibling;
+        if (error && error.classList.contains('error')) {
+          error.style.display = 'block';
+        }
+      }
+
+      // إزالة رسالة الخطأ عند الكتابة
+      function setupFieldValidation() {
+        const fields = document.querySelectorAll('input, select, textarea');
+        
+        fields.forEach(field => {
+          field.addEventListener('input', function() {
+            this.classList.remove('field-error');
+            const error = this.nextElementSibling;
+            if (error && error.classList.contains('error')) {
+              error.style.display = 'none';
+            }
+          });
+
+          field.addEventListener('change', function() {
+            this.classList.remove('field-error');
+            const error = this.nextElementSibling;
+            if (error && error.classList.contains('error')) {
+              error.style.display = 'none';
+            }
+          });
+        });
+      }
+
+      // دالة المعاينة المحسنة
+      async function previewTemplate() {
+        // التحقق من صحة البيانات أولاً
+        if (!validateForm()) {
+          // التمرير إلى أول حقل به خطأ
+          const firstError = document.querySelector(".field-error");
+          if (firstError) {
+            firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+          return;
+        }
+
+        // إذا كانت البيانات صحيحة، حفظها وفتح المعاينة
+        await saveTemplateData();
+        window.location.href = "preview2.html";
+      }
 
       function goBack() {
         window.history.back();
@@ -433,28 +633,11 @@
         });
       }
 
-      async function preview2() {
+      async function saveTemplateData() {
         const form = document.getElementById("card2FormPage");
-        const fields = form.querySelectorAll("input, textarea, select");
-        let valid = true;
-        fields.forEach((f) => {
-          const err = f.nextElementSibling;
-          if (f.name === "certificateFile") return;
-          if (
-            (f.tagName === "INPUT" ||
-              f.tagName === "TEXTAREA" ||
-              f.tagName === "SELECT") &&
-            f.required &&
-            !f.value.trim()
-          ) {
-            err && (err.style.display = "block");
-            valid = false;
-          } else if (err) err.style.display = "none";
-        });
-        if (!valid) return;
-
         const data = {};
         const fd = new FormData(form);
+        
         for (const [k, v] of fd.entries()) {
           if (k === "certificateFile" && v && v.size) {
             data[k] = await fileToBase64(v);
@@ -462,9 +645,23 @@
             data[k] = v;
           }
         }
+        
         localStorage.setItem("templateData2", JSON.stringify(data));
-        window.location.href = "preview2.html";
       }
+
+      // تهيئة التحقق من الصحة عند تحميل الصفحة
+      document.addEventListener('DOMContentLoaded', function() {
+        setupFieldValidation();
+        
+        // تحميل البيانات المحفوظة إن وجدت
+        const savedData = JSON.parse(localStorage.getItem("templateData2") || "{}");
+        Object.keys(savedData).forEach(key => {
+          const element = document.querySelector(`[name="${key}"]`);
+          if (element && savedData[key] && key !== 'certificateFile') {
+            element.value = savedData[key];
+          }
+        });
+      });
     </script>
   </body>
 </html>

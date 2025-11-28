@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>المبادرات التعليمية</title>
+  <title>المبادرات التعليمية - الأيام والمناسبات العالمية</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
@@ -12,41 +12,83 @@
       font-family: "Tahoma", "Arial", sans-serif;
       background: #f8fafc;
     }
+
+    
+.footer-ink {
+        background: #f8fafb;
+      }
+
+      .social-icon {
+        width: 26px;
+        height: 26px;
+        fill: currentColor;
+      }
+
+
     .shadow-card {
       box-shadow: 0 4px 14px rgba(0,0,0,0.06);
+      transition: all 0.3s ease;
+    }
+    .shadow-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+    .card-btn {
+      transition: all 0.3s ease;
+    }
+    .card-btn:hover {
+      background-color: #3b82f6;
+      color: white;
+      transform: scale(1.05);
+    }
+    .support-btn {
+      transition: all 0.3s ease;
+    }
+    .support-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
   </style>
 </head>
 
-<body class="bg-[#f8fafc]">
+<body class="bg-[#f8fafc] min-h-screen">
 
   <!-- Header Links -->
   <div class="w-full bg-white shadow border-b">
     <div class="max-w-5xl mx-auto text-[13px] text-gray-700 py-2 px-4 flex flex-wrap gap-3 justify-center">
-      <span>نماذج وتقارير توثيق</span>
-      <span>شواهد تقييم الأداء جاهزة</span>
-      <span>التقويم الدراسي والأسبوعي</span>
-      <span>خطط علاجية وإثرائية</span>
-      <span>إستراتيجيات أنماط التعلم</span>
+      <a href="#" class="hover:text-blue-600 transition-colors">نماذج وتقارير توثيق</a>
+      <a href="#" class="hover:text-blue-600 transition-colors">شواهد تقييم الأداء جاهزة</a>
+      <a href="#" class="hover:text-blue-600 transition-colors">التقويم الدراسي والأسبوعي</a>
+      <a href="#" class="hover:text-blue-600 transition-colors">خطط علاجية وإثرائية</a>
+      <a href="#" class="hover:text-blue-600 transition-colors">إستراتيجيات أنماط التعلم</a>
     </div>
   </div>
 
   <!-- Breadcrumb -->
   <div class="max-w-5xl mx-auto mt-3 text-sm text-gray-500 px-4">
-    الرئيسية / نماذج وتقارير توثيق / <span class="text-black">المبادرات التعليمية</span>
+    <a href="#" class="hover:text-blue-600 transition-colors">الرئيسية</a> / 
+    <a href="#" class="hover:text-blue-600 transition-colors">نماذج وتقارير توثيق</a> / 
+    <span class="text-black font-medium">الأيام والمناسبات العالمية</span>
   </div>
 
   <!-- Support Box -->
   <div class="max-w-5xl mx-auto mt-4 bg-white border rounded-xl p-4 shadow-sm">
     <div class="text-center text-gray-600">
       <div class="text-lg mb-3 flex justify-center items-center gap-2">
-        😊 إذا حاب تدعمني
+        <span class="text-2xl">😊</span>
+        <span>إذا حاب تدعمني</span>
       </div>
       <p class="text-gray-500 mb-4">متابعتك لي على منصات التواصل تدعم الموقع وتفيدك على الاطلاع الدائم بأحدث الروابط والمحتوى الحصري.</p>
 
-      <div class="flex justify-center gap-3">
-        <button class="bg-[#1DA1F2] text-white px-4 py-2 rounded-md text-sm">تابعني على منصة (X) تويتر</button>
-        <button class="bg-[#0088cc] text-white px-4 py-2 rounded-md text-sm">اشترك بقناتي على تلجرام</button>
+      <div class="flex justify-center gap-3 flex-wrap">
+        <button class="support-btn bg-[#1DA1F2] text-white px-4 py-2 rounded-md text-sm flex items-center gap-2">
+          <i class="fab fa-twitter"></i>
+          تابعني على منصة (X) تويتر
+        </button>
+        <button class="support-btn bg-[#0088cc] text-white px-4 py-2 rounded-md text-sm flex items-center gap-2">
+          <i class="fab fa-telegram"></i>
+          اشترك بقناتي على تلجرام
+        </button>
       </div>
     </div>
   </div>
@@ -58,83 +100,240 @@
 
   <!-- Title -->
   <div class="max-w-3xl mx-auto text-center mt-6">
-    <h1 class="text-2xl font-bold text-gray-800">الأيام والمناسبات
-</h1>
+    <h1 class="text-2xl font-bold text-gray-800">الأيام والمناسبات العالمية</h1>
     <p class="text-gray-600 mt-2 text-sm">
-تقارير جاهزة للأيام والمناسبات العالمية
-
+      تقارير جاهزة للأيام والمناسبات العالمية - نماذج احترافية قابلة للتخصيص والتحميل
     </p>
   </div>
 
   <!-- Grid -->
-  <div class="max-w-6xl mx-auto mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
+  <div class="max-w-6xl mx-auto mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 mb-12">
 
-    <!-- Item 1 -->
-    <div class="bg-white border rounded-xl p-4 shadow-card">
-      <img src="https://picsum.photos/300/420?random=1" class="w-full h-80 object-cover rounded-md">
-      <h3 class="mt-3 text-center text-gray-800 font-semibold">إنشاء تقرير اليوم العالمي للطفل</h3>
+    <!-- Item 1 - اليوم العالمي للطفل -->
+    <div class="bg-white border rounded-xl p-4 shadow-card group">
+      <div class="relative overflow-hidden rounded-md">
+        <img src="https://picsum.photos/300/420?random=1" class="w-full h-80 object-cover rounded-md group-hover:scale-105 transition-transform duration-300">
+        <div class="absolute top-2 left-2 bg-blue-600 text-white px-2 py-1 rounded text-xs">
+          جديد
+        </div>
+      </div>
+      <h3 class="mt-3 text-center text-gray-800 font-semibold text-lg">تقرير اليوم العالمي للطفل</h3>
+      <p class="text-gray-500 text-sm text-center mt-2">نموذج متكامل لتوثيق فعاليات اليوم العالمي للطفل</p>
       <div class="flex justify-center mt-3">
-        <button type="button" class="px-4 py-2 border border-blue-500 text-blue-500 rounded-md text-sm">
-          <a href="childform.html" class="card-btn" style="text-decoration: none; display: flex; align-items: center; justify-content: center;">
-            <i class="fas fa-arrow-left ml-2"></i>ابدأ التصميم
+        <button type="button" class="card-btn px-4 py-2 border border-blue-500 text-blue-500 rounded-md text-sm font-medium">
+          <a href="childform.html" class="flex items-center justify-center gap-2">
+            <i class="fas fa-arrow-left"></i>
+            ابدأ التصميم
           </a>
         </button> 
       </div>
     </div>
 
-    <!-- Item 2 -->
-    <div class="bg-white border rounded-xl p-4 shadow-card">
-      <img src="https://picsum.photos/300/420?random=2" class="w-full h-80 object-cover rounded-md">
-      <h3 class="mt-3 text-center text-gray-800 font-semibold">إنشاء تقرير فعاليات اليوم العالمي للتسامح</h3>
+    <!-- Item 2 - اليوم العالمي للتسامح -->
+    <div class="bg-white border rounded-xl p-4 shadow-card group">
+      <div class="relative overflow-hidden rounded-md">
+        <img src="https://picsum.photos/300/420?random=2" class="w-full h-80 object-cover rounded-md group-hover:scale-105 transition-transform duration-300">
+        <div class="absolute top-2 left-2 bg-green-600 text-white px-2 py-1 rounded text-xs">
+          مميز
+        </div>
+      </div>
+      <h3 class="mt-3 text-center text-gray-800 font-semibold text-lg">تقرير فعاليات اليوم العالمي للتسامح</h3>
+      <p class="text-gray-500 text-sm text-center mt-2">توثيق شامل لفعاليات ونشاطات اليوم العالمي للتسامح</p>
       <div class="flex justify-center mt-3">
-        <button type="button" class="px-4 py-2 border border-blue-500 text-blue-500 rounded-md text-sm">
-          <a href="forgivnessday.html" class="card-btn" style="text-decoration: none; display: flex; align-items: center; justify-content: center;">
-            <i class="fas fa-arrow-left ml-2"></i>ابدأ التصميم
+        <button type="button" class="card-btn px-4 py-2 border border-blue-500 text-blue-500 rounded-md text-sm font-medium">
+          <a href="forgivnessday.html" class="flex items-center justify-center gap-2">
+            <i class="fas fa-arrow-left"></i>
+            ابدأ التصميم
           </a>
         </button> 
       </div>
     </div>
 
-    <!-- Item 3 -->
-    <div class="bg-white border rounded-xl p-4 shadow-card">
-      <img src="https://picsum.photos/300/420?random=3" class="w-full h-80 object-cover rounded-md">
-      <h3 class="mt-3 text-center text-gray-800 font-semibold">إنشاء تقرير فعاليات اليوم العالمي للسكري
-</h3>
+    <!-- Item 3 - اليوم العالمي للسكري -->
+    <div class="bg-white border rounded-xl p-4 shadow-card group">
+      <div class="relative overflow-hidden rounded-md">
+        <img src="https://picsum.photos/300/420?random=3" class="w-full h-80 object-cover rounded-md group-hover:scale-105 transition-transform duration-300">
+        <div class="absolute top-2 left-2 bg-red-600 text-white px-2 py-1 rounded text-xs">
+          شائع
+        </div>
+      </div>
+      <h3 class="mt-3 text-center text-gray-800 font-semibold text-lg">تقرير فعاليات اليوم العالمي للسكري</h3>
+      <p class="text-gray-500 text-sm text-center mt-2">نموذج متخصص لتوثيق فعاليات التوعية بمرض السكري</p>
       <div class="flex justify-center mt-3">
-        <button type="button" class="px-4 py-2 border border-blue-500 text-blue-500 rounded-md text-sm">
-          <a href="sokaryday.html" class="card-btn" style="text-decoration: none; display: flex; align-items: center; justify-content: center;">
-            <i class="fas fa-arrow-left ml-2"></i>ابدأ التصميم
+        <button type="button" class="card-btn px-4 py-2 border border-blue-500 text-blue-500 rounded-md text-sm font-medium">
+          <a href="sokaryday.html" class="flex items-center justify-center gap-2">
+            <i class="fas fa-arrow-left"></i>
+            ابدأ التصميم
           </a>
         </button> 
       </div>
     </div>
 
-
-  </div>
-
-  <!-- Footer Stats -->
-  <div class="max-w-4xl mx-auto text-center mt-10 space-y-4 text-gray-700 text-sm px-4">
-    <div class="bg-white border rounded-xl py-3">عدد الخدمات المنفذة: <strong>2215854</strong></div>
-    <div class="bg-white border rounded-xl py-3">عدد سجلات شواهد تقييم الأداء المنفذة: <strong>6351</strong></div>
-  </div>
-
-  <!-- Footer -->
-  <div class="text-center text-gray-500 text-sm mt-10">
-    <div class="flex justify-center gap-4 mb-4">
-      <a href="#" class="text-blue-600">اتصل بنا</a>
-      <a href="#" class="text-blue-600">تويتر</a>
-      <a href="#" class="text-blue-600">سياسة الخصوصية</a>
-      <a href="#" class="text-blue-600">اتفاقية الاستخدام</a>
-      <a href="#" class="text-blue-600">من نحن</a>
+    <!-- Item 4 - اليوم العالمي للغة العربية -->
+    <div class="bg-white border rounded-xl p-4 shadow-card group">
+      <div class="relative overflow-hidden rounded-md">
+        <img src="https://picsum.photos/300/420?random=4" class="w-full h-80 object-cover rounded-md group-hover:scale-105 transition-transform duration-300">
+        <div class="absolute top-2 left-2 bg-purple-600 text-white px-2 py-1 rounded text-xs">
+          جديد
+        </div>
+      </div>
+      <h3 class="mt-3 text-center text-gray-800 font-semibold text-lg">تقرير اليوم العالمي للغة العربية</h3>
+      <p class="text-gray-500 text-sm text-center mt-2">توثيق فعاليات الاحتفال باللغة العربية</p>
+      <div class="flex justify-center mt-3">
+        <button type="button" class="card-btn px-4 py-2 border border-blue-500 text-blue-500 rounded-md text-sm font-medium">
+          <a href="arabicday.html" class="flex items-center justify-center gap-2">
+            <i class="fas fa-arrow-left"></i>
+            ابدأ التصميم
+          </a>
+        </button> 
+      </div>
     </div>
-    edu-forms.com, Inc 2025 ©
+
+    <!-- Item 5 - اليوم العالمي للمعلم -->
+    <div class="bg-white border rounded-xl p-4 shadow-card group">
+      <div class="relative overflow-hidden rounded-md">
+        <img src="https://picsum.photos/300/420?random=5" class="w-full h-80 object-cover rounded-md group-hover:scale-105 transition-transform duration-300">
+        <div class="absolute top-2 left-2 bg-yellow-600 text-white px-2 py-1 rounded text-xs">
+          مميز
+        </div>
+      </div>
+      <h3 class="mt-3 text-center text-gray-800 font-semibold text-lg">تقرير اليوم العالمي للمعلم</h3>
+      <p class="text-gray-500 text-sm text-center mt-2">توثيق فعاليات تكريم المعلمين والاحتفال بهم</p>
+      <div class="flex justify-center mt-3">
+        <button type="button" class="card-btn px-4 py-2 border border-blue-500 text-blue-500 rounded-md text-sm font-medium">
+          <a href="teacherday.html" class="flex items-center justify-center gap-2">
+            <i class="fas fa-arrow-left"></i>
+            ابدأ التصميم
+          </a>
+        </button> 
+      </div>
+    </div>
+
+    <!-- Item 6 - اليوم العالمي للبيئة -->
+    <div class="bg-white border rounded-xl p-4 shadow-card group">
+      <div class="relative overflow-hidden rounded-md">
+        <img src="https://picsum.photos/300/420?random=6" class="w-full h-80 object-cover rounded-md group-hover:scale-105 transition-transform duration-300">
+        <div class="absolute top-2 left-2 bg-green-600 text-white px-2 py-1 rounded text-xs">
+          شائع
+        </div>
+      </div>
+      <h3 class="mt-3 text-center text-gray-800 font-semibold text-lg">تقرير اليوم العالمي للبيئة</h3>
+      <p class="text-gray-500 text-sm text-center mt-2">توثيق فعاليات التوعية البيئية والحفاظ على الطبيعة</p>
+      <div class="flex justify-center mt-3">
+        <button type="button" class="card-btn px-4 py-2 border border-blue-500 text-blue-500 rounded-md text-sm font-medium">
+          <a href="environmentday.html" class="flex items-center justify-center gap-2">
+            <i class="fas fa-arrow-left"></i>
+            ابدأ التصميم
+          </a>
+        </button> 
+      </div>
+    </div>
+
   </div>
+
+  
+ 
+<!-- FOOTER -->
+    <footer class="mt-12 footer-ink border-t border-gray-100">
+      <div
+        class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+      >
+        <!-- RIGHT COLUMN -->
+        <div class="text-right md:flex-1">
+          <img
+            src="../assets/imgs/gsoor_logo.jpg"
+            alt="logo"
+            class="h-10 mx-auto md:mx-0"
+          />
+          <div
+            class="flex justify-center md:justify-end gap-4 mt-3 text-gray-600"
+          >
+            <i class="fa-brands fa-youtube social-icon text-lg"></i>
+            <i class="fa-brands fa-tiktok social-icon text-lg"></i>
+            <i class="fa-brands fa-instagram social-icon text-lg"></i>
+          </div>
+        </div>
+
+        <!-- CENTER COLUMN -->
+        <div class="text-center md:flex-1">
+          <h3 class="font-bold mb-2">تواصل معنا</h3>
+          <div class="flex items-center justify-center gap-4 text-gray-600">
+            <div class="flex items-center gap-2">
+              <i class="fa-regular fa-envelope text-sm"></i>
+              <span>البريد</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-mobile-screen-button text-sm"></i>
+              <span>واتس</span>
+            </div>
+          </div>
+          <div class="mt-3 text-sm text-gray-500">موقّع لدى منصة الأعمال</div>
+        </div>
+
+        <!-- LEFT COLUMN -->
+        <div class="text-left md:flex-1">
+          <div class="text-sm text-gray-500">
+            © 2025 متجر جسور الرقمي | جميع الحقوق محفوظة
+          </div>
+          <div
+            class="mt-3 flex gap-2 items-center justify-center md:justify-start"
+          >
+            <span class="sr-only">Visa</span>
+            <i class="fa-brands fa-cc-visa text-gray-600 text-lg"></i>
+            <span class="sr-only">Mada</span>
+            <i class="fa-solid fa-credit-card text-gray-600 text-lg"></i>
+          </div>
+        </div>
+      </div>
+    </footer>
 
   <!-- Scroll to Top -->
-  <button onclick="window.scrollTo({top:0,behavior:'smooth'})"
-    class="fixed bottom-6 left-6 bg-[#0ea5e9] text-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center text-xl">
+  <button onclick="scrollToTop()"
+    class="fixed bottom-6 left-6 bg-[#0ea5e9] text-white w-10 h-10 rounded-full shadow-lg flex items-center justify-center text-xl transition-all duration-300 hover:bg-blue-700 hover:scale-110"
+    id="scrollToTopBtn">
     ↑
   </button>
+
+  <script>
+    // Show/hide scroll to top button
+    window.onscroll = function() {
+      const scrollBtn = document.getElementById('scrollToTopBtn');
+      if (document.body.scrollTop > 100 || document.documentElement.scrollTop > 100) {
+        scrollBtn.style.opacity = "1";
+        scrollBtn.style.visibility = "visible";
+      } else {
+        scrollBtn.style.opacity = "0";
+        scrollBtn.style.visibility = "hidden";
+      }
+    };
+
+    // Scroll to top function
+    function scrollToTop() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
+    // Initialize scroll button
+    document.getElementById('scrollToTopBtn').style.opacity = "0";
+    document.getElementById('scrollToTopBtn').style.visibility = "hidden";
+
+    // Add loading animation to cards
+    document.addEventListener('DOMContentLoaded', function() {
+      const cards = document.querySelectorAll('.shadow-card');
+      cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        
+        setTimeout(() => {
+          card.style.transition = 'all 0.5s ease';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, index * 100);
+      });
+    });
+  </script>
 
 </body>
 </html>

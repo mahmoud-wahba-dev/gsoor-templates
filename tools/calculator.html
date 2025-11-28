@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Add this to your head section -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <title>حاسبة النسبة الموزونة</title>
+  <style>
+    :root{
+      --bg: #e9e9e9;
+      --panel: #3f3f46;
+      --panel-dark: #2f2f34;
+      --txt: #fff;
+      --input: #fff;
+      --btn: #d1d5db;
+      --radius: 8px;
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; background: #f0f0f0; color: #111; }
+
+.footer-ink {
+        background: #f8fafb;
+      }
+
+      .social-icon {
+        width: 26px;
+        height: 26px;
+        fill: currentColor;
+      }
+
+
+    .wrapper {
+      max-width: 860px;
+      margin: 40px auto;
+      padding: 0 16px;
+    }
+
+    .result-card {
+      background: #fff;
+      border: 1px solid #d9d9d9;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: 0 1px 0 rgba(0,0,0,.05);
+      text-align: center;
+    }
+
+    .result-title {
+      font-size: 18px;
+      color: #555;
+      margin-bottom: 10px;
+    }
+
+    .result-value {
+      font-size: 36px;
+      font-weight: bold;
+      color: #2c3e50;
+      margin: 10px 0;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #d9d9d9;
+      border-radius: 10px;
+      padding: 8px;
+      box-shadow: 0 1px 0 rgba(0,0,0,.05);
+    }
+
+    h1 {
+      text-align:center;
+      font-size: 26px;
+      margin: 8px 0 6px;
+    }
+    .subtitle {
+      text-align:center;
+      color: #555;
+      font-size: 13px;
+      margin-bottom: 14px;
+    }
+
+    .table-like {
+      width: 100%;
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      align-items: center;
+    }
+
+    .cell {
+      padding: 12px;
+      border-left: 1px solid #555;
+      border-right: 1px solid #555;
+      border-top: 0;
+      border-bottom: 0;
+      background: #44484f;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+    }
+
+    .cell:first-child { border-left: none; justify-content: flex-end; }
+
+    .cell h4 {
+      margin: 0;
+      font-size: 14px;
+      color: #e5e7eb;
+    }
+
+    .input {
+      width: 100%;
+      height: 28px;
+      border: none;
+      border-radius: 6px;
+      padding: 0 8px;
+      font-size: 14px;
+      background: #f6f6f6;
+      outline: none;
+      box-shadow: inset 0 1px 2px rgba(0,0,0,.05);
+      text-align: center;
+    }
+
+    .label {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      justify-items: end;
+      padding-right: 8px;
+    }
+
+    .center-row {
+      display: flex;
+      justify-content: center;
+      padding: 14px 0;
+    }
+
+    .btn {
+      background: #3498db;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 26px;
+      font-size: 14px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn:hover {
+      background: #2980b9;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    
+    .stat-item {
+      text-align: center;
+      padding: 15px;
+      background-color: #ecf0f1;
+      border-radius: 8px;
+      margin: 10px;
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .stat-number {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+    
+    .stat-label {
+      font-size: 14px;
+      color: #7f8c8d;
+    }
+
+    /* for small screens make it more readable */
+    @media (max-width: 720px){
+      .row { grid-template-columns: 1fr; }
+      .cell { border-left: 0; border-right: 0; border-top: 1px solid #555; }
+      .center-row { padding: 10px 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <div class="result-card" id="resultCard" style="display: none;">
+      <div class="result-title">نسبتك الموزونة هي:</div>
+      <div class="result-value" id="resultValue">0</div>
+    </div>
+
+    <div class="card" aria-label="حاسبة النسبة الموزونة">
+      <h1>حاسبة النسبة الموزونة</h1>
+      <div class="subtitle">أداة لحساب النسبة الموزونة للقبول الجامعي بناءً على الثانوية والقدرات والتحصيلي</div>
+
+      <div class="table-like" role="table" aria-label="جدول الدرجات">
+        <!-- Row 1 -->
+        <div class="row" role="row">
+          <div class="cell" role="columnheader" aria-label="الوصف">الوصف</div>
+          <div class="cell" role="columnheader" aria-label="درجتك">درجتك</div>
+          <div class="cell" role="columnheader" aria-label="معيار الجامعة">معيار الجامعة</div>
+        </div>
+
+        <div class="row" role="row">
+          <div class="cell" style="justify-content:flex-end;">
+            <h4>* درجة الثانوية</h4>
+          </div>
+          <div class="cell">
+            <input class="input" type="number" id="secondaryScore" min="0" max="100" value="54" aria-label="درجة الثانوية"/>
+          </div>
+          <div class="cell">
+            <input class="input" type="text" id="secondaryWeight" aria-label="معيار الجامعة" value="30%" readonly />
+          </div>
+        </div>
+
+        <!-- Row 2 -->
+        <div class="row" role="row">
+          <div class="cell" style="justify-content:flex-end;">
+            <h4>* درجة القدرات</h4>
+          </div>
+          <div class="cell">
+            <input class="input" type="number" id="aptitudeScore" min="0" max="100" value="50" aria-label="درجة القدرات"/>
+          </div>
+          <div class="cell">
+            <input class="input" type="text" id="aptitudeWeight" aria-label="معيار الجامعة" value="30%" readonly />
+          </div>
+        </div>
+
+        <!-- Row 3 -->
+        <div class="row" role="row">
+          <div class="cell" style="justify-content:flex-end;">
+            <h4>* درجة التحصيلي</h4>
+          </div>
+          <div class="cell">
+            <input class="input" type="number" id="achievementScore" min="0" max="100" value="50" aria-label="درجة التحصيلي"/>
+          </div>
+          <div class="cell">
+            <input class="input" type="text" id="achievementWeight" aria-label="معيار الجامعة" value="40%" readonly />
+          </div>
+        </div>
+
+      </div>
+
+      <div class="center-row">
+        <button class="btn" type="button" id="calculateBtn">حساب</button>
+      </div>
+    </div>
+
+   
+  </div>
+
+<!-- FOOTER -->
+    <footer class="mt-12 footer-ink border-t border-gray-100">
+      <div
+        class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+      >
+        <!-- RIGHT COLUMN -->
+        <div class="text-right md:flex-1">
+          <img
+            src="../assets/imgs/gsoor_logo.jpg"
+            alt="logo"
+            class="h-10 mx-auto md:mx-0"
+          />
+          <div
+            class="flex justify-center md:justify-end gap-4 mt-3 text-gray-600"
+          >
+            <i class="fa-brands fa-youtube social-icon text-lg"></i>
+            <i class="fa-brands fa-tiktok social-icon text-lg"></i>
+            <i class="fa-brands fa-instagram social-icon text-lg"></i>
+          </div>
+        </div>
+
+        <!-- CENTER COLUMN -->
+        <div class="text-center md:flex-1">
+          <h3 class="font-bold mb-2">تواصل معنا</h3>
+          <div class="flex items-center justify-center gap-4 text-gray-600">
+            <div class="flex items-center gap-2">
+              <i class="fa-regular fa-envelope text-sm"></i>
+              <span>البريد</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-mobile-screen-button text-sm"></i>
+              <span>واتس</span>
+            </div>
+          </div>
+          <div class="mt-3 text-sm text-gray-500">موقّع لدى منصة الأعمال</div>
+        </div>
+
+        <!-- LEFT COLUMN -->
+        <div class="text-left md:flex-1">
+          <div class="text-sm text-gray-500">
+            © 2025 متجر جسور الرقمي | جميع الحقوق محفوظة
+          </div>
+          <div
+            class="mt-3 flex gap-2 items-center justify-center md:justify-start"
+          >
+            <span class="sr-only">Visa</span>
+            <i class="fa-brands fa-cc-visa text-gray-600 text-lg"></i>
+            <span class="sr-only">Mada</span>
+            <i class="fa-solid fa-credit-card text-gray-600 text-lg"></i>
+          </div>
+        </div>
+      </div>
+    </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const calculateBtn = document.getElementById('calculateBtn');
+      const resultCard = document.getElementById('resultCard');
+      const resultValue = document.getElementById('resultValue');
+      
+      const secondaryScore = document.getElementById('secondaryScore');
+      const aptitudeScore = document.getElementById('aptitudeScore');
+      const achievementScore = document.getElementById('achievementScore');
+      
+      // الأوزان الثابتة
+      const secondaryWeight = 0.30;  // 30%
+      const aptitudeWeight = 0.30;   // 30%
+      const achievementWeight = 0.40; // 40%
+      
+      // حساب النسبة الموزونة عند النقر على الزر
+      calculateBtn.addEventListener('click', function() {
+        // التحقق من صحة المدخلات
+        if (!validateInputs()) {
+          return;
+        }
+        
+        // حساب النسبة الموزونة
+        const weightedAverage = calculateWeightedAverage();
+        
+        // عرض النتيجة
+        resultValue.textContent = weightedAverage.toFixed(1);
+        resultCard.style.display = 'block';
+      });
+      
+      // حساب النسبة الموزونة تلقائيًا عند تغيير القيم
+      [secondaryScore, aptitudeScore, achievementScore].forEach(input => {
+        input.addEventListener('input', function() {
+          if (validateInputs()) {
+            const weightedAverage = calculateWeightedAverage();
+            resultValue.textContent = weightedAverage.toFixed(1);
+            resultCard.style.display = 'block';
+          }
+        });
+      });
+      
+      // التحقق من صحة المدخلات
+      function validateInputs() {
+        const inputs = [secondaryScore, aptitudeScore, achievementScore];
+        let isValid = true;
+        
+        inputs.forEach(input => {
+          const value = parseFloat(input.value);
+          if (isNaN(value) || value < 0 || value > 100) {
+            input.style.border = '2px solid #e74c3c';
+            isValid = false;
+          } else {
+            input.style.border = '';
+          }
+        });
+        
+        return isValid;
+      }
+      
+      // حساب النسبة الموزونة
+      function calculateWeightedAverage() {
+        const secScore = parseFloat(secondaryScore.value);
+        const aptScore = parseFloat(aptitudeScore.value);
+        const achScore = parseFloat(achievementScore.value);
+        
+        // النسبة الموزونة = (الثانوية × 0.30) + (القدرات × 0.30) + (التحصيلي × 0.40)
+        const weightedAverage = 
+          (secScore * secondaryWeight) + 
+          (aptScore * aptitudeWeight) + 
+          (achScore * achievementWeight);
+        
+        return weightedAverage;
+      }
+      
+      // حساب النسبة الموزونة الأولية عند تحميل الصفحة
+      const initialAverage = calculateWeightedAverage();
+      resultValue.textContent = initialAverage.toFixed(1);
+      resultCard.style.display = 'block';
+    });
+  </script>
+</body>
+</html>

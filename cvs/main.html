@@ -23,6 +23,18 @@
     transition: all 0.3s ease;
     width: 100%;
   }
+  
+.footer-ink {
+        background: #f8fafb;
+      }
+
+      .social-icon {
+        width: 26px;
+        height: 26px;
+        fill: currentColor;
+      }
+
+
 
   .card-btn:hover {
     transform: scale(1.02);
@@ -411,35 +423,57 @@
         </a>
       </div>
     </div>
-    <div class="text-center border my-4 p-4 text-base sm:text-lg md:text-xl">
-      <p>عدد الخدمات المنفذة:</p>
-      <p>2187394</p>
-    </div>
-    <div class="text-center border my-4 p-4 text-base sm:text-lg md:text-xl">
-      <p>عدد سجلات شواهد تقييم الأداء المنفذة:</p>
-      <p>6321</p>
-    </div>
-    <footer class="mt-12 border-t border-gray-300 pt-6 pb-8">
-      <div class="max-w-6xl mx-auto">
-        <div class="flex flex-wrap justify-center items-center gap-4 text-gray-700 text-sm mb-4">
-          <a href="#" class="hover:text-green-600 transition">من نحن</a>
-          <span class="text-gray-400">|</span>
-          <a href="#" class="hover:text-green-600 transition">سياسة الخصوصية</a>
-          <span class="text-gray-400">|</span>
-          <a href="#" class="hover:text-green-600 transition">اتفاقية الاستخدام</a>
-          <span class="text-gray-400">|</span>
-          <a href="#" class="hover:text-green-600 transition flex items-center gap-1">
-            تويتر
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
-              <path
-                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-            </svg>
-          </a>
-          <span class="text-gray-400">|</span>
-          <a href="#" class="hover:text-green-600 transition">اتصل بنا</a>
+   
+<!-- FOOTER -->
+    <footer class="mt-12 footer-ink border-t border-gray-100">
+      <div
+        class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+      >
+        <!-- RIGHT COLUMN -->
+        <div class="text-right md:flex-1">
+          <img
+            src="../assets/imgs/gsoor_logo.jpg"
+            alt="logo"
+            class="h-10 mx-auto md:mx-0"
+          />
+          <div
+            class="flex justify-center md:justify-end gap-4 mt-3 text-gray-600"
+          >
+            <i class="fa-brands fa-youtube social-icon text-lg"></i>
+            <i class="fa-brands fa-tiktok social-icon text-lg"></i>
+            <i class="fa-brands fa-instagram social-icon text-lg"></i>
+          </div>
         </div>
-        <div class="text-center text-gray-600 text-sm">
-          Gsoor.com, Inc 2025 ©
+
+        <!-- CENTER COLUMN -->
+        <div class="text-center md:flex-1">
+          <h3 class="font-bold mb-2">تواصل معنا</h3>
+          <div class="flex items-center justify-center gap-4 text-gray-600">
+            <div class="flex items-center gap-2">
+              <i class="fa-regular fa-envelope text-sm"></i>
+              <span>البريد</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-mobile-screen-button text-sm"></i>
+              <span>واتس</span>
+            </div>
+          </div>
+          <div class="mt-3 text-sm text-gray-500">موقّع لدى منصة الأعمال</div>
+        </div>
+
+        <!-- LEFT COLUMN -->
+        <div class="text-left md:flex-1">
+          <div class="text-sm text-gray-500">
+            © 2025 متجر جسور الرقمي | جميع الحقوق محفوظة
+          </div>
+          <div
+            class="mt-3 flex gap-2 items-center justify-center md:justify-start"
+          >
+            <span class="sr-only">Visa</span>
+            <i class="fa-brands fa-cc-visa text-gray-600 text-lg"></i>
+            <span class="sr-only">Mada</span>
+            <i class="fa-solid fa-credit-card text-gray-600 text-lg"></i>
+          </div>
         </div>
       </div>
     </footer>

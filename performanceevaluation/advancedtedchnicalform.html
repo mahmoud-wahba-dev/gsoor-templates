@@ -79,6 +79,18 @@
         transition: 0.4s;
         border-radius: 50%;
       }
+      
+.footer-ink {
+        background: #f8fafb;
+      }
+
+      .social-icon {
+        width: 26px;
+        height: 26px;
+        fill: currentColor;
+      }
+
+
       .toggle-switch input:checked + .toggle-slider {
         background-color: #10b981;
       }
@@ -224,6 +236,21 @@
       .numbered-list li {
         margin-bottom: 8px;
       }
+      /* File Preview Styles */
+      .file-preview {
+        margin-top: 8px;
+        display: none;
+      }
+      .file-preview.show {
+        display: block;
+      }
+      .file-preview img {
+        max-width: 100px;
+        max-height: 100px;
+        object-fit: cover;
+        border-radius: 4px;
+        margin-left: 8px;
+      }
     </style>
   </head>
 
@@ -240,10 +267,11 @@
             <img
               src="https://via.placeholder.com/300x300?text=شعار+المبادرة"
               alt="شعار المبادرة"
+              id="initiativeLogoPreview"
             />
           </div>
           <h1 class="text-5xl text-center">
-            مبادرة الأمن السيبراني والمواطنة الرقميةالمتقدم
+            مبادرة الأمن السيبراني والمواطنة الرقمية
           </h1>
           <p class="text-gray-700 my-4 text-center text-xl">
             إنشاء وتخصيص مبادرة الأمن السيبراني والمواطنة الرقمية مع إمكانية تحرير وإضافة جميع البيانات الخاصة بك، بطريقة سهلة واحترافية توفر عليه الوقت والجهد ويتم حفظ الملف النهائي بتنسيق صورة أو ملف pdf لسهولة الطباعة بجودة عالية وإعادة الاستخدام في تقارير ونماذج أخرى.
@@ -257,6 +285,7 @@
                 id="reportTitle"
                 placeholder="مبادرة الأمن السيبراني والمواطنة الرقمية"
                 class="w-full"
+                value="مبادرة الأمن السيبراني والمواطنة الرقمية"
               />
               <div id="reportTitleError" class="error-message">هذا الحقل مطلوب</div>
             </div>
@@ -272,7 +301,9 @@
                     id="country"
                     placeholder="المملكة العربية السعودية"
                     class="w-full"
+                    value="المملكة العربية السعودية"
                   />
+                  <div id="countryError" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div>
                   <label class="mb-2">الوزارة:</label>
@@ -281,7 +312,9 @@
                     id="ministry"
                     placeholder="وزارة التعليم"
                     class="w-full"
+                    value="وزارة التعليم"
                   />
+                  <div id="ministryError" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div>
                   <label class="mb-2">الإدارة:</label>
@@ -290,7 +323,9 @@
                     id="administration"
                     placeholder="الإدارة العامة للتعليم بالمنطقة الشرقية"
                     class="w-full"
+                    value="الإدارة العامة للتعليم بالمنطقة الشرقية"
                   />
+                  <div id="administrationError" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div>
                   <label class="mb-2">المدرسة:</label>
@@ -299,7 +334,9 @@
                     id="school"
                     placeholder="مدرسة"
                     class="w-full"
+                    value="مدرسة"
                   />
+                  <div id="schoolError" class="error-message">هذا الحقل مطلوب</div>
                 </div>
               </div>
             </div>
@@ -315,7 +352,9 @@
                     id="academicYear"
                     placeholder="١٤٤٧هـ"
                     class="w-full"
+                    value="١٤٤٧هـ"
                   />
+                  <div id="academicYearError" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div>
                   <label class="mb-2">الفصل الدراسي:</label>
@@ -324,7 +363,9 @@
                     id="semester"
                     placeholder="الفصل الدراسي الأول"
                     class="w-full"
+                    value="الفصل الدراسي الأول"
                   />
+                  <div id="semesterError" class="error-message">هذا الحقل مطلوب</div>
                 </div>
               </div>
             </div>
@@ -340,7 +381,9 @@
                     id="strategyName"
                     placeholder="التعلم المبني على المشاريع"
                     class="w-full"
+                    value="التعلم المبني على المشاريع"
                   />
+                  <div id="strategyNameError" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div>
                   <label class="mb-2">عدد المستهدفين:</label>
@@ -349,7 +392,9 @@
                     id="targetCount"
                     placeholder="٣٠٠"
                     class="w-full"
+                    value="٣٠٠"
                   />
+                  <div id="targetCountError" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div>
                   <label class="mb-2">تاريخ التنفيذ:</label>
@@ -358,7 +403,9 @@
                     id="executionDate"
                     placeholder="٢٩ ربيع الآخر ١٤٤٧ هـ"
                     class="w-full"
+                    value="٢٩ ربيع الآخر ١٤٤٧ هـ"
                   />
+                  <div id="executionDateError" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div>
                   <label class="mb-2">شعار المبادرة:</label>
@@ -367,7 +414,9 @@
                     id="initiativeLogo"
                     placeholder="مستقبلنا الرقمي آمن"
                     class="w-full"
+                    value="مستقبلنا الرقمي آمن"
                   />
+                  <div id="initiativeLogoError" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div>
                   <label class="mb-2">مكان المبادرة:</label>
@@ -376,7 +425,9 @@
                     id="initiativeLocation"
                     placeholder="معمل الحاسب والفصول الدراسية"
                     class="w-full"
+                    value="معمل الحاسب والفصول الدراسية"
                   />
+                  <div id="initiativeLocationError" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div>
                   <label class="mb-2">الفئة المستهدفة:</label>
@@ -385,7 +436,9 @@
                     id="targetGroup"
                     placeholder="طلاب المرحلة المتوسطة"
                     class="w-full"
+                    value="طلاب المرحلة المتوسطة"
                   />
+                  <div id="targetGroupError" class="error-message">هذا الحقل مطلوب</div>
                 </div>
               </div>
             </div>
@@ -397,14 +450,16 @@
                 id="initiativeIdea"
                 class="w-full"
                 placeholder="تعزيز الوعي بالأمن السيبراني والمواطنة الرقمية لدى الطلاب، وتطوير مهاراتهم في التعامل الآمن مع التقنية الحديثة بما يتوافق مع رؤية ٢٠٣٠"
-              ></textarea>
+              >تعزيز الوعي بالأمن السيبراني والمواطنة الرقمية لدى الطلاب، وتطوير مهاراتهم في التعامل الآمن مع التقنية الحديثة بما يتوافق مع رؤية ٢٠٣٠</textarea>
+              <div id="initiativeIdeaError" class="error-message">هذا الحقل مطلوب</div>
               <div class="mt-4">
                 <label class="mb-2">اشرح الفكرة الرئيسية والهدف العام من المبادرة:</label>
                 <textarea
                   id="initiativeExplanation"
                   class="w-full"
                   placeholder="اكتب شرحاً مفصلاً عن الفكرة الرئيسية والهدف العام من المبادرة"
-                ></textarea>
+                >تهدف المبادرة إلى بناء جيل واعٍ رقمياً قادر على التعامل الآمن مع التقنيات الحديثة، وتمكين الطلاب من المهارات اللازمة لحماية أنفسهم ومجتمعهم من المخاطر السيبرانية.</textarea>
+                <div id="initiativeExplanationError" class="error-message">هذا الحقل مطلوب</div>
               </div>
             </div>
 
@@ -419,7 +474,9 @@
                     id="goal1"
                     placeholder="تعزيز مفاهيم الأمن السيبراني لدى الطلاب"
                     class="w-full"
+                    value="تعزيز مفاهيم الأمن السيبراني لدى الطلاب"
                   />
+                  <div id="goal1Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">②</span>
@@ -428,7 +485,9 @@
                     id="goal2"
                     placeholder="تنمية مهارات المواطنة الرقمية والاستخدام الآمن للإنترنت"
                     class="w-full"
+                    value="تنمية مهارات المواطنة الرقمية والاستخدام الآمن للإنترنت"
                   />
+                  <div id="goal2Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">③</span>
@@ -437,7 +496,9 @@
                     id="goal3"
                     placeholder="توعية الطلاب بمخاطر الجرائم الإلكترونية وطرق الحماية منها"
                     class="w-full"
+                    value="توعية الطلاب بمخاطر الجرائم الإلكترونية وطرق الحماية منها"
                   />
+                  <div id="goal3Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">④</span>
@@ -446,7 +507,9 @@
                     id="goal4"
                     placeholder="تعزيز القيم الأخلاقية في التعاملات الرقمية"
                     class="w-full"
+                    value="تعزيز القيم الأخلاقية في التعاملات الرقمية"
                   />
+                  <div id="goal4Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
               </div>
               <div class="mt-4">
@@ -455,7 +518,8 @@
                   id="detailedGoals"
                   class="w-full"
                   placeholder="اكتب الأهداف التفصيلية للمبادرة"
-                ></textarea>
+                >بناء قدرات الطلاب في مجال الأمن السيبراني، تطوير مهارات التفكير النقدي في التعامل مع المحتوى الرقمي، تعزيز المسؤولية المجتمعية في الفضاء الإلكتروني.</textarea>
+                <div id="detailedGoalsError" class="error-message">هذا الحقل مطلوب</div>
               </div>
             </div>
 
@@ -470,7 +534,9 @@
                     id="component1"
                     placeholder="ورش عمل تفاعلية عن الأمن السيبراني"
                     class="w-full"
+                    value="ورش عمل تفاعلية عن الأمن السيبراني"
                   />
+                  <div id="component1Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
@@ -479,7 +545,9 @@
                     id="component2"
                     placeholder="محاضرات توعوية من متخصصين في الأمن الوطني للأمن السيبراني"
                     class="w-full"
+                    value="محاضرات توعوية من متخصصين في الأمن الوطني للأمن السيبراني"
                   />
+                  <div id="component2Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
@@ -488,7 +556,9 @@
                     id="component3"
                     placeholder="مسابقات وتحديات في مجال الأمن الرقمي"
                     class="w-full"
+                    value="مسابقات وتحديات في مجال الأمن الرقمي"
                   />
+                  <div id="component3Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
@@ -497,7 +567,9 @@
                     id="component4"
                     placeholder="معرض تقني تفاعلي"
                     class="w-full"
+                    value="معرض تقني تفاعلي"
                   />
+                  <div id="component4Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
@@ -506,7 +578,9 @@
                     id="component5"
                     placeholder="جلسات تدريبية عملية"
                     class="w-full"
+                    value="جلسات تدريبية عملية"
                   />
+                  <div id="component5Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
@@ -515,7 +589,9 @@
                     id="component6"
                     placeholder="تنفيذ حملة توعوية على مواقع التواصل الاجتماعي"
                     class="w-full"
+                    value="تنفيذ حملة توعوية على مواقع التواصل الاجتماعي"
                   />
+                  <div id="component6Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
               </div>
               <div class="mt-4">
@@ -524,7 +600,8 @@
                   id="componentsExplanation"
                   class="w-full"
                   placeholder="اكتب شرحاً مفصلاً عن العناصر والأنشطة المكونة للمبادرة"
-                ></textarea>
+                >تشمل المبادرة مجموعة متنوعة من الأنشطة التفاعلية والتطبيقية التي تهدف إلى بناء وعي الطلاب وتطوير مهاراتهم في مجال الأمن السيبراني والمواطنة الرقمية.</textarea>
+                <div id="componentsExplanationError" class="error-message">هذا الحقل مطلوب</div>
               </div>
             </div>
 
@@ -539,7 +616,9 @@
                     id="activity1"
                     placeholder="تطبيقات عملية لحماية الحسابات الشخصية"
                     class="w-full"
+                    value="تطبيقات عملية لحماية الحسابات الشخصية"
                   />
+                  <div id="activity1Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
@@ -548,7 +627,9 @@
                     id="activity2"
                     placeholder="مسابقة لتصميم منصات توعوية"
                     class="w-full"
+                    value="مسابقة لتصميم منصات توعوية"
                   />
+                  <div id="activity2Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
@@ -557,7 +638,9 @@
                     id="activity3"
                     placeholder="محاكاة لسيناريوهات الاختراق وطرق الحماية"
                     class="w-full"
+                    value="محاكاة لسيناريوهات الاختراق وطرق الحماية"
                   />
+                  <div id="activity3Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
@@ -566,7 +649,9 @@
                     id="activity4"
                     placeholder="إنتاج دليل إرشادي رقمي"
                     class="w-full"
+                    value="إنتاج دليل إرشادي رقمي"
                   />
+                  <div id="activity4Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
@@ -575,7 +660,9 @@
                     id="activity5"
                     placeholder="تنفيذ حملة توعوية على مواقع التواصل الاجتماعي"
                     class="w-full"
+                    value="تنفيذ حملة توعوية على مواقع التواصل الاجتماعي"
                   />
+                  <div id="activity5Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
               </div>
               <div class="mt-4">
@@ -584,7 +671,8 @@
                   id="activitiesDescription"
                   class="w-full"
                   placeholder="اكتب وصفاً مفصلاً للأنشطة المنفذة ضمن المبادرة"
-                ></textarea>
+                >تشمل الأنشطة تطبيقات عملية ومسابقات تفاعلية ومحاكاة للسيناريوهات الواقعية لتعزيز مهارات الطلاب في مجال الأمن السيبراني.</textarea>
+                <div id="activitiesDescriptionError" class="error-message">هذا الحقل مطلوب</div>
               </div>
             </div>
 
@@ -599,7 +687,9 @@
                     id="successIndicator1"
                     placeholder="زيادة وعي الطلاب بقضايا الأمن السيبراني"
                     class="w-full"
+                    value="زيادة وعي الطلاب بقضايا الأمن السيبراني"
                   />
+                  <div id="successIndicator1Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
@@ -608,7 +698,9 @@
                     id="successIndicator2"
                     placeholder="تحسين مستوى الممارسات الرقمية الآمنة"
                     class="w-full"
+                    value="تحسين مستوى الممارسات الرقمية الآمنة"
                   />
+                  <div id="successIndicator2Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
@@ -617,7 +709,9 @@
                     id="successIndicator3"
                     placeholder="عدد المشاركين في الأنشطة والفعاليات"
                     class="w-full"
+                    value="عدد المشاركين في الأنشطة والفعاليات"
                   />
+                  <div id="successIndicator3Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
@@ -626,7 +720,9 @@
                     id="successIndicator4"
                     placeholder="نتائج استبيانات قياس الأثر"
                     class="w-full"
+                    value="نتائج استبيانات قياس الأثر"
                   />
+                  <div id="successIndicator4Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
@@ -635,7 +731,9 @@
                     id="successIndicator5"
                     placeholder="تفاعل أولياء الأمور مع المبادرة"
                     class="w-full"
+                    value="تفاعل أولياء الأمور مع المبادرة"
                   />
+                  <div id="successIndicator5Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
               </div>
               <div class="mt-4">
@@ -644,7 +742,8 @@
                   id="successIndicatorsExplanation"
                   class="w-full"
                   placeholder="اكتب شرحاً مفصلاً عن مؤشرات قياس نجاح المبادرة"
-                ></textarea>
+                >سيتم قياس نجاح المبادرة من خلال استبيانات قبلية وبعدية، ومتابعة مستوى مشاركة الطلاب، وتقييم التغير في السلوكيات الرقمية.</textarea>
+                <div id="successIndicatorsExplanationError" class="error-message">هذا الحقل مطلوب</div>
               </div>
             </div>
 
@@ -659,7 +758,9 @@
                     id="attachment1"
                     placeholder="تقارير الأنشطة والفعاليات"
                     class="w-full"
+                    value="تقارير الأنشطة والفعاليات"
                   />
+                  <div id="attachment1Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
@@ -668,7 +769,9 @@
                     id="attachment2"
                     placeholder="نماذج من أعمال الطلاب"
                     class="w-full"
+                    value="نماذج من أعمال الطلاب"
                   />
+                  <div id="attachment2Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
@@ -677,7 +780,9 @@
                     id="attachment3"
                     placeholder="شهادات المشاركة"
                     class="w-full"
+                    value="شهادات المشاركة"
                   />
+                  <div id="attachment3Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
@@ -686,7 +791,9 @@
                     id="attachment4"
                     placeholder="توثيق مرئي للفعاليات"
                     class="w-full"
+                    value="توثيق مرئي للفعاليات"
                   />
+                  <div id="attachment4Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
@@ -695,7 +802,9 @@
                     id="attachment5"
                     placeholder="نتائج الاستبيانات والتقييم"
                     class="w-full"
+                    value="نتائج الاستبيانات والتقييم"
                   />
+                  <div id="attachment5Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
               </div>
               <div class="mt-4">
@@ -704,7 +813,8 @@
                   id="attachmentsExplanation"
                   class="w-full"
                   placeholder="اكتب شرحاً مفصلاً عن المرفقات والوثائق الداعمة للمبادرة"
-                ></textarea>
+                >سيتم توثيق جميع الأنشطة والفعاليات من خلال التقارير والصور والفيديوهات والشهادات لضمان الشفافية والمتابعة.</textarea>
+                <div id="attachmentsExplanationError" class="error-message">هذا الحقل مطلوب</div>
               </div>
             </div>
 
@@ -719,25 +829,31 @@
                     id="rightSignature"
                     placeholder="المعلم / اسم المعلم"
                     class="w-full"
+                    value="المعلم / اسم المعلم"
                   />
+                  <div id="rightSignatureError" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div>
                   <label class="mb-2">توقيع وسط:</label>
                   <input
                     type="text"
                     id="middleSignature"
-                    placeholder=""
+                    placeholder="رائد النشاط / الاسم"
                     class="w-full"
+                    value="رائد النشاط / الاسم"
                   />
+                  <div id="middleSignatureError" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div>
                   <label class="mb-2">توقيع يسار:</label>
                   <input
                     type="text"
                     id="leftSignature"
-                    placeholder=""
+                    placeholder="مدير المدرسة / الاسم"
                     class="w-full"
+                    value="مدير المدرسة / الاسم"
                   />
+                  <div id="leftSignatureError" class="error-message">هذا الحقل مطلوب</div>
                 </div>
               </div>
             </div>
@@ -775,6 +891,7 @@
                   </div>
                   <input type="file" id="mainLogo" accept="image/*">
                 </div>
+                <div id="mainLogoPreview" class="file-preview"></div>
                 <p class="text-gray-600 text-sm mt-2">اختياري - سيظهر شعار وزارة التعليم افتراضياً</p>
               </div>
               
@@ -788,6 +905,7 @@
                   </div>
                   <input type="file" id="subLogo" accept="image/*">
                 </div>
+                <div id="subLogoPreview" class="file-preview"></div>
                 <p class="text-gray-600 text-sm mt-2">اختياري - يظهر بجانب الشعار الرئيسي</p>
               </div>
               
@@ -807,22 +925,6 @@
                 <p class="text-gray-600 text-sm mt-2">عند الإيقاف تظهر الأرقام كما أدخلت</p>
               </div>
               
-              <!-- تصغير الشواهد -->
-              <div class="mb-4">
-                <label class="mb-2">تصغير الشواهد:</label>
-                <div class="radio-group">
-                  <div class="radio-option">
-                    <input type="radio" id="smallCertificatesOn" name="smallCertificates" value="on">
-                    <label for="smallCertificatesOn">مفعل</label>
-                  </div>
-                  <div class="radio-option">
-                    <input type="radio" id="smallCertificatesOff" name="smallCertificates" value="off" checked>
-                    <label for="smallCertificatesOff">معطل</label>
-                  </div>
-                </div>
-                <p class="text-gray-600 text-sm mt-2">4 صور بالصفحة بدلاً من 2</p>
-              </div>
-              
               <!-- إضافة شواهد (صور) -->
               <div>
                 <label class="mb-2">إضافة شواهد (صور):</label>
@@ -833,6 +935,7 @@
                   </div>
                   <input type="file" id="certificates" accept="image/*" multiple>
                 </div>
+                <div id="certificatesPreview" class="file-preview"></div>
                 <p class="text-gray-600 text-sm mt-2">أقصى حد للشواهد 10 شواهد</p>
               </div>
             </div>
@@ -869,6 +972,61 @@
         </div>
       </div>
     </div>
+
+    
+<!-- FOOTER -->
+    <footer class="mt-12 footer-ink border-t border-gray-100">
+      <div
+        class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+      >
+        <!-- RIGHT COLUMN -->
+        <div class="text-right md:flex-1">
+          <img
+            src="../assets/imgs/gsoor_logo.jpg"
+            alt="logo"
+            class="h-10 mx-auto md:mx-0"
+          />
+          <div
+            class="flex justify-center md:justify-end gap-4 mt-3 text-gray-600"
+          >
+            <i class="fa-brands fa-youtube social-icon text-lg"></i>
+            <i class="fa-brands fa-tiktok social-icon text-lg"></i>
+            <i class="fa-brands fa-instagram social-icon text-lg"></i>
+          </div>
+        </div>
+
+        <!-- CENTER COLUMN -->
+        <div class="text-center md:flex-1">
+          <h3 class="font-bold mb-2">تواصل معنا</h3>
+          <div class="flex items-center justify-center gap-4 text-gray-600">
+            <div class="flex items-center gap-2">
+              <i class="fa-regular fa-envelope text-sm"></i>
+              <span>البريد</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-mobile-screen-button text-sm"></i>
+              <span>واتس</span>
+            </div>
+          </div>
+          <div class="mt-3 text-sm text-gray-500">موقّع لدى منصة الأعمال</div>
+        </div>
+
+        <!-- LEFT COLUMN -->
+        <div class="text-left md:flex-1">
+          <div class="text-sm text-gray-500">
+            © 2025 متجر جسور الرقمي | جميع الحقوق محفوظة
+          </div>
+          <div
+            class="mt-3 flex gap-2 items-center justify-center md:justify-start"
+          >
+            <span class="sr-only">Visa</span>
+            <i class="fa-brands fa-cc-visa text-gray-600 text-lg"></i>
+            <span class="sr-only">Mada</span>
+            <i class="fa-solid fa-credit-card text-gray-600 text-lg"></i>
+          </div>
+        </div>
+      </div>
+    </footer>
 
     <!-- Modal Popup للمعاينة -->
     <div id="previewModal" class="modal-overlay">
@@ -949,66 +1107,32 @@
       // دالة حفظ جميع البيانات في localStorage
       async function saveTemplateData() {
         try {
-          // تحميل البيانات الموجودة أولاً للحفاظ على الملفات المحفوظة
           const existingData = JSON.parse(
             localStorage.getItem("cybersecurityInitiativeData") || "{}"
           );
           const data = { ...existingData };
 
           // جمع بيانات النص الأساسية
-          data.reportTitle = document.getElementById("reportTitle").value;
-          data.country = document.getElementById("country").value;
-          data.ministry = document.getElementById("ministry").value;
-          data.administration = document.getElementById("administration").value;
-          data.school = document.getElementById("school").value;
-          data.academicYear = document.getElementById("academicYear").value;
-          data.semester = document.getElementById("semester").value;
-          data.strategyName = document.getElementById("strategyName").value;
-          data.targetCount = document.getElementById("targetCount").value;
-          data.executionDate = document.getElementById("executionDate").value;
-          data.initiativeLogo = document.getElementById("initiativeLogo").value;
-          data.initiativeLocation = document.getElementById("initiativeLocation").value;
-          data.targetGroup = document.getElementById("targetGroup").value;
-          data.initiativeIdea = document.getElementById("initiativeIdea").value;
-          data.initiativeExplanation = document.getElementById("initiativeExplanation").value;
-          data.goal1 = document.getElementById("goal1").value;
-          data.goal2 = document.getElementById("goal2").value;
-          data.goal3 = document.getElementById("goal3").value;
-          data.goal4 = document.getElementById("goal4").value;
-          data.detailedGoals = document.getElementById("detailedGoals").value;
-          data.component1 = document.getElementById("component1").value;
-          data.component2 = document.getElementById("component2").value;
-          data.component3 = document.getElementById("component3").value;
-          data.component4 = document.getElementById("component4").value;
-          data.component5 = document.getElementById("component5").value;
-          data.component6 = document.getElementById("component6").value;
-          data.componentsExplanation = document.getElementById("componentsExplanation").value;
-          data.activity1 = document.getElementById("activity1").value;
-          data.activity2 = document.getElementById("activity2").value;
-          data.activity3 = document.getElementById("activity3").value;
-          data.activity4 = document.getElementById("activity4").value;
-          data.activity5 = document.getElementById("activity5").value;
-          data.activitiesDescription = document.getElementById("activitiesDescription").value;
-          data.successIndicator1 = document.getElementById("successIndicator1").value;
-          data.successIndicator2 = document.getElementById("successIndicator2").value;
-          data.successIndicator3 = document.getElementById("successIndicator3").value;
-          data.successIndicator4 = document.getElementById("successIndicator4").value;
-          data.successIndicator5 = document.getElementById("successIndicator5").value;
-          data.successIndicatorsExplanation = document.getElementById("successIndicatorsExplanation").value;
-          data.attachment1 = document.getElementById("attachment1").value;
-          data.attachment2 = document.getElementById("attachment2").value;
-          data.attachment3 = document.getElementById("attachment3").value;
-          data.attachment4 = document.getElementById("attachment4").value;
-          data.attachment5 = document.getElementById("attachment5").value;
-          data.attachmentsExplanation = document.getElementById("attachmentsExplanation").value;
-          data.rightSignature = document.getElementById("rightSignature").value;
-          data.middleSignature = document.getElementById("middleSignature").value;
-          data.leftSignature = document.getElementById("leftSignature").value;
+          const textFields = [
+            'reportTitle', 'country', 'ministry', 'administration', 'school',
+            'academicYear', 'semester', 'strategyName', 'targetCount', 'executionDate',
+            'initiativeLogo', 'initiativeLocation', 'targetGroup', 'initiativeIdea',
+            'initiativeExplanation', 'goal1', 'goal2', 'goal3', 'goal4', 'detailedGoals',
+            'component1', 'component2', 'component3', 'component4', 'component5', 'component6',
+            'componentsExplanation', 'activity1', 'activity2', 'activity3', 'activity4', 'activity5',
+            'activitiesDescription', 'successIndicator1', 'successIndicator2', 'successIndicator3',
+            'successIndicator4', 'successIndicator5', 'successIndicatorsExplanation',
+            'attachment1', 'attachment2', 'attachment3', 'attachment4', 'attachment5',
+            'attachmentsExplanation', 'rightSignature', 'middleSignature', 'leftSignature'
+          ];
+
+          textFields.forEach(field => {
+            data[field] = document.getElementById(field).value;
+          });
           
           // جمع بيانات التصميم
           data.templateStyle = document.querySelector('input[name="templateStyle"]:checked').value;
           data.arabicNumbers = document.querySelector('input[name="arabicNumbers"]:checked').value;
-          data.smallCertificates = document.querySelector('input[name="smallCertificates"]:checked').value;
 
           // جمع بيانات الشعارات
           const mainLogoFile = document.getElementById("mainLogo").files[0];
@@ -1023,7 +1147,6 @@
 
           // حفظ البيانات في localStorage
           localStorage.setItem("cybersecurityInitiativeData", JSON.stringify(data));
-
           return data;
         } catch (error) {
           console.error("خطأ في حفظ البيانات:", error);
@@ -1031,34 +1154,107 @@
         }
       }
 
+      // دالة للتحقق من صحة البيانات
+      function validateForm() {
+        let isValid = true;
+
+        // إزالة جميع رسائل الخطأ السابقة
+        document.querySelectorAll(".field-error").forEach((field) => {
+          field.classList.remove("field-error");
+        });
+        document.querySelectorAll(".error-message").forEach((error) => {
+          error.classList.remove("show");
+        });
+
+        // التحقق من الحقول الأساسية
+        const requiredFields = [
+            'reportTitle', 'country', 'ministry', 'administration', 'school',
+            'academicYear', 'semester', 'strategyName', 'targetCount', 'executionDate',
+            'initiativeLogo', 'initiativeLocation', 'targetGroup', 'initiativeIdea',
+            'initiativeExplanation', 'goal1', 'goal2', 'goal3', 'goal4', 'detailedGoals',
+            'component1', 'component2', 'component3', 'component4', 'component5', 'component6',
+            'componentsExplanation', 'activity1', 'activity2', 'activity3', 'activity4', 'activity5',
+            'activitiesDescription', 'successIndicator1', 'successIndicator2', 'successIndicator3',
+            'successIndicator4', 'successIndicator5', 'successIndicatorsExplanation',
+            'attachment1', 'attachment2', 'attachment3', 'attachment4', 'attachment5',
+            'attachmentsExplanation', 'rightSignature', 'middleSignature', 'leftSignature'
+        ];
+
+        requiredFields.forEach(fieldId => {
+          const value = document.getElementById(fieldId).value.trim();
+          if (!value) {
+            showError(fieldId, fieldId + 'Error');
+            isValid = false;
+          }
+        });
+
+        return isValid;
+      }
+
+      // دالة لإظهار رسالة الخطأ
+      function showError(fieldId, errorId) {
+        const field = document.getElementById(fieldId);
+        const error = document.getElementById(errorId);
+        if (field) {
+          field.classList.add("field-error");
+        }
+        if (error) {
+          error.classList.add("show");
+        }
+      }
+
+      // إزالة رسالة الخطأ عند الكتابة
+      function setupFieldValidation() {
+        const textFields = [
+            'reportTitle', 'country', 'ministry', 'administration', 'school',
+            'academicYear', 'semester', 'strategyName', 'targetCount', 'executionDate',
+            'initiativeLogo', 'initiativeLocation', 'targetGroup', 'initiativeIdea',
+            'initiativeExplanation', 'goal1', 'goal2', 'goal3', 'goal4', 'detailedGoals',
+            'component1', 'component2', 'component3', 'component4', 'component5', 'component6',
+            'componentsExplanation', 'activity1', 'activity2', 'activity3', 'activity4', 'activity5',
+            'activitiesDescription', 'successIndicator1', 'successIndicator2', 'successIndicator3',
+            'successIndicator4', 'successIndicator5', 'successIndicatorsExplanation',
+            'attachment1', 'attachment2', 'attachment3', 'attachment4', 'attachment5',
+            'attachmentsExplanation', 'rightSignature', 'middleSignature', 'leftSignature'
+        ];
+
+        textFields.forEach((fieldId) => {
+          const field = document.getElementById(fieldId);
+          if (field) {
+            field.addEventListener("input", function () {
+              this.classList.remove("field-error");
+              const errorId = fieldId + "Error";
+              const error = document.getElementById(errorId);
+              if (error) {
+                error.classList.remove("show");
+              }
+            });
+          }
+        });
+      }
+
       // دالة المعاينة
       async function previewTemplate() {
+        // التحقق من صحة البيانات أولاً
+        if (!validateForm()) {
+          // التمرير إلى أول حقل به خطأ
+          const firstError = document.querySelector(".field-error");
+          if (firstError) {
+            firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+          return;
+        }
+
         // إذا كانت البيانات صحيحة، حفظها وفتح المعاينة
         await saveTemplateData();
         generatePreviewContent();
         openPreviewModal();
       }
 
-      // فتح الـ modal
-      function openPreviewModal() {
-        const modal = document.getElementById("previewModal");
-        modal.classList.add("active");
-        document.body.style.overflow = "hidden";
-      }
-
-      // إغلاق الـ modal
-      function closePreviewModal() {
-        const modal = document.getElementById("previewModal");
-        modal.classList.remove("active");
-        document.body.style.overflow = "auto";
-      }
-
       // توليد محتوى المعاينة
       function generatePreviewContent() {
         const data = JSON.parse(localStorage.getItem("cybersecurityInitiativeData") || "{}");
-        const previewContainer = document.getElementById(
-          "previewTemplateContent"
-        );
+        const previewContainer = document.getElementById("previewTemplateContent");
 
         // إنشاء HTML للمعاينة
         let html = `
@@ -1180,11 +1376,23 @@
         previewContainer.innerHTML = html;
       }
 
+      // فتح الـ modal
+      function openPreviewModal() {
+        const modal = document.getElementById("previewModal");
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+      }
+
+      // إغلاق الـ modal
+      function closePreviewModal() {
+        const modal = document.getElementById("previewModal");
+        modal.classList.remove("active");
+        document.body.style.overflow = "auto";
+      }
+
       // تحميل الصورة من الـ modal
       function downloadImageFromModal() {
-        const previewContent = document.getElementById(
-          "previewTemplateContent"
-        );
+        const previewContent = document.getElementById("previewTemplateContent");
         html2canvas(previewContent, {
           backgroundColor: "#ffffff",
           scale: 2,
@@ -1198,9 +1406,7 @@
 
       // تحميل PDF من الـ modal
       function downloadPDFFromModal() {
-        const previewContent = document.getElementById(
-          "previewTemplateContent"
-        );
+        const previewContent = document.getElementById("previewTemplateContent");
         html2canvas(previewContent, {
           backgroundColor: "#ffffff",
           scale: 2,
@@ -1213,6 +1419,98 @@
           pdf.save("cybersecurity-initiative.pdf");
         });
       }
+
+      // معالجة رفع الملفات وعرض المعاينة
+      function setupFileUploads() {
+        // معالجة شعار الجهة الرئيسي
+        document.getElementById('mainLogo').addEventListener('change', function(e) {
+          const file = e.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+              const preview = document.getElementById('mainLogoPreview');
+              preview.innerHTML = `<img src="${e.target.result}" alt="شعار الجهة">`;
+              preview.classList.add('show');
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+
+        // معالجة الشعار الفرعي
+        document.getElementById('subLogo').addEventListener('change', function(e) {
+          const file = e.target.files[0];
+          if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+              const preview = document.getElementById('subLogoPreview');
+              preview.innerHTML = `<img src="${e.target.result}" alt="الشعار الفرعي">`;
+              preview.classList.add('show');
+            };
+            reader.readAsDataURL(file);
+          }
+        });
+
+        // معالجة الشواهد
+        document.getElementById('certificates').addEventListener('change', function(e) {
+          const files = e.target.files;
+          const preview = document.getElementById('certificatesPreview');
+          preview.innerHTML = '';
+          
+          if (files.length > 0) {
+            for (let i = 0; i < Math.min(files.length, 10); i++) {
+              const reader = new FileReader();
+              reader.onload = function(e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.alt = `شاهد ${i + 1}`;
+                preview.appendChild(img);
+              };
+              reader.readAsDataURL(files[i]);
+            }
+            preview.classList.add('show');
+          }
+        });
+      }
+
+      // تحميل البيانات المحفوظة
+      function loadTemplateData() {
+        const data = JSON.parse(localStorage.getItem("cybersecurityInitiativeData") || "{}");
+        
+        // تعبئة الحقول النصية
+        const textFields = [
+            'reportTitle', 'country', 'ministry', 'administration', 'school',
+            'academicYear', 'semester', 'strategyName', 'targetCount', 'executionDate',
+            'initiativeLogo', 'initiativeLocation', 'targetGroup', 'initiativeIdea',
+            'initiativeExplanation', 'goal1', 'goal2', 'goal3', 'goal4', 'detailedGoals',
+            'component1', 'component2', 'component3', 'component4', 'component5', 'component6',
+            'componentsExplanation', 'activity1', 'activity2', 'activity3', 'activity4', 'activity5',
+            'activitiesDescription', 'successIndicator1', 'successIndicator2', 'successIndicator3',
+            'successIndicator4', 'successIndicator5', 'successIndicatorsExplanation',
+            'attachment1', 'attachment2', 'attachment3', 'attachment4', 'attachment5',
+            'attachmentsExplanation', 'rightSignature', 'middleSignature', 'leftSignature'
+        ];
+
+        textFields.forEach(field => {
+          if (data[field]) {
+            document.getElementById(field).value = data[field];
+          }
+        });
+
+        // تعبئة خيارات التصميم
+        if (data.templateStyle) {
+          document.querySelector(`input[name="templateStyle"][value="${data.templateStyle}"]`).checked = true;
+        }
+        if (data.arabicNumbers) {
+          document.querySelector(`input[name="arabicNumbers"][value="${data.arabicNumbers}"]`).checked = true;
+        }
+      }
+
+      // تهيئة الصفحة
+      document.addEventListener("DOMContentLoaded", function () {
+        setupFieldValidation();
+        setupFileUploads();
+        loadTemplateData();
+      });
     </script>
   </body>
 </html>

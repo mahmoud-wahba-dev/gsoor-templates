@@ -4,6 +4,11 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>إنشاء التقارير اليومية والأسبوعية</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+  <!-- Add this to your head section -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 
 <style>
     body {
@@ -26,6 +31,18 @@
         text-align: center;
         margin-bottom: 10px;
     }
+    
+.footer-ink {
+        background: #f8fafb;
+      }
+
+      .social-icon {
+        width: 26px;
+        height: 26px;
+        fill: currentColor;
+      }
+
+
 
     .row {
         display: flex;
@@ -98,6 +115,107 @@
         background: #0066cc;
         color: white;
     }
+
+    .btn-main {
+        background: #10b981;
+        color: white;
+        font-weight: bold;
+    }
+
+    /* Modal Styles */
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(0, 0, 0, 0.7);
+        z-index: 1000;
+        overflow-y: auto;
+        padding: 20px;
+    }
+
+    .modal-overlay.active {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .modal-content {
+        background: white;
+        border-radius: 16px;
+        max-width: 90%;
+        width: 100%;
+        max-width: 1200px;
+        position: relative;
+        margin: auto;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px;
+        border-bottom: 1px solid #e5e7eb;
+    }
+
+    .modal-body {
+        padding: 20px;
+        max-height: calc(100vh - 200px);
+        overflow-y: auto;
+    }
+
+    .modal-close {
+        background: none;
+        border: none;
+        font-size: 28px;
+        cursor: pointer;
+        color: #6b7280;
+        padding: 0;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        transition: all 0.2s;
+    }
+
+    .modal-close:hover {
+        background-color: #f3f4f6;
+        color: #111827;
+    }
+
+    .preview-template {
+        background: white;
+        padding: 40px;
+        border: 2px solid #e5e7eb;
+        border-radius: 12px;
+    }
+
+    /* Error Message Styles */
+    .error-message {
+        color: #dc2626;
+        font-size: 14px;
+        margin-top: 4px;
+        display: none;
+    }
+
+    .error-message.show {
+        display: block;
+    }
+
+    .field-error {
+        border-color: #dc2626 !important;
+        border-width: 2px !important;
+    }
+
+    .field-error:focus {
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+    }
 </style>
 </head>
 
@@ -113,10 +231,12 @@
         <div class="col">
             <label>اسم المعلم</label>
             <input type="text" id="teacherName">
+            <div id="teacherNameError" class="error-message">هذا الحقل مطلوب</div>
         </div>
         <div class="col">
             <label>اسم المدرسة</label>
             <input type="text" id="schoolName">
+            <div id="schoolNameError" class="error-message">هذا الحقل مطلوب</div>
         </div>
     </div>
 
@@ -124,15 +244,17 @@
         <div class="col">
             <label>المادة</label>
             <input type="text" id="subject">
+            <div id="subjectError" class="error-message">هذا الحقل مطلوب</div>
         </div>
         <div class="col">
             <label>الصف</label>
             <select id="grade">
-                <option>اختر الصف</option>
+                <option value="">اختر الصف</option>
                 <option>الصف الأول</option>
                 <option>الصف الثاني</option>
                 <option>الصف الثالث</option>
             </select>
+            <div id="gradeError" class="error-message">هذا الحقل مطلوب</div>
         </div>
     </div>
 
@@ -142,96 +264,218 @@
     <!-- الأزرار -->
     <div class="buttons">
         <button class="save-btn" onclick="saveData()">💾 حفظ</button>
+        <button class="btn-main" onclick="previewReport()">👁️ معاينة</button>
         <button class="pdf-btn" onclick="generatePDF()">📄 تحميل PDF</button>
     </div>
 
 </div>
 
-<script>
-    // إنشاء نماذج الأيام تلقائيًا
-  // إنشاء نماذج الأيام تلقائيًا
-const days = ["السبت", "الأحد", "الاثنين", "الثلاثاء", "الأربعاء"]; // أيام الأسبوع
-const container = document.getElementById("days");
-
-days.forEach((day, index) => {
-    container.innerHTML += `
-        <div class="day-box">
-            <div class="day-header" onclick="toggleDay(${index})">
-                ${day} - ${1447}/03/${1 + index} 
+<!-- Modal Popup للمعاينة -->
+<div id="previewModal" class="modal-overlay">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="text-2xl font-bold text-gray-800">معاينة التقرير الأسبوعي</h2>
+            <button class="modal-close" onclick="closePreviewModal()">
+                &times;
+            </button>
+        </div>
+        <div class="modal-body">
+            <div id="previewTemplateContent" class="preview-template">
+                <!-- سيتم ملء المحتوى ديناميكياً -->
             </div>
-            <div id="day-content-${index}" style="display: none;">
-                
-                <label>موضوع الدرس</label>
-                <input type="text" id="topic-${index}">
-
-                <label>أهداف الدرس</label>
-                <textarea id="goals-${index}" placeholder="الأهداف"></textarea>
-
-                <label>الواجب والمهام المنزلية:</label>
-                <textarea id="homework-${index}" placeholder="على منصة مدرستي"></textarea>
-
-                <h3 style="margin-top: 15px; font-size: 16px;">تقرير تنفيذ الدرس</h3>
-
-                <div class="row">
-                    <div class="col">
-                        <label>حالة تنفيذ الدرس:</label>
-                        <select id="executionStatus-${index}">
-                            <option>تم التنفيذ كاملاً</option>
-                            <option>تحقيق أهداف الدرس</option>
-                            <option>لم يتم التنفيذ</option>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <label>تحقيق أهداف الدرس:</label>
-                        <select id="goalsAchieved-${index}">
-                            <option>جميع الأهداف تحققت</option>
-                            <option>معظم الأهداف تحققت</option>
-                            <option>بعض الأهداف تحققت</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col">
-                        <label>مستوى الفهم:</label>
-                        <select id="understandingLevel-${index}">
-                            <option>عالي (80-100%)</option>
-                            <option>متوسط (60-79%)</option>
-                            <option>منخفض (أقل من 60%)</option>
-                        </select>
-                    </div>
-                    <div class="col">
-                        <label>المشاركة والتفاعل:</label>
-                        <select id="interactionLevel-${index}">
-                            <option>عالية (80-100%)</option>
-                            <option>متوسطة (60-79%)</option>
-                            <option>منخفضة (أقل من 60%)</option>
-                        </select>
-                    </div>
-                </div>
-
-                <label>الأدوات والوسائل التعليمية:</label>
-                <input type="text" id="tools-${index}" value="الكتاب، السبورة التقليدية، أوراق عمل">
-
-                <label>طريقة التدريس أو الاستراتيجيات المطبقة:</label>
-                <input type="text" id="strategies-${index}" value="التدريس المباشر، التعلم التعاوني، التعلم بالاكتشاف">
-                
-                <label>الصعوبات والتحديات:</label>
-                <input type="text" id="challenges-${index}" placeholder="اختر الصعوبات والتحديات">
-
-                <label>الإجراءات الفورية (التدخلات الداعمة):</label>
-                <input type="text" id="interventions-${index}" value="استخدام أمثلة إضافية، التعزيز الإيجابي، تشجيع المشاركة">
-                
-                <label>ملاحظات على الدرس:</label>
-                <textarea id="notes-${index}" placeholder="قم بحل الواجبات والأنشطة لرفع درجات تحصيلك"></textarea>
+            <div class="flex justify-center gap-4 mt-6">
+                <button
+                    onclick="downloadImageFromModal()"
+                    class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition flex items-center gap-2"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-5 h-5"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
+                        />
+                    </svg>
+                    تحميل كصورة
+                </button>
+                <button
+                    onclick="downloadPDFFromModal()"
+                    class="bg-red-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-red-700 transition flex items-center gap-2"
+                >
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke-width="2"
+                        stroke="currentColor"
+                        class="w-5 h-5"
+                    >
+                        <path
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
+                        />
+                    </svg>
+                    تحميل PDF
+                </button>
+                <button
+                    onclick="closePreviewModal()"
+                    class="bg-gray-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-gray-700 transition"
+                >
+                    إغلاق
+                </button>
             </div>
         </div>
-    `;
-});
+    </div>
+</div>
 
-// *ملاحظة:* تم إضافة `style="display: none;"` لإخفاء محتوى اليوم مبدئياً.
-// وتم تغيير أيام الأسبوع لتكون متسلسلة من السبت إلى الأربعاء (افتراضياً).
-// وتم تحديث عناوين الأيام لتشمل التاريخ بناءً على الأسبوع المذكور (1447/03/01).
+<!-- FOOTER -->
+    <footer class="mt-12 footer-ink border-t border-gray-100">
+      <div
+        class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+      >
+        <!-- RIGHT COLUMN -->
+        <div class="text-right md:flex-1">
+          <img
+            src="../assets/imgs/gsoor_logo.jpg"
+            alt="logo"
+            class="h-10 mx-auto md:mx-0"
+          />
+          <div
+            class="flex justify-center md:justify-end gap-4 mt-3 text-gray-600"
+          >
+            <i class="fa-brands fa-youtube social-icon text-lg"></i>
+            <i class="fa-brands fa-tiktok social-icon text-lg"></i>
+            <i class="fa-brands fa-instagram social-icon text-lg"></i>
+          </div>
+        </div>
+
+        <!-- CENTER COLUMN -->
+        <div class="text-center md:flex-1">
+          <h3 class="font-bold mb-2">تواصل معنا</h3>
+          <div class="flex items-center justify-center gap-4 text-gray-600">
+            <div class="flex items-center gap-2">
+              <i class="fa-regular fa-envelope text-sm"></i>
+              <span>البريد</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-mobile-screen-button text-sm"></i>
+              <span>واتس</span>
+            </div>
+          </div>
+          <div class="mt-3 text-sm text-gray-500">موقّع لدى منصة الأعمال</div>
+        </div>
+
+        <!-- LEFT COLUMN -->
+        <div class="text-left md:flex-1">
+          <div class="text-sm text-gray-500">
+            © 2025 متجر جسور الرقمي | جميع الحقوق محفوظة
+          </div>
+          <div
+            class="mt-3 flex gap-2 items-center justify-center md:justify-start"
+          >
+            <span class="sr-only">Visa</span>
+            <i class="fa-brands fa-cc-visa text-gray-600 text-lg"></i>
+            <span class="sr-only">Mada</span>
+            <i class="fa-solid fa-credit-card text-gray-600 text-lg"></i>
+          </div>
+        </div>
+      </div>
+    </footer>
+<script>
+    // إنشاء نماذج الأيام تلقائيًا
+    const days = ["السبت", "الأحد", "الاثنين", "الثلاثاء", "الأربعاء"];
+    const container = document.getElementById("days");
+
+    days.forEach((day, index) => {
+        container.innerHTML += `
+            <div class="day-box">
+                <div class="day-header" onclick="toggleDay(${index})">
+                    ${day} - ${1447}/03/${1 + index} 
+                </div>
+                <div id="day-content-${index}" style="display: none;">
+                    
+                    <label>موضوع الدرس</label>
+                    <input type="text" id="topic-${index}">
+                    <div id="topic-${index}Error" class="error-message">هذا الحقل مطلوب</div>
+
+                    <label>أهداف الدرس</label>
+                    <textarea id="goals-${index}" placeholder="الأهداف"></textarea>
+                    <div id="goals-${index}Error" class="error-message">هذا الحقل مطلوب</div>
+
+                    <label>الواجب والمهام المنزلية:</label>
+                    <textarea id="homework-${index}" placeholder="على منصة مدرستي"></textarea>
+                    <div id="homework-${index}Error" class="error-message">هذا الحقل مطلوب</div>
+
+                    <h3 style="margin-top: 15px; font-size: 16px;">تقرير تنفيذ الدرس</h3>
+
+                    <div class="row">
+                        <div class="col">
+                            <label>حالة تنفيذ الدرس:</label>
+                            <select id="executionStatus-${index}">
+                                <option>تم التنفيذ كاملاً</option>
+                                <option>تحقيق أهداف الدرس</option>
+                                <option>لم يتم التنفيذ</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label>تحقيق أهداف الدرس:</label>
+                            <select id="goalsAchieved-${index}">
+                                <option>جميع الأهداف تحققت</option>
+                                <option>معظم الأهداف تحققت</option>
+                                <option>بعض الأهداف تحققت</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col">
+                            <label>مستوى الفهم:</label>
+                            <select id="understandingLevel-${index}">
+                                <option>عالي (80-100%)</option>
+                                <option>متوسط (60-79%)</option>
+                                <option>منخفض (أقل من 60%)</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <label>المشاركة والتفاعل:</label>
+                            <select id="interactionLevel-${index}">
+                                <option>عالية (80-100%)</option>
+                                <option>متوسطة (60-79%)</option>
+                                <option>منخفضة (أقل من 60%)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <label>الأدوات والوسائل التعليمية:</label>
+                    <input type="text" id="tools-${index}" value="الكتاب، السبورة التقليدية، أوراق عمل">
+                    <div id="tools-${index}Error" class="error-message">هذا الحقل مطلوب</div>
+
+                    <label>طريقة التدريس أو الاستراتيجيات المطبقة:</label>
+                    <input type="text" id="strategies-${index}" value="التدريس المباشر، التعلم التعاوني، التعلم بالاكتشاف">
+                    <div id="strategies-${index}Error" class="error-message">هذا الحقل مطلوب</div>
+                    
+                    <label>الصعوبات والتحديات:</label>
+                    <input type="text" id="challenges-${index}" placeholder="اختر الصعوبات والتحديات">
+                    <div id="challenges-${index}Error" class="error-message">هذا الحقل مطلوب</div>
+
+                    <label>الإجراءات الفورية (التدخلات الداعمة):</label>
+                    <input type="text" id="interventions-${index}" value="استخدام أمثلة إضافية، التعزيز الإيجابي، تشجيع المشاركة">
+                    <div id="interventions-${index}Error" class="error-message">هذا الحقل مطلوب</div>
+                    
+                    <label>ملاحظات على الدرس:</label>
+                    <textarea id="notes-${index}" placeholder="قم بحل الواجبات والأنشطة لرفع درجات تحصيلك"></textarea>
+                    <div id="notes-${index}Error" class="error-message">هذا الحقل مطلوب</div>
+                </div>
+            </div>
+        `;
+    });
 
     // إظهار/إخفاء اليوم
     function toggleDay(i) {
@@ -239,8 +483,135 @@ days.forEach((day, index) => {
         box.style.display = box.style.display === "none" ? "block" : "none";
     }
 
+    // التحقق من صحة البيانات
+    function validateForm() {
+        let isValid = true;
+
+        // إزالة رسائل الخطأ السابقة
+        document.querySelectorAll(".error-message").forEach((error) => {
+            error.classList.remove("show");
+        });
+        document.querySelectorAll(".field-error").forEach((field) => {
+            field.classList.remove("field-error");
+        });
+
+        // التحقق من الحقول الأساسية
+        const requiredFields = [
+            'teacherName', 'schoolName', 'subject', 'grade'
+        ];
+
+        requiredFields.forEach(fieldId => {
+            const field = document.getElementById(fieldId);
+            if (!field.value.trim()) {
+                showError(fieldId, `${fieldId}Error`);
+                isValid = false;
+            }
+        });
+
+        // التحقق من حقول الأيام
+        for (let i = 0; i < 5; i++) {
+            const dayFields = [
+                `topic-${i}`, `goals-${i}`, `homework-${i}`, 
+                `tools-${i}`, `strategies-${i}`, `challenges-${i}`,
+                `interventions-${i}`, `notes-${i}`
+            ];
+
+            dayFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (field && !field.value.trim()) {
+                    showError(fieldId, `${fieldId}Error`);
+                    isValid = false;
+                }
+            });
+        }
+
+        return isValid;
+    }
+
+    // دالة لإظهار رسالة الخطأ
+    function showError(fieldId, errorId) {
+        const field = document.getElementById(fieldId);
+        const error = document.getElementById(errorId);
+        if (field) {
+            field.classList.add("field-error");
+        }
+        if (error) {
+            error.classList.add("show");
+        }
+    }
+
+    // إزالة رسالة الخطأ عند الكتابة
+    function setupFieldValidation() {
+        const textFields = [
+            'teacherName', 'schoolName', 'subject'
+        ];
+
+        // معالجة حقول النص الأساسية
+        textFields.forEach((fieldId) => {
+            const field = document.getElementById(fieldId);
+            if (field) {
+                field.addEventListener("input", function () {
+                    this.classList.remove("field-error");
+                    const error = document.getElementById(`${fieldId}Error`);
+                    if (error) {
+                        error.classList.remove("show");
+                    }
+                });
+            }
+        });
+
+        // معالجة حقل الصف
+        const gradeField = document.getElementById('grade');
+        if (gradeField) {
+            gradeField.addEventListener("change", function () {
+                this.classList.remove("field-error");
+                const error = document.getElementById('gradeError');
+                if (error) {
+                    error.classList.remove("show");
+                }
+            });
+        }
+
+        // معالجة حقول الأيام
+        for (let i = 0; i < 5; i++) {
+            const dayFields = [
+                `topic-${i}`, `goals-${i}`, `homework-${i}`, 
+                `tools-${i}`, `strategies-${i}`, `challenges-${i}`,
+                `interventions-${i}`, `notes-${i}`
+            ];
+
+            dayFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (field) {
+                    field.addEventListener("input", function () {
+                        this.classList.remove("field-error");
+                        const error = document.getElementById(`${fieldId}Error`);
+                        if (error) {
+                            error.classList.remove("show");
+                        }
+                    });
+                }
+            });
+        }
+    }
+
+    // استدعاء إعداد التحقق عند التحميل
+    document.addEventListener('DOMContentLoaded', function() {
+        setupFieldValidation();
+        loadSavedData();
+    });
+
     // حفظ البيانات
     function saveData() {
+        if (!validateForm()) {
+            const firstError = document.querySelector(".field-error");
+            if (firstError) {
+                firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+            alert("يرجى ملء جميع الحقول المطلوبة");
+            return;
+        }
+
         let data = {
             teacher: document.getElementById("teacherName").value,
             school: document.getElementById("schoolName").value,
@@ -252,7 +623,16 @@ days.forEach((day, index) => {
         for (let i = 0; i < 5; i++) {
             data.days.push({
                 topic: document.getElementById(`topic-${i}`).value,
+                goals: document.getElementById(`goals-${i}`).value,
                 homework: document.getElementById(`homework-${i}`).value,
+                executionStatus: document.getElementById(`executionStatus-${i}`).value,
+                goalsAchieved: document.getElementById(`goalsAchieved-${i}`).value,
+                understandingLevel: document.getElementById(`understandingLevel-${i}`).value,
+                interactionLevel: document.getElementById(`interactionLevel-${i}`).value,
+                tools: document.getElementById(`tools-${i}`).value,
+                strategies: document.getElementById(`strategies-${i}`).value,
+                challenges: document.getElementById(`challenges-${i}`).value,
+                interventions: document.getElementById(`interventions-${i}`).value,
                 notes: document.getElementById(`notes-${i}`).value
             });
         }
@@ -261,9 +641,238 @@ days.forEach((day, index) => {
         alert("تم حفظ البيانات بنجاح ✔");
     }
 
+    // تحميل البيانات المحفوظة
+    function loadSavedData() {
+        const savedData = localStorage.getItem("reportForm");
+        if (savedData) {
+            const data = JSON.parse(savedData);
+            
+            document.getElementById("teacherName").value = data.teacher || "";
+            document.getElementById("schoolName").value = data.school || "";
+            document.getElementById("subject").value = data.subject || "";
+            document.getElementById("grade").value = data.grade || "";
+
+            if (data.days) {
+                for (let i = 0; i < data.days.length; i++) {
+                    const day = data.days[i];
+                    document.getElementById(`topic-${i}`).value = day.topic || "";
+                    document.getElementById(`goals-${i}`).value = day.goals || "";
+                    document.getElementById(`homework-${i}`).value = day.homework || "";
+                    document.getElementById(`executionStatus-${i}`).value = day.executionStatus || "تم التنفيذ كاملاً";
+                    document.getElementById(`goalsAchieved-${i}`).value = day.goalsAchieved || "جميع الأهداف تحققت";
+                    document.getElementById(`understandingLevel-${i}`).value = day.understandingLevel || "عالي (80-100%)";
+                    document.getElementById(`interactionLevel-${i}`).value = day.interactionLevel || "عالية (80-100%)";
+                    document.getElementById(`tools-${i}`).value = day.tools || "الكتاب، السبورة التقليدية، أوراق عمل";
+                    document.getElementById(`strategies-${i}`).value = day.strategies || "التدريس المباشر، التعلم التعاوني، التعلم بالاكتشاف";
+                    document.getElementById(`challenges-${i}`).value = day.challenges || "";
+                    document.getElementById(`interventions-${i}`).value = day.interventions || "استخدام أمثلة إضافية، التعزيز الإيجابي، تشجيع المشاركة";
+                    document.getElementById(`notes-${i}`).value = day.notes || "";
+                }
+            }
+        }
+    }
+
+    // دالة المعاينة
+    function previewReport() {
+        if (!validateForm()) {
+            const firstError = document.querySelector(".field-error");
+            if (firstError) {
+                firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+            }
+            alert("يرجى ملء جميع الحقول المطلوبة قبل المعاينة");
+            return;
+        }
+
+        saveData(); // حفظ البيانات قبل المعاينة
+        generatePreviewContent();
+        openPreviewModal();
+    }
+
+    // فتح الـ modal
+    function openPreviewModal() {
+        const modal = document.getElementById("previewModal");
+        modal.classList.add("active");
+        document.body.style.overflow = "hidden";
+    }
+
+    // إغلاق الـ modal
+    function closePreviewModal() {
+        const modal = document.getElementById("previewModal");
+        modal.classList.remove("active");
+        document.body.style.overflow = "auto";
+    }
+
+    // إغلاق الـ modal عند الضغط خارج المحتوى
+    document.getElementById("previewModal")?.addEventListener("click", function (e) {
+        if (e.target === this) {
+            closePreviewModal();
+        }
+    });
+
+    // إغلاق الـ modal عند الضغط على ESC
+    document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+            closePreviewModal();
+        }
+    });
+
+    // توليد محتوى المعاينة
+    function generatePreviewContent() {
+        const data = JSON.parse(localStorage.getItem("reportForm") || "{}");
+        const previewContainer = document.getElementById("previewTemplateContent");
+
+        let daysHTML = '';
+        if (data.days) {
+            data.days.forEach((day, index) => {
+                daysHTML += `
+                    <div class="day-box" style="margin-bottom: 20px; padding: 15px; border: 1px solid #ddd; border-radius: 8px;">
+                        <h3 style="color: #10b981; margin-bottom: 10px;">${days[index]} - ${1447}/03/${1 + index}</h3>
+                        
+                        <div class="row">
+                            <div class="col">
+                                <strong>موضوع الدرس:</strong> ${day.topic || ''}
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col">
+                                <strong>أهداف الدرس:</strong><br>
+                                ${day.goals || ''}
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col">
+                                <strong>الواجب والمهام المنزلية:</strong><br>
+                                ${day.homework || ''}
+                            </div>
+                        </div>
+                        
+                        <h4 style="margin-top: 15px; color: #374151;">تقرير تنفيذ الدرس:</h4>
+                        
+                        <div class="row">
+                            <div class="col">
+                                <strong>حالة تنفيذ الدرس:</strong> ${day.executionStatus || ''}
+                            </div>
+                            <div class="col">
+                                <strong>تحقيق أهداف الدرس:</strong> ${day.goalsAchieved || ''}
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col">
+                                <strong>مستوى الفهم:</strong> ${day.understandingLevel || ''}
+                            </div>
+                            <div class="col">
+                                <strong>المشاركة والتفاعل:</strong> ${day.interactionLevel || ''}
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col">
+                                <strong>الأدوات والوسائل التعليمية:</strong> ${day.tools || ''}
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col">
+                                <strong>طريقة التدريس:</strong> ${day.strategies || ''}
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col">
+                                <strong>الصعوبات والتحديات:</strong> ${day.challenges || ''}
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col">
+                                <strong>الإجراءات الفورية:</strong> ${day.interventions || ''}
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col">
+                                <strong>ملاحظات على الدرس:</strong><br>
+                                ${day.notes || ''}
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+        }
+
+        let html = `
+            <div class="space-y-6">
+                <div style="text-align: center; margin-bottom: 30px;">
+                    <h1 style="font-size: 28px; color: #10b981; margin-bottom: 10px;">التقرير الأسبوعي</h1>
+                    <p style="font-size: 16px; color: #6b7280;">للأسبوع الأول — من 1447/03/01 إلى 1447/03/05</p>
+                </div>
+
+                <div class="row" style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+                    <div class="col">
+                        <strong>اسم المعلم:</strong> ${data.teacher || ''}
+                    </div>
+                    <div class="col">
+                        <strong>اسم المدرسة:</strong> ${data.school || ''}
+                    </div>
+                </div>
+
+                <div class="row" style="background: #f8f9fa; padding: 15px; border-radius: 8px;">
+                    <div class="col">
+                        <strong>المادة:</strong> ${data.subject || ''}
+                    </div>
+                    <div class="col">
+                        <strong>الصف:</strong> ${data.grade || ''}
+                    </div>
+                </div>
+
+                ${daysHTML}
+            </div>
+        `;
+
+        previewContainer.innerHTML = html;
+    }
+
+    // تحميل الصورة من الـ modal
+    function downloadImageFromModal() {
+        const previewContent = document.getElementById("previewTemplateContent");
+        html2canvas(previewContent, {
+            backgroundColor: "#ffffff",
+            scale: 2,
+        }).then((canvas) => {
+            const link = document.createElement("a");
+            link.download = "weekly-report.png";
+            link.href = canvas.toDataURL();
+            link.click();
+        });
+    }
+
+    // تحميل PDF من الـ modal
+    function downloadPDFFromModal() {
+        const previewContent = document.getElementById("previewTemplateContent");
+        html2canvas(previewContent, {
+            backgroundColor: "#ffffff",
+            scale: 2,
+        }).then((canvas) => {
+            const imgData = canvas.toDataURL("image/jpeg");
+            const pdf = new jspdf.jsPDF("p", "mm", "a4");
+            const imgWidth = 210;
+            const imgHeight = (canvas.height * imgWidth) / canvas.width;
+            pdf.addImage(imgData, "JPEG", 0, 0, imgWidth, imgHeight);
+            pdf.save("weekly-report.pdf");
+        });
+    }
+
     // توليد PDF — بسيط (نقدر أعمله محترف باستخدام html2canvas + jsPDF)
     function generatePDF() {
-        window.print();
+        if (!validateForm()) {
+            alert("يرجى ملء جميع الحقول المطلوبة قبل التحميل");
+            return;
+        }
+        saveData();
+        downloadPDFFromModal();
     }
 </script>
 

@@ -7,12 +7,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-    <title>مبادرة الأمن السيبراني والمواطنة الرقمية | نماذج تعليمية</title>
+    <title>تنفيذ استراتيجية تعليمية (التعليم التعاوني) | نماذج تعليمية</title>
 
     <style>
       body {
         font-family: "Helvetica", "Tajawal", sans-serif;
       }
+      
+.footer-ink {
+        background: #f8fafb;
+      }
+
+      .social-icon {
+        width: 26px;
+        height: 26px;
+        fill: currentColor;
+      }
+
+
       label {
         font-weight: 600;
         color: #136f3c;
@@ -224,6 +236,20 @@
       .numbered-list li {
         margin-bottom: 8px;
       }
+      /* Button Styles */
+      .btn-main {
+        background-color: #10b981;
+        color: white;
+        padding: 12px 24px;
+        border-radius: 8px;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+      .btn-main:hover {
+        background-color: #059669;
+      }
     </style>
   </head>
 
@@ -250,7 +276,7 @@
               <input
                 type="text"
                 id="reportTitle"
-                placeholder="مبادرة الأمن السيبراني والمواطنة الرقمية"
+                placeholder="تنفيذ استراتيجية التعليم التعاوني"
                 class="w-full"
               />
               <div id="reportTitleError" class="error-message">هذا الحقل مطلوب</div>
@@ -268,6 +294,7 @@
                     placeholder="المملكة العربية السعودية"
                     class="w-full"
                   />
+                  <div id="countryError" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div>
                   <label class="mb-2">الوزارة:</label>
@@ -277,6 +304,7 @@
                     placeholder="وزارة التعليم"
                     class="w-full"
                   />
+                  <div id="ministryError" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div>
                   <label class="mb-2">الإدارة:</label>
@@ -286,6 +314,7 @@
                     placeholder="الإدارة العامة للتعليم بالمنطقة الشرقية"
                     class="w-full"
                   />
+                  <div id="administrationError" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div>
                   <label class="mb-2">المدرسة:</label>
@@ -295,6 +324,7 @@
                     placeholder="مدرسة"
                     class="w-full"
                   />
+                  <div id="schoolError" class="error-message">هذا الحقل مطلوب</div>
                 </div>
               </div>
             </div>
@@ -311,6 +341,7 @@
                     placeholder="١٤٤٧هـ"
                     class="w-full"
                   />
+                  <div id="academicYearError" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div>
                   <label class="mb-2">الفصل الدراسي:</label>
@@ -320,6 +351,7 @@
                     placeholder="الفصل الدراسي الأول"
                     class="w-full"
                   />
+                  <div id="semesterError" class="error-message">هذا الحقل مطلوب</div>
                 </div>
               </div>
             </div>
@@ -333,9 +365,10 @@
                   <input
                     type="text"
                     id="strategyName"
-                    placeholder="التعلم المبني على المشاريع"
+                    placeholder="التعليم التعاوني"
                     class="w-full"
                   />
+                  <div id="strategyNameError" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div>
                   <label class="mb-2">عدد المستهدفين:</label>
@@ -345,6 +378,7 @@
                     placeholder="٣٠٠"
                     class="w-full"
                   />
+                  <div id="targetCountError" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div>
                   <label class="mb-2">تاريخ التنفيذ:</label>
@@ -354,24 +388,27 @@
                     placeholder="٢٩ ربيع الآخر ١٤٤٧ هـ"
                     class="w-full"
                   />
+                  <div id="executionDateError" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div>
-                  <label class="mb-2">شعار المبادرة:</label>
+                  <label class="mb-2">شعار الاستراتيجية:</label>
                   <input
                     type="text"
                     id="initiativeLogo"
-                    placeholder="مستقبلنا الرقمي آمن"
+                    placeholder="نتعلم معاً"
                     class="w-full"
                   />
+                  <div id="initiativeLogoError" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div>
-                  <label class="mb-2">مكان المبادرة:</label>
+                  <label class="mb-2">مكان التنفيذ:</label>
                   <input
                     type="text"
                     id="initiativeLocation"
-                    placeholder="معمل الحاسب والفصول الدراسية"
+                    placeholder="الفصول الدراسية"
                     class="w-full"
                   />
+                  <div id="initiativeLocationError" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div>
                   <label class="mb-2">الفئة المستهدفة:</label>
@@ -381,25 +418,28 @@
                     placeholder="طلاب المرحلة المتوسطة"
                     class="w-full"
                   />
+                  <div id="targetGroupError" class="error-message">هذا الحقل مطلوب</div>
                 </div>
               </div>
             </div>
 
-            <!-- فكرة المبادرة (الهدف العام) -->
+            <!-- فكرة الاستراتيجية (الهدف العام) -->
             <div class="section-bg">
-              <h3 class="text-lg font-bold mb-4">فكرة المبادرة (الهدف العام):</h3>
+              <h3 class="text-lg font-bold mb-4">فكرة الاستراتيجية (الهدف العام):</h3>
               <textarea
                 id="initiativeIdea"
                 class="w-full"
-                placeholder="تعزيز الوعي بالأمن السيبراني والمواطنة الرقمية لدى الطلاب، وتطوير مهاراتهم في التعامل الآمن مع التقنية الحديثة بما يتوافق مع رؤية ٢٠٣٠"
+                placeholder="تعزيز التعلم من خلال العمل الجماعي والتعاون بين الطلاب، وتطوير مهارات التواصل والعمل ضمن فريق"
               ></textarea>
+              <div id="initiativeIdeaError" class="error-message">هذا الحقل مطلوب</div>
               <div class="mt-4">
-                <label class="mb-2">اشرح الفكرة الرئيسية والهدف العام من المبادرة:</label>
+                <label class="mb-2">اشرح الفكرة الرئيسية والهدف العام من الاستراتيجية:</label>
                 <textarea
                   id="initiativeExplanation"
                   class="w-full"
-                  placeholder="اكتب شرحاً مفصلاً عن الفكرة الرئيسية والهدف العام من المبادرة"
+                  placeholder="اكتب شرحاً مفصلاً عن الفكرة الرئيسية والهدف العام من الاستراتيجية"
                 ></textarea>
+                <div id="initiativeExplanationError" class="error-message">هذا الحقل مطلوب</div>
               </div>
             </div>
 
@@ -412,114 +452,126 @@
                   <input
                     type="text"
                     id="goal1"
-                    placeholder="تعزيز مفاهيم الأمن السيبراني لدى الطلاب"
+                    placeholder="تعزيز مهارات العمل الجماعي لدى الطلاب"
                     class="w-full"
                   />
+                  <div id="goal1Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">②</span>
                   <input
                     type="text"
                     id="goal2"
-                    placeholder="تنمية مهارات المواطنة الرقمية والاستخدام الآمن للإنترنت"
+                    placeholder="تنمية مهارات التواصل والتعاون"
                     class="w-full"
                   />
+                  <div id="goal2Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">③</span>
                   <input
                     type="text"
                     id="goal3"
-                    placeholder="توعية الطلاب بمخاطر الجرائم الإلكترونية وطرق الحماية منها"
+                    placeholder="تحسين مستوى التحصيل الدراسي"
                     class="w-full"
                   />
+                  <div id="goal3Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">④</span>
                   <input
                     type="text"
                     id="goal4"
-                    placeholder="تعزيز القيم الأخلاقية في التعاملات الرقمية"
+                    placeholder="تعزيز الثقة بالنفس والمشاركة الفعالة"
                     class="w-full"
                   />
+                  <div id="goal4Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
               </div>
               <div class="mt-4">
-                <label class="mb-2">حدد الأهداف التفصيلية للمبادرة:</label>
+                <label class="mb-2">حدد الأهداف التفصيلية للاستراتيجية:</label>
                 <textarea
                   id="detailedGoals"
                   class="w-full"
-                  placeholder="اكتب الأهداف التفصيلية للمبادرة"
+                  placeholder="اكتب الأهداف التفصيلية للاستراتيجية"
                 ></textarea>
+                <div id="detailedGoalsError" class="error-message">هذا الحقل مطلوب</div>
               </div>
             </div>
 
-            <!-- مكونات المبادرة (آلية التنفيذ) -->
+            <!-- مكونات الاستراتيجية (آلية التنفيذ) -->
             <div class="section-bg">
-              <h3 class="text-lg font-bold mb-4">مكونات المبادرة (آلية التنفيذ):</h3>
+              <h3 class="text-lg font-bold mb-4">مكونات الاستراتيجية (آلية التنفيذ):</h3>
               <div class="space-y-3">
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
                   <input
                     type="text"
                     id="component1"
-                    placeholder="ورش عمل تفاعلية عن الأمن السيبراني"
+                    placeholder="تشكيل مجموعات تعاونية"
                     class="w-full"
                   />
+                  <div id="component1Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
                   <input
                     type="text"
                     id="component2"
-                    placeholder="محاضرات توعوية من متخصصين في الأمن الوطني للأمن السيبراني"
+                    placeholder="توزيع المهام والأدوار"
                     class="w-full"
                   />
+                  <div id="component2Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
                   <input
                     type="text"
                     id="component3"
-                    placeholder="مسابقات وتحديات في مجال الأمن الرقمي"
+                    placeholder="أنشطة تعاونية جماعية"
                     class="w-full"
                   />
+                  <div id="component3Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
                   <input
                     type="text"
                     id="component4"
-                    placeholder="معرض تقني تفاعلي"
+                    placeholder="تقييم جماعي ومناقشات"
                     class="w-full"
                   />
+                  <div id="component4Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
                   <input
                     type="text"
                     id="component5"
-                    placeholder="جلسات تدريبية عملية"
+                    placeholder="تقديم تغذية راجعة"
                     class="w-full"
                   />
+                  <div id="component5Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
                   <input
                     type="text"
                     id="component6"
-                    placeholder="تنفيذ حملة توعوية على مواقع التواصل الاجتماعي"
+                    placeholder="متابعة وتقييم الأداء"
                     class="w-full"
                   />
+                  <div id="component6Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
               </div>
               <div class="mt-4">
-                <label class="mb-2">اذكر العناصر والأنشطة المكونة للمبادرة:</label>
+                <label class="mb-2">اذكر العناصر والأنشطة المكونة للاستراتيجية:</label>
                 <textarea
                   id="componentsExplanation"
                   class="w-full"
-                  placeholder="اكتب شرحاً مفصلاً عن العناصر والأنشطة المكونة للمبادرة"
+                  placeholder="اكتب شرحاً مفصلاً عن العناصر والأنشطة المكونة للاستراتيجية"
                 ></textarea>
+                <div id="componentsExplanationError" class="error-message">هذا الحقل مطلوب</div>
               </div>
             </div>
 
@@ -532,54 +584,60 @@
                   <input
                     type="text"
                     id="activity1"
-                    placeholder="تطبيقات عملية لحماية الحسابات الشخصية"
+                    placeholder="مناقشات جماعية للموضوعات الدراسية"
                     class="w-full"
                   />
+                  <div id="activity1Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
                   <input
                     type="text"
                     id="activity2"
-                    placeholder="مسابقة لتصميم منصات توعوية"
+                    placeholder="إعداد مشاريع جماعية"
                     class="w-full"
                   />
+                  <div id="activity2Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
                   <input
                     type="text"
                     id="activity3"
-                    placeholder="محاكاة لسيناريوهات الاختراق وطرق الحماية"
+                    placeholder="عروض تقديمية جماعية"
                     class="w-full"
                   />
+                  <div id="activity3Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
                   <input
                     type="text"
                     id="activity4"
-                    placeholder="إنتاج دليل إرشادي رقمي"
+                    placeholder="حل مشكلات بشكل تعاوني"
                     class="w-full"
                   />
+                  <div id="activity4Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
                   <input
                     type="text"
                     id="activity5"
-                    placeholder="تنفيذ حملة توعوية على مواقع التواصل الاجتماعي"
+                    placeholder="تقويم الأقران"
                     class="w-full"
                   />
+                  <div id="activity5Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
               </div>
               <div class="mt-4">
-                <label class="mb-2">وصف الأنشطة المنفذة ضمن المبادرة:</label>
+                <label class="mb-2">وصف الأنشطة المنفذة ضمن الاستراتيجية:</label>
                 <textarea
                   id="activitiesDescription"
                   class="w-full"
-                  placeholder="اكتب وصفاً مفصلاً للأنشطة المنفذة ضمن المبادرة"
+                  placeholder="اكتب وصفاً مفصلاً للأنشطة المنفذة ضمن الاستراتيجية"
                 ></textarea>
+                <div id="activitiesDescriptionError" class="error-message">هذا الحقل مطلوب</div>
               </div>
             </div>
 
@@ -592,54 +650,60 @@
                   <input
                     type="text"
                     id="successIndicator1"
-                    placeholder="زيادة وعي الطلاب بقضايا الأمن السيبراني"
+                    placeholder="تحسن مستوى التحصيل الدراسي"
                     class="w-full"
                   />
+                  <div id="successIndicator1Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
                   <input
                     type="text"
                     id="successIndicator2"
-                    placeholder="تحسين مستوى الممارسات الرقمية الآمنة"
+                    placeholder="زيادة مشاركة الطلاب في الأنشطة"
                     class="w-full"
                   />
+                  <div id="successIndicator2Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
                   <input
                     type="text"
                     id="successIndicator3"
-                    placeholder="عدد المشاركين في الأنشطة والفعاليات"
+                    placeholder="تحسن مهارات التواصل والعمل الجماعي"
                     class="w-full"
                   />
+                  <div id="successIndicator3Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
                   <input
                     type="text"
                     id="successIndicator4"
-                    placeholder="نتائج استبيانات قياس الأثر"
+                    placeholder="نتائج استبيانات رضا الطلاب"
                     class="w-full"
                   />
+                  <div id="successIndicator4Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
                   <input
                     type="text"
                     id="successIndicator5"
-                    placeholder="تفاعل أولياء الأمور مع المبادرة"
+                    placeholder="تحسن مستوى الثقة بالنفس"
                     class="w-full"
                   />
+                  <div id="successIndicator5Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
               </div>
               <div class="mt-4">
-                <label class="mb-2">حدد مؤشرات قياس نجاح المبادرة:</label>
+                <label class="mb-2">حدد مؤشرات قياس نجاح الاستراتيجية:</label>
                 <textarea
                   id="successIndicatorsExplanation"
                   class="w-full"
-                  placeholder="اكتب شرحاً مفصلاً عن مؤشرات قياس نجاح المبادرة"
+                  placeholder="اكتب شرحاً مفصلاً عن مؤشرات قياس نجاح الاستراتيجية"
                 ></textarea>
+                <div id="successIndicatorsExplanationError" class="error-message">هذا الحقل مطلوب</div>
               </div>
             </div>
 
@@ -652,36 +716,40 @@
                   <input
                     type="text"
                     id="attachment1"
-                    placeholder="تقارير الأنشطة والفعاليات"
+                    placeholder="صور الأنشطة التعاونية"
                     class="w-full"
                   />
+                  <div id="attachment1Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
                   <input
                     type="text"
                     id="attachment2"
-                    placeholder="نماذج من أعمال الطلاب"
+                    placeholder="نماذج من أعمال الطلاب الجماعية"
                     class="w-full"
                   />
+                  <div id="attachment2Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
                   <input
                     type="text"
                     id="attachment3"
-                    placeholder="شهادات المشاركة"
+                    placeholder="تقارير التقييم"
                     class="w-full"
                   />
+                  <div id="attachment3Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
                   <input
                     type="text"
                     id="attachment4"
-                    placeholder="توثيق مرئي للفعاليات"
+                    placeholder="توثيق مرئي للأنشطة"
                     class="w-full"
                   />
+                  <div id="attachment4Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div class="flex items-start gap-2">
                   <span class="mt-1">•</span>
@@ -691,6 +759,7 @@
                     placeholder="نتائج الاستبيانات والتقييم"
                     class="w-full"
                   />
+                  <div id="attachment5Error" class="error-message">هذا الحقل مطلوب</div>
                 </div>
               </div>
               <div class="mt-4">
@@ -698,8 +767,9 @@
                 <textarea
                   id="attachmentsExplanation"
                   class="w-full"
-                  placeholder="اكتب شرحاً مفصلاً عن المرفقات والوثائق الداعمة للمبادرة"
+                  placeholder="اكتب شرحاً مفصلاً عن المرفقات والوثائق الداعمة للاستراتيجية"
                 ></textarea>
+                <div id="attachmentsExplanationError" class="error-message">هذا الحقل مطلوب</div>
               </div>
             </div>
 
@@ -715,13 +785,14 @@
                     placeholder="المعلم / اسم المعلم"
                     class="w-full"
                   />
+                  <div id="rightSignatureError" class="error-message">هذا الحقل مطلوب</div>
                 </div>
                 <div>
                   <label class="mb-2">توقيع وسط:</label>
                   <input
                     type="text"
                     id="middleSignature"
-                    placeholder=""
+                    placeholder="مدير المدرسة"
                     class="w-full"
                   />
                 </div>
@@ -730,7 +801,7 @@
                   <input
                     type="text"
                     id="leftSignature"
-                    placeholder=""
+                    placeholder="رائد النشاط"
                     class="w-full"
                   />
                 </div>
@@ -835,29 +906,11 @@
             <!-- زر المعاينة -->
             <div class="flex justify-center mt-6 mb-8">
               <button
+                class="btn-main"
                 onclick="previewTemplate()"
-                class="bg-green-600 text-white px-8 py-4 rounded-lg font-bold text-lg flex items-center gap-3 hover:bg-green-700 transition"
               >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="2"
-                  stroke="currentColor"
-                  class="w-6 h-6"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"
-                  />
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"
-                  />
-                </svg>
-                معاينة المبادرة
+                <i class="fas fa-eye ml-2"></i>
+                معاينة الاستراتيجية
               </button>
             </div>
           </div>
@@ -865,11 +918,64 @@
       </div>
     </div>
 
+<!-- FOOTER -->
+    <footer class="mt-12 footer-ink border-t border-gray-100">
+      <div
+        class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+      >
+        <!-- RIGHT COLUMN -->
+        <div class="text-right md:flex-1">
+          <img
+            src="../assets/imgs/gsoor_logo.jpg"
+            alt="logo"
+            class="h-10 mx-auto md:mx-0"
+          />
+          <div
+            class="flex justify-center md:justify-end gap-4 mt-3 text-gray-600"
+          >
+            <i class="fa-brands fa-youtube social-icon text-lg"></i>
+            <i class="fa-brands fa-tiktok social-icon text-lg"></i>
+            <i class="fa-brands fa-instagram social-icon text-lg"></i>
+          </div>
+        </div>
+
+        <!-- CENTER COLUMN -->
+        <div class="text-center md:flex-1">
+          <h3 class="font-bold mb-2">تواصل معنا</h3>
+          <div class="flex items-center justify-center gap-4 text-gray-600">
+            <div class="flex items-center gap-2">
+              <i class="fa-regular fa-envelope text-sm"></i>
+              <span>البريد</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-mobile-screen-button text-sm"></i>
+              <span>واتس</span>
+            </div>
+          </div>
+          <div class="mt-3 text-sm text-gray-500">موقّع لدى منصة الأعمال</div>
+        </div>
+
+        <!-- LEFT COLUMN -->
+        <div class="text-left md:flex-1">
+          <div class="text-sm text-gray-500">
+            © 2025 متجر جسور الرقمي | جميع الحقوق محفوظة
+          </div>
+          <div
+            class="mt-3 flex gap-2 items-center justify-center md:justify-start"
+          >
+            <span class="sr-only">Visa</span>
+            <i class="fa-brands fa-cc-visa text-gray-600 text-lg"></i>
+            <span class="sr-only">Mada</span>
+            <i class="fa-solid fa-credit-card text-gray-600 text-lg"></i>
+          </div>
+        </div>
+      </div>
+    </footer>
     <!-- Modal Popup للمعاينة -->
     <div id="previewModal" class="modal-overlay">
       <div class="modal-content">
         <div class="modal-header">
-          <h2 class="text-2xl font-bold text-gray-800">معاينة مبادرة الأمن السيبراني والمواطنة الرقمية</h2>
+          <h2 class="text-2xl font-bold text-gray-800">معاينة تنفيذ استراتيجية التعليم التعاوني</h2>
           <button class="modal-close" onclick="closePreviewModal()">
             &times;
           </button>
@@ -883,40 +989,14 @@
               onclick="downloadImageFromModal()"
               class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition flex items-center gap-2"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="2"
-                stroke="currentColor"
-                class="w-5 h-5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
-                />
-              </svg>
+              <i class="fas fa-download"></i>
               تحميل كصورة
             </button>
             <button
               onclick="downloadPDFFromModal()"
               class="bg-red-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-red-700 transition flex items-center gap-2"
             >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="2"
-                stroke="currentColor"
-                class="w-5 h-5"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3"
-                />
-              </svg>
+              <i class="fas fa-file-pdf"></i>
               تحميل PDF
             </button>
             <button
@@ -946,7 +1026,7 @@
         try {
           // تحميل البيانات الموجودة أولاً للحفاظ على الملفات المحفوظة
           const existingData = JSON.parse(
-            localStorage.getItem("cybersecurityInitiativeData") || "{}"
+            localStorage.getItem("cooperativeLearningData") || "{}"
           );
           const data = { ...existingData };
 
@@ -1017,7 +1097,7 @@
           }
 
           // حفظ البيانات في localStorage
-          localStorage.setItem("cybersecurityInitiativeData", JSON.stringify(data));
+          localStorage.setItem("cooperativeLearningData", JSON.stringify(data));
 
           return data;
         } catch (error) {
@@ -1026,8 +1106,99 @@
         }
       }
 
+      // دالة التحقق من صحة البيانات
+      function validateForm() {
+        let isValid = true;
+
+        // إزالة رسائل الخطأ السابقة
+        document.querySelectorAll(".error-message").forEach((error) => {
+          error.classList.remove("show");
+        });
+        document.querySelectorAll(".field-error").forEach((field) => {
+          field.classList.remove("field-error");
+        });
+
+        // قائمة الحقول المطلوبة
+        const requiredFields = [
+          'reportTitle', 'country', 'ministry', 'administration', 'school',
+          'academicYear', 'semester', 'strategyName', 'targetCount', 'executionDate',
+          'initiativeLogo', 'initiativeLocation', 'targetGroup', 'initiativeIdea',
+          'initiativeExplanation', 'goal1', 'goal2', 'goal3', 'goal4', 'detailedGoals',
+          'component1', 'component2', 'component3', 'component4', 'component5', 'component6',
+          'componentsExplanation', 'activity1', 'activity2', 'activity3', 'activity4', 'activity5',
+          'activitiesDescription', 'successIndicator1', 'successIndicator2', 'successIndicator3',
+          'successIndicator4', 'successIndicator5', 'successIndicatorsExplanation',
+          'attachment1', 'attachment2', 'attachment3', 'attachment4', 'attachment5',
+          'attachmentsExplanation', 'rightSignature'
+        ];
+
+        // التحقق من كل حقل مطلوب
+        requiredFields.forEach(fieldId => {
+          const field = document.getElementById(fieldId);
+          if (field && !field.value.trim()) {
+            showError(fieldId, fieldId + 'Error');
+            isValid = false;
+          }
+        });
+
+        return isValid;
+      }
+
+      // دالة لإظهار رسالة الخطأ
+      function showError(fieldId, errorId) {
+        const field = document.getElementById(fieldId);
+        const error = document.getElementById(errorId);
+        if (field) {
+          field.classList.add("field-error");
+        }
+        if (error) {
+          error.classList.add("show");
+        }
+      }
+
+      // إعداد التحقق من الحقول
+      function setupFieldValidation() {
+        const textFields = [
+          'reportTitle', 'country', 'ministry', 'administration', 'school',
+          'academicYear', 'semester', 'strategyName', 'targetCount', 'executionDate',
+          'initiativeLogo', 'initiativeLocation', 'targetGroup', 'initiativeIdea',
+          'initiativeExplanation', 'goal1', 'goal2', 'goal3', 'goal4', 'detailedGoals',
+          'component1', 'component2', 'component3', 'component4', 'component5', 'component6',
+          'componentsExplanation', 'activity1', 'activity2', 'activity3', 'activity4', 'activity5',
+          'activitiesDescription', 'successIndicator1', 'successIndicator2', 'successIndicator3',
+          'successIndicator4', 'successIndicator5', 'successIndicatorsExplanation',
+          'attachment1', 'attachment2', 'attachment3', 'attachment4', 'attachment5',
+          'attachmentsExplanation', 'rightSignature', 'middleSignature', 'leftSignature'
+        ];
+
+        // معالجة حقول النص
+        textFields.forEach((fieldId) => {
+          const field = document.getElementById(fieldId);
+          if (field) {
+            field.addEventListener("input", function () {
+              this.classList.remove("field-error");
+              const errorId = fieldId + "Error";
+              const error = document.getElementById(errorId);
+              if (error) {
+                error.classList.remove("show");
+              }
+            });
+          }
+        });
+      }
+
       // دالة المعاينة
       async function previewTemplate() {
+        // التحقق من صحة البيانات أولاً
+        if (!validateForm()) {
+          // التمرير إلى أول حقل به خطأ
+          const firstError = document.querySelector(".field-error");
+          if (firstError) {
+            firstError.scrollIntoView({ behavior: "smooth", block: "center" });
+          }
+          return;
+        }
+
         // إذا كانت البيانات صحيحة، حفظها وفتح المعاينة
         await saveTemplateData();
         generatePreviewContent();
@@ -1048,9 +1219,23 @@
         document.body.style.overflow = "auto";
       }
 
+      // إغلاق الـ modal عند الضغط خارج المحتوى
+      document.getElementById("previewModal")?.addEventListener("click", function (e) {
+        if (e.target === this) {
+          closePreviewModal();
+        }
+      });
+
+      // إغلاق الـ modal عند الضغط على ESC
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closePreviewModal();
+        }
+      });
+
       // توليد محتوى المعاينة
       function generatePreviewContent() {
-        const data = JSON.parse(localStorage.getItem("cybersecurityInitiativeData") || "{}");
+        const data = JSON.parse(localStorage.getItem("cooperativeLearningData") || "{}");
         const previewContainer = document.getElementById(
           "previewTemplateContent"
         );
@@ -1059,7 +1244,7 @@
         let html = `
           <div class="space-y-6 text-right">
             <div class="text-center mb-6">
-              <h2 class="text-3xl font-bold text-green-800 mb-4">${data.reportTitle || "مبادرة الأمن السيبراني والمواطنة الرقمية"}</h2>
+              <h2 class="text-3xl font-bold text-green-800 mb-4">${data.reportTitle || "تنفيذ استراتيجية التعليم التعاوني"}</h2>
             </div>
 
             <div class="mb-6">
@@ -1081,13 +1266,13 @@
               <p class="text-lg text-gray-700">اسم الاستراتيجية: ${data.strategyName || ""}</p>
               <p class="text-lg text-gray-700">عدد المستهدفين: ${data.targetCount || ""}</p>
               <p class="text-lg text-gray-700">تاريخ التنفيذ: ${data.executionDate || ""}</p>
-              <p class="text-lg text-gray-700">شعار المبادرة: ${data.initiativeLogo || ""}</p>
-              <p class="text-lg text-gray-700">مكان المبادرة: ${data.initiativeLocation || ""}</p>
+              <p class="text-lg text-gray-700">شعار الاستراتيجية: ${data.initiativeLogo || ""}</p>
+              <p class="text-lg text-gray-700">مكان التنفيذ: ${data.initiativeLocation || ""}</p>
               <p class="text-lg text-gray-700">الفئة المستهدفة: ${data.targetGroup || ""}</p>
             </div>
 
             <div class="mb-6">
-              <h3 class="text-xl font-bold text-gray-800 mb-2">فكرة المبادرة (الهدف العام)</h3>
+              <h3 class="text-xl font-bold text-gray-800 mb-2">فكرة الاستراتيجية (الهدف العام)</h3>
               <p class="text-lg text-gray-700">${data.initiativeIdea || ""}</p>
               <p class="mt-4 text-lg text-gray-700"><strong>شرح الفكرة الرئيسية:</strong> ${data.initiativeExplanation || ""}</p>
             </div>
@@ -1104,7 +1289,7 @@
             </div>
 
             <div class="mb-6">
-              <h3 class="text-xl font-bold text-gray-800 mb-2">مكونات المبادرة (آلية التنفيذ)</h3>
+              <h3 class="text-xl font-bold text-gray-800 mb-2">مكونات الاستراتيجية (آلية التنفيذ)</h3>
               <ul class="list-disc pr-6 text-lg text-gray-700">
                 <li>${data.component1 || ""}</li>
                 <li>${data.component2 || ""}</li>
@@ -1185,7 +1370,7 @@
           scale: 2,
         }).then((canvas) => {
           const link = document.createElement("a");
-          link.download = "cybersecurity-initiative.png";
+          link.download = "cooperative-learning-strategy.png";
           link.href = canvas.toDataURL();
           link.click();
         });
@@ -1205,9 +1390,23 @@
           const imgWidth = 210;
           const imgHeight = (canvas.height * imgWidth) / canvas.width;
           pdf.addImage(imgData, "JPEG", 0, 0, imgWidth, imgHeight);
-          pdf.save("cybersecurity-initiative.pdf");
+          pdf.save("cooperative-learning-strategy.pdf");
         });
       }
+
+      // تهيئة الصفحة
+      document.addEventListener('DOMContentLoaded', function() {
+        setupFieldValidation();
+        
+        // تحميل البيانات المحفوظة إن وجدت
+        const savedData = JSON.parse(localStorage.getItem("cooperativeLearningData") || "{}");
+        Object.keys(savedData).forEach(key => {
+          const field = document.getElementById(key);
+          if (field && savedData[key] && typeof savedData[key] === 'string') {
+            field.value = savedData[key];
+          }
+        });
+      });
     </script>
   </body>
 </html>

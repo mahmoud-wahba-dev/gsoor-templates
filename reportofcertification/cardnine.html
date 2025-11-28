@@ -5,8 +5,9 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 
-    <title>تقرير جلسات مجتمعات التعلم المهنية - جاهز للتحميل والطباعة</title>
+    <title>غلاف لأي تقرير أو ملف بالعرض (أفقي) - جاهز للتحميل والطباعة</title>
     <style>
       /* Modal Styles */
       .modal-overlay {
@@ -21,6 +22,18 @@
         overflow-y: auto;
         padding: 20px;
       }
+      
+.footer-ink {
+        background: #f8fafb;
+      }
+
+      .social-icon {
+        width: 26px;
+        height: 26px;
+        fill: currentColor;
+      }
+
+
       .modal-overlay.active {
         display: flex;
         align-items: center;
@@ -90,7 +103,7 @@
         outline: none;
         box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
       }
-          /* Navbar Styles */
+      /* Navbar Styles */
       .navbar {
         background-color: #f3f4f6;
         padding: 12px 0;
@@ -261,244 +274,7 @@
               </svg>
             </a>
           </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              شواهد تقييم الأداء جاهزة
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              أدوات تحليل النتائج
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              الخطة الأسبوعية
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              تقرير إنجاز المعلم اليومي والأسبوعي
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              التقاويم الدراسية وتوزيع الأسابيع
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              شواهد التفاعل مع المجتمع المهني
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              شواهد أداء الواجبات الوظيفية
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              تقارير التواصل مع أولياء الأمور
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              خطط علاجية وإثرائية
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              استبيانات أنماط التعلم
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              شهادات شكر وتقدير
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              شهادات متنوعة
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              لوحات وبنرات
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
-          <span class="navbar-separator">-</span>
-          <li class="navbar-item">
-            <a href="#" class="navbar-link">
-              أدوات
-              <svg
-                class="dropdown-icon"
-                fill="currentColor"
-                viewBox="0 0 20 20"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                  clip-rule="evenodd"
-                />
-              </svg>
-            </a>
-          </li>
+          <!-- ... باقي عناصر القائمة ... -->
         </ul>
       </div>
     </nav>
@@ -525,39 +301,42 @@
 
           <!-- نموذج الاستمارة -->
           <div class="mt-8 bg-white border border-gray-300 rounded-lg p-6">
-            <!-- القسم العلوي: إدارة التعليم -->
+            <!-- القسم العلوي: العنوان -->
             <div class="mb-6">
               <label class="block text-sm font-medium text-gray-700 mb-2">
-العنوان:
+                العنوان:
               </label>
               <textarea
-                id="eduInfo"
+                id="title"
                 class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
                 rows="3"
               >
 عنوان الملف
 يتكون من سطرين</textarea
               >
-              <div id="eduInfoError" class="error-message">هذا الحقل مطلوب</div>
+              <div id="titleError" class="error-message">هذا الحقل مطلوب</div>
             </div>
-             <div class="mb-6">
+            
+            <!-- القسم الثاني: اسم المدرسة -->
+            <div class="mb-6">
               <label class="block text-sm font-medium text-gray-700 mb-2">
-اسم المدرسة:
+                اسم المدرسة:
               </label>
               <textarea
                 id="schoolInfo"
                 class="w-full border border-gray-300 rounded-md p-3 text-gray-600 resize-y focus:outline-none focus:ring-2 focus:ring-blue-500"
                 rows="3"
               >
-
 اسم المدرسة
 يتكون من سطرين</textarea
               >
               <div id="schoolInfoError" class="error-message">هذا الحقل مطلوب</div>
             </div>
-             <div class="mb-6">
+            
+            <!-- القسم الثالث: اسم معد الملف -->
+            <div class="mb-6">
               <label class="block text-sm font-medium text-gray-700 mb-2">
-اسم معد الملف:
+                اسم معد الملف:
               </label>
               <textarea
                 id="prepInfo"
@@ -569,24 +348,21 @@
               <div id="prepInfoError" class="error-message">هذا الحقل مطلوب</div>
             </div>
 
-            <div class="grid grid-cols-3 gap-4 mb-6">
-             
-              <div>
-                <label class="block text-sm font-medium text-gray-700 mb-2">
-                  التاريخ:
-                </label>
-                <input
-                  type="text"
-                  id="dayDate"
-                  class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  value="الأحد - ١٤٤٧/١٢/١٢هـ"
-                />
-                <div id="dayDateError" class="error-message">
-                  هذا الحقل مطلوب
-                </div>
+            <!-- القسم الرابع: التاريخ -->
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-2">
+                التاريخ:
+              </label>
+              <input
+                type="text"
+                id="dayDate"
+                class="w-full border border-gray-300 rounded-md p-2 text-gray-600 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                value="الأحد - ١٤٤٧/١٢/١٢هـ"
+              />
+              <div id="dayDateError" class="error-message">
+                هذا الحقل مطلوب
               </div>
             </div>
-
            
             <!-- زر المعاينة -->
             <div class="mt-8">
@@ -654,87 +430,58 @@
         </div>
       </div>
     </div>
-    <div
-      class="max-w-4xl mx-auto bg-white rounded-xl p-6 mb-8 border shadow-lg"
-    >
-      <div class="space-y-4">
-        <div class="pb-4">
-          <div class="flex justify-between flex-col items-center">
-            <span class="text-2xl text-gray-700 font-medium"
-              >عدد الخدمات المنفذة:</span
-            >
-            <span class="text-2xl font-medium text-gray-800">2186208</span>
+    
+    
+<!-- FOOTER -->
+    <footer class="mt-12 footer-ink border-t border-gray-100">
+      <div
+        class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+      >
+        <!-- RIGHT COLUMN -->
+        <div class="text-right md:flex-1">
+          <img
+            src="../assets/imgs/gsoor_logo.jpg"
+            alt="logo"
+            class="h-10 mx-auto md:mx-0"
+          />
+          <div
+            class="flex justify-center md:justify-end gap-4 mt-3 text-gray-600"
+          >
+            <i class="fa-brands fa-youtube social-icon text-lg"></i>
+            <i class="fa-brands fa-tiktok social-icon text-lg"></i>
+            <i class="fa-brands fa-instagram social-icon text-lg"></i>
           </div>
         </div>
-      </div>
-    </div>
-    <div
-      class="max-w-4xl mx-auto bg-white rounded-xl p-6 mb-8 border shadow-lg"
-    >
-      <div class="space-y-4">
-        <div class="pb-4">
-          <div class="flex justify-between flex-col items-center">
-            <span class="text-gray-700 font-medium text-2xl"
-              >عدد سجلات شواهد تقيم الأداء المنفذة:</span
-            >
-            <span class="text-2xl font-medium text-gray-800">6321</span>
-          </div>
-        </div>
-      </div>
-    </div>
 
-    <!-- الفوتر -->
-    <footer class="mt-12 border-t border-gray-300 pt-6 pb-8">
-      <div class="max-w-6xl mx-auto">
-        <div
-          class="flex flex-wrap justify-center items-center gap-4 text-gray-700 text-sm mb-4"
-        >
-          <a href="#" class="hover:text-green-600 transition">من نحن</a>
-          <span class="text-gray-400">|</span>
-          <a href="#" class="hover:text-green-600 transition">سياسة الخصوصية</a>
-          <span class="text-gray-400">|</span>
-          <a href="#" class="hover:text-green-600 transition"
-            >اتفاقية الاستخدام</a
-          >
-          <span class="text-gray-400">|</span>
-          <a
-            href="#"
-            class="hover:text-green-600 transition flex items-center gap-1"
-          >
-            تويتر
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              class="w-4 h-4"
-            >
-              <path
-                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-              />
-            </svg>
-          </a>
-          <span class="text-gray-400">|</span>
-          <a
-            href="#"
-            class="hover:text-green-600 transition flex items-center gap-1"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              class="w-4 h-4"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z"
-                clip-rule="evenodd"
-              />
-            </svg>
-            اتصل بنا
-          </a>
+        <!-- CENTER COLUMN -->
+        <div class="text-center md:flex-1">
+          <h3 class="font-bold mb-2">تواصل معنا</h3>
+          <div class="flex items-center justify-center gap-4 text-gray-600">
+            <div class="flex items-center gap-2">
+              <i class="fa-regular fa-envelope text-sm"></i>
+              <span>البريد</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-mobile-screen-button text-sm"></i>
+              <span>واتس</span>
+            </div>
+          </div>
+          <div class="mt-3 text-sm text-gray-500">موقّع لدى منصة الأعمال</div>
         </div>
-        <div class="text-center text-gray-600 text-sm">
-          edu-forms.com, Inc 2025 ©
+
+        <!-- LEFT COLUMN -->
+        <div class="text-left md:flex-1">
+          <div class="text-sm text-gray-500">
+            © 2025 متجر جسور الرقمي | جميع الحقوق محفوظة
+          </div>
+          <div
+            class="mt-3 flex gap-2 items-center justify-center md:justify-start"
+          >
+            <span class="sr-only">Visa</span>
+            <i class="fa-brands fa-cc-visa text-gray-600 text-lg"></i>
+            <span class="sr-only">Mada</span>
+            <i class="fa-solid fa-credit-card text-gray-600 text-lg"></i>
+          </div>
         </div>
       </div>
     </footer>
@@ -744,9 +491,9 @@
       <div class="modal-content">
         <div class="modal-header">
           <h2 class="text-2xl font-bold text-gray-800">
-            معاينة تقرير تنفيذ حصة إنتظار
+            معاينة غلاف التقرير
           </h2>
-          <button class="modal-close" onclick="closePreviewModal()">
+          <button class="modal-close" id="closeModal">
             &times;
           </button>
         </div>
@@ -813,6 +560,25 @@
         menu.classList.toggle("mobile-active");
       }
 
+      // تهيئة التحقق من الحقول
+      function setupFieldValidation() {
+        const textFields = ['title', 'schoolInfo', 'prepInfo', 'dayDate'];
+
+        // معالجة حقول النص
+        textFields.forEach(fieldId => {
+          const field = document.getElementById(fieldId);
+          if (field) {
+            field.addEventListener('input', function() {
+              this.classList.remove('field-error');
+              const errorId = fieldId + 'Error';
+              const error = document.getElementById(errorId);
+              if (error) {
+                error.classList.remove('show');
+              }
+            });
+          }
+        });
+      }
 
       // دالة للتحقق من صحة البيانات
       function validateForm() {
@@ -826,117 +592,31 @@
           error.classList.remove("show");
         });
 
-        // التحقق من إدارة التعليم
-        const eduInfo = document.getElementById("eduInfo").value.trim();
-        if (!eduInfo) {
-          showError("eduInfo", "eduInfoError");
+        // التحقق من العنوان
+        const title = document.getElementById("title").value.trim();
+        if (!title) {
+          showError("title", "titleError");
           isValid = false;
         }
 
-        // التحقق من اسم المعلم الأساسي
-        const visitedTeacher = document
-          .getElementById("visitedTeacher")
-          .value.trim();
-        if (!visitedTeacher) {
-          showError("visitedTeacher", "visitedTeacherError");
+        // التحقق من اسم المدرسة
+        const schoolInfo = document.getElementById("schoolInfo").value.trim();
+        if (!schoolInfo) {
+          showError("schoolInfo", "schoolInfoError");
           isValid = false;
         }
 
-        // التحقق من الصف / الفصل
-        const gradeClass = document.getElementById("gradeClass").value.trim();
-        if (!gradeClass) {
-          showError("gradeClass", "gradeClassError");
+        // التحقق من اسم معد الملف
+        const prepInfo = document.getElementById("prepInfo").value.trim();
+        if (!prepInfo) {
+          showError("prepInfo", "prepInfoError");
           isValid = false;
         }
 
-        // التحقق من اليوم والتاريخ
+        // التحقق من التاريخ
         const dayDate = document.getElementById("dayDate").value.trim();
         if (!dayDate) {
           showError("dayDate", "dayDateError");
-          isValid = false;
-        }
-
-        // التحقق من الحصة
-        const session = document.getElementById("session").value.trim();
-        if (!session) {
-          showError("session", "sessionError");
-          isValid = false;
-        }
-
-        // التحقق من المادة / النشاط المنفذ
-        const subject = document.getElementById("subject").value.trim();
-        if (!subject) {
-          showError("subject", "subjectError");
-          isValid = false;
-        }
-
-        // التحقق من مكان التنفيذ
-        const location = document.getElementById("location").value.trim();
-        if (!location) {
-          showError("location", "locationError");
-          isValid = false;
-        }
-
-        // التحقق من وسائل وطرق التنفيذ
-        const implementationMethods = document
-          .getElementById("implementationMethods")
-          .value.trim();
-        if (!implementationMethods) {
-          showError("implementationMethods", "implementationMethodsError");
-          isValid = false;
-        }
-
-        // التحقق من الهدف العام
-        const generalObjective = document
-          .getElementById("generalObjective")
-          .value.trim();
-        if (!generalObjective) {
-          showError("generalObjective", "generalObjectiveError");
-          isValid = false;
-        }
-
-        // التحقق من وصف ما تم إنجازه
-        const achievementDescription = document
-          .getElementById("achievementDescription")
-          .value.trim();
-        if (!achievementDescription) {
-          showError("achievementDescription", "achievementDescriptionError");
-          isValid = false;
-        }
-
-        // التحقق من الملاحظات / التوصيات
-        const notesRecommendations = document
-          .getElementById("notesRecommendations")
-          .value.trim();
-        if (!notesRecommendations) {
-          showError("notesRecommendations", "notesRecommendationsError");
-          isValid = false;
-        }
-
-        // التحقق من التوقيع الأيمن
-        const rightSignature = document
-          .getElementById("rightSignature")
-          .value.trim();
-        if (!rightSignature) {
-          showError("rightSignature", "rightSignatureError");
-          isValid = false;
-        }
-
-        // التحقق من التوقيع الأوسط
-        const middleSignature = document
-          .getElementById("middleSignature")
-          .value.trim();
-        if (!middleSignature) {
-          showError("middleSignature", "middleSignatureError");
-          isValid = false;
-        }
-
-        // التحقق من التوقيع الأيسر
-        const leftSignature = document
-          .getElementById("leftSignature")
-          .value.trim();
-        if (!leftSignature) {
-          showError("leftSignature", "leftSignatureError");
           isValid = false;
         }
 
@@ -955,39 +635,96 @@
         }
       }
 
-      // إزالة رسالة الخطأ عند الكتابة
-      function setupFieldValidation() {
-        const textFields = [
-          "eduInfo",
-          "visitedTeacher",
-          "gradeClass",
-          "dayDate",
-          "session",
-          "subject",
-          "location",
-          "implementationMethods",
-          "generalObjective",
-          "achievementDescription",
-          "notesRecommendations",
-          "rightSignature",
-          "middleSignature",
-          "leftSignature",
-        ];
+      // دالة حفظ البيانات
+      function saveFormData() {
+        const formData = {
+          title: document.getElementById('title').value,
+          schoolInfo: document.getElementById('schoolInfo').value,
+          prepInfo: document.getElementById('prepInfo').value,
+          dayDate: document.getElementById('dayDate').value
+        };
 
-        // معالجة حقول النص
-        textFields.forEach((fieldId) => {
-          const field = document.getElementById(fieldId);
-          if (field) {
-            field.addEventListener("input", function () {
-              this.classList.remove("field-error");
-              const errorId = fieldId + "Error";
-              const error = document.getElementById(errorId);
-              if (error) {
-                error.classList.remove("show");
-              }
-            });
-          }
-        });
+        localStorage.setItem('reportCoverData', JSON.stringify(formData));
+        return formData;
+      }
+
+      // توليد محتوى المعاينة
+      function generatePreviewContent() {
+        const data = JSON.parse(localStorage.getItem('reportCoverData') || '{}');
+        const previewContainer = document.getElementById("previewTemplateContent");
+
+        // تقسيم النص إلى أسطر
+        const titleLines = (data.title || "عنوان الملف\nيتكون من سطرين").split("\n");
+        const schoolLines = (data.schoolInfo || "اسم المدرسة\nيتكون من سطرين").split("\n");
+        const prepLines = (data.prepInfo || "إعداد المعلم\nاسم المعلم").split("\n");
+
+        // إنشاء HTML للمعاينة
+        const html = `
+          <div class="max-w-4xl mx-auto">
+            <div class="bg-white rounded-xl p-6">
+              <div
+                class="w-[300px] h-[300px] flex mx-auto rounded-full overflow-hidden items-center justify-center shadow-md mb-8"
+              >
+                <img
+                  src="../assets/imgs/card9/sub-period.webp"
+                  alt="img-title"
+                  class="w-full h-full object-cover rounded-full"
+                />
+              </div>
+              <h1 class="text-4xl text-center mb-4">غلاف لأي تقرير أو ملف بالعرض (أفقي)</h1>
+              
+              <div class="mt-8 bg-white border border-gray-300 rounded-lg p-6">
+                <!-- العنوان -->
+                <div class="mb-6">
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    العنوان:
+                  </label>
+                  <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600 text-center text-xl font-bold">
+                    ${titleLines.map(line => `<p>${line}</p>`).join('')}
+                  </div>
+                </div>
+
+                <!-- اسم المدرسة -->
+                <div class="mb-6">
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    اسم المدرسة:
+                  </label>
+                  <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600 text-center text-lg">
+                    ${schoolLines.map(line => `<p>${line}</p>`).join('')}
+                  </div>
+                </div>
+
+                <!-- اسم معد الملف -->
+                <div class="mb-6">
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    اسم معد الملف:
+                  </label>
+                  <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600 text-center">
+                    ${prepLines.map(line => `<p>${line}</p>`).join('')}
+                  </div>
+                </div>
+
+                <!-- التاريخ -->
+                <div class="mb-6">
+                  <label class="block text-sm font-medium text-gray-700 mb-2">
+                    التاريخ:
+                  </label>
+                  <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600 text-center">
+                    ${data.dayDate || "الأحد - ١٤٤٧/١٢/١٢هـ"}
+                  </div>
+                </div>
+
+                <div class="mt-8 p-4 bg-blue-50 border border-blue-200 rounded">
+                  <p class="text-blue-700 text-center">
+                    هذا الغلاف جاهز للاستخدام مع أي تقرير أو ملف بالعرض الأفقي
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+
+        previewContainer.innerHTML = html;
       }
 
       // دالة المعاينة
@@ -1002,228 +739,10 @@
           return;
         }
 
-        // إذا كانت البيانات صحيحة، توليد محتوى المعاينة وفتح الـ modal
+        // إذا كانت البيانات صحيحة، حفظها وفتح الـ modal
+        saveFormData();
         generatePreviewContent();
         openPreviewModal();
-      }
-
-      // توليد محتوى المعاينة
-      function generatePreviewContent() {
-        const eduInfoText =
-          document.getElementById("eduInfo").value ||
-          "الإدارة العامة للتعليم\nبالمنطقة\nمدرسة";
-        const eduInfoLines = eduInfoText.split("\n");
-        const eduInfo = eduInfoLines[0] || "الإدارة العامة للتعليم";
-        const region = eduInfoLines[1] || "بالمنطقة";
-        const schoolName = eduInfoLines[2] || "مدرسة";
-        const visitedTeacher =
-          document.getElementById("visitedTeacher").value || "اسم المعلم";
-        const gradeClass = document.getElementById("gradeClass").value || "الصف";
-        const dayDate =
-          document.getElementById("dayDate").value || "الأحد - ١٤٤٧/١٢/١٢هـ";
-        const session =
-          document.getElementById("session").value || "الحصة الأولى";
-        const subject =
-          document.getElementById("subject").value || "علوم - جهاز الدوران";
-        const location =
-          document.getElementById("location").value || "غرفة المصادر";
-        const implementationMethods =
-          document.getElementById("implementationMethods").value ||
-          "عرض مقطع فيديو\n\nأوراق عمل\n\nحوار ونقاش";
-        const generalObjective =
-          document.getElementById("generalObjective").value ||
-          "استثمار وقت حصص الانتظار بزيادة التحصيل العلمي للطلاب";
-        const achievementDescription =
-          document.getElementById("achievementDescription").value ||
-          "تم عرض مقطع فيديو على الطلاب مع تزويدهم بورقة عمل، وتم طلب منهم محاولة حل الورقة من المحتوى الذي تم عرضه بالفيديو، وعند الانتهاء من عرض المقطع وحل الورقة تمت مناقشتهم والتحاور معهم حول الإجابات.";
-        const notesRecommendations =
-          document.getElementById("notesRecommendations").value ||
-          "الفصل كان ممتاز من الناحية الإنضباطية، كما أبدى الطلاب مستوى عالي من الفهم والمبادرة بالمشاركة والنقاش حول المادة.";
-        const rightSignature =
-          document.getElementById("rightSignature").value ||
-          "المعلم المنفذ\nالاسم";
-        const middleSignature =
-          document.getElementById("middleSignature").value ||
-          "وظيفة واسم التوقيع الأوسط";
-        const leftSignature =
-          document.getElementById("leftSignature").value ||
-          "مدير المدرسة\nالاسم";
-        const barcodeLink = document.getElementById("barcodeLink").value || "";
-
-        const previewContainer = document.getElementById(
-          "previewTemplateContent"
-        );
-
-        // إنشاء HTML للمعاينة
-        const html = `
-          <div class="max-w-4xl mx-auto">
-            <div class="bg-white rounded-xl p-6">
-              <div
-                class="w-[300px] h-[300px] flex mx-auto rounded-full overflow-hidden items-center justify-center shadow-md mb-8"
-              >
-                <img
-                  src="../assets/imgs/card5/weekly-plans (1).webp"
-                  alt="img-title"
-                  class="w-full h-full object-cover rounded-full"
-                />
-              </div>
-              <h1 class="text-4xl text-center mb-4">تقرير تنفيذ حصة إنتظار</h1>
-              <p class="text-gray-700 my-4 text-center text-xl">
-                نموذج لإنشاء تقرير تنفيذ حصة إنتظار من جوالك مباشرة
-              </p>
-              
-              <div class="mt-8 bg-white border border-gray-300 rounded-lg p-6">
-                <!-- القسم العلوي: إدارة التعليم -->
-                <div class="mb-6">
-                  <label class="block text-sm font-medium text-gray-700 mb-2">
-                    إدارة التعليم، اسم المدرسة
-                  </label>
-                  <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600">
-                    <p>${eduInfo}</p>
-                    <p>${region}</p>
-                    <p class="font-bold">${schoolName}</p>
-                  </div>
-                </div>
-
-                <div class="grid grid-cols-3 gap-4 mb-6">
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">
-                      اسم المعلم/ة الأساسيـ/ة:
-                    </label>
-                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
-                      ${visitedTeacher}
-                    </div>
-                  </div>
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">
-                      الصف / الفصل:
-                    </label>
-                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
-                      ${gradeClass}
-                    </div>
-                  </div>
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">
-                      اليوم والتاريخ:
-                    </label>
-                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
-                      ${dayDate}
-                    </div>
-                  </div>
-                </div>
-
-                <div class="grid grid-cols-3 gap-4 mb-6">
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">
-                      الحصة:
-                    </label>
-                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
-                      ${session}
-                    </div>
-                  </div>
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">
-                      المادة / النشاط المنفذ:
-                    </label>
-                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
-                      ${subject}
-                    </div>
-                  </div>
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">
-                      مكان التنفيذ:
-                    </label>
-                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
-                      ${location}
-                    </div>
-                  </div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-4 mb-6">
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">
-                      وسائل وطرق التنفيذ:
-                    </label>
-                    <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600 whitespace-pre-line min-h-[80px]">
-                      ${implementationMethods}
-                    </div>
-                  </div>
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">
-                      الهدف العام:
-                    </label>
-                    <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
-                      ${generalObjective}
-                    </div>
-                  </div>
-                </div>
-
-                <div class="grid grid-cols-2 gap-4 mb-6">
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">
-                      وصف ماتم إنجازه بالحصة:
-                    </label>
-                    <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600 whitespace-pre-line min-h-[120px]">
-                      ${achievementDescription}
-                    </div>
-                  </div>
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">
-                      ملاحظات / توصيات :
-                    </label>
-                    <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600 whitespace-pre-line min-h-[120px]">
-                      ${notesRecommendations}
-                    </div>
-                  </div>
-                </div>
-
-                <div class="grid grid-cols-3 gap-4 mb-6">
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">
-                      وظيفة واسم التوقيع الأيمن:
-                    </label>
-                    <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600 whitespace-pre-line min-h-[60px]">
-                      ${rightSignature}
-                    </div>
-                  </div>
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">
-                      وظيفة واسم التوقيع الأوسط:
-                    </label>
-                    <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600 whitespace-pre-line min-h-[60px]">
-                      ${middleSignature}
-                    </div>
-                  </div>
-                  <div>
-                    <label class="block text-sm font-medium text-gray-700 mb-2">
-                      وظيفة واسم التوقيع الأيسر:
-                    </label>
-                    <div class="bg-gray-50 border border-gray-300 rounded-md p-3 text-gray-600 whitespace-pre-line min-h-[60px]">
-                      ${leftSignature}
-                    </div>
-                  </div>
-                </div>
-
-                ${
-                  barcodeLink
-                    ? `
-                <div class="mb-6">
-                  <label class="block text-sm font-medium text-gray-700 mb-2">
-                    رابط الشواهد:
-                  </label>
-                  <div class="bg-gray-50 border border-gray-300 rounded-md p-2 text-gray-600">
-                    ${barcodeLink}
-                  </div>
-                </div>
-                `
-                    : ""
-                }
-              </div>
-            </div>
-          </div>
-        `;
-
-        previewContainer.innerHTML = html;
       }
 
       // فتح الـ modal
@@ -1258,35 +777,67 @@
 
       // تحميل الصورة من الـ modal
       function downloadImageFromModal() {
-        const previewContent = document.getElementById(
-          "previewTemplateContent"
-        );
+        const previewContent = document.getElementById("previewTemplateContent");
+        
+        // إظهار رسالة تحميل
+        const downloadBtn = event.target;
+        const originalText = downloadBtn.innerHTML;
+        downloadBtn.innerHTML = 'جاري التحميل...';
+        downloadBtn.disabled = true;
+
         html2canvas(previewContent, {
           backgroundColor: "#ffffff",
           scale: 2,
+          useCORS: true,
+          logging: false
         }).then((canvas) => {
           const link = document.createElement("a");
-          link.download = "plc-session-report-preview.png";
+          link.download = `غلاف-تقرير-${new Date().toLocaleDateString('ar-SA')}.png`;
           link.href = canvas.toDataURL();
           link.click();
+          
+          // إعادة زر التحميل إلى حالته الأصلية
+          downloadBtn.innerHTML = originalText;
+          downloadBtn.disabled = false;
+        }).catch(error => {
+          console.error('Error generating image:', error);
+          alert('حدث خطأ أثناء تحميل الصورة');
+          downloadBtn.innerHTML = originalText;
+          downloadBtn.disabled = false;
         });
       }
 
       // تحميل PDF من الـ modal
       function downloadPDFFromModal() {
-        const previewContent = document.getElementById(
-          "previewTemplateContent"
-        );
+        const previewContent = document.getElementById("previewTemplateContent");
+        
+        // إظهار رسالة تحميل
+        const downloadBtn = event.target;
+        const originalText = downloadBtn.innerHTML;
+        downloadBtn.innerHTML = 'جاري التحميل...';
+        downloadBtn.disabled = true;
+
         html2canvas(previewContent, {
           backgroundColor: "#ffffff",
           scale: 2,
+          useCORS: true,
+          logging: false
         }).then((canvas) => {
-          const imgData = canvas.toDataURL("image/jpeg");
+          const imgData = canvas.toDataURL("image/jpeg", 0.9);
           const pdf = new jspdf.jsPDF("p", "mm", "a4");
           const imgWidth = 210;
           const imgHeight = (canvas.height * imgWidth) / canvas.width;
           pdf.addImage(imgData, "JPEG", 0, 0, imgWidth, imgHeight);
-          pdf.save("plc-session-report-preview.pdf");
+          pdf.save(`غلاف-تقرير-${new Date().toLocaleDateString('ar-SA')}.pdf`);
+          
+          // إعادة زر التحميل إلى حالته الأصلية
+          downloadBtn.innerHTML = originalText;
+          downloadBtn.disabled = false;
+        }).catch(error => {
+          console.error('Error generating PDF:', error);
+          alert('حدث خطأ أثناء تحميل PDF');
+          downloadBtn.innerHTML = originalText;
+          downloadBtn.disabled = false;
         });
       }
 
@@ -1297,23 +848,33 @@
         textarea.style.overflow = "hidden";
       }
 
-      // تطبيق على textarea وسائل وطرق التنفيذ عند تحميل الصفحة
+      // تطبيق على جميع textarea عند تحميل الصفحة
       document.addEventListener("DOMContentLoaded", function () {
         // إعداد الـ validation
         setupFieldValidation();
 
-        // تطبيق auto-resize على textarea وسائل وطرق التنفيذ
-        const implementationMethodsTextarea = document.getElementById(
-          "implementationMethods"
-        );
-        if (implementationMethodsTextarea) {
+        // تطبيق auto-resize على جميع textarea
+        const textareas = document.querySelectorAll('textarea');
+        textareas.forEach(textarea => {
           // تطبيق عند تحميل الصفحة
-          autoResizeTextarea(implementationMethodsTextarea);
+          autoResizeTextarea(textarea);
           // تطبيق عند الكتابة
-          implementationMethodsTextarea.addEventListener("input", function () {
+          textarea.addEventListener('input', function () {
             autoResizeTextarea(this);
           });
-        }
+        });
+
+        // ربط زر إغلاق الـ modal
+        document.getElementById('closeModal').addEventListener('click', closePreviewModal);
+
+        // تحميل البيانات المحفوظة إن وجدت
+        const savedData = JSON.parse(localStorage.getItem('reportCoverData') || '{}');
+        Object.keys(savedData).forEach(key => {
+          const field = document.getElementById(key);
+          if (field) {
+            field.value = savedData[key];
+          }
+        });
       });
     </script>
   </body>

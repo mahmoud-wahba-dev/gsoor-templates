@@ -34,6 +34,18 @@
       justify-content: center;
       gap: 8px;
     }
+    
+.footer-ink {
+        background: #f8fafb;
+      }
+
+      .social-icon {
+        width: 26px;
+        height: 26px;
+        fill: currentColor;
+      }
+
+
 
     .card-btn:hover {
       transform: scale(1.02);
@@ -163,46 +175,60 @@
       </div>
     </div>
 
-    <!-- Stats Section -->
-    <div class="max-w-4xl mx-auto mt-12 space-y-6 px-4">
-      <div class="bg-white rounded-xl shadow-sm border p-6 text-center">
-        <div class="flex flex-col items-center">
-          <span class="text-2xl text-gray-700 font-medium">عدد الخدمات المنفذة:</span>
-          <span class="text-3xl font-bold text-gray-800 mt-2">2216555</span>
-        </div>
-      </div>
-      
-      <div class="bg-white rounded-xl shadow-sm border p-6 text-center">
-        <div class="flex flex-col items-center">
-          <span class="text-2xl text-gray-700 font-medium">عدد سجلات شواهد تقييم الأداء المنفذة:</span>
-          <span class="text-3xl font-bold text-gray-800 mt-2">6351</span>
-        </div>
-      </div>
-    </div>
 
-    <!-- Footer -->
-    <footer class="mt-16 border-t border-gray-200 bg-white pt-8 pb-6">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="flex flex-wrap justify-center items-center gap-4 text-gray-700 text-sm mb-4">
-          <a href="#" class="hover:text-blue-600 transition-colors">من نحن</a>
-          <span class="text-gray-400">|</span>
-          <a href="#" class="hover:text-blue-600 transition-colors">سياسة الخصوصية</a>
-          <span class="text-gray-400">|</span>
-          <a href="#" class="hover:text-blue-600 transition-colors">اتفاقية الاستخدام</a>
-          <span class="text-gray-400">|</span>
-          <a href="#" class="hover:text-blue-600 transition-colors flex items-center gap-1">
-            تويتر
-            <i class="fab fa-twitter text-blue-400"></i>
-          </a>
-          <span class="text-gray-400">|</span>
-          <a href="#" class="hover:text-blue-600 transition-colors">العمل بنا</a>
+<!-- FOOTER -->
+    <footer class="mt-12 footer-ink border-t border-gray-100">
+      <div
+        class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+      >
+        <!-- RIGHT COLUMN -->
+        <div class="text-right md:flex-1">
+          <img
+            src="../assets/imgs/gsoor_logo.jpg"
+            alt="logo"
+            class="h-10 mx-auto md:mx-0"
+          />
+          <div
+            class="flex justify-center md:justify-end gap-4 mt-3 text-gray-600"
+          >
+            <i class="fa-brands fa-youtube social-icon text-lg"></i>
+            <i class="fa-brands fa-tiktok social-icon text-lg"></i>
+            <i class="fa-brands fa-instagram social-icon text-lg"></i>
+          </div>
         </div>
-        <div class="text-center text-gray-600 text-sm">
-          edu-forms.com, Inc 2025 ©
+
+        <!-- CENTER COLUMN -->
+        <div class="text-center md:flex-1">
+          <h3 class="font-bold mb-2">تواصل معنا</h3>
+          <div class="flex items-center justify-center gap-4 text-gray-600">
+            <div class="flex items-center gap-2">
+              <i class="fa-regular fa-envelope text-sm"></i>
+              <span>البريد</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-mobile-screen-button text-sm"></i>
+              <span>واتس</span>
+            </div>
+          </div>
+          <div class="mt-3 text-sm text-gray-500">موقّع لدى منصة الأعمال</div>
+        </div>
+
+        <!-- LEFT COLUMN -->
+        <div class="text-left md:flex-1">
+          <div class="text-sm text-gray-500">
+            © 2025 متجر جسور الرقمي | جميع الحقوق محفوظة
+          </div>
+          <div
+            class="mt-3 flex gap-2 items-center justify-center md:justify-start"
+          >
+            <span class="sr-only">Visa</span>
+            <i class="fa-brands fa-cc-visa text-gray-600 text-lg"></i>
+            <span class="sr-only">Mada</span>
+            <i class="fa-solid fa-credit-card text-gray-600 text-lg"></i>
+          </div>
         </div>
       </div>
     </footer>
-
     <!-- Scroll to Top Button -->
     <button onclick="window.scrollTo({top:0,behavior:'smooth'})" 
             class="fixed bottom-6 left-6 bg-blue-500 text-white w-12 h-12 rounded-full shadow-lg flex items-center justify-center text-xl hover:bg-blue-600 transition-colors">

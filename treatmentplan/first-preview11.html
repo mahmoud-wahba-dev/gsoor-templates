@@ -5,6 +5,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 
     <title>خطة علاجية - جاهز للتحميل والطباعة</title>
     <style>
@@ -21,6 +22,18 @@
         overflow-y: auto;
         padding: 20px;
       }
+      
+.footer-ink {
+        background: #f8fafb;
+      }
+
+      .social-icon {
+        width: 26px;
+        height: 26px;
+        fill: currentColor;
+      }
+
+
       .modal-overlay.active {
         display: flex;
         align-items: center;
@@ -742,87 +755,59 @@
         </div>
       </div>
     </div>
-    <div
-      class="max-w-4xl mx-auto bg-white rounded-xl p-6 mb-8 border shadow-lg"
-    >
-      <div class="space-y-4">
-        <div class="pb-4">
-          <div class="flex justify-between flex-col items-center">
-            <span class="text-2xl text-gray-700 font-medium"
-              >عدد الخدمات المنفذة:</span
-            >
-            <span class="text-2xl font-medium text-gray-800">2186208</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div
-      class="max-w-4xl mx-auto bg-white rounded-xl p-6 mb-8 border shadow-lg"
-    >
-      <div class="space-y-4">
-        <div class="pb-4">
-          <div class="flex justify-between flex-col items-center">
-            <span class="text-gray-700 font-medium text-2xl"
-              >عدد سجلات شواهد تقيم الأداء المنفذة:</span
-            >
-            <span class="text-2xl font-medium text-gray-800">6321</span>
-          </div>
-        </div>
-      </div>
-    </div>
+    
 
-    <!-- الفوتر -->
-    <footer class="mt-12 border-t border-gray-300 pt-6 pb-8">
-      <div class="max-w-6xl mx-auto">
-        <div
-          class="flex flex-wrap justify-center items-center gap-4 text-gray-700 text-sm mb-4"
-        >
-          <a href="#" class="hover:text-green-600 transition">من نحن</a>
-          <span class="text-gray-400">|</span>
-          <a href="#" class="hover:text-green-600 transition">سياسة الخصوصية</a>
-          <span class="text-gray-400">|</span>
-          <a href="#" class="hover:text-green-600 transition"
-            >اتفاقية الاستخدام</a
+    
+<!-- FOOTER -->
+    <footer class="mt-12 footer-ink border-t border-gray-100">
+      <div
+        class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+      >
+        <!-- RIGHT COLUMN -->
+        <div class="text-right md:flex-1">
+          <img
+            src="../assets/imgs/gsoor_logo.jpg"
+            alt="logo"
+            class="h-10 mx-auto md:mx-0"
+          />
+          <div
+            class="flex justify-center md:justify-end gap-4 mt-3 text-gray-600"
           >
-          <span class="text-gray-400">|</span>
-          <a
-            href="#"
-            class="hover:text-green-600 transition flex items-center gap-1"
-          >
-            تويتر
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              class="w-4 h-4"
-            >
-              <path
-                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-              />
-            </svg>
-          </a>
-          <span class="text-gray-400">|</span>
-          <a
-            href="#"
-            class="hover:text-green-600 transition flex items-center gap-1"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              class="w-4 h-4"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M1.5 4.5a3 3 0 013-3h1.372c.86 0 1.61.586 1.819 1.42l1.105 4.423a1.875 1.875 0 01-.694 1.955l-1.293.97c-.135.101-.164.249-.126.352a11.285 11.285 0 006.697 6.697c.103.038.25.009.352-.126l.97-1.293a1.875 1.875 0 011.955-.694l4.423 1.105c.834.209 1.42.959 1.42 1.82V19.5a3 3 0 01-3 3h-2.25C8.552 22.5 1.5 15.448 1.5 6.75V4.5z"
-                clip-rule="evenodd"
-              />
-            </svg>
-            اتصل بنا
-          </a>
+            <i class="fa-brands fa-youtube social-icon text-lg"></i>
+            <i class="fa-brands fa-tiktok social-icon text-lg"></i>
+            <i class="fa-brands fa-instagram social-icon text-lg"></i>
+          </div>
         </div>
-        <div class="text-center text-gray-600 text-sm">
-          edu-forms.com, Inc 2025 ©
+
+        <!-- CENTER COLUMN -->
+        <div class="text-center md:flex-1">
+          <h3 class="font-bold mb-2">تواصل معنا</h3>
+          <div class="flex items-center justify-center gap-4 text-gray-600">
+            <div class="flex items-center gap-2">
+              <i class="fa-regular fa-envelope text-sm"></i>
+              <span>البريد</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-mobile-screen-button text-sm"></i>
+              <span>واتس</span>
+            </div>
+          </div>
+          <div class="mt-3 text-sm text-gray-500">موقّع لدى منصة الأعمال</div>
+        </div>
+
+        <!-- LEFT COLUMN -->
+        <div class="text-left md:flex-1">
+          <div class="text-sm text-gray-500">
+            © 2025 متجر جسور الرقمي | جميع الحقوق محفوظة
+          </div>
+          <div
+            class="mt-3 flex gap-2 items-center justify-center md:justify-start"
+          >
+            <span class="sr-only">Visa</span>
+            <i class="fa-brands fa-cc-visa text-gray-600 text-lg"></i>
+            <span class="sr-only">Mada</span>
+            <i class="fa-solid fa-credit-card text-gray-600 text-lg"></i>
+          </div>
         </div>
       </div>
     </footer>

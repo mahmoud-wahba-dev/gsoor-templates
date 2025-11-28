@@ -1,198 +1,381 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>أفضل نموذج لتوثيق برنامج أو نشاط</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+  <!-- Add this to your head section -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
 
   <style>
-    :root{
-      --bg:#f5f6f7;
-      --card:#ffffff;
-      --accent:#2AA44F;
-      --muted:#777;
-      --border:#d6d6d6;
-      --input:#fafafa;
+    :root {
+      --bg: #f5f6f7;
+      --card: #ffffff;
+      --accent: #2AA44F;
+      --muted: #777;
+      --border: #d6d6d6;
+      --input: #fafafa;
+      --error: #dc2626;
     }
-    *{
-      box-sizing:border-box;
+
+.footer-ink {
+        background: #f8fafb;
+      }
+
+      .social-icon {
+        width: 26px;
+        height: 26px;
+        fill: currentColor;
+      }
+
+
+    * {
+      box-sizing: border-box;
       font-family: "Tahoma", Arial, sans-serif;
     }
-    body{
-      margin:0;
-      background:var(--bg);
-      color:#222;
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: #222;
     }
 
     /* Top gray info box */
-    .support-box{
-      background:#fff;
-      border:1px solid var(--border);
-      padding:18px;
-      margin:25px auto;
-      max-width:1000px;
-      border-radius:8px;
-      font-size:14px;
-      text-align:center;
+    .support-box {
+      background: #fff;
+      border: 1px solid var(--border);
+      padding: 18px;
+      margin: 25px auto;
+      max-width: 1000px;
+      border-radius: 8px;
+      font-size: 14px;
+      text-align: center;
     }
-    .support-box button{
-      margin:6px;
-      padding:10px 22px;
-      border-radius:6px;
-      cursor:pointer;
-      border:0;
-      font-weight:bold;
-      color:#fff;
+
+    .support-box button {
+      margin: 6px;
+      padding: 10px 22px;
+      border-radius: 6px;
+      cursor: pointer;
+      border: 0;
+      font-weight: bold;
+      color: #fff;
     }
-    .btn-twitter{background:#1d9bf0;}
-    .btn-telegram{background:#0088cc;}
+
+    .btn-twitter {
+      background: #1d9bf0;
+    }
+
+    .btn-telegram {
+      background: #0088cc;
+    }
 
     /* Main card */
-    .container{
-      max-width:850px;
-      margin:20px auto 30px;
-      background:var(--card);
-      border:1px solid var(--border);
-      border-radius:10px;
-      padding:25px 32px;
-    }
-    .header-img{
-      text-align:center;
-      margin-bottom:15px;
-    }
-    .header-img img{
-      width:140px;
-      height:140px;
-      border-radius:50%;
-      object-fit:cover;
-      border:5px solid #fff;
-      box-shadow:0 4px 10px rgba(0,0,0,0.1);
+    .container {
+      max-width: 850px;
+      margin: 20px auto 30px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 25px 32px;
     }
 
-    h1{
-      margin-top:5px;
-      font-size:22px;
-      text-align:center;
-      font-weight:700;
+    .header-img {
+      text-align: center;
+      margin-bottom: 15px;
     }
-    .subtext{
-      text-align:center;
-      margin:8px auto 25px;
-      color:#666;
-      font-size:14px;
-      line-height:1.7;
-      max-width:650px;
+
+    .header-img img {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      margin-top: 5px;
+      font-size: 22px;
+      text-align: center;
+      font-weight: 700;
+    }
+
+    .subtext {
+      text-align: center;
+      margin: 8px auto 25px;
+      color: #666;
+      font-size: 14px;
+      line-height: 1.7;
+      max-width: 650px;
     }
 
     /* Form layout */
-    label{
-      display:block;
-      font-size:14px;
-      margin-bottom:5px;
-      font-weight:600;
+    label {
+      display: block;
+      font-size: 14px;
+      margin-bottom: 5px;
+      font-weight: 600;
     }
+
     input[type=text],
     input[type=date],
     input[type=file],
     textarea,
-    select{
-      width:100%;
-      padding:9px 10px;
-      border:1px solid var(--border);
-      border-radius:6px;
-      font-size:14px;
-      background:var(--input);
+    select {
+      width: 100%;
+      padding: 9px 10px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 14px;
+      background: var(--input);
     }
 
-    textarea{
-      min-height:95px;
-      resize:vertical;
+    textarea {
+      min-height: 95px;
+      resize: vertical;
     }
 
-    .row{
-      display:flex;
-      gap:12px;
-      margin-bottom:16px;
+    .row {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
     }
-    .col{flex:1;}
 
-    .section-title{
-      margin:20px 0 8px;
-      font-weight:700;
-      font-size:15px;
+    .col {
+      flex: 1;
+    }
+
+    .section-title {
+      margin: 20px 0 8px;
+      font-weight: 700;
+      font-size: 15px;
     }
 
     /* Buttons */
-    .actions{
-      text-align:center;
-      margin-top:20px;
+    .actions {
+      text-align: center;
+      margin-top: 20px;
     }
-    .btn-main{
-      background:var(--accent);
-      padding:12px 30px;
-      border:0;
-      border-radius:6px;
-      font-size:16px;
-      cursor:pointer;
-      color:#fff;
-      font-weight:bold;
+
+    .btn-main {
+      background: var(--accent);
+      padding: 12px 30px;
+      border: 0;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      color: #fff;
+      font-weight: bold;
     }
-    .btn-reset{
-      background:#fff;
-      border:1px solid var(--border);
-      padding:12px 22px;
-      border-radius:6px;
-      margin-right:10px;
-      cursor:pointer;
-      font-size:14px;
+
+    .btn-reset {
+      background: #fff;
+      border: 1px solid var(--border);
+      padding: 12px 22px;
+      border-radius: 6px;
+      margin-right: 10px;
+      cursor: pointer;
+      font-size: 14px;
     }
 
     /* Footer link boxes */
-    .footer-links{
-      text-align:center;
-      margin:25px 0 10px;
+    .footer-links {
+      text-align: center;
+      margin: 25px 0 10px;
     }
-    .footer-links a{
-      display:inline-block;
-      padding:7px 18px;
-      border:1px solid var(--border);
-      border-radius:6px;
-      margin:3px;
-      font-size:14px;
-      text-decoration:none;
-      color:#222;
-      background:#fdfdfd;
+
+    .footer-links a {
+      display: inline-block;
+      padding: 7px 18px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      margin: 3px;
+      font-size: 14px;
+      text-decoration: none;
+      color: #222;
+      background: #fdfdfd;
     }
 
     /* Stats */
-    .stats-box{
-      text-align:center;
-      margin:18px 0;
-      padding:12px;
-      border-radius:6px;
-      border:1px solid var(--border);
-      background:#fff;
+    .stats-box {
+      text-align: center;
+      margin: 18px 0;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: #fff;
     }
-    .stats-box strong{
-      font-size:17px;
+
+    .stats-box strong {
+      font-size: 17px;
     }
 
     /* Bottom footer */
-    footer{
-      text-align:center;
-      font-size:13px;
-      color:#777;
-      padding:20px 0;
+    footer {
+      text-align: center;
+      font-size: 13px;
+      color: #777;
+      padding: 20px 0;
     }
-    footer a{color:#777;text-decoration:none;margin:0 4px;}
 
-    @media(max-width:720px){
-      .row{flex-direction:column}
-      .container{padding:22px;}
+    footer a {
+      color: #777;
+      text-decoration: none;
+      margin: 0 4px;
+    }
+
+    /* Modal Styles */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 20px;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-content {
+      background: white;
+      border-radius: 16px;
+      max-width: 90%;
+      width: 100%;
+      max-width: 1200px;
+      position: relative;
+      margin: auto;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    .modal-body {
+      padding: 20px;
+      max-height: calc(100vh - 200px);
+      overflow-y: auto;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: #6b7280;
+      padding: 0;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.2s;
+    }
+
+    .modal-close:hover {
+      background-color: #f3f4f6;
+      color: #111827;
+    }
+
+    .preview-template {
+      background: white;
+      padding: 40px;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      text-align: center;
+    }
+
+    /* Error Message Styles */
+    .error-message {
+      color: var(--error);
+      font-size: 12px;
+      margin-top: 4px;
+      display: none;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    .field-error {
+      border-color: var(--error) !important;
+      border-width: 2px !important;
+    }
+
+    .field-error:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.1);
+    }
+
+    .download-buttons {
+      text-align: center;
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .download-btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-image {
+      background: #3b82f6;
+    }
+
+    .btn-pdf {
+      background: #dc2626;
+    }
+
+    .btn-close {
+      background: #6b7280;
+    }
+
+    @media(max-width:720px) {
+      .row {
+        flex-direction: column
+      }
+
+      .container {
+        padding: 22px;
+      }
+
+      .download-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
     }
   </style>
 
 </head>
+
 <body>
 
   <!-- Social support box -->
@@ -213,47 +396,47 @@
     <h1>شهادة تخرج لطلاب وطالبات الابتدائي</h1>
 
     <p class="subtext">
-    إنشاء وتخصيص شهادة تخرج لطلاب وطالبات الابتدائي مع إمكانية تحرير وإضافة جميع البيانات الخاصة بك، بطريقة سهلة واحترافية توفر عليه الوقت والجهد ويتم حفظ الملف النهائي بتنسيق صورة أو ملف pdf لسهولة الطباعة بجودة عالية وإعادة الاستخدام في تقارير ونماذج أخرى.
-        </p>
+      إنشاء وتخصيص شهادة تخرج لطلاب وطالبات الابتدائي مع إمكانية تحرير وإضافة جميع البيانات الخاصة بك، بطريقة سهلة
+      واحترافية توفر عليه الوقت والجهد ويتم حفظ الملف النهائي بتنسيق صورة أو ملف pdf لسهولة الطباعة بجودة عالية وإعادة
+      الاستخدام في تقارير ونماذج أخرى.
+    </p>
 
-    <form>
+    <form id="elementaryCertificateForm">
 
       <div class="row">
         <div class="col">
           <label>اسم المدرسة:</label>
-          <input type="text" placeholder="">
+          <input type="text" id="schoolName3" placeholder="أدخل اسم المدرسة">
+          <div id="schoolName3Error" class="error-message">هذا الحقل مطلوب</div>
         </div>
       </div>
 
       <div class="row">
         <div class="col">
           <label>جملة التقدير أو الثناء:</label>
-          <input type="text">
+          <input type="text" id="praiseSentence3" placeholder="أدخل جملة التقدير">
+          <div id="praiseSentence3Error" class="error-message">هذا الحقل مطلوب</div>
         </div>
-        
-      </div>
-
-      <div class="row">
-        
-        
       </div>
 
       <div class="section-title">اسم الطالب/ـة - يقبل من 1 إلى 20 اسم دفعة واحدة:</div>
-      <textarea></textarea>
+      <textarea id="studentNames3" placeholder="أدخل أسماء الطلاب (اسم لكل سطر)"></textarea>
+      <div id="studentNames3Error" class="error-message">هذا الحقل مطلوب - أدخل اسم طالب واحد على الأقل</div>
 
       <div class="section-title">سبب التقدير أو الثناء:</div>
-      <textarea></textarea>
+      <textarea id="praiseReason3" placeholder="أدخل سبب التقدير"></textarea>
+      <div id="praiseReason3Error" class="error-message">هذا الحقل مطلوب</div>
 
       <div class="section-title">وظيفة واسم التوقيع الأول:</div>
-      <textarea></textarea>
+      <textarea id="firstSignature3" placeholder="مثال: مدير المدرسة - أحمد محمد"></textarea>
+      <div id="firstSignature3Error" class="error-message">هذا الحقل مطلوب</div>
 
       <div class="section-title">وظيفة واسم التوقيع الثاني:</div>
-      <textarea></textarea>
+      <textarea id="secondSignature3" placeholder="مثال: وكيل الشؤون التعليمية - فاطمة عبدالله"></textarea>
+      <div id="secondSignature3Error" class="error-message">هذا الحقل مطلوب</div>
 
-      
-      
       <div class="actions">
-        <button class="btn-main">معاينة</button>
+        <button type="button" class="btn-main" onclick="previewElementaryCertificate()">معاينة</button>
       </div>
     </form>
 
@@ -264,25 +447,354 @@
       <a href="#">خطط علاجية وإثرائية</a>
     </div>
 
-    <div class="stats-box">
-      عدد الخدمات المنفذة: <strong>2218948
-
-</strong>
-    </div>
-    <div class="stats-box">
-      عدد سجلات شواهد تقييم الأداء المنفذة: <strong>6351</strong>
-    </div>
-
   </div>
 
-  <footer>
-    <a href="#">من نحن</a> • 
-    <a href="#">سياسة الخصوصية</a> • 
-    <a href="#">اتفاقية الاستخدام</a> • 
-    <a href="#">اتصل بنا</a> • 
-    <a href="#">تويتر</a>
-    <div style="margin-top:10px">edu-forms.com, Inc © 2025</div>
+  <!-- Modal Popup للمعاينة -->
+  <div id="previewModal3" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="text-2xl font-bold text-gray-800">معاينة شهادة تخرج الابتدائي</h2>
+        <button class="modal-close" onclick="closePreviewModal3()">
+          &times;
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="previewTemplateContent3" class="preview-template">
+          <!-- سيتم ملء المحتوى ديناميكياً -->
+        </div>
+        <div class="download-buttons">
+          <button onclick="downloadImageFromModal3()" class="download-btn btn-image">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path
+                d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+              <path
+                d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+            </svg>
+            تحميل كصورة
+          </button>
+          <button onclick="downloadPDFFromModal3()" class="download-btn btn-pdf">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+              <path
+                d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z" />
+              <path
+                d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z" />
+            </svg>
+            تحميل PDF
+          </button>
+          <button onclick="closePreviewModal3()" class="download-btn btn-close">
+            إغلاق
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="mt-12 footer-ink border-t border-gray-100">
+    <div class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+      <!-- RIGHT COLUMN -->
+      <div class="text-right md:flex-1">
+        <img src="../assets/imgs/gsoor_logo.jpg" alt="logo" class="h-10 mx-auto md:mx-0" />
+        <div class="flex justify-center md:justify-end gap-4 mt-3 text-gray-600">
+          <i class="fa-brands fa-youtube social-icon text-lg"></i>
+          <i class="fa-brands fa-tiktok social-icon text-lg"></i>
+          <i class="fa-brands fa-instagram social-icon text-lg"></i>
+        </div>
+      </div>
+
+      <!-- CENTER COLUMN -->
+      <div class="text-center md:flex-1">
+        <h3 class="font-bold mb-2">تواصل معنا</h3>
+        <div class="flex items-center justify-center gap-4 text-gray-600">
+          <div class="flex items-center gap-2">
+            <i class="fa-regular fa-envelope text-sm"></i>
+            <span>البريد</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <i class="fa-solid fa-mobile-screen-button text-sm"></i>
+            <span>واتس</span>
+          </div>
+        </div>
+        <div class="mt-3 text-sm text-gray-500">موقّع لدى منصة الأعمال</div>
+      </div>
+
+      <!-- LEFT COLUMN -->
+      <div class="text-left md:flex-1">
+        <div class="text-sm text-gray-500">
+          © 2025 متجر جسور الرقمي | جميع الحقوق محفوظة
+        </div>
+        <div class="mt-3 flex gap-2 items-center justify-center md:justify-start">
+          <span class="sr-only">Visa</span>
+          <i class="fa-brands fa-cc-visa text-gray-600 text-lg"></i>
+          <span class="sr-only">Mada</span>
+          <i class="fa-solid fa-credit-card text-gray-600 text-lg"></i>
+        </div>
+      </div>
+    </div>
   </footer>
 
+  <script>
+    // دالة حفظ البيانات في localStorage
+    function saveElementaryCertificateData() {
+      const data = {
+        schoolName: document.getElementById('schoolName3').value,
+        praiseSentence: document.getElementById('praiseSentence3').value,
+        studentNames: document.getElementById('studentNames3').value,
+        praiseReason: document.getElementById('praiseReason3').value,
+        firstSignature: document.getElementById('firstSignature3').value,
+        secondSignature: document.getElementById('secondSignature3').value
+      };
+
+      localStorage.setItem('elementaryCertificateData', JSON.stringify(data));
+      return data;
+    }
+
+    // تحميل البيانات المحفوظة
+    function loadSavedData3() {
+      const savedData = localStorage.getItem('elementaryCertificateData');
+      if (savedData) {
+        const data = JSON.parse(savedData);
+        document.getElementById('schoolName3').value = data.schoolName || '';
+        document.getElementById('praiseSentence3').value = data.praiseSentence || '';
+        document.getElementById('studentNames3').value = data.studentNames || '';
+        document.getElementById('praiseReason3').value = data.praiseReason || '';
+        document.getElementById('firstSignature3').value = data.firstSignature || '';
+        document.getElementById('secondSignature3').value = data.secondSignature || '';
+      }
+    }
+
+    // التحقق من صحة البيانات
+    function validateForm3() {
+      let isValid = true;
+
+      // إزالة رسائل الخطأ السابقة
+      document.querySelectorAll('.error-message').forEach(error => {
+        error.classList.remove('show');
+      });
+      document.querySelectorAll('.field-error').forEach(field => {
+        field.classList.remove('field-error');
+      });
+
+      // التحقق من الحقول المطلوبة
+      const requiredFields = [
+        'schoolName3', 'praiseSentence3', 'studentNames3',
+        'praiseReason3', 'firstSignature3', 'secondSignature3'
+      ];
+
+      requiredFields.forEach(fieldId => {
+        const field = document.getElementById(fieldId);
+        if (!field.value.trim()) {
+          showError3(fieldId, `${fieldId}Error`);
+          isValid = false;
+        }
+      });
+
+      return isValid;
+    }
+
+    // دالة لإظهار رسالة الخطأ
+    function showError3(fieldId, errorId) {
+      const field = document.getElementById(fieldId);
+      const error = document.getElementById(errorId);
+      if (field) {
+        field.classList.add('field-error');
+      }
+      if (error) {
+        error.classList.add('show');
+      }
+    }
+
+    // إعداد التحقق من الحقول
+    function setupFieldValidation3() {
+      const fields = [
+        'schoolName3', 'praiseSentence3', 'studentNames3',
+        'praiseReason3', 'firstSignature3', 'secondSignature3'
+      ];
+
+      fields.forEach(fieldId => {
+        const field = document.getElementById(fieldId);
+        if (field) {
+          field.addEventListener('input', function () {
+            this.classList.remove('field-error');
+            const error = document.getElementById(`${fieldId}Error`);
+            if (error) {
+              error.classList.remove('show');
+            }
+          });
+        }
+      });
+    }
+
+    // دالة المعاينة
+    function previewElementaryCertificate() {
+      if (!validateForm3()) {
+        // التمرير إلى أول حقل به خطأ
+        const firstError = document.querySelector('.field-error');
+        if (firstError) {
+          firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        alert('يرجى ملء جميع الحقول المطلوبة قبل المعاينة');
+        return;
+      }
+
+      // حفظ البيانات وفتح المعاينة
+      saveElementaryCertificateData();
+      generatePreviewContent3();
+      openPreviewModal3();
+    }
+
+    // فتح الـ modal
+    function openPreviewModal3() {
+      const modal = document.getElementById('previewModal3');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    // إغلاق الـ modal
+    function closePreviewModal3() {
+      const modal = document.getElementById('previewModal3');
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // إغلاق الـ modal عند الضغط خارج المحتوى
+    document.getElementById('previewModal3')?.addEventListener('click', function (e) {
+      if (e.target === this) {
+        closePreviewModal3();
+      }
+    });
+
+    // إغلاق الـ modal عند الضغط على ESC
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        closePreviewModal3();
+      }
+    });
+
+    // توليد محتوى المعاينة (تصميم خاص للمرحلة الابتدائية)
+    function generatePreviewContent3() {
+      const data = JSON.parse(localStorage.getItem('elementaryCertificateData') || '{}');
+      const previewContainer = document.getElementById('previewTemplateContent3');
+
+      // تقسيم أسماء الطلاب إلى مصفوفة
+      const studentNamesArray = data.studentNames ? data.studentNames.split('\n').filter(name => name.trim()) : [];
+
+      let html = `
+        <div style="border: 5px solid #FF6B6B; padding: 40px; border-radius: 25px; background: linear-gradient(135deg, #fff9f9 0%, #ffffff 100%); max-width: 800px; margin: 0 auto; position: relative; box-shadow: 0 10px 30px rgba(255, 107, 107, 0.2);">
+          
+          <!-- زخارف للأطفال -->
+          <div style="position: absolute; top: 20px; left: 20px; width: 60px; height: 60px; background: #4ECDC4; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;">🎓</div>
+          <div style="position: absolute; top: 20px; right: 20px; width: 60px; height: 60px; background: #FFD166; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;">⭐</div>
+          <div style="position: absolute; bottom: 20px; left: 20px; width: 60px; height: 60px; background: #118AB2; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;">🏆</div>
+          <div style="position: absolute; bottom: 20px; right: 20px; width: 60px; height: 60px; background: #06D6A0; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;">📚</div>
+
+          <div style="text-align: center; margin-bottom: 30px;">
+            <h1 style="color: #FF6B6B; font-size: 42px; margin-bottom: 10px; font-family: 'Comic Sans MS', cursive; text-shadow: 2px 2px 4px rgba(0,0,0,0.1);">
+              شهادة تخرج
+            </h1>
+            <h2 style="color: #118AB2; font-size: 28px; margin-bottom: 15px; font-family: 'Comic Sans MS', cursive;">
+              المرحلة الابتدائية
+            </h2>
+            <h3 style="color: #333; font-size: 24px; margin-bottom: 20px; font-weight: normal;">
+              ${data.schoolName || ''}
+            </h3>
+          </div>
+
+          <div style="text-align: center; margin: 30px 0; padding: 25px; background: rgba(255, 214, 102, 0.2); border-radius: 15px; border: 2px dashed #FFD166;">
+            <p style="font-size: 20px; color: #FF6B6B; line-height: 1.8; font-weight: bold; font-family: 'Comic Sans MS', cursive;">
+              ${data.praiseSentence || ''}
+            </p>
+          </div>
+
+          <div style="text-align: center; margin: 30px 0;">
+            <h3 style="color: #118AB2; font-size: 26px; margin-bottom: 20px; font-family: 'Comic Sans MS', cursive; border-bottom: 3px dotted #4ECDC4; padding-bottom: 10px; display: inline-block;">
+              أبطالنا المتميزون
+            </h3>
+            <div style="font-size: 22px; color: #333; line-height: 2.5; font-weight: bold; font-family: 'Comic Sans MS', cursive;">
+      `;
+
+      // إضافة أسماء الطلاب
+      if (studentNamesArray.length > 0) {
+        studentNamesArray.forEach((name, index) => {
+          html += `<div style="margin: 15px 0; padding: 8px; background: rgba(78, 205, 196, 0.1); border-radius: 10px;">${name.trim()}</div>`;
+        });
+      }
+
+      html += `
+            </div>
+          </div>
+
+          <div style="text-align: center; margin: 30px 0; padding: 20px; background: rgba(17, 138, 178, 0.1); border-radius: 15px;">
+            <h3 style="color: #118AB2; font-size: 22px; margin-bottom: 15px; font-family: 'Comic Sans MS', cursive;">لماذا نفتخر بهم؟</h3>
+            <p style="font-size: 18px; color: #555; line-height: 1.8; text-align: justify; font-family: 'Comic Sans MS', cursive;">
+              ${data.praiseReason || ''}
+            </p>
+          </div>
+
+          <div style="display: flex; justify-content: space-around; margin-top: 50px; padding: 0 30px;">
+            <div style="text-align: center;">
+              <div style="margin-bottom: 15px;">
+                <div style="width: 180px; height: 3px; background: linear-gradient(90deg, #FF6B6B, #4ECDC4); margin: 0 auto; border-radius: 2px;"></div>
+              </div>
+              <p style="font-size: 16px; color: #333; font-weight: bold; font-family: 'Comic Sans MS', cursive;">${data.firstSignature || ''}</p>
+              <p style="font-size: 14px; color: #777; font-family: 'Comic Sans MS', cursive;">القائد المدرسي</p>
+            </div>
+            <div style="text-align: center;">
+              <div style="margin-bottom: 15px;">
+                <div style="width: 180px; height: 3px; background: linear-gradient(90deg, #4ECDC4, #FF6B6B); margin: 0 auto; border-radius: 2px;"></div>
+              </div>
+              <p style="font-size: 16px; color: #333; font-weight: bold; font-family: 'Comic Sans MS', cursive;">${data.secondSignature || ''}</p>
+              <p style="font-size: 14px; color: #777; font-family: 'Comic Sans MS', cursive;">المعلم المميز</p>
+            </div>
+          </div>
+
+          <div style="text-align: center; margin-top: 40px; color: #999; font-size: 14px; border-top: 2px dotted #FFD166; padding-top: 20px; font-family: 'Comic Sans MS', cursive;">
+            <p>🎉 تهانينا لجميع الخريجين الصغار! مستقبل مشرق ينتظركم 🎉</p>
+            <p>تم منح هذه الشهادة في: ${new Date().toLocaleDateString('ar-SA', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p>
+          </div>
+        </div>
+      `;
+
+      previewContainer.innerHTML = html;
+    }
+
+    // تحميل الصورة من الـ modal
+    function downloadImageFromModal3() {
+      const previewContent = document.getElementById('previewTemplateContent3');
+      html2canvas(previewContent, {
+        backgroundColor: '#ffffff',
+        scale: 2,
+      }).then((canvas) => {
+        const link = document.createElement('a');
+        link.download = 'شهادة-تخرج-الابتدائي.png';
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+    }
+
+    // تحميل PDF من الـ modal
+    function downloadPDFFromModal3() {
+      const previewContent = document.getElementById('previewTemplateContent3');
+      html2canvas(previewContent, {
+        backgroundColor: '#ffffff',
+        scale: 2,
+      }).then((canvas) => {
+        const imgData = canvas.toDataURL('image/jpeg');
+        const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
+        const imgWidth = 210;
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        pdf.addImage(imgData, 'JPEG', 0, 0, imgWidth, imgHeight);
+        pdf.save('شهادة-تخرج-الابتدائي.pdf');
+      });
+    }
+
+    // تهيئة الصفحة عند التحميل
+    document.addEventListener('DOMContentLoaded', function () {
+      setupFieldValidation3();
+      loadSavedData3();
+    });
+  </script>
+
 </body>
+
 </html>

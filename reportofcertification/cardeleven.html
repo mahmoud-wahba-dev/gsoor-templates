@@ -4,6 +4,12 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>أفضل نموذج لتوثيق برنامج أو نشاط</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Add this to your head section -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
   <style>
     :root{--bg:#f6f8fa;--card:#fff;--accent:#2aa44f;--muted:#6b7280;--input:#f3f4f6}
     *{box-sizing:border-box;font-family:Tahoma,Arial, sans-serif}
@@ -31,67 +37,103 @@
     .two-cols{display:flex;gap:12px}
     .two-cols > *{flex:1}
 
-    @media (max-width:720px){
-      form .row, .two-cols{flex-direction:column}
-      .top-img img{width:88px;height:88px}
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="card">
-      <div class="top-img">
-        <img src="/mnt/data/76271298-6d31-418f-bd84-eba3e391710a.png" alt="logo">
-      </div>إنشاء وتخصيص فهرس تفاعلي لأي تقرير أو ملف مع إمكانية تحرير وإضافة جميع البيانات الخاصة بك، بطريقة سهلة واحترافية توفر عليه الوقت والجهد ويتم حفظ الملف النهائي بتنسيق صورة أو ملف pdf لسهولة الطباعة بجودة عالية وإعادة الاستخدام في تقارير ونماذج أخرى.
+.footer-ink {
+        background: #f8fafb;
+      }
 
-      <form id="docForm">
-        <div class="row">
-         
-      <!doctype html>
-<html lang="ar">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
- <div class="actions"> </div>
-  <title>عناصر الفهرس</title>
-  <style>
-    :root{
-      --panel-bg: #fafafa;
-      --panel-border: #e6e6e6;
-      --muted:#9b9b9b;
-      --danger:#d9534f;
-      --accent:#f7f7f7;
+      .social-icon {
+        width: 26px;
+        height: 26px;
+        fill: currentColor;
+      }
+
+
+    /* Modal Styles */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      overflow-y: auto;
+      padding: 20px;
     }
-    html,body{
-      height:100%;
-      margin:0;
-      font-family: "Segoe UI", Tahoma, "Noto Kufi Arabic", "Helvetica Neue", Arial, sans-serif;
-      background:#f1f1f1;
-      direction: rtl;
-      text-align: right;
-      color:#333;
+    .modal-overlay.active {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .container{
-      max-width:900px;
-      margin:28px auto;
-      padding:12px;
+    .modal-content {
+      background: white;
+      border-radius: 16px;
+      max-width: 90%;
+      width: 100%;
+      max-width: 1200px;
+      position: relative;
+      margin: auto;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .modal-body {
+      padding: 20px;
+      max-height: calc(100vh - 200px);
+      overflow-y: auto;
+    }
+    .modal-close {
+      background: none;
+      border: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: #6b7280;
+      padding: 0;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: all 0.2s;
+    }
+    .modal-close:hover {
+      background-color: #f3f4f6;
+      color: #111827;
+    }
+    .preview-template {
+      background: white;
+      padding: 40px;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+    }
+    .error-message {
+      color: #dc2626;
+      font-size: 14px;
+      margin-top: 4px;
+      display: none;
+    }
+    .error-message.show {
+      display: block;
+    }
+    .field-error {
+      border-color: #dc2626 !important;
+      border-width: 2px !important;
     }
 
-    h1{
-      margin:0 0 10px 0;
-      font-size:20px;
-      color:#444;
-    }
-
-    .note{
-      background:linear-gradient(#fff,#fbfbfb);
-      border:1px solid var(--panel-border);
-      padding:14px;
-      border-radius:4px;
-      box-shadow:0 1px 0 rgba(0,0,0,0.02);
-      margin-bottom:18px;
-      color:var(--muted);
-      font-size:14px;
+    /* Index Styles */
+    .index-container {
+      background: #fafafa;
+      border: 1px solid #e6e6e6;
+      border-radius: 4px;
+      padding: 14px;
+      margin-bottom: 18px;
     }
 
     .index-list{
@@ -101,11 +143,10 @@
     }
 
     .item{
-      background:var(--panel-bg);
-      border:1px solid var(--panel-border);
+      background:#f5f5f5;
+      border:1px solid #e8e8e8;
       border-radius:4px;
       padding:14px;
-      box-shadow:0 1px 0 rgba(0,0,0,0.02);
       position:relative;
       overflow:hidden;
     }
@@ -118,59 +159,31 @@
       margin-bottom:8px;
     }
 
-    .item-left{
-      min-width:110px;
-      display:flex;
-      gap:10px;
-      align-items:center;
-    }
-
     .badge{
-      background:#f5f5f5;
-      border:1px solid #e8e8e8;
+      background:#e9ecef;
+      border:1px solid #dee2e6;
       padding:6px 10px;
       border-radius:4px;
-      color:var(--muted);
+      color:#6c757d;
       font-size:13px;
     }
 
     .delete-btn{
       background:transparent;
-      border:1px solid var(--danger);
-      color:var(--danger);
+      border:1px solid #dc3545;
+      color:#dc3545;
       padding:6px 10px;
       border-radius:4px;
       cursor:pointer;
       font-size:13px;
     }
-    .delete-btn:hover{ background: rgba(217,83,79,0.05); }
+    .delete-btn:hover{ background: rgba(220,53,69,0.05); }
 
     .fields{
       display:flex;
       gap:12px;
       flex-wrap:wrap;
       align-items:center;
-    }
-
-    label{
-      font-size:13px;
-      color:var(--muted);
-      margin-bottom:6px;
-      display:block;
-    }
-
-    input[type="text"], input[type="number"]{
-      padding:8px 10px;
-      border:1px solid #e6e6e6;
-      border-radius:4px;
-      font-size:14px;
-      width:260px;
-      box-sizing:border-box;
-      background:white;
-    }
-
-    input.small{
-      width:90px;
     }
 
     .title-field{
@@ -192,19 +205,16 @@
 
     .add-btn{
       padding:8px 14px;
-      background:#337ab7;
+      background:#007bff;
       color:white;
       border:none;
       border-radius:4px;
       cursor:pointer;
     }
 
-    .add-btn:hover{ opacity:0.95; }
-
-    /* responsive */
-    @media (max-width:680px){
-      .container{ padding:10px; }
-      input[type="text"], input[type="number"]{ width:100%; }
+    @media (max-width:720px){
+      form .row, .two-cols{flex-direction:column}
+      .top-img img{width:88px;height:88px}
       .fields{ flex-direction:column; align-items:stretch; }
       .item-left{ width:100%; justify-content:space-between; }
       .controls{ justify-content:stretch; flex-direction:column; }
@@ -213,245 +223,499 @@
 </head>
 <body>
   <div class="container">
-    <h1>عناصر الفهرس</h1>
-
-    <div class="note">
-      لا يتم ترتيب العناصر هنا. قم بترقيم الصفحات بالشكل الصحيح وسيتم إعادة ترتيبها بالنموذج
-    </div>
-
-    <div class="index-list" id="indexList">
-      <div class="item" data-id="1">
-        <div class="item-header">
-          <div style="display:flex;gap:12px;align-items:center;">
-            <div class="badge">العنصر 1</div>
-            <div style="color:#666;font-size:14px;">العنوان:</div>
-            <div style="color:#666;font-size:14px;font-weight:600;">المقدمة</div>
-          </div>
-          <button class="delete-btn" onclick="removeItem(this)">حذف</button>
-        </div>
-
-        <div class="fields">
-          <div>
-            <label>رقم الصفحة:</label>
-            <input class="small page-number" type="number" value="1" />
-          </div>
-
-          <div class="title-field">
-            <label>&nbsp;</label>
-            <input type="text" placeholder="اكتب عنوان العنصر..." value="المقدمة" />
-          </div>
-        </div>
+    <div class="card">
+      <div class="top-img">
+        <img src="/mnt/data/76271298-6d31-418f-bd84-eba3e391710a.png" alt="logo">
       </div>
+      
+      <h1>أفضل نموذج لتوثيق برنامج أو نشاط</h1>
+      <p class="lead">إنشاء وتخصيص فهرس تفاعلي لأي تقرير أو ملف مع إمكانية تحرير وإضافة جميع البيانات الخاصة بك، بطريقة سهلة واحترافية توفر عليه الوقت والجهد ويتم حفظ الملف النهائي بتنسيق صورة أو ملف pdf لسهولة الطباعة بجودة عالية وإعادة الاستخدام في تقارير ونماذج أخرى.</p>
 
-      <div class="item" data-id="2">
-        <div class="item-header">
-          <div style="display:flex;gap:12px;align-items:center;">
-            <div class="badge">العنصر 2</div>
-            <div style="color:#666;font-size:14px;">العنوان:</div>
-            <div style="color:#666;font-size:14px;font-weight:600;">الفصل الأول: الإطار النظري</div>
+      <form id="docForm">
+        <div class="row">
+          <div class="col">
+            <label for="programName">اسم البرنامج أو النشاط:</label>
+            <input type="text" id="programName" placeholder="أدخل اسم البرنامج أو النشاط">
+            <div id="programNameError" class="error-message">هذا الحقل مطلوب</div>
           </div>
-          <button class="delete-btn" onclick="removeItem(this)">حذف</button>
-        </div>
-
-        <div class="fields">
-          <div>
-            <label>رقم الصفحة:</label>
-            <input class="small page-number" type="number" value="5" />
-          </div>
-
-          <div class="title-field">
-            <label>&nbsp;</label>
-            <input type="text" placeholder="اكتب عنوان العنصر..." value="الفصل الأول: الإطار النظري" />
+          <div class="col">
+            <label for="programDate">تاريخ البرنامج:</label>
+            <input type="date" id="programDate">
+            <div id="programDateError" class="error-message">هذا الحقل مطلوب</div>
           </div>
         </div>
-      </div>
 
-      <div class="item" data-id="3">
-        <div class="item-header">
-          <div style="display:flex;gap:12px;align-items:center;">
-            <div class="badge">العنصر 3</div>
-            <div style="color:#666;font-size:14px;">العنوان:</div>
-            <div style="color:#666;font-size:14px;font-weight:600;">الفصل الثاني: الدراسة التطبيقية</div>
-          </div>
-          <button class="delete-btn" onclick="removeItem(this)">حذف</button>
-        </div>
-
-        <div class="fields">
-          <div>
-            <label>رقم الصفحة:</label>
-            <input class="small page-number" type="number" value="15" />
-          </div>
-
-          <div class="title-field">
-            <label>&nbsp;</label>
-            <input type="text" placeholder="اكتب عنوان العنصر..." value="الفصل الثاني: الدراسة التطبيقية" />
+        <div class="row">
+          <div class="col">
+            <label for="organization">اسم المؤسسة أو الجهة المنظمة:</label>
+            <input type="text" id="organization" placeholder="أدخل اسم المؤسسة">
+            <div id="organizationError" class="error-message">هذا الحقل مطلوب</div>
           </div>
         </div>
-      </div>
 
-      <div class="item" data-id="4">
-        <div class="item-header">
-          <div style="display:flex;gap:12px;align-items:center;">
-            <div class="badge">العنصر 4</div>
-            <div style="color:#666;font-size:14px;">العنوان:</div>
-            <div style="color:#666;font-size:14px;font-weight:600;">الفصل الثالث: النتائج والتوصيات</div>
-          </div>
-          <button class="delete-btn" onclick="removeItem(this)">حذف</button>
-        </div>
-
-        <div class="fields">
-          <div>
-            <label>رقم الصفحة:</label>
-            <input class="small page-number" type="number" value="25" />
-          </div>
-
-          <div class="title-field">
-            <label>&nbsp;</label>
-            <input type="text" placeholder="اكتب عنوان العنصر..." value="الفصل الثالث: النتائج والتوصيات" />
+        <div class="row">
+          <div class="col">
+            <label for="programDescription">وصف البرنامج أو النشاط:</label>
+            <textarea id="programDescription" placeholder="أدخل وصفاً مفصلاً للبرنامج أو النشاط"></textarea>
+            <div id="programDescriptionError" class="error-message">هذا الحقل مطلوب</div>
           </div>
         </div>
-      </div>
 
-      <div class="item" data-id="5">
-        <div class="item-header">
-          <div style="display:flex;gap:12px;align-items:center;">
-            <div class="badge">العنصر 5</div>
-            <div style="color:#666;font-size:14px;">العنوان:</div>
-            <div style="color:#666;font-size:14px;font-weight:600;">الخاتمة</div>
-          </div>
-          <button class="delete-btn" onclick="removeItem(this)">حذف</button>
-        </div>
+        <!-- الفهرس التفاعلي -->
+        <div class="section">
+          <h3>فهرس المحتويات</h3>
+          <div class="index-container">
+            <div class="index-list" id="indexList">
+              <div class="item" data-id="1">
+                <div class="item-header">
+                  <div style="display:flex;gap:12px;align-items:center;">
+                    <div class="badge">العنصر 1</div>
+                    <div style="color:#666;font-size:14px;">العنوان:</div>
+                    <div style="color:#666;font-size:14px;font-weight:600;">المقدمة</div>
+                  </div>
+                  <button type="button" class="delete-btn" onclick="removeItem(this)">حذف</button>
+                </div>
+                <div class="fields">
+                  <div>
+                    <label>رقم الصفحة:</label>
+                    <input class="small page-number" type="number" value="1" min="1">
+                  </div>
+                  <div class="title-field">
+                    <label>عنوان العنصر:</label>
+                    <input type="text" placeholder="اكتب عنوان العنصر..." value="المقدمة">
+                  </div>
+                </div>
+              </div>
 
-        <div class="fields">
-          <div>
-            <label>رقم الصفحة:</label>
-            <input class="small page-number" type="number" value="35" />
-          </div>
+              <div class="item" data-id="2">
+                <div class="item-header">
+                  <div style="display:flex;gap:12px;align-items:center;">
+                    <div class="badge">العنصر 2</div>
+                    <div style="color:#666;font-size:14px;">العنوان:</div>
+                    <div style="color:#666;font-size:14px;font-weight:600;">أهداف البرنامج</div>
+                  </div>
+                  <button type="button" class="delete-btn" onclick="removeItem(this)">حذف</button>
+                </div>
+                <div class="fields">
+                  <div>
+                    <label>رقم الصفحة:</label>
+                    <input class="small page-number" type="number" value="2" min="1">
+                  </div>
+                  <div class="title-field">
+                    <label>عنوان العنصر:</label>
+                    <input type="text" placeholder="اكتب عنوان العنصر..." value="أهداف البرنامج">
+                  </div>
+                </div>
+              </div>
+            </div>
 
-          <div class="title-field">
-            <label>&nbsp;</label>
-            <input type="text" placeholder="اكتب عنوان العنصر..." value="الخاتمة" />
-          </div>
-        </div>
-      </div>
-
-      <div class="item" data-id="6">
-        <div class="item-header">
-          <div style="display:flex;gap:12px;align-items:center;">
-            <div class="badge">العنصر 6</div>
-            <div style="color:#666;font-size:14px;">العنوان:</div>
-            <div style="color:#666;font-size:14px;font-weight:600;">المراجع</div>
-          </div>
-          <button class="delete-btn" onclick="removeItem(this)">حذف</button>
-        </div>
-
-        <div class="fields">
-          <div>
-            <label>رقم الصفحة:</label>
-            <input class="small page-number" type="number" value="40" />
-          </div>
-
-          <div class="title-field">
-            <label>&nbsp;</label>
-            <input type="text" placeholder="اكتب عنوان العنصر..." value="المراجع" />
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <div class="item" data-id="4">
-        <div class="item-header">
-          <div style="display:flex;gap:12px;align-items:center;">
-            <div class="badge">العنصر 7</div>
-            <div style="color:#666;font-size:14px;">العنوان:</div>
-            <div style="color:#666;font-size:14px;font-weight:600;">الفصل الثالث: النتائج والتوصيات</div>
-          </div>
-          <button class="delete-btn" onclick="removeItem(this)">حذف</button>
-        </div>
-
-        <div class="fields">
-          <div>
-            <label>رقم الصفحة:</label>
-            <input class="small page-number" type="number" value="25" />
-          </div>
-
-          <div class="title-field">
-            <label>&nbsp;</label>
-            <input type="text" placeholder="اكتب عنوان العنصر..." value="الفصل الثالث: النتائج والتوصيات" />
+            <div class="controls">
+              <button type="button" class="add-btn" onclick="addItem()">إضافة عنصر جديد</button>
+            </div>
           </div>
         </div>
-      </div>
 
-
-    <div class="controls">
-      <button class="add-btn" onclick="addItem()">إضافة عنصر جديد</button>
+        <div class="actions">
+          <button type="button" class="btn green" onclick="previewTemplate()">معاينة</button>
+          <button type="reset" class="btn ghost">إعادة تعيين</button>
+          <span class="small">سيتم إنشاء الفهرس ورفع الملف عند المعالجة</span>
+        </div>
+      </form>
     </div>
   </div>
 
+  <!-- Modal Popup للمعاينة -->
+  <div id="previewModal" class="modal-overlay">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="text-2xl font-bold text-gray-800">معاينة الفهرس التفاعلي</h2>
+        <button class="modal-close" onclick="closePreviewModal()">
+          &times;
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="previewTemplateContent" class="preview-template">
+          <!-- سيتم ملء المحتوى ديناميكياً -->
+        </div>
+        <div class="flex justify-center gap-4 mt-6">
+          <button
+            onclick="downloadImageFromModal()"
+            class="bg-blue-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-blue-700 transition flex items-center gap-2"
+          >
+            تحميل كصورة
+          </button>
+          <button
+            onclick="downloadPDFFromModal()"
+            class="bg-red-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-red-700 transition flex items-center gap-2"
+          >
+            تحميل PDF
+          </button>
+          <button
+            onclick="closePreviewModal()"
+            class="bg-gray-600 text-white px-6 py-3 rounded-lg font-bold hover:bg-gray-700 transition"
+          >
+            إغلاق
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- FOOTER -->
+    <footer class="mt-12 footer-ink border-t border-gray-100">
+      <div
+        class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+      >
+        <!-- RIGHT COLUMN -->
+        <div class="text-right md:flex-1">
+          <img
+            src="../assets/imgs/gsoor_logo.jpg"
+            alt="logo"
+            class="h-10 mx-auto md:mx-0"
+          />
+          <div
+            class="flex justify-center md:justify-end gap-4 mt-3 text-gray-600"
+          >
+            <i class="fa-brands fa-youtube social-icon text-lg"></i>
+            <i class="fa-brands fa-tiktok social-icon text-lg"></i>
+            <i class="fa-brands fa-instagram social-icon text-lg"></i>
+          </div>
+        </div>
+
+        <!-- CENTER COLUMN -->
+        <div class="text-center md:flex-1">
+          <h3 class="font-bold mb-2">تواصل معنا</h3>
+          <div class="flex items-center justify-center gap-4 text-gray-600">
+            <div class="flex items-center gap-2">
+              <i class="fa-regular fa-envelope text-sm"></i>
+              <span>البريد</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-mobile-screen-button text-sm"></i>
+              <span>واتس</span>
+            </div>
+          </div>
+          <div class="mt-3 text-sm text-gray-500">موقّع لدى منصة الأعمال</div>
+        </div>
+
+        <!-- LEFT COLUMN -->
+        <div class="text-left md:flex-1">
+          <div class="text-sm text-gray-500">
+            © 2025 متجر جسور الرقمي | جميع الحقوق محفوظة
+          </div>
+          <div
+            class="mt-3 flex gap-2 items-center justify-center md:justify-start"
+          >
+            <span class="sr-only">Visa</span>
+            <i class="fa-brands fa-cc-visa text-gray-600 text-lg"></i>
+            <span class="sr-only">Mada</span>
+            <i class="fa-solid fa-credit-card text-gray-600 text-lg"></i>
+          </div>
+        </div>
+      </div>
+    </footer>
   <script>
-    function removeItem(btn){
-      const item = btn.closest('.item');
-      if(!item) return;
-      item.remove();
+    // دالة حفظ البيانات في localStorage
+    function saveTemplateData() {
+      const indexItems = [];
+      document.querySelectorAll('#indexList .item').forEach(item => {
+        const pageInput = item.querySelector('.page-number');
+        const titleInput = item.querySelector('.title-field input');
+        if (pageInput && titleInput) {
+          indexItems.push({
+            page: pageInput.value,
+            title: titleInput.value
+          });
+        }
+      });
+
+      const data = {
+        programName: document.getElementById('programName').value,
+        programDate: document.getElementById('programDate').value,
+        organization: document.getElementById('organization').value,
+        programDescription: document.getElementById('programDescription').value,
+        indexItems: indexItems
+      };
+      
+      localStorage.setItem('programDocumentationData', JSON.stringify(data));
+      return data;
     }
 
-    let nextId = 7;
-    function addItem(){
+    // دالة تحميل البيانات من localStorage
+    function loadTemplateData() {
+      const data = JSON.parse(localStorage.getItem('programDocumentationData') || '{}');
+      
+      if (data.programName) document.getElementById('programName').value = data.programName;
+      if (data.programDate) document.getElementById('programDate').value = data.programDate;
+      if (data.organization) document.getElementById('organization').value = data.organization;
+      if (data.programDescription) document.getElementById('programDescription').value = data.programDescription;
+      
+      if (data.indexItems && data.indexItems.length > 0) {
+        const indexList = document.getElementById('indexList');
+        indexList.innerHTML = '';
+        data.indexItems.forEach((item, index) => {
+          addItem(item.page, item.title, index + 1);
+        });
+      }
+    }
+
+    // دالة للتحقق من صحة البيانات
+    function validateForm() {
+      let isValid = true;
+
+      // إزالة جميع رسائل الخطأ السابقة
+      document.querySelectorAll('.field-error').forEach((field) => {
+        field.classList.remove('field-error');
+      });
+      document.querySelectorAll('.error-message').forEach((error) => {
+        error.classList.remove('show');
+      });
+
+      // التحقق من الحقول الأساسية
+      const fields = [
+        { id: 'programName', errorId: 'programNameError' },
+        { id: 'programDate', errorId: 'programDateError' },
+        { id: 'organization', errorId: 'organizationError' },
+        { id: 'programDescription', errorId: 'programDescriptionError' }
+      ];
+
+      fields.forEach(field => {
+        const value = document.getElementById(field.id).value.trim();
+        if (!value) {
+          showError(field.id, field.errorId);
+          isValid = false;
+        }
+      });
+
+      // التحقق من وجود عناصر في الفهرس
+      const indexItems = document.querySelectorAll('#indexList .item');
+      if (indexItems.length === 0) {
+        alert('يجب إضافة عنصر واحد على الأقل إلى الفهرس');
+        isValid = false;
+      }
+
+      return isValid;
+    }
+
+    // دالة لإظهار رسالة الخطأ
+    function showError(fieldId, errorId) {
+      const field = document.getElementById(fieldId);
+      const error = document.getElementById(errorId);
+      if (field) {
+        field.classList.add('field-error');
+      }
+      if (error) {
+        error.classList.add('show');
+      }
+    }
+
+    // إزالة رسالة الخطأ عند الكتابة
+    function setupFieldValidation() {
+      const textFields = ['programName', 'programDate', 'organization', 'programDescription'];
+
+      textFields.forEach((fieldId) => {
+        const field = document.getElementById(fieldId);
+        if (field) {
+          field.addEventListener('input', function () {
+            this.classList.remove('field-error');
+            const errorId = fieldId + 'Error';
+            const error = document.getElementById(errorId);
+            if (error) {
+              error.classList.remove('show');
+            }
+          });
+        }
+      });
+    }
+
+    // إدارة الفهرس
+    let nextId = 3;
+
+    function removeItem(btn) {
+      const item = btn.closest('.item');
+      if (!item) return;
+      item.remove();
+      updateIndexNumbers();
+    }
+
+    function addItem(page = '', title = '', customId = null) {
       const list = document.getElementById('indexList');
+      const id = customId || nextId;
       const el = document.createElement('div');
       el.className = 'item';
-      el.setAttribute('data-id', nextId);
+      el.setAttribute('data-id', id);
       el.innerHTML = `
         <div class="item-header">
           <div style="display:flex;gap:12px;align-items:center;">
-            <div class="badge">العنصر ${nextId}</div>
+            <div class="badge">العنصر ${id}</div>
             <div style="color:#666;font-size:14px;">العنوان:</div>
-            <div style="color:#666;font-size:14px;font-weight:600;">&nbsp;</div>
+            <div style="color:#666;font-size:14px;font-weight:600;">${title || '&nbsp;'}</div>
           </div>
-          <button class="delete-btn" onclick="removeItem(this)">حذف</button>
+          <button type="button" class="delete-btn" onclick="removeItem(this)">حذف</button>
         </div>
-
         <div class="fields">
           <div>
             <label>رقم الصفحة:</label>
-            <input class="small page-number" type="number" value="1" />
+            <input class="small page-number" type="number" value="${page || '1'}" min="1">
           </div>
-
           <div class="title-field">
-            <label>&nbsp;</label>
-            <input type="text" placeholder="اكتب عنوان العنصر..." value="" />
+            <label>عنوان العنصر:</label>
+            <input type="text" placeholder="اكتب عنوان العنصر..." value="${title || ''}">
           </div>
         </div>
       `;
       list.appendChild(el);
-      nextId++;
+      if (!customId) nextId++;
       el.scrollIntoView({behavior:'smooth', block:'center'});
     }
-  </script>
-</body>
-</html>
-        
+
+    function updateIndexNumbers() {
+      const items = document.querySelectorAll('#indexList .item');
+      items.forEach((item, index) => {
+        const badge = item.querySelector('.badge');
+        if (badge) {
+          badge.textContent = `العنصر ${index + 1}`;
+        }
+        item.setAttribute('data-id', index + 1);
+      });
+      nextId = items.length + 1;
+    }
+
+    // دالة المعاينة
+    function previewTemplate() {
+      if (!validateForm()) {
+        const firstError = document.querySelector('.field-error');
+        if (firstError) {
+          firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+        return;
+      }
+
+      saveTemplateData();
+      generatePreviewContent();
+      openPreviewModal();
+    }
+
+    // توليد محتوى المعاينة
+    function generatePreviewContent() {
+      const data = JSON.parse(localStorage.getItem('programDocumentationData') || '{}');
+      const previewContainer = document.getElementById('previewTemplateContent');
+
+      let indexHtml = '';
+      if (data.indexItems) {
+        data.indexItems.forEach(item => {
+          indexHtml += `
+            <div style="display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #e5e7eb;">
+              <span>${item.title}</span>
+              <span>${item.page}</span>
+            </div>
+          `;
+        });
+      }
+
+      const html = `
+        <div class="max-w-4xl mx-auto">
+          <div class="bg-white rounded-xl p-6">
+            <h1 class="text-3xl text-center mb-6">${data.programName || 'اسم البرنامج'}</h1>
+            
+            <div class="mb-6">
+              <h2 class="text-xl font-bold mb-3">معلومات البرنامج</h2>
+              <div class="space-y-2">
+                <p><strong>التاريخ:</strong> ${data.programDate || 'غير محدد'}</p>
+                <p><strong>الجهة المنظمة:</strong> ${data.organization || 'غير محدد'}</p>
+              </div>
+            </div>
+
+            <div class="mb-6">
+              <h2 class="text-xl font-bold mb-3">وصف البرنامج</h2>
+              <p class="text-gray-700 whitespace-pre-line">${data.programDescription || 'لا يوجد وصف'}</p>
+            </div>
+
+            <div class="mb-6">
+              <h2 class="text-xl font-bold mb-3">فهرس المحتويات</h2>
+              <div class="bg-gray-50 border border-gray-300 rounded-md p-4">
+                ${indexHtml || '<p class="text-center text-gray-500">لا توجد عناصر في الفهرس</p>'}
+              </div>
+            </div>
+          </div>
         </div>
+      `;
 
-        <div class="actions">
-          <button type="button" class="btn green" onclick="submitForm()">معالجة</button>
-          <button type="reset" class="btn ghost">إعادة تعيين</button>
-          <span class="small">سيتم إنشاء باركود ورفع الملف عند المعالجة</span>
-        </div>
+      previewContainer.innerHTML = html;
+    }
 
-      </form>
+    // إدارة الـ Modal
+    function openPreviewModal() {
+      const modal = document.getElementById('previewModal');
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
 
-      <div class="section small" style="margin-top:18px">
-        <div>أكثر الروابط استخداماً: <a href="#">نموذج</a> • <a href="#">خطط</a></div>
-        <div style="margin-top:10px">عدد الخدمات المنفذة: <strong>2202870</strong></div>
-        <div>عدد سجلات شواهد تقديم الخدمة: <strong>6322</strong></div>
-      </div>
-    </div>
-  </div>
+    function closePreviewModal() {
+      const modal = document.getElementById('previewModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
 
-  <script>
-    function submitForm()
+    document.getElementById('previewModal')?.addEventListener('click', function (e) {
+      if (e.target === this) {
+        closePreviewModal();
+      }
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        closePreviewModal();
+      }
+    });
+
+    // تحميل الملفات
+    function downloadImageFromModal() {
+      const previewContent = document.getElementById('previewTemplateContent');
+      html2canvas(previewContent, {
+        backgroundColor: '#ffffff',
+        scale: 2,
+        useCORS: true
+      }).then((canvas) => {
+        const link = document.createElement('a');
+        link.download = 'program-documentation.png';
+        link.href = canvas.toDataURL();
+        link.click();
+      });
+    }
+
+    function downloadPDFFromModal() {
+      const previewContent = document.getElementById('previewTemplateContent');
+      html2canvas(previewContent, {
+        backgroundColor: '#ffffff',
+        scale: 2,
+        useCORS: true
+      }).then((canvas) => {
+        const imgData = canvas.toDataURL('image/jpeg');
+        const pdf = new jspdf.jsPDF('p', 'mm', 'a4');
+        const imgWidth = 210;
+        const imgHeight = (canvas.height * imgWidth) / canvas.width;
+        pdf.addImage(imgData, 'JPEG', 0, 0, imgWidth, imgHeight);
+        pdf.save('program-documentation.pdf');
+      });
+    }
+
+    // تهيئة الصفحة
+    document.addEventListener('DOMContentLoaded', function () {
+      setupFieldValidation();
+      loadTemplateData();
+      
+      // إعادة تعيين الفهرس عند الضغط على زر إعادة تعيين
+      document.querySelector('button[type="reset"]').addEventListener('click', function() {
+        setTimeout(() => {
+          const indexList = document.getElementById('indexList');
+          indexList.innerHTML = '';
+          addItem('1', 'المقدمة', 1);
+          addItem('2', 'أهداف البرنامج', 2);
+          nextId = 3;
+        }, 100);
+      });
+    });
   </script>
 </body>
 </html>

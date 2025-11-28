@@ -1,10 +1,13 @@
-<!DOCTYPE html>  
-<html lang="ar" dir="rtl">  
-<head>  
-  <meta charset="utf-8" />  
-  <meta name="viewport" content="width=device-width, initial-scale=1" />  
-  <title>التحقق من العمر - صفحة مشابهة</title>  
-  <style>  
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>التحقق من العمر والمستوى الدراسي</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+  <style>
     :root{  
       --bg: #f2f4f7;  
       --panel: #ffffff;  
@@ -12,8 +15,22 @@
       --text: #1f2937;  
       --muted: #6b7280;  
       --blue: #0e75ba;  
+      --green: #10b981;
+      --orange: #f59e0b;
       --radius: 8px;  
     }  
+
+    
+.footer-ink {
+        background: #f8fafb;
+      }
+
+      .social-icon {
+        width: 26px;
+        height: 26px;
+        fill: currentColor;
+      }
+
 
     * { box-sizing: border-box; }  
     html, body { height: 100%; margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; background: var(--bg); color: var(--text); direction: rtl; }  
@@ -30,6 +47,7 @@
       border-radius: var(--radius);  
       padding: 16px 20px;  
       box-shadow: 0 2px 6px rgba(0,0,0,.05);  
+      margin-bottom: 20px;
     }  
 
     .notice {  
@@ -71,14 +89,14 @@
       background: #fff;  
     }  
 
-    .inputWrap input[type="text"] {  
+    .inputWrap input[type="date"] {  
       width: 100%;  
       border: none;  
       outline: none;  
       font-size: 14px;  
       padding: 6px;  
       background: transparent;  
-      text-align: left;  
+      text-align: right;  
     }  
 
     .calendarIcon {  
@@ -105,6 +123,112 @@
       margin-top: 6px;  
     }  
 
+    .btn:hover {
+      background: #0c68a8;
+    }
+
+    .result-panel {
+      background: #f0f9ff;
+      border: 1px solid #bae6fd;
+      border-radius: var(--radius);
+      padding: 16px 20px;
+      margin-top: 20px;
+    }
+
+    .result-title {
+      font-weight: 700;
+      font-size: 16px;
+      color: #0369a1;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .age-details {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .age-item {
+      text-align: center;
+      padding: 10px;
+      background: #e0f2fe;
+      border-radius: 6px;
+      margin: 5px;
+      flex: 1;
+      min-width: 100px;
+    }
+
+    .age-value {
+      font-size: 24px;
+      font-weight: 700;
+      color: #0369a1;
+    }
+
+    .age-label {
+      font-size: 14px;
+      color: #0c4a6e;
+    }
+
+    .grade-result {
+      text-align: center;
+      padding: 12px;
+      background: #ecfdf5;
+      border: 1px solid #a7f3d0;
+      border-radius: 6px;
+      margin-top: 12px;
+    }
+
+    .grade-text {
+      font-size: 16px;
+      font-weight: 600;
+      color: #065f46;
+    }
+
+    .school-date {
+      text-align: center;
+      padding: 12px;
+      background: #fffbeb;
+      border: 1px solid #fcd34d;
+      border-radius: 6px;
+      margin-top: 12px;
+    }
+
+    .school-text {
+      font-size: 16px;
+      font-weight: 600;
+      color: #92400e;
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    
+    .stat-item {
+      text-align: center;
+      padding: 15px;
+      background-color: #ecf0f1;
+      border-radius: 8px;
+      margin: 10px;
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .stat-number {
+      font-size: 24px;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+    
+    .stat-label {
+      font-size: 14px;
+      color: #7f8c8d;
+    }
+
     @media (max-width: 700px){  
       .row { grid-template-columns: 1fr; }  
     }  
@@ -114,168 +238,265 @@
   <div class="container" aria-label="صفحة التحقق من العمر">  
     <section class="panel" aria-label="إدخال تاريخ الميلاد">  
       <div class="notice" role="note">  
-        إنشاء وتخصيص نماذج تعليمية مع إمكانية تحرير وإضافة جميع البيانات الخاصة بك، بطريقة سهلة واحترافية توفر عليه الوقت والجهد ويتم حفظ الملف النهائي بتنسيق صورة أو ملف pdf لسهولة الطباعة بجودة عالية وإعادة الاستخدام في تقارير ونماذج أخرى..  
+        إنشاء وتخصيص نماذج تعليمية مع إمكانية تحرير وإضافة جميع البيانات الخاصة بك، بطريقة سهلة واحترافية توفر عليه الوقت والجهد ويتم حفظ الملف النهائي بتنسيق صورة أو ملف pdf لسهولة الطباعة بجودة عالية وإعادة الاستخدام في تقارير ونماذج أخرى.  
       </div>  
 
-      <div class="section-title" style="text-align:right;">ضع تاريخ ميلاد الطفل هنا :</div>  
-      <!DOCTYPE html>
-<html lang="ar">
-<head>
-    <meta charset="UTF-8">
-    <title>اختيار تاريخ</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            direction: rtl;
-            text-align: center;
-            margin-top: 1000px;
-        }
-
-        .date-container {
-            display: inline-block;
-            padding: 20px;
-            border: 2px solid #ffffff;
-            border-radius: 10px;
-            background: #ffffff;
-        }
-
-        input[type="date"] {
-            font-size: 18px;
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid #555;
-            width: 760px;      /* ← هنا العرض */
-        }
-    </style>
-        <label for="date"></label><br><br>
-        <input type="date" id="date">
-        <!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>زرار مماثل</title>
-  <style>
-    :root{
-      --blue: #0e75ba;
-      --radius: 8px;
-      --text: #fff;
-    }
-    * { box-sizing: border-box; }
-    body { margin: 0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; background:#f4f6f8; padding:20px; direction: rtl; }
-
-    .btn {
-      display: block;
-      width: 100%;
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 14px 18px;
-      border-radius: var(--radius);
-      background: var(--blue);
-      color: var(--text);
-      font-weight: 700;
-      font-size: 16px;
-      border: none;
-      cursor: pointer;
-      text-align: center;
-      text-decoration: none;
-    }
-    .btn:hover { filter: brightness(1.05); }
-    .wrapper { max-width: 860px; margin: 0 auto; }
-  </style>
-</head>
-<body>
-  <div class="wrapper" aria-label="زرار التحقق">
-    <button class="btn" type="button" aria-label="التحقق من العمر">
-      التحقق من العمر
-    </button>
+      <div class="section-title">ضع تاريخ ميلاد الطفل هنا:</div>  
+      
+      <div class="row">
+        <div class="inputWrap">
+          <input type="date" id="birthDate" aria-label="تاريخ ميلاد الطفل">
+          <span class="calendarIcon">📅</span>
+        </div>
+      </div>
+      
+      <button class="btn" type="button" id="calculateBtn" aria-label="التحقق من العمر">
+        التحقق من العمر
+      </button>
+      
+      <div id="resultContainer" class="result-panel" style="display: none;">
+        <div class="result-title">نتيجة التحقق من العمر</div>
+        
+        <div class="age-details">
+          <div class="age-item">
+            <div class="age-value" id="yearsValue">0</div>
+            <div class="age-label">سنوات</div>
+          </div>
+          <div class="age-item">
+            <div class="age-value" id="monthsValue">0</div>
+            <div class="age-label">أشهر</div>
+          </div>
+          <div class="age-item">
+            <div class="age-value" id="daysValue">0</div>
+            <div class="age-label">أيام</div>
+          </div>
+        </div>
+        
+        <div id="gradeContainer" class="grade-result">
+          <div class="grade-text" id="gradeText">المستوى الدراسي المناسب</div>
+        </div>
+        
+        <div id="schoolDateContainer" class="school-date" style="display: none;">
+          <div class="school-text" id="schoolDateText"></div>
+        </div>
+      </div>
+    </section>
+    
+    
   </div>
-</body>
-</html>
-    </div>
 
-<!DOCTYPE html>
-<html lang="ar" dir="rtl">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>صفحة إحصاءات الأدوات</title>
-  <style>
-    :root{
-      --bg: #f7f7f7;
-      --card: #fff;
-      --border: #e0e0e0;
-      --text: #ffffff;
-      --muted: #555;
-      --radius: 8px;
-    }
-    * { box-sizing: border-box; }
-    html, body { height: 100%; margin: 0; background: var(--bg); font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial; color: var(--text); }
-    .container {
-      max-width: 860px;
-      margin: 24px auto;
-      padding: 0 16px;
-    }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 22px 18px;
-      margin: 20px 0;
-      text-align: center;
-      box-shadow: 0 1px 2px rgba(0,0,0,.04);
-    }
-    .label {
-      font-size: 16px;
-      font-weight: 600;
-      margin-bottom: 8px;
-      color: #333;
-    }
-    .value {
-      font-size: 28px;
-      font-weight: 700;
-      letter-spacing: .5px;
-      color: #222;
-    }
+<!-- FOOTER -->
+    <footer class="mt-12 footer-ink border-t border-gray-100">
+      <div
+        class="max-w-6xl mx-auto px-6 py-8 flex flex-col md:flex-row md:items-center md:justify-between gap-6"
+      >
+        <!-- RIGHT COLUMN -->
+        <div class="text-right md:flex-1">
+          <img
+            src="../assets/imgs/gsoor_logo.jpg"
+            alt="logo"
+            class="h-10 mx-auto md:mx-0"
+          />
+          <div
+            class="flex justify-center md:justify-end gap-4 mt-3 text-gray-600"
+          >
+            <i class="fa-brands fa-youtube social-icon text-lg"></i>
+            <i class="fa-brands fa-tiktok social-icon text-lg"></i>
+            <i class="fa-brands fa-instagram social-icon text-lg"></i>
+          </div>
+        </div>
 
-    /* تباعد بسيط للنص داخل البطاقة */
-    .inner {
-      padding: 6px 0 0;
-    }
+        <!-- CENTER COLUMN -->
+        <div class="text-center md:flex-1">
+          <h3 class="font-bold mb-2">تواصل معنا</h3>
+          <div class="flex items-center justify-center gap-4 text-gray-600">
+            <div class="flex items-center gap-2">
+              <i class="fa-regular fa-envelope text-sm"></i>
+              <span>البريد</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <i class="fa-solid fa-mobile-screen-button text-sm"></i>
+              <span>واتس</span>
+            </div>
+          </div>
+          <div class="mt-3 text-sm text-gray-500">موقّع لدى منصة الأعمال</div>
+        </div>
 
-    /* استجابة بسيطة */
-    @media (max-width: 600px){
-      .value { font-size: 24px; }
-    }
-  </style>
-</head>
-<body>
-  <main class="container" aria-label="إحصاءات):
-    "
-  ">
-    <!-- بطاقة 1: عدد الخدمات المتوفقة -->
-    <section class="card" aria-label="عدد الخدمات المتوفقة">
-      <div class="label">عدد الخدمات المنفذة:</div>
-      <div class="inner">
-        <div class="value">2217452
-
-</div>
+        <!-- LEFT COLUMN -->
+        <div class="text-left md:flex-1">
+          <div class="text-sm text-gray-500">
+            © 2025 متجر جسور الرقمي | جميع الحقوق محفوظة
+          </div>
+          <div
+            class="mt-3 flex gap-2 items-center justify-center md:justify-start"
+          >
+            <span class="sr-only">Visa</span>
+            <i class="fa-brands fa-cc-visa text-gray-600 text-lg"></i>
+            <span class="sr-only">Mada</span>
+            <i class="fa-solid fa-credit-card text-gray-600 text-lg"></i>
+          </div>
+        </div>
       </div>
-    </section>
-
-    <!-- بطاقة 2: عدد تسجيلات شهادات تقييم الأداء المنفذة -->
-    <section class="card" aria-label="عدد تسجيلات شهادات تقييم الأداء المنفذة">
-      <div class="label">عدد سجلات شواهد تقيم الأداء المنفذة:</div>
-      <div class="inner">
-        <div class="value">6351</div>
-      </div>
-    </section>
-  </main>
+    </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const birthDateInput = document.getElementById('birthDate');
+      const calculateBtn = document.getElementById('calculateBtn');
+      const resultContainer = document.getElementById('resultContainer');
+      const yearsValue = document.getElementById('yearsValue');
+      const monthsValue = document.getElementById('monthsValue');
+      const daysValue = document.getElementById('daysValue');
+      const gradeText = document.getElementById('gradeText');
+      const schoolDateContainer = document.getElementById('schoolDateContainer');
+      const schoolDateText = document.getElementById('schoolDateText');
+      
+      // تعيين تاريخ اليوم كقيمة افتراضية للحقل
+      const today = new Date();
+      birthDateInput.valueAsDate = today;
+      
+      calculateBtn.addEventListener('click', function() {
+        const birthDate = new Date(birthDateInput.value);
+        
+        if (!birthDateInput.value) {
+          alert('يرجى إدخال تاريخ ميلاد الطفل');
+          return;
+        }
+        
+        // حساب العمر
+        const ageDetails = calculateAge(birthDate);
+        
+        // عرض تفاصيل العمر
+        yearsValue.textContent = ageDetails.years;
+        monthsValue.textContent = ageDetails.months;
+        daysValue.textContent = ageDetails.days;
+        
+        // تحديد المستوى الدراسي
+        const gradeInfo = determineGrade(ageDetails.years, ageDetails.months);
+        gradeText.textContent = gradeInfo.text;
+        
+        // عرض تاريخ بداية الدراسة إذا كان الطفل صغيرًا
+        if (gradeInfo.schoolStartDate) {
+          schoolDateText.textContent = `سيبدأ الدراسة في: ${formatDate(gradeInfo.schoolStartDate)}`;
+          schoolDateContainer.style.display = 'block';
+        } else {
+          schoolDateContainer.style.display = 'none';
+        }
+        
+        // عرض نتيجة التحقق
+        resultContainer.style.display = 'block';
+      });
+      
+      // دالة لحساب العمر بالسنوات والأشهر والأيام
+      function calculateAge(birthDate) {
+        const today = new Date();
+        let years = today.getFullYear() - birthDate.getFullYear();
+        let months = today.getMonth() - birthDate.getMonth();
+        let days = today.getDate() - birthDate.getDate();
+        
+        if (days < 0) {
+          months--;
+          // الحصول على عدد الأيام في الشهر السابق
+          const lastMonth = new Date(today.getFullYear(), today.getMonth(), 0);
+          days += lastMonth.getDate();
+        }
+        
+        if (months < 0) {
+          years--;
+          months += 12;
+        }
+        
+        return { years, months, days };
+      }
+      
+      // دالة لتحديد المستوى الدراسي
+      function determineGrade(years, months) {
+        const totalMonths = years * 12 + months;
+        
+        // تحديد تاريخ بداية الدراسة لهذا العام (1 سبتمبر)
+        const currentYear = new Date().getFullYear();
+        const schoolStartDate = new Date(currentYear, 8, 1); // سبتمبر هو الشهر 8 (0-indexed)
+        
+        if (totalMonths < 66) { // أقل من 5 سنوات و6 أشهر
+          const startYear = currentYear + (66 - totalMonths <= 12 ? 0 : 1);
+          const startDate = new Date(startYear, 8, 1);
+          return {
+            text: "الطفل لم يبلغ سن الدراسة بعد",
+            schoolStartDate: startDate
+          };
+        } else if (totalMonths >= 66 && totalMonths < 78) { // 5.5 - 6.5 سنوات
+          return {
+            text: "المستوى المناسب: الصف الأول الابتدائي",
+            schoolStartDate: null
+          };
+        } else if (totalMonths >= 78 && totalMonths < 90) { // 6.5 - 7.5 سنوات
+          return {
+            text: "المستوى المناسب: الصف الثاني الابتدائي",
+            schoolStartDate: null
+          };
+        } else if (totalMonths >= 90 && totalMonths < 102) { // 7.5 - 8.5 سنوات
+          return {
+            text: "المستوى المناسب: الصف الثالث الابتدائي",
+            schoolStartDate: null
+          };
+        } else if (totalMonths >= 102 && totalMonths < 114) { // 8.5 - 9.5 سنوات
+          return {
+            text: "المستوى المناسب: الصف الرابع الابتدائي",
+            schoolStartDate: null
+          };
+        } else if (totalMonths >= 114 && totalMonths < 126) { // 9.5 - 10.5 سنوات
+          return {
+            text: "المستوى المناسب: الصف الخامس الابتدائي",
+            schoolStartDate: null
+          };
+        } else if (totalMonths >= 126 && totalMonths < 138) { // 10.5 - 11.5 سنوات
+          return {
+            text: "المستوى المناسب: الصف السادس الابتدائي",
+            schoolStartDate: null
+          };
+        } else if (totalMonths >= 138 && totalMonths < 150) { // 11.5 - 12.5 سنوات
+          return {
+            text: "المستوى المناسب: الصف الأول المتوسط",
+            schoolStartDate: null
+          };
+        } else if (totalMonths >= 150 && totalMonths < 162) { // 12.5 - 13.5 سنوات
+          return {
+            text: "المستوى المناسب: الصف الثاني المتوسط",
+            schoolStartDate: null
+          };
+        } else if (totalMonths >= 162 && totalMonths < 174) { // 13.5 - 14.5 سنوات
+          return {
+            text: "المستوى المناسب: الصف الثالث المتوسط",
+            schoolStartDate: null
+          };
+        } else if (totalMonths >= 174 && totalMonths < 186) { // 14.5 - 15.5 سنوات
+          return {
+            text: "المستوى المناسب: الصف الأول الثانوي",
+            schoolStartDate: null
+          };
+        } else if (totalMonths >= 186 && totalMonths < 198) { // 15.5 - 16.5 سنوات
+          return {
+            text: "المستوى المناسب: الصف الثاني الثانوي",
+            schoolStartDate: null
+          };
+        } else if (totalMonths >= 198 && totalMonths < 210) { // 16.5 - 17.5 سنوات
+          return {
+            text: "المستوى المناسب: الصف الثالث الثانوي",
+            schoolStartDate: null
+          };
+        } else {
+          return {
+            text: "أنهى المرحلة الثانوية",
+            schoolStartDate: null
+          };
+        }
+      }
+      
+      // دالة لتنسيق التاريخ
+      function formatDate(date) {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return date.toLocaleDateString('ar-EG', options);
+      }
+    });
+  </script>
 </body>
 </html>
-
-</body>
-</html>
-
-
-     
