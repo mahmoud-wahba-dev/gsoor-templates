@@ -1,676 +1,528 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
 
-    <link
-      href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap"
-      rel="stylesheet"
-    />
-    <title>نماذج وتقارير عامة - مجانية وجاهزة للطباعة | نماذج تعليمية</title>
-  </head>
-  <style>
-    .card-btn {
-      background: linear-gradient(135deg, #0ba7d1 0%, #00a8e1 100%);
-      color: white;
-      border: none;
-      padding: 0.75rem 1.5rem;
-      border-radius: 12px;
-      cursor: pointer;
-      font-weight: 600;
-      font-size: 0.9rem;
-      transition: all 0.3s ease;
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet" />
+  <title>نماذج وتقارير عامة - مجانية وجاهزة للطباعة | نماذج تعليمية</title>
+</head>
+<style>
+  .card-btn {
+    background: linear-gradient(135deg, #0ba7d1 0%, #00a8e1 100%);
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    width: 100%;
+  }
+
+  .card-btn:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 20px rgba(11, 167, 209, 0.3);
+  }
+
+  .card-btn:active {
+    transform: scale(0.98);
+  }
+
+  /* Navbar Styles */
+  .navbar {
+    background-color: #f3f4f6;
+    padding: 12px 0;
+    border-bottom: 1px solid #e5e7eb;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    position: relative;
+  }
+
+  .navbar-container {
+    width: 100%;
+    margin: 0;
+    padding: 0 16px;
+  }
+
+  .navbar-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  .navbar-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #374151;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .navbar-icon {
+    width: 20px;
+    height: 20px;
+    color: #3b82f6;
+    flex-shrink: 0;
+  }
+
+  .navbar-menu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px 12px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .navbar-item {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .navbar-link {
+    color: #374151;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 4px 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.2s;
+    white-space: nowrap;
+  }
+
+  .navbar-link:hover {
+    color: #111827;
+  }
+
+  .dropdown-icon {
+    width: 10px;
+    height: 10px;
+    color: #374151;
+    margin-right: 4px;
+  }
+
+  .navbar-separator {
+    color: #9ca3af;
+    margin: 0 4px;
+  }
+
+  /* Mobile Menu Toggle */
+  .mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #374151;
+    cursor: pointer;
+    padding: 8px;
+  }
+
+  .mobile-menu {
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px 0;
+    border-top: 1px solid #e5e7eb;
+    margin-top: 8px;
+  }
+
+  .mobile-menu.active {
+    display: flex;
+  }
+
+  /* Responsive Styles */
+  @media (max-width: 1200px) {
+    .navbar-menu {
+      gap: 6px 12px;
+    }
+
+    .navbar-link {
+      font-size: 13px;
+      padding: 5px 6px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .navbar-container {
+      padding: 0 12px;
+    }
+
+    .mobile-menu-toggle {
+      display: block;
+    }
+
+    .navbar-menu {
+      display: none;
+    }
+
+    .navbar-menu.mobile-active {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      padding: 12px 0;
+    }
+
+    .navbar-item {
       width: 100%;
     }
 
-    .card-btn:hover {
-      transform: scale(1.02);
-      box-shadow: 0 8px 20px rgba(11, 167, 209, 0.3);
+    .navbar-link {
+      width: 100%;
+      padding: 10px 8px;
     }
 
-    .card-btn:active {
-      transform: scale(0.98);
+    .navbar-separator {
+      display: none;
     }
-        /* Navbar Styles */
-      .navbar {
-        background-color: #f3f4f6;
-        padding: 12px 0;
-        border-bottom: 1px solid #e5e7eb;
-        top: 0;
-        z-index: 100;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-        width: 100vw;
-        margin-left: calc(-50vw + 50%);
-        margin-right: calc(-50vw + 50%);
-        position: relative;
-      }
-      .navbar-container {
-        width: 100%;
-        margin: 0;
-        padding: 0 16px;
-      }
-      .navbar-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        margin-bottom: 8px;
-      }
-      .navbar-title {
-        font-size: 16px;
-        font-weight: 600;
-        color: #374151;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-      }
-      .navbar-icon {
-        width: 20px;
-        height: 20px;
-        color: #3b82f6;
-        flex-shrink: 0;
-      }
-      .navbar-menu {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-        gap: 8px 12px;
-        list-style: none;
-        margin: 0;
-        padding: 0;
-      }
-      .navbar-item {
-        position: relative;
-        display: flex;
-        align-items: center;
-        gap: 4px;
-      }
-      .navbar-link {
-        color: #374151;
-        text-decoration: none;
-        font-size: 18px;
-        padding: 4px 6px;
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        transition: color 0.2s;
-        white-space: nowrap;
-      }
-      .navbar-link:hover {
-        color: #111827;
-      }
-      .dropdown-icon {
-        width: 10px;
-        height: 10px;
-        color: #374151;
-        margin-right: 4px;
-      }
-      .navbar-separator {
-        color: #9ca3af;
-        margin: 0 4px;
-      }
-      /* Mobile Menu Toggle */
-      .mobile-menu-toggle {
-        display: none;
-        background: none;
-        border: none;
-        font-size: 24px;
-        color: #374151;
-        cursor: pointer;
-        padding: 8px;
-      }
-      .mobile-menu {
-        display: none;
-        flex-direction: column;
-        gap: 8px;
-        padding: 12px 0;
-        border-top: 1px solid #e5e7eb;
-        margin-top: 8px;
-      }
-      .mobile-menu.active {
-        display: flex;
-      }
-      /* Responsive Styles */
-      @media (max-width: 1200px) {
-        .navbar-menu {
-          gap: 6px 12px;
-        }
-        .navbar-link {
-          font-size: 13px;
-          padding: 5px 6px;
-        }
-      }
-      @media (max-width: 768px) {
-        .navbar-container {
-          padding: 0 12px;
-        }
-        .mobile-menu-toggle {
-          display: block;
-        }
-        .navbar-menu {
-          display: none;
-        }
-        .navbar-menu.mobile-active {
-          display: flex;
-          flex-direction: column;
-          align-items: flex-start;
-          gap: 8px;
-          padding: 12px 0;
-        }
-        .navbar-item {
-          width: 100%;
-        }
-        .navbar-link {
-          width: 100%;
-          padding: 10px 8px;
-        }
-        .navbar-separator {
-          display: none;
-        }
-      }
+  }
+</style>
 
-    </style>
-  <body class="mx-4 sm:mx-8 md:mx-12 lg:mx-20">
-    <!--Gsoor Nav Bar-->
-    <!-- NAVBAR -->
-    <header class="fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
-      <div class="max-w-6xl mx-auto relative">
-        <div class="nav-pill px-3 py-2 flex items-center justify-between gap-3">
-          <!-- LOGO -->
-          <div class="flex items-center gap-4 ml-2">
-            <a href="#" class="shrink-0">
-              <img
-                src="../assets/imgs/gsoor_logo.jpg"
-                alt="logo"
-                class="h-9 w-auto object-contain md:h-10"
-              />
-            </a>
-          </div>
+<body class="mx-4 sm:mx-8 md:mx-12 lg:mx-20">
+  <!--Gsoor Nav Bar-->
+  <!-- NAVBAR -->
+  <header class="fixed inset-x-0 top-4 z-50 px-4 sm:px-6">
+    <div class="max-w-6xl mx-auto relative">
+      <div class="nav-pill px-3 py-2 flex items-center justify-between gap-3">
+        <!-- LOGO -->
+        <div class="flex items-center gap-4 ml-2">
+          <a href="#" class="shrink-0">
+            <img src="../assets/imgs/gsoor_logo.jpg" alt="logo" class="h-9 w-auto object-contain md:h-10" />
+          </a>
+        </div>
 
-          <!-- NAV LINKS (desktop) -->
-          <nav class="hidden md:flex items-center gap-8 text-sm text-gray-700">
-            <a href="#" class="hover:text-cyan-600 transition">الشهادات</a>
-            <a href="#" class="hover:text-cyan-600 transition"
-              >الملفات الإدارية</a
-            >
-            <a href="#" class="hover:text-cyan-600 transition">البطاقات</a>
-          </nav>
+        <!-- NAV LINKS (desktop) -->
+        <nav class="hidden md:flex items-center gap-8 text-sm text-gray-700">
+          <a href="#" class="hover:text-cyan-600 transition">الشهادات</a>
+          <a href="#" class="hover:text-cyan-600 transition">الملفات الإدارية</a>
+          <a href="#" class="hover:text-cyan-600 transition">البطاقات</a>
+        </nav>
 
-          <!-- UTILITY ICONS -->
-          <div class="flex items-center gap-2">
-            <div
-              class="hidden sm:flex items-center bg-gray-50 rounded-full px-2 py-1 gap-2 border border-gray-100"
-            >
-              <button
-                id="themeToggle"
-                class="text-gray-600"
-                title="تبديل الوضع"
-              >
-                <i class="fa-solid fa-moon text-gray-600 text-base"></i>
-              </button>
+        <!-- UTILITY ICONS -->
+        <div class="flex items-center gap-2">
+          <div class="hidden sm:flex items-center bg-gray-50 rounded-full px-2 py-1 gap-2 border border-gray-100">
+            <button id="themeToggle" class="text-gray-600" title="تبديل الوضع">
+              <i class="fa-solid fa-moon text-gray-600 text-base"></i>
+            </button>
 
-              <button class="text-gray-600 relative" title="العربة">
-                <i class="fa-solid fa-bag-shopping text-gray-600 text-base"></i>
-                <span
-                  id="cartBadge"
-                  class="absolute -top-1 -left-2 bg-cyan-600 text-white text-xs rounded-full px-1"
-                  >0</span
-                >
-              </button>
+            <button class="text-gray-600 relative" title="العربة">
+              <i class="fa-solid fa-bag-shopping text-gray-600 text-base"></i>
+              <span id="cartBadge"
+                class="absolute -top-1 -left-2 bg-cyan-600 text-white text-xs rounded-full px-1">0</span>
+            </button>
 
-              <button id="profileBtn" class="text-gray-600" title="الحساب">
-                <i class="fa-regular fa-user text-gray-600 text-base"></i>
-              </button>
-            </div>
-
-            <!-- MOBILE MENU BUTTON -->
-            <button
-              id="menuBtn"
-              class="md:hidden text-gray-600 p-2"
-              aria-expanded="false"
-            >
-              <i class="fa-solid fa-bars text-lg"></i>
+            <button id="profileBtn" class="text-gray-600" title="الحساب">
+              <i class="fa-regular fa-user text-gray-600 text-base"></i>
             </button>
           </div>
-        </div>
 
-        <!-- MOBILE NAV -->
-        <div
-          id="mobileNav"
-          class="hidden mobile-nav-abs mt-2 bg-white rounded-2xl shadow-md p-3 mx-4"
-        >
-          <div class="flex flex-col gap-2 text-right">
-            <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition"
-              >الشهادات</a
-            >
-            <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition"
-              >الملفات الإدارية</a
-            >
-            <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition"
-              >البطاقات</a
-            >
-            <div
-              class="pt-2 border-t border-gray-100 mt-2 flex justify-between items-center"
-            >
-              <div class="flex items-center gap-3">
-                <button id="mobileThemeToggle" class="text-gray-600">
-                  <i class="fa-solid fa-moon"></i>
-                </button>
-                <button class="text-gray-600 relative">
-                  <i class="fa-solid fa-bag-shopping"></i>
-                  <span
-                    id="mobileCartBadge"
-                    class="absolute -top-2 -left-2 bg-cyan-600 text-white text-xs rounded-full px-1"
-                    >0</span
-                  >
-                </button>
-              </div>
-              <a href="#" class="text-sm text-cyan-600 font-semibold"
-                >تسجيل دخول</a
-              >
+          <!-- MOBILE MENU BUTTON -->
+          <button id="menuBtn" class="md:hidden text-gray-600 p-2" aria-expanded="false">
+            <i class="fa-solid fa-bars text-lg"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- MOBILE NAV -->
+      <div id="mobileNav" class="hidden mobile-nav-abs mt-2 bg-white rounded-2xl shadow-md p-3 mx-4">
+        <div class="flex flex-col gap-2 text-right">
+          <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition">الشهادات</a>
+          <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition">الملفات الإدارية</a>
+          <a href="#" class="py-2 px-3 rounded hover:bg-gray-50 transition">البطاقات</a>
+          <div class="pt-2 border-t border-gray-100 mt-2 flex justify-between items-center">
+            <div class="flex items-center gap-3">
+              <button id="mobileThemeToggle" class="text-gray-600">
+                <i class="fa-solid fa-moon"></i>
+              </button>
+              <button class="text-gray-600 relative">
+                <i class="fa-solid fa-bag-shopping"></i>
+                <span id="mobileCartBadge"
+                  class="absolute -top-2 -left-2 bg-cyan-600 text-white text-xs rounded-full px-1">0</span>
+              </button>
             </div>
+            <a href="#" class="text-sm text-cyan-600 font-semibold">تسجيل دخول</a>
           </div>
         </div>
       </div>
-    </header>
+    </div>
+  </header>
 
 
-    <div
-      class="flex items-center justify-center flex-col mt-6 sm:mt-8 md:mt-10"
-    >
-      <h1 class="text-xl sm:text-2xl font-700 md:text-4xl text-center px-4">
-        شهادات شكر وتقدير
-      </h1>
-      <p
-        class="my-4 sm:my-5 text-base sm:text-lg md:text-xl text-[#444] text-center px-4"
-      >
-        إنشاء وتخصيص شهادات الشكر والتقدير مع إمكانية تحرير وإضافة جميع البيانات
-        الخاصة بك، بطريقة سهلة واحترافية.
+  <div class="flex items-center justify-center flex-col mt-6 sm:mt-8 md:mt-10">
+    <h1 class="text-xl sm:text-2xl font-700 md:text-4xl text-center px-4">
+      شهادات شكر وتقدير
+    </h1>
+    <p class="my-4 sm:my-5 text-base sm:text-lg md:text-xl text-[#444] text-center px-4">
+      إنشاء وتخصيص شهادات الشكر والتقدير مع إمكانية تحرير وإضافة جميع البيانات
+      الخاصة بك، بطريقة سهلة واحترافية.
+    </p>
+  </div>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-4 justify-items-center">
+    <!-- Card 1: ACFMS-1 -->
+    <div class="w-full border-2 px-2 py-4 rounded-md">
+      <img src="../assets/imgs/card13/acfms-1.webp" alt="preview" class="w-full h-auto" />
+      <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
+        إنشاء شهادات شكر وتقدير للطلاب والمعلمين ACFMS-1
       </p>
+      <a href="first-preview13.html" class="card-btn flex items-center justify-center"><i
+          class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
+      </a>
     </div>
-    <div
-      class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-4 justify-items-center"
-    >
-      <!-- Card 1: ACFMS-1 -->
-      <div class="w-full sm:w-80 border-2 px-2 py-4 rounded-md">
-        <img
-          src="../assets/imgs/card13/acfms-1.webp"
-          alt="preview"
-          class="w-full h-auto"
-        />
-        <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
-          إنشاء شهادات شكر وتقدير للطلاب والمعلمين ACFMS-1
-        </p>
-        <a
-          href="first-preview13.html"
-          class="card-btn flex items-center justify-center"
-          ><i class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
+    <!-- Card 2: ACFMS-2 -->
+    <div class="w-full border-2 px-2 py-4 rounded-md">
+      <img src="../assets/imgs/card13/acfms-2.webp" alt="preview" class="w-full h-auto" />
+      <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
+        إنشاء شهادات شكر وتقدير للطلاب والمعلمين ACFMS-2
+      </p>
+      <a href="second-preview13.html" class="card-btn flex items-center justify-center"><i
+          class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
+      </a>
+    </div>
+    <!-- Card 3: ACFMS-3 -->
+    <div class="w-full border-2 px-2 py-4 rounded-md">
+      <img src="../assets/imgs/card13/acfms-3.webp" alt="preview" class="w-full h-auto" />
+      <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
+        إنشاء شهادات شكر وتقدير للطلاب والمعلمين ACFMS-3
+      </p>
+      <a href="third-preview13.html" class="card-btn flex items-center justify-center"><i
+          class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
+      </a>
+    </div>
+    <!-- Card 4: ACFMS-4 -->
+    <div class="w-full border-2 px-2 py-4 rounded-md">
+      <img src="../assets/imgs/card13/acfms-4.webp" alt="preview" class="w-full h-auto" />
+      <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
+        إنشاء شهادات شكر وتقدير للطلاب والمعلمين ACFMS-4
+      </p>
+      <a href="fourth-preview13.html" class="card-btn flex items-center justify-center"><i
+          class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
+      </a>
+    </div>
+    <!-- Card 5: ACFF-1 للطالبات والمعلمات -->
+    <div class="w-full border-2 px-2 py-4 rounded-md">
+      <img src="../assets/imgs/card13/acffs-1.webp" alt="preview" class="w-full h-auto" />
+      <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
+        إنشاء شهادات شكر وتقدير للطالبات والمعلمات ACFF-1
+      </p>
+      <a href="fifth-preview13.html" class="card-btn flex items-center justify-center"><i
+          class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
+      </a>
+    </div>
+    <!-- Card 6: ACFF-2 للطالبات والمعلمات -->
+    <div class="w-full border-2 px-2 py-4 rounded-md">
+      <img src="../assets/imgs/card13/acffs-2.webp" alt="preview" class="w-full h-auto" />
+      <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
+        إنشاء شهادات شكر وتقدير للطالبات والمعلمات ACFF-2
+      </p>
+      <a href="sixth-preview13.html" class="card-btn flex items-center justify-center"><i
+          class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
+      </a>
+    </div>
+    <!-- Card 7: ACFF-3 للطالبات والمعلمات -->
+    <div class="w-full border-2 px-2 py-4 rounded-md">
+      <img src="../assets/imgs/card13/acffs-3.webp" alt="preview" class="w-full h-auto" />
+      <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
+        إنشاء شهادات شكر وتقدير للطالبات والمعلمات ACFF-3
+      </p>
+      <a href="seventh-preview13.html" class="card-btn flex items-center justify-center"><i
+          class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
+      </a>
+    </div>
+    <!-- Card 8: ACFF-4 للطالبات والمعلمات -->
+    <div class="w-full border-2 px-2 py-4 rounded-md">
+      <img src="../assets/imgs/card13/acffs-3.webp" alt="preview" class="w-full h-auto" />
+      <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
+        إنشاء شهادات شكر وتقدير للطالبات والمعلمات ACFF-4
+      </p>
+      <a href="eighth-preview13.html" class="card-btn flex items-center justify-center"><i
+          class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
+      </a>
+    </div>
+    <!-- Card 9: نافس للطلاب والطالبات -->
+    <div class="w-full border-2 px-2 py-4 rounded-md">
+      <img src="../assets/imgs/card13/nafic-certificate.webp" alt="preview" class="w-full h-auto" />
+      <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
+        إنشاء شهادات شكر وتقدير نافس للطلاب والطالبات
+      </p>
+      <a href="ninth-preview13.html" class="card-btn flex items-center justify-center"><i
+          class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
+      </a>
+    </div>
+    <!-- Card 10: نافس لأسر للطلاب والطالبات -->
+    <div class="w-full border-2 px-2 py-4 rounded-md">
+      <img src="../assets/imgs/card13/nafic-certificate-3.webp" alt="preview" class="w-full h-auto" />
+      <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
+        إنشاء شهادات شكر وتقدير نافس لأسر للطلاب والطالبات
+      </p>
+      <a href="tenth-preview13.html" class="card-btn flex items-center justify-center"><i
+          class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
+      </a>
+    </div>
+    <!-- Card 11: نافس -->
+    <div class="w-full border-2 px-2 py-4 rounded-md">
+      <img src="../assets/imgs/card13/nafic-certificate.webp" alt="preview" class="w-full h-auto" />
+      <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
+        إنشاء شهادات شكر وتقدير نافس
+      </p>
+      <a href="eleventh-preview13.html" class="card-btn flex items-center justify-center"><i
+          class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
+      </a>
+    </div>
+    <!-- Card 12: اليوم الوطني 95 تصميم 1 -->
+    <div class="w-full border-2 px-2 py-4 rounded-md">
+      <img src="../assets/imgs/card13/appreciation-certificate-national-day-95-1.webp" alt="preview"
+        class="w-full h-auto" />
+      <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
+        إنشاء شهادات شكر وتقدير اليوم الوطني 95 تصميم 1
+      </p>
+      <a href="twelfth-preview13.html" class="card-btn flex items-center justify-center"><i
+          class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
+      </a>
+    </div>
+    <!-- Card 13: اليوم الوطني 95 تصميم 2 -->
+    <div class="w-full border-2 px-2 py-4 rounded-md">
+      <img src="../assets/imgs/card13/appreciation-certificate-national-day-95-2.webp" alt="preview"
+        class="w-full h-auto" />
+      <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
+        إنشاء شهادات شكر وتقدير اليوم الوطني 95 تصميم 2
+      </p>
+      <a href="thirteenth-preview13.html" class="card-btn flex items-center justify-center"><i
+          class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
+      </a>
+    </div>
+    <!-- Card 14: اليوم الوطني 95 تصميم 3 -->
+    <div class="w-full border-2 px-2 py-4 rounded-md">
+      <img src="../assets/imgs/card13/appreciation-certificate-national-day-95-3.webp" alt="preview"
+        class="w-full h-auto" />
+      <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
+        إنشاء شهادات شكر وتقدير اليوم الوطني 95 تصميم 3
+      </p>
+      <a href="fourteenth-preview13.html" class="card-btn flex items-center justify-center"><i
+          class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
+      </a>
+    </div>
+    <!-- Card 15: يوم المعلم 2025 -->
+    <div class="w-full border-2 px-2 py-4 rounded-md">
+      <img src="../assets/imgs/card13/appreciation-certificate-teacher-day.webp" alt="preview" class="w-full h-auto" />
+      <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
+        إنشاء شهادات شكر وتقدير يوم المعلم 2025
+      </p>
+      <a href="fifteenth-preview13.html" class="card-btn flex items-center justify-center"><i
+          class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
+      </a>
+    </div>
+    <!-- Card 16: أسبوع الفضاء 2025 -->
+    <div class="w-full border-2 px-2 py-4 rounded-md">
+      <img src="../assets/imgs/card13/appreciation-certificate-world-space-week.webp" alt="preview"
+        class="w-full h-auto" />
+      <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
+        إنشاء شهادات شكر وتقدير أسبوع الفضاء 2025
+      </p>
+      <a href="sixteenth-preview13.html" class="card-btn flex items-center justify-center"><i
+          class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
+      </a>
+    </div>
+    <!-- Card 17: اليوم العالمي للفيزياء الطبية -->
+    <div class="w-full border-2 px-2 py-4 rounded-md">
+      <img src="../assets/imgs/card13/appreciation-certificate-i-d-medical-physics.webp" alt="preview"
+        class="w-full h-auto" />
+      <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
+        إنشاء شهادات شكر وتقدير اليوم العالمي للفيزياء الطبية
+      </p>
+      <a href="seventeenth-preview13.html" class="card-btn flex items-center justify-center"><i
+          class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
+      </a>
+    </div>
+    <!-- Card 18: اليوم العالمي للتسامح -->
+    <div class="w-full border-2 px-2 py-4 rounded-md">
+      <img src="../assets/imgs/card13/appreciation-certificate-international-tolerance-day.webp" alt="preview"
+        class="w-full h-auto" />
+      <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
+        إنشاء شهادات شكر وتقدير اليوم العالمي للتسامح
+      </p>
+      <a href="eighteenth-preview13.html" class="card-btn flex items-center justify-center"><i
+          class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
+      </a>
+    </div>
+    <!-- Card 19: فعاليات اليوم العالمي للسكري -->
+    <div class="w-full border-2 px-2 py-4 rounded-md">
+      <img src="../assets/imgs/card13/appreciation-certificate-world-diabetes-day.webp" alt="preview"
+        class="w-full h-auto" />
+      <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
+        إنشاء شهادات شكر وتقدير فعاليات اليوم العالمي للسكري
+      </p>
+      <a href="nineteenth-preview13.html" class="card-btn flex items-center justify-center"><i
+          class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
+      </a>
+    </div>
+    <!-- Card 20: فعاليات اليوم العالمي للطفل -->
+    <div class="w-full border-2 px-2 py-4 rounded-md">
+      <img src="../assets/imgs/card13/appreciation-certificate-world-children-day.webp" alt="preview"
+        class="w-full h-auto" />
+      <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
+        إنشاء شهادات شكر وتقدير فعاليات اليوم العالمي للطفل
+      </p>
+      <a href="twentieth-preview13.html" class="card-btn flex items-center justify-center"><i
+          class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
+      </a>
+    </div>
+  </div>
+  <div class="text-center border my-4 p-4 text-base sm:text-lg md:text-xl">
+    <p>عدد الخدمات المنفذة:</p>
+    <p>2187394</p>
+  </div>
+  <div class="text-center border my-4 p-4 text-base sm:text-lg md:text-xl">
+    <p>عدد سجلات شواهد تقييم الأداء المنفذة:</p>
+    <p>6321</p>
+  </div>
+  <footer class="mt-12 border-t border-gray-300 pt-6 pb-8">
+    <div class="max-w-6xl mx-auto">
+      <div class="flex flex-wrap justify-center items-center gap-4 text-gray-700 text-sm mb-4">
+        <a href="#" class="hover:text-green-600 transition">من نحن</a>
+        <span class="text-gray-400">|</span>
+        <a href="#" class="hover:text-green-600 transition">سياسة الخصوصية</a>
+        <span class="text-gray-400">|</span>
+        <a href="#" class="hover:text-green-600 transition">اتفاقية الاستخدام</a>
+        <span class="text-gray-400">|</span>
+        <a href="#" class="hover:text-green-600 transition flex items-center gap-1">
+          تويتر
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
+            <path
+              d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+          </svg>
         </a>
+        <span class="text-gray-400">|</span>
+        <a href="#" class="hover:text-green-600 transition">اتصل بنا</a>
       </div>
-      <!-- Card 2: ACFMS-2 -->
-      <div class="w-full sm:w-80 border-2 px-2 py-4 rounded-md">
-        <img
-          src="../assets/imgs/card13/acfms-2.webp"
-          alt="preview"
-          class="w-full h-auto"
-        />
-        <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
-          إنشاء شهادات شكر وتقدير للطلاب والمعلمين ACFMS-2
-        </p>
-        <a
-          href="second-preview13.html"
-          class="card-btn flex items-center justify-center"
-          ><i class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
-        </a>
-      </div>
-      <!-- Card 3: ACFMS-3 -->
-      <div class="w-full sm:w-80 border-2 px-2 py-4 rounded-md">
-        <img
-          src="../assets/imgs/card13/acfms-3.webp"
-          alt="preview"
-          class="w-full h-auto"
-        />
-        <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
-          إنشاء شهادات شكر وتقدير للطلاب والمعلمين ACFMS-3
-        </p>
-        <a
-          href="third-preview13.html"
-          class="card-btn flex items-center justify-center"
-          ><i class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
-        </a>
-      </div>
-      <!-- Card 4: ACFMS-4 -->
-      <div class="w-full sm:w-80 border-2 px-2 py-4 rounded-md">
-        <img
-          src="../assets/imgs/card13/acfms-4.webp"
-          alt="preview"
-          class="w-full h-auto"
-        />
-        <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
-          إنشاء شهادات شكر وتقدير للطلاب والمعلمين ACFMS-4
-        </p>
-        <a
-          href="fourth-preview13.html"
-          class="card-btn flex items-center justify-center"
-          ><i class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
-        </a>
-      </div>
-      <!-- Card 5: ACFF-1 للطالبات والمعلمات -->
-      <div class="w-full sm:w-80 border-2 px-2 py-4 rounded-md">
-        <img
-          src="../assets/imgs/card13/acffs-1.webp"
-          alt="preview"
-          class="w-full h-auto"
-        />
-        <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
-          إنشاء شهادات شكر وتقدير للطالبات والمعلمات ACFF-1
-        </p>
-        <a
-          href="fifth-preview13.html"
-          class="card-btn flex items-center justify-center"
-          ><i class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
-        </a>
-      </div>
-      <!-- Card 6: ACFF-2 للطالبات والمعلمات -->
-      <div class="w-full sm:w-80 border-2 px-2 py-4 rounded-md">
-        <img
-          src="../assets/imgs/card13/acffs-2.webp"
-          alt="preview"
-          class="w-full h-auto"
-        />
-        <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
-          إنشاء شهادات شكر وتقدير للطالبات والمعلمات ACFF-2
-        </p>
-        <a
-          href="sixth-preview13.html"
-          class="card-btn flex items-center justify-center"
-          ><i class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
-        </a>
-      </div>
-      <!-- Card 7: ACFF-3 للطالبات والمعلمات -->
-      <div class="w-full sm:w-80 border-2 px-2 py-4 rounded-md">
-        <img
-          src="../assets/imgs/card13/acffs-3.webp"
-          alt="preview"
-          class="w-full h-auto"
-        />
-        <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
-          إنشاء شهادات شكر وتقدير للطالبات والمعلمات ACFF-3
-        </p>
-        <a
-          href="seventh-preview13.html"
-          class="card-btn flex items-center justify-center"
-          ><i class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
-        </a>
-      </div>
-      <!-- Card 8: ACFF-4 للطالبات والمعلمات -->
-      <div class="w-full sm:w-80 border-2 px-2 py-4 rounded-md">
-        <img
-          src="../assets/imgs/card13/acffs-3.webp"
-          alt="preview"
-          class="w-full h-auto"
-        />
-        <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
-          إنشاء شهادات شكر وتقدير للطالبات والمعلمات ACFF-4
-        </p>
-        <a
-          href="eighth-preview13.html"
-          class="card-btn flex items-center justify-center"
-          ><i class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
-        </a>
-      </div>
-      <!-- Card 9: نافس للطلاب والطالبات -->
-      <div class="w-full sm:w-80 border-2 px-2 py-4 rounded-md">
-        <img
-          src="../assets/imgs/card13/nafic-certificate.webp"
-          alt="preview"
-          class="w-full h-auto"
-        />
-        <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
-          إنشاء شهادات شكر وتقدير نافس للطلاب والطالبات
-        </p>
-        <a
-          href="ninth-preview13.html"
-          class="card-btn flex items-center justify-center"
-          ><i class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
-        </a>
-      </div>
-      <!-- Card 10: نافس لأسر للطلاب والطالبات -->
-      <div class="w-full sm:w-80 border-2 px-2 py-4 rounded-md">
-        <img
-          src="../assets/imgs/card13/nafic-certificate-3.webp"
-          alt="preview"
-          class="w-full h-auto"
-        />
-        <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
-          إنشاء شهادات شكر وتقدير نافس لأسر للطلاب والطالبات
-        </p>
-        <a
-          href="tenth-preview13.html"
-          class="card-btn flex items-center justify-center"
-          ><i class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
-        </a>
-      </div>
-      <!-- Card 11: نافس -->
-      <div class="w-full sm:w-80 border-2 px-2 py-4 rounded-md">
-        <img
-          src="../assets/imgs/card13/nafic-certificate.webp"
-          alt="preview"
-          class="w-full h-auto"
-        />
-        <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
-          إنشاء شهادات شكر وتقدير نافس
-        </p>
-        <a
-          href="eleventh-preview13.html"
-          class="card-btn flex items-center justify-center"
-          ><i class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
-        </a>
-      </div>
-      <!-- Card 12: اليوم الوطني 95 تصميم 1 -->
-      <div class="w-full sm:w-80 border-2 px-2 py-4 rounded-md">
-        <img
-          src="../assets/imgs/card13/appreciation-certificate-national-day-95-1.webp"
-          alt="preview"
-          class="w-full h-auto"
-        />
-        <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
-          إنشاء شهادات شكر وتقدير اليوم الوطني 95 تصميم 1
-        </p>
-        <a
-          href="twelfth-preview13.html"
-          class="card-btn flex items-center justify-center"
-          ><i class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
-        </a>
-      </div>
-      <!-- Card 13: اليوم الوطني 95 تصميم 2 -->
-      <div class="w-full sm:w-80 border-2 px-2 py-4 rounded-md">
-        <img
-          src="../assets/imgs/card13/appreciation-certificate-national-day-95-2.webp"
-          alt="preview"
-          class="w-full h-auto"
-        />
-        <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
-          إنشاء شهادات شكر وتقدير اليوم الوطني 95 تصميم 2
-        </p>
-        <a
-          href="thirteenth-preview13.html"
-          class="card-btn flex items-center justify-center"
-          ><i class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
-        </a>
-      </div>
-      <!-- Card 14: اليوم الوطني 95 تصميم 3 -->
-      <div class="w-full sm:w-80 border-2 px-2 py-4 rounded-md">
-        <img
-          src="../assets/imgs/card13/appreciation-certificate-national-day-95-3.webp"
-          alt="preview"
-          class="w-full h-auto"
-        />
-        <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
-          إنشاء شهادات شكر وتقدير اليوم الوطني 95 تصميم 3
-        </p>
-        <a
-          href="fourteenth-preview13.html"
-          class="card-btn flex items-center justify-center"
-          ><i class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
-        </a>
-      </div>
-      <!-- Card 15: يوم المعلم 2025 -->
-      <div class="w-full sm:w-80 border-2 px-2 py-4 rounded-md">
-        <img
-          src="../assets/imgs/card13/appreciation-certificate-teacher-day.webp"
-          alt="preview"
-          class="w-full h-auto"
-        />
-        <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
-          إنشاء شهادات شكر وتقدير يوم المعلم 2025
-        </p>
-        <a
-          href="fifteenth-preview13.html"
-          class="card-btn flex items-center justify-center"
-          ><i class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
-        </a>
-      </div>
-      <!-- Card 16: أسبوع الفضاء 2025 -->
-      <div class="w-full sm:w-80 border-2 px-2 py-4 rounded-md">
-        <img
-          src="../assets/imgs/card13/appreciation-certificate-world-space-week.webp"
-          alt="preview"
-          class="w-full h-auto"
-        />
-        <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
-          إنشاء شهادات شكر وتقدير أسبوع الفضاء 2025
-        </p>
-        <a
-          href="sixteenth-preview13.html"
-          class="card-btn flex items-center justify-center"
-          ><i class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
-        </a>
-      </div>
-      <!-- Card 17: اليوم العالمي للفيزياء الطبية -->
-      <div class="w-full sm:w-80 border-2 px-2 py-4 rounded-md">
-        <img
-          src="../assets/imgs/card13/appreciation-certificate-i-d-medical-physics.webp"
-          alt="preview"
-          class="w-full h-auto"
-        />
-        <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
-          إنشاء شهادات شكر وتقدير اليوم العالمي للفيزياء الطبية
-        </p>
-        <a
-          href="seventeenth-preview13.html"
-          class="card-btn flex items-center justify-center"
-          ><i class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
-        </a>
-      </div>
-      <!-- Card 18: اليوم العالمي للتسامح -->
-      <div class="w-full sm:w-80 border-2 px-2 py-4 rounded-md">
-        <img
-          src="../assets/imgs/card13/appreciation-certificate-international-tolerance-day.webp"
-          alt="preview"
-          class="w-full h-auto"
-        />
-        <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
-          إنشاء شهادات شكر وتقدير اليوم العالمي للتسامح
-        </p>
-        <a
-          href="eighteenth-preview13.html"
-          class="card-btn flex items-center justify-center"
-          ><i class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
-        </a>
-      </div>
-      <!-- Card 19: فعاليات اليوم العالمي للسكري -->
-      <div class="w-full sm:w-80 border-2 px-2 py-4 rounded-md">
-        <img
-          src="../assets/imgs/card13/appreciation-certificate-world-diabetes-day.webp"
-          alt="preview"
-          class="w-full h-auto"
-        />
-        <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
-          إنشاء شهادات شكر وتقدير فعاليات اليوم العالمي للسكري
-        </p>
-        <a
-          href="nineteenth-preview13.html"
-          class="card-btn flex items-center justify-center"
-          ><i class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
-        </a>
-      </div>
-      <!-- Card 20: فعاليات اليوم العالمي للطفل -->
-      <div class="w-full sm:w-80 border-2 px-2 py-4 rounded-md">
-        <img
-          src="../assets/imgs/card13/appreciation-certificate-world-children-day.webp"
-          alt="preview"
-          class="w-full h-auto"
-        />
-        <p class="text-center text-xl sm:text-2xl md:text-3xl text-[#444] my-4">
-          إنشاء شهادات شكر وتقدير فعاليات اليوم العالمي للطفل
-        </p>
-        <a
-          href="twentieth-preview13.html"
-          class="card-btn flex items-center justify-center"
-          ><i class="fa-regular fa-paper-plane mx-2 text-xl"></i> إبدأ التصميم
-        </a>
+      <div class="text-center text-gray-600 text-sm">
+        Gsoor.com, Inc 2025 ©
       </div>
     </div>
-    <div class="text-center border my-4 p-4 text-base sm:text-lg md:text-xl">
-      <p>عدد الخدمات المنفذة:</p>
-      <p>2187394</p>
-    </div>
-    <div class="text-center border my-4 p-4 text-base sm:text-lg md:text-xl">
-      <p>عدد سجلات شواهد تقييم الأداء المنفذة:</p>
-      <p>6321</p>
-    </div>
-    <footer class="mt-12 border-t border-gray-300 pt-6 pb-8">
-      <div class="max-w-6xl mx-auto">
-        <div
-          class="flex flex-wrap justify-center items-center gap-4 text-gray-700 text-sm mb-4"
-        >
-          <a href="#" class="hover:text-green-600 transition">من نحن</a>
-          <span class="text-gray-400">|</span>
-          <a href="#" class="hover:text-green-600 transition">سياسة الخصوصية</a>
-          <span class="text-gray-400">|</span>
-          <a href="#" class="hover:text-green-600 transition"
-            >اتفاقية الاستخدام</a
-          >
-          <span class="text-gray-400">|</span>
-          <a
-            href="#"
-            class="hover:text-green-600 transition flex items-center gap-1"
-          >
-            تويتر
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 24 24"
-              fill="currentColor"
-              class="w-4 h-4"
-            >
-              <path
-                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-              />
-            </svg>
-          </a>
-          <span class="text-gray-400">|</span>
-          <a href="#" class="hover:text-green-600 transition">اتصل بنا</a>
-        </div>
-        <div class="text-center text-gray-600 text-sm">
-          Gsoor.com, Inc 2025 ©
-        </div>
-      </div>
-    </footer>
-      <script>      // دالة تبديل القائمة على الموبايل
-      function toggleMobileMenu() {
-        const menu = document.getElementById("navbarMenu");
-        menu.classList.toggle("mobile-active");
-      }
+  </footer>
+  <script>      // دالة تبديل القائمة على الموبايل
+    function toggleMobileMenu() {
+      const menu = document.getElementById("navbarMenu");
+      menu.classList.toggle("mobile-active");
+    }
 
 
-    </script>
-  </body>
+  </script>
+</body>
+
 </html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>إنشاء التقارير اليومية والأسبوعية</title>
+
+<style>
+    body {
+        font-family: Tahoma, sans-serif;
+        background: #f4f4f4;
+        margin: 0;
+        direction: rtl;
+    }
+
+    .container {
+        width: 90%;
+        margin: 20px auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #ccc;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .row {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 10px;
+    }
+
+    .col {
+        flex: 1;
+    }
+
+    label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+        font-size: 14px;
+    }
+
+    input, select, textarea {
+        width: 100%;
+        padding: 8px;
+        font-size: 15px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        box-sizing: border-box;
+    }
+
+    textarea {
+        height: 80px;
+    }
+
+    .day-box {
+        background: #f8f8f8;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+    }
+
+    .day-header {
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        padding: 8px;
+        background: #e9e9e9;
+        border-radius: 8px;
+        margin-bottom: 10px;
+    }
+
+    .buttons {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    button {
+        padding: 12px 20px;
+        font-size: 16px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        margin: 5px;
+    }
+
+    .save-btn {
+        background: #00b33c;
+        color: white;
+    }
+
+    .pdf-btn {
+        background: #0066cc;
+        color: white;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>إنشاء التقارير اليومية والأسبوعية</h2>
+    <p style="text-align:center;">للأسبوع الأول — من 1447/03/01 إلى 1447/03/05</p>
+
+    <!-- بيانات المعلم -->
+    <div class="row">
+        <div class="col">
+            <label>اسم المعلم</label>
+            <input type="text" id="teacherName">
+        </div>
+        <div class="col">
+            <label>اسم المدرسة</label>
+            <input type="text" id="schoolName">
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <label>المادة</label>
+            <input type="text" id="subject">
+        </div>
+        <div class="col">
+            <label>الصف</label>
+            <select id="grade">
+                <option>اختر الصف</option>
+                <option>الصف الأول</option>
+                <option>الصف الثاني</option>
+                <option>الصف الثالث</option>
+            </select>
+        </div>
+    </div>
+
+    <!-- الأيام -->
+    <div id="days"></div>
+
+    <!-- الأزرار -->
+    <div class="buttons">
+        <button class="save-btn" onclick="saveData()">💾 حفظ</button>
+        <button class="pdf-btn" onclick="generatePDF()">📄 تحميل PDF</button>
+    </div>
+
+</div>
+
+<script>
+    // إنشاء نماذج الأيام تلقائيًا
+  // إنشاء نماذج الأيام تلقائيًا
+const days = ["السبت", "الأحد", "الاثنين", "الثلاثاء", "الأربعاء"]; // أيام الأسبوع
+const container = document.getElementById("days");
+
+days.forEach((day, index) => {
+    container.innerHTML += `
+        <div class="day-box">
+            <div class="day-header" onclick="toggleDay(${index})">
+                ${day} - ${1447}/03/${1 + index} 
+            </div>
+            <div id="day-content-${index}" style="display: none;">
+                
+                <label>موضوع الدرس</label>
+                <input type="text" id="topic-${index}">
+
+                <label>أهداف الدرس</label>
+                <textarea id="goals-${index}" placeholder="الأهداف"></textarea>
+
+                <label>الواجب والمهام المنزلية:</label>
+                <textarea id="homework-${index}" placeholder="على منصة مدرستي"></textarea>
+
+                <h3 style="margin-top: 15px; font-size: 16px;">تقرير تنفيذ الدرس</h3>
+
+                <div class="row">
+                    <div class="col">
+                        <label>حالة تنفيذ الدرس:</label>
+                        <select id="executionStatus-${index}">
+                            <option>تم التنفيذ كاملاً</option>
+                            <option>تحقيق أهداف الدرس</option>
+                            <option>لم يتم التنفيذ</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>تحقيق أهداف الدرس:</label>
+                        <select id="goalsAchieved-${index}">
+                            <option>جميع الأهداف تحققت</option>
+                            <option>معظم الأهداف تحققت</option>
+                            <option>بعض الأهداف تحققت</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <label>مستوى الفهم:</label>
+                        <select id="understandingLevel-${index}">
+                            <option>عالي (80-100%)</option>
+                            <option>متوسط (60-79%)</option>
+                            <option>منخفض (أقل من 60%)</option>
+                        </select>
+                    </div>
+                    <div class="col">
+                        <label>المشاركة والتفاعل:</label>
+                        <select id="interactionLevel-${index}">
+                            <option>عالية (80-100%)</option>
+                            <option>متوسطة (60-79%)</option>
+                            <option>منخفضة (أقل من 60%)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <label>الأدوات والوسائل التعليمية:</label>
+                <input type="text" id="tools-${index}" value="الكتاب، السبورة التقليدية، أوراق عمل">
+
+                <label>طريقة التدريس أو الاستراتيجيات المطبقة:</label>
+                <input type="text" id="strategies-${index}" value="التدريس المباشر، التعلم التعاوني، التعلم بالاكتشاف">
+                
+                <label>الصعوبات والتحديات:</label>
+                <input type="text" id="challenges-${index}" placeholder="اختر الصعوبات والتحديات">
+
+                <label>الإجراءات الفورية (التدخلات الداعمة):</label>
+                <input type="text" id="interventions-${index}" value="استخدام أمثلة إضافية، التعزيز الإيجابي، تشجيع المشاركة">
+                
+                <label>ملاحظات على الدرس:</label>
+                <textarea id="notes-${index}" placeholder="قم بحل الواجبات والأنشطة لرفع درجات تحصيلك"></textarea>
+            </div>
+        </div>
+    `;
+});
+
+// *ملاحظة:* تم إضافة `style="display: none;"` لإخفاء محتوى اليوم مبدئياً.
+// وتم تغيير أيام الأسبوع لتكون متسلسلة من السبت إلى الأربعاء (افتراضياً).
+// وتم تحديث عناوين الأيام لتشمل التاريخ بناءً على الأسبوع المذكور (1447/03/01).
+
+    // إظهار/إخفاء اليوم
+    function toggleDay(i) {
+        const box = document.getElementById("day-content-" + i);
+        box.style.display = box.style.display === "none" ? "block" : "none";
+    }
+
+    // حفظ البيانات
+    function saveData() {
+        let data = {
+            teacher: document.getElementById("teacherName").value,
+            school: document.getElementById("schoolName").value,
+            subject: document.getElementById("subject").value,
+            grade: document.getElementById("grade").value,
+            days: []
+        };
+
+        for (let i = 0; i < 5; i++) {
+            data.days.push({
+                topic: document.getElementById(`topic-${i}`).value,
+                homework: document.getElementById(`homework-${i}`).value,
+                notes: document.getElementById(`notes-${i}`).value
+            });
+        }
+
+        localStorage.setItem("reportForm", JSON.stringify(data));
+        alert("تم حفظ البيانات بنجاح ✔");
+    }
+
+    // توليد PDF — بسيط (نقدر أعمله محترف باستخدام html2canvas + jsPDF)
+    function generatePDF() {
+        window.print();
+    }
+</script>
+
+</body>
+</html>
